@@ -58,3 +58,6 @@ C:\Users\fu14855\Dropbox\Source\SqlServer\Solicitacao de Ambulancias\Solicitacao
 C:\Users\fu14855\Dropbox\Source\SqlServer\Solicitacao de Ambulancias\Solicitacao de Ambulancias\obj\Release\Solicitacao de Ambulancias.application
 C:\Users\fu14855\Dropbox\Source\SqlServer\Solicitacao de Ambulancias\Solicitacao de Ambulancias\obj\Release\Solicitacao de Ambulancias.exe
 C:\Users\fu14855\Dropbox\Source\SqlServer\Solicitacao de Ambulancias\Solicitacao de Ambulancias\obj\Release\Solicitacao de Ambulancias.pdb
+D:\source\Solicitacao de Ambulancias\Solicitacao de Ambulancias\bin\Release\Solicitacao de Ambulancias.exe.config
+D:\source\Solicitacao de Ambulancias\Solicitacao de Ambulancias\obj\Release\Solicitacao de Ambulancias.exe
+D:\source\Solicitacao de Ambulancias\Solicitacao de Ambulancias\obj\Release\Solicitacao de Ambulancias.pdb
