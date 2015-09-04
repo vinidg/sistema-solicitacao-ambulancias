@@ -469,7 +469,7 @@ namespace Solicitacao_de_Ambulancias
             }
             else if (CbMotivoChamado.Text == "AVALIAÇÃO DE PROFISSIONAL NÃO MÉDICO")
             {
-                pegamotivo = "AVALIAÇÃO_DE_PROFISSIONAL_NÃO_MÉDICO";
+                pegamotivo = "[AVALIAÇÃO_DE_PROFISSIONAL_NÃO_MÉDICO]";
             }
             else if (CbMotivoChamado.Text == "CONSULTA AGENDADA")
             {
@@ -481,11 +481,11 @@ namespace Solicitacao_de_Ambulancias
             }
             else if (CbMotivoChamado.Text == "EVENTO COMEMORATIVO")
             {
-                pegamotivo = "EVENTO_COMEMORATIVO_DO_MUNICÍPIO";
+                pegamotivo = "[EVENTO_COMEMORATIVO_DO_MUNICÍPIO]";
             }
             else if (CbMotivoChamado.Text == "EVENTO DE CULTURA, LAZER OU RELIGIÃO")
             {
-                pegamotivo = "EVENTO_DE_CULTURA,_LAZER_OU_RELIGIÃO";
+                pegamotivo = "[EVENTO_DE_CULTURA,_LAZER_OU_RELIGIÃO]";
             }
             else if (CbMotivoChamado.Text == "EVENTO ESPORTIVO")
             {
@@ -497,15 +497,15 @@ namespace Solicitacao_de_Ambulancias
             }
             else if (CbMotivoChamado.Text == "EXAME DE URGÊNCIA")
             {
-                pegamotivo = "EXAME_DE_URGÊNCIA";
+                pegamotivo = "[EXAME_DE_URGÊNCIA]";
             }
             else if (CbMotivoChamado.Text == "INTERNAÇÃO EM ENFERMARIA")
             {
-                pegamotivo = "INTERNAÇÃO_EM_ENFERMARIA";
+                pegamotivo = "[INTERNAÇÃO_EM_ENFERMARIA]";
             }
             else if (CbMotivoChamado.Text == "INTERNAÇÃO EM UTI")
             {
-                pegamotivo = "INTERNAÇÃO_EM_UTI";
+                pegamotivo = "[INTERNAÇÃO_EM_UTI]";
             }
             else if (CbMotivoChamado.Text == "PROCEDIMENTO")
             {
@@ -517,15 +517,15 @@ namespace Solicitacao_de_Ambulancias
             }
             else if (CbMotivoChamado.Text == "SALA VERMELHA/EMERGÊNCIA")
             {
-                pegamotivo = "SALA_VERMELHA/EMERGÊNCIA";
+                pegamotivo = "[SALA_VERMELHA/EMERGÊNCIA]";
             }
             else if (CbMotivoChamado.Text == "TRANSPORTE DE INSUMOS/PRODUTOS/MATERIAIS")
             {
-                pegamotivo = "TRANSPORTE_DE_INSUMOS/PRODUTOS/MATERIAIS";
+                pegamotivo = "[TRANSPORTE_DE_INSUMOS/PRODUTOS/MATERIAIS]";
             }
             else if (CbMotivoChamado.Text == "TRANSPORTE DE PROFISSIONAIS")
             {
-                pegamotivo = "TRANSPORTE_DE_PROFISSIONAIS";
+                pegamotivo = "[TRANSPORTE_DE_PROFISSIONAIS]";
             }
 
 
