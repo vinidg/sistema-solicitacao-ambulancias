@@ -22,8 +22,8 @@ namespace Solicitacao_de_Ambulancias
         string pegaUnidadeEnd;  //para pegar o endereco com o nome da unidade
         string Sexo, pegamotivo, Id;
         string Endereco1, UPAselecionada, destino, origem;
-        string dataOp = "01/01/2010 00:00:00";
-
+        string DATAop;
+        
         public ConfirmaSolicitacao()
         {
             InitializeComponent();
@@ -1053,10 +1053,8 @@ namespace Solicitacao_de_Ambulancias
 
         private void SelectPacientes()
         {
-            Opcoes op = new Opcoes();
-            dataOp = op.DATAop1;
             SqlConnection conexao = ConexaoSqlServer.GetConexao();
-            string sqlQuery = "SELECT * FROM solicitacoes_paciente WHERE Origem LIKE 'UPA " + UPAselecionada + "%' "+dataOp+"";
+            string sqlQuery = "SELECT * FROM solicitacoes_paciente WHERE Origem LIKE 'UPA " + UPAselecionada + "%' '"+DATAop+"'";
             //DtHrdoInicio BETWEEN '" + dataOp + "' AND '" + now + "'";
             try
             {
@@ -1087,7 +1085,7 @@ namespace Solicitacao_de_Ambulancias
                     IT.SubItems.Add(MyReader2["Destino"].ToString());
                     IT.SubItems.Add(MyReader2["ObsGerais"].ToString());
                     listView1.Items.Add(IT);
-                    Console.WriteLine(dataOp);
+                    Console.WriteLine(DATAop);
                 }
             }
             catch (Exception ex)
@@ -1159,19 +1157,71 @@ namespace Solicitacao_de_Ambulancias
             SelectPacientes();
         }
 
-        private void label31_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button4_Click(object sender, EventArgs e)
         {
-            Opcoes abreop = new Opcoes();
-            abreop.ShowDialog();
+            Opcoes.Visible = true;
         }
 
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Opcoes.Visible = false;
+        }
+
+
+        private void hoje_Click_1(object sender, EventArgs e)
+        {
+            DateTime dsds = DateTime.Now;
+            string sdsd = dsds.ToString("dd/MM/yyyy hh:MM:ss");
+            DATAop = "AND DtHrdoInicio = '" + sdsd;
+        }
+
+        private void Ontem_Click_1(object sender, EventArgs e)
+        {
+            DateTime dsds = DateTime.Now;
+            string sdsd = dsds.ToString("dd/MM/yyyy hh:MM:ss");
+            DATAop = "AND DtHrdoInicio BETWEEN GETDATE() - 1 AND " + sdsd;
+        }
+
+        private void dias2_Click_1(object sender, EventArgs e)
+        {
+            DateTime dsds = DateTime.Now;
+            string sdsd = dsds.ToString("dd/MM/yyyy hh:MM:ss");
+            DATAop = "AND DtHrdoInicio BETWEEN GETDATE() - 2 AND " + sdsd;
+        }
+
+        private void dias5_Click_1(object sender, EventArgs e)
+        {
+            DateTime dsds = DateTime.Now;
+            string sdsd = dsds.ToString("dd/MM/yyyy hh:MM:ss");
+            DATAop = "AND DtHrdoInicio BETWEEN GETDATE() - 5 AND " + sdsd;
+        }
+
+        private void semana1_Click_1(object sender, EventArgs e)
+        {
+            DateTime dsds = DateTime.Now;
+            string sdsd = dsds.ToString("dd/MM/yyyy hh:MM:ss");
+            DATAop = "AND DtHrdoInicio BETWEEN GETDATE() - 7 AND " + sdsd;
+        }
+
+        private void semana2_Click_1(object sender, EventArgs e)
+        {
+            DateTime dsds = DateTime.Now;
+            string sdsd = dsds.ToString("dd/MM/yyyy hh:MM:ss");
+            DATAop = "AND DtHrdoInicio BETWEEN GETDATE() - 14 AND " + sdsd;
+        }
+
+        private void mes1_Click_1(object sender, EventArgs e)
+        {
+            DateTime mes1 = DateTime.Now;
+            string MES = mes1.ToString("MM");
+            DATAop = "AND month(DtHrdoInicio)=" + MES;
+        }
+
+        private void ano1_Click_1(object sender, EventArgs e)
+        {
+            DateTime ano = DateTime.Now;
+            string anos = ano.ToString("yyyy");
+            DATAop = "AND year(DtHrdoInicio)=" + anos;
+        }
     }
 }
-
-
-

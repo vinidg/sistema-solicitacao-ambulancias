@@ -102,21 +102,12 @@
     <Compile Include="ConfirmaSolicitacao.designer.cs">
       <DependentUpon>ConfirmaSolicitacao.cs</DependentUpon>
     </Compile>
-    <Compile Include="OpcoesFiltro.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="OpcoesFiltro.Designer.cs">
-      <DependentUpon>OpcoesFiltro.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StatusBD.cs" />
     <Compile Include="Update.cs" />
     <EmbeddedResource Include="ConfirmaSolicitacao.resx">
       <DependentUpon>ConfirmaSolicitacao.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="OpcoesFiltro.resx">
-      <DependentUpon>OpcoesFiltro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

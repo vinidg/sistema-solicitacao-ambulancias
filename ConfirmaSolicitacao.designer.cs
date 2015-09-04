@@ -109,6 +109,17 @@
             this.Aba2 = new System.Windows.Forms.TabPage();
             this.Aba3 = new System.Windows.Forms.TabPage();
             this.PainelSolicitacoes = new System.Windows.Forms.Panel();
+            this.Opcoes = new System.Windows.Forms.Panel();
+            this.button5 = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.hoje = new System.Windows.Forms.RadioButton();
+            this.ano1 = new System.Windows.Forms.RadioButton();
+            this.mes1 = new System.Windows.Forms.RadioButton();
+            this.semana2 = new System.Windows.Forms.RadioButton();
+            this.semana1 = new System.Windows.Forms.RadioButton();
+            this.dias5 = new System.Windows.Forms.RadioButton();
+            this.dias2 = new System.Windows.Forms.RadioButton();
+            this.Ontem = new System.Windows.Forms.RadioButton();
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -159,6 +170,8 @@
             this.Aba2.SuspendLayout();
             this.Aba3.SuspendLayout();
             this.PainelSolicitacoes.SuspendLayout();
+            this.Opcoes.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -269,7 +282,6 @@
             this.label31.Text = "Ao solicitar a ambulância, sempre confirme com o controle do\r\ntransporte sanitari" +
     "o, para confirmar o recebimento da solicitação.\r\n\r\n4128-5800";
             this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label31.Click += new System.EventHandler(this.label31_Click);
             // 
             // txtAtendMarcado
             // 
@@ -1173,6 +1185,7 @@
             // PainelSolicitacoes
             // 
             this.PainelSolicitacoes.AutoScroll = true;
+            this.PainelSolicitacoes.Controls.Add(this.Opcoes);
             this.PainelSolicitacoes.Controls.Add(this.listView1);
             this.PainelSolicitacoes.Controls.Add(this.panel3);
             this.PainelSolicitacoes.Controls.Add(this.label30);
@@ -1182,6 +1195,140 @@
             this.PainelSolicitacoes.Size = new System.Drawing.Size(1035, 575);
             this.PainelSolicitacoes.TabIndex = 4;
             this.PainelSolicitacoes.Visible = false;
+            // 
+            // Opcoes
+            // 
+            this.Opcoes.Controls.Add(this.button5);
+            this.Opcoes.Controls.Add(this.groupBox3);
+            this.Opcoes.ImeMode = System.Windows.Forms.ImeMode.Katakana;
+            this.Opcoes.Location = new System.Drawing.Point(393, 80);
+            this.Opcoes.Name = "Opcoes";
+            this.Opcoes.Size = new System.Drawing.Size(253, 334);
+            this.Opcoes.TabIndex = 4;
+            this.Opcoes.Visible = false;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(82, 275);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(92, 23);
+            this.button5.TabIndex = 5;
+            this.button5.Text = "Conluir";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.hoje);
+            this.groupBox3.Controls.Add(this.ano1);
+            this.groupBox3.Controls.Add(this.mes1);
+            this.groupBox3.Controls.Add(this.semana2);
+            this.groupBox3.Controls.Add(this.semana1);
+            this.groupBox3.Controls.Add(this.dias5);
+            this.groupBox3.Controls.Add(this.dias2);
+            this.groupBox3.Controls.Add(this.Ontem);
+            this.groupBox3.Location = new System.Drawing.Point(60, 36);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(135, 233);
+            this.groupBox3.TabIndex = 4;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Solicitações criadas:";
+            // 
+            // hoje
+            // 
+            this.hoje.AutoSize = true;
+            this.hoje.Location = new System.Drawing.Point(7, 32);
+            this.hoje.Name = "hoje";
+            this.hoje.Size = new System.Drawing.Size(47, 17);
+            this.hoje.TabIndex = 7;
+            this.hoje.TabStop = true;
+            this.hoje.Text = "Hoje";
+            this.hoje.UseVisualStyleBackColor = true;
+            this.hoje.Click += new System.EventHandler(this.hoje_Click_1);
+            // 
+            // ano1
+            // 
+            this.ano1.AutoSize = true;
+            this.ano1.Location = new System.Drawing.Point(6, 193);
+            this.ano1.Name = "ano1";
+            this.ano1.Size = new System.Drawing.Size(53, 17);
+            this.ano1.TabIndex = 6;
+            this.ano1.TabStop = true;
+            this.ano1.Text = "1 Ano";
+            this.ano1.UseVisualStyleBackColor = true;
+            this.ano1.Click += new System.EventHandler(this.ano1_Click_1);
+            // 
+            // mes1
+            // 
+            this.mes1.AutoSize = true;
+            this.mes1.Location = new System.Drawing.Point(6, 170);
+            this.mes1.Name = "mes1";
+            this.mes1.Size = new System.Drawing.Size(54, 17);
+            this.mes1.TabIndex = 5;
+            this.mes1.TabStop = true;
+            this.mes1.Text = "1 Mes";
+            this.mes1.UseVisualStyleBackColor = true;
+            this.mes1.Click += new System.EventHandler(this.mes1_Click_1);
+            // 
+            // semana2
+            // 
+            this.semana2.AutoSize = true;
+            this.semana2.Location = new System.Drawing.Point(6, 147);
+            this.semana2.Name = "semana2";
+            this.semana2.Size = new System.Drawing.Size(73, 17);
+            this.semana2.TabIndex = 4;
+            this.semana2.TabStop = true;
+            this.semana2.Text = "2 Semana";
+            this.semana2.UseVisualStyleBackColor = true;
+            this.semana2.Click += new System.EventHandler(this.semana2_Click_1);
+            // 
+            // semana1
+            // 
+            this.semana1.AutoSize = true;
+            this.semana1.Location = new System.Drawing.Point(6, 124);
+            this.semana1.Name = "semana1";
+            this.semana1.Size = new System.Drawing.Size(73, 17);
+            this.semana1.TabIndex = 3;
+            this.semana1.TabStop = true;
+            this.semana1.Text = "1 Semana";
+            this.semana1.UseVisualStyleBackColor = true;
+            this.semana1.Click += new System.EventHandler(this.semana1_Click_1);
+            // 
+            // dias5
+            // 
+            this.dias5.AutoSize = true;
+            this.dias5.Location = new System.Drawing.Point(6, 101);
+            this.dias5.Name = "dias5";
+            this.dias5.Size = new System.Drawing.Size(55, 17);
+            this.dias5.TabIndex = 2;
+            this.dias5.TabStop = true;
+            this.dias5.Text = "5 Dias";
+            this.dias5.UseVisualStyleBackColor = true;
+            this.dias5.Click += new System.EventHandler(this.dias5_Click_1);
+            // 
+            // dias2
+            // 
+            this.dias2.AutoSize = true;
+            this.dias2.Location = new System.Drawing.Point(6, 78);
+            this.dias2.Name = "dias2";
+            this.dias2.Size = new System.Drawing.Size(55, 17);
+            this.dias2.TabIndex = 1;
+            this.dias2.TabStop = true;
+            this.dias2.Text = "2 Dias";
+            this.dias2.UseVisualStyleBackColor = true;
+            this.dias2.Click += new System.EventHandler(this.dias2_Click_1);
+            // 
+            // Ontem
+            // 
+            this.Ontem.AutoSize = true;
+            this.Ontem.Location = new System.Drawing.Point(7, 55);
+            this.Ontem.Name = "Ontem";
+            this.Ontem.Size = new System.Drawing.Size(56, 17);
+            this.Ontem.TabIndex = 0;
+            this.Ontem.TabStop = true;
+            this.Ontem.Text = "Ontem";
+            this.Ontem.UseVisualStyleBackColor = true;
+            this.Ontem.Click += new System.EventHandler(this.Ontem_Click_1);
             // 
             // listView1
             // 
@@ -1571,6 +1718,9 @@
             this.Aba3.PerformLayout();
             this.PainelSolicitacoes.ResumeLayout(false);
             this.PainelSolicitacoes.PerformLayout();
+            this.Opcoes.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.ResumeLayout(false);
@@ -1700,5 +1850,16 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Panel Opcoes;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.RadioButton hoje;
+        private System.Windows.Forms.RadioButton ano1;
+        private System.Windows.Forms.RadioButton mes1;
+        private System.Windows.Forms.RadioButton semana2;
+        private System.Windows.Forms.RadioButton semana1;
+        private System.Windows.Forms.RadioButton dias5;
+        private System.Windows.Forms.RadioButton dias2;
+        private System.Windows.Forms.RadioButton Ontem;
     }
 }
