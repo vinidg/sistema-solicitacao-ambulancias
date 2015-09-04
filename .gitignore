@@ -157,5 +157,4 @@ $RECYCLE.BIN/
 .DS_Store
 *.application
 *.manifest
-bin/Release/Solicitacao de Ambulancias.vshost.exe.manifest
-*.manifest
+
