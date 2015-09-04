@@ -13,7 +13,8 @@ namespace Solicitacao_de_Ambulancias
    //    string conectando = "Server=DIV-HOS-AD03\\SQLSERVERDON;Database=dahue;User Id=fu14855;Password=dahue123;";
         public static SqlConnection GetConexao()
         {
-            string strCon = "data source = srv-mssql-01;initial catalog = DAHUE;user id = dahue; password = DT1_D@huE_1438_DtI";
+            string strCon = "data source = XXX;initial catalog = XXX;user id = XXXX; password = XXXXX";
+
             SqlConnection conexao = new SqlConnection(strCon);
             conexao.Open();
             return conexao;
