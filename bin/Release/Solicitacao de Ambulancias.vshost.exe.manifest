@@ -55,14 +55,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Solicitacao de Ambulancias.exe" size="913408">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Solicitacao de Ambulancias.exe" size="909824">
       <assemblyIdentity name="Solicitacao de Ambulancias" version="9.0.0.1" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>kdGfMCW8HGQ2CtiGZsTz12JUAJsnYkCfq2Sisstv4J0=</dsig:DigestValue>
+        <dsig:DigestValue>1nsQvM1sIHtHHUoj74zpDiYy1GxdjM36wEt8pzNlS9o=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

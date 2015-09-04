@@ -64,7 +64,6 @@ D:\source\Solicitacao de Ambulancias\Solicitacao de Ambulancias\bin\Release\Soli
 D:\source\Solicitacao de Ambulancias\Solicitacao de Ambulancias\bin\Release\Solicitacao de Ambulancias.exe
 D:\source\Solicitacao de Ambulancias\Solicitacao de Ambulancias\bin\Release\Solicitacao de Ambulancias.pdb
 D:\source\Solicitacao de Ambulancias\Solicitacao de Ambulancias\obj\Release\Solicitacao_de_Ambulancias.ConfirmaSolicitacao.resources
-D:\source\Solicitacao de Ambulancias\Solicitacao de Ambulancias\obj\Release\Solicitacao_de_Ambulancias.Opcoes.resources
 D:\source\Solicitacao de Ambulancias\Solicitacao de Ambulancias\obj\Release\Solicitacao_de_Ambulancias.Properties.Resources.resources
 D:\source\Solicitacao de Ambulancias\Solicitacao de Ambulancias\obj\Release\Solicitacao de Ambulancias.csproj.GenerateResource.Cache
 D:\source\Solicitacao de Ambulancias\Solicitacao de Ambulancias\obj\Release\Solicitacao de Ambulancias.TrustInfo.xml

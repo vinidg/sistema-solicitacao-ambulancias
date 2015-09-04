@@ -1054,7 +1054,7 @@ namespace Solicitacao_de_Ambulancias
         private void SelectPacientes()
         {
             SqlConnection conexao = ConexaoSqlServer.GetConexao();
-            string sqlQuery = "SELECT * FROM solicitacoes_paciente WHERE Origem LIKE 'UPA " + UPAselecionada + "%' '"+DATAop+"'";
+            string sqlQuery = "SELECT * FROM solicitacoes_paciente WHERE Origem LIKE 'UPA " + UPAselecionada + "%' "+DATAop+"";
             //DtHrdoInicio BETWEEN '" + dataOp + "' AND '" + now + "'";
             try
             {
@@ -1172,56 +1172,56 @@ namespace Solicitacao_de_Ambulancias
         {
             DateTime dsds = DateTime.Now;
             string sdsd = dsds.ToString("dd/MM/yyyy hh:MM:ss");
-            DATAop = "AND DtHrdoInicio = '" + sdsd;
+            DATAop = "AND DtHrdoInicio = '" + sdsd + "'";
         }
 
         private void Ontem_Click_1(object sender, EventArgs e)
         {
             DateTime dsds = DateTime.Now;
             string sdsd = dsds.ToString("dd/MM/yyyy hh:MM:ss");
-            DATAop = "AND DtHrdoInicio BETWEEN GETDATE() - 1 AND " + sdsd;
+            DATAop = "AND DtHrdoInicio BETWEEN GETDATE() - 1 AND '" + sdsd + "'";
         }
 
         private void dias2_Click_1(object sender, EventArgs e)
         {
             DateTime dsds = DateTime.Now;
             string sdsd = dsds.ToString("dd/MM/yyyy hh:MM:ss");
-            DATAop = "AND DtHrdoInicio BETWEEN GETDATE() - 2 AND " + sdsd;
+            DATAop = "AND DtHrdoInicio BETWEEN GETDATE() - 2 AND '" + sdsd + "'";
         }
 
         private void dias5_Click_1(object sender, EventArgs e)
         {
             DateTime dsds = DateTime.Now;
             string sdsd = dsds.ToString("dd/MM/yyyy hh:MM:ss");
-            DATAop = "AND DtHrdoInicio BETWEEN GETDATE() - 5 AND " + sdsd;
+            DATAop = "AND DtHrdoInicio BETWEEN GETDATE() - 5 AND '" + sdsd + "'";
         }
 
         private void semana1_Click_1(object sender, EventArgs e)
         {
             DateTime dsds = DateTime.Now;
             string sdsd = dsds.ToString("dd/MM/yyyy hh:MM:ss");
-            DATAop = "AND DtHrdoInicio BETWEEN GETDATE() - 7 AND " + sdsd;
+            DATAop = "AND DtHrdoInicio BETWEEN GETDATE() - 7 AND '" + sdsd + "'";
         }
 
         private void semana2_Click_1(object sender, EventArgs e)
         {
             DateTime dsds = DateTime.Now;
             string sdsd = dsds.ToString("dd/MM/yyyy hh:MM:ss");
-            DATAop = "AND DtHrdoInicio BETWEEN GETDATE() - 14 AND " + sdsd;
+            DATAop = "AND DtHrdoInicio BETWEEN GETDATE() - 14 AND '" + sdsd + "'";
         }
 
         private void mes1_Click_1(object sender, EventArgs e)
         {
             DateTime mes1 = DateTime.Now;
             string MES = mes1.ToString("MM");
-            DATAop = "AND month(DtHrdoInicio)=" + MES;
+            DATAop = "AND month(DtHrdoInicio)='" + MES + "'";
         }
 
         private void ano1_Click_1(object sender, EventArgs e)
         {
             DateTime ano = DateTime.Now;
             string anos = ano.ToString("yyyy");
-            DATAop = "AND year(DtHrdoInicio)=" + anos;
+            DATAop = "AND year(DtHrdoInicio)='" + anos + "'";
         }
     }
 }
