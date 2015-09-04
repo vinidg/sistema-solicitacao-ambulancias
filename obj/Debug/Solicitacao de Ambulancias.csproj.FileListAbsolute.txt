@@ -29,3 +29,18 @@ C:\Users\Vinicius\Dropbox\Controle Ambulancias\Solicitacao de Ambulancias\Solici
 C:\Users\fu14855\Dropbox\Source\SqlServer\Solicitacao de Ambulancias\Solicitacao de Ambulancias\bin\Debug\Solicitacao de Ambulancias.exe.config
 C:\Users\fu14855\Dropbox\Source\SqlServer\Solicitacao de Ambulancias\Solicitacao de Ambulancias\obj\Debug\Solicitacao de Ambulancias.exe
 C:\Users\fu14855\Dropbox\Source\SqlServer\Solicitacao de Ambulancias\Solicitacao de Ambulancias\obj\Debug\Solicitacao de Ambulancias.pdb
+D:\source\Solicitacao de Ambulancias\Solicitacao de Ambulancias\bin\Debug\Solicitacao de Ambulancias.exe.config
+D:\source\Solicitacao de Ambulancias\Solicitacao de Ambulancias\obj\Debug\Solicitacao de Ambulancias.exe
+D:\source\Solicitacao de Ambulancias\Solicitacao de Ambulancias\obj\Debug\Solicitacao de Ambulancias.pdb
+D:\source\Solicitacao de Ambulancias\Solicitacao de Ambulancias\bin\Debug\Solicitacao de Ambulancias.exe.manifest
+D:\source\Solicitacao de Ambulancias\Solicitacao de Ambulancias\bin\Debug\Solicitacao de Ambulancias.application
+D:\source\Solicitacao de Ambulancias\Solicitacao de Ambulancias\bin\Debug\Solicitacao de Ambulancias.exe
+D:\source\Solicitacao de Ambulancias\Solicitacao de Ambulancias\bin\Debug\Solicitacao de Ambulancias.pdb
+D:\source\Solicitacao de Ambulancias\Solicitacao de Ambulancias\obj\Debug\Solicitacao de Ambulancias.csprojResolveAssemblyReference.cache
+D:\source\Solicitacao de Ambulancias\Solicitacao de Ambulancias\obj\Debug\Solicitacao_de_Ambulancias.ConfirmaSolicitacao.resources
+D:\source\Solicitacao de Ambulancias\Solicitacao de Ambulancias\obj\Debug\Solicitacao_de_Ambulancias.Opcoes.resources
+D:\source\Solicitacao de Ambulancias\Solicitacao de Ambulancias\obj\Debug\Solicitacao_de_Ambulancias.Properties.Resources.resources
+D:\source\Solicitacao de Ambulancias\Solicitacao de Ambulancias\obj\Debug\Solicitacao de Ambulancias.csproj.GenerateResource.Cache
+D:\source\Solicitacao de Ambulancias\Solicitacao de Ambulancias\obj\Debug\Solicitacao de Ambulancias.TrustInfo.xml
+D:\source\Solicitacao de Ambulancias\Solicitacao de Ambulancias\obj\Debug\Solicitacao de Ambulancias.exe.manifest
+D:\source\Solicitacao de Ambulancias\Solicitacao de Ambulancias\obj\Debug\Solicitacao de Ambulancias.application

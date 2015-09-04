@@ -128,6 +128,7 @@
             this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel3 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.txtHora6 = new System.Windows.Forms.TextBox();
             this.txtHora5 = new System.Windows.Forms.TextBox();
@@ -149,7 +150,6 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
             this.label29 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.AbasControle.SuspendLayout();
             this.Aba1.SuspendLayout();
@@ -450,6 +450,7 @@
             // CbTipoMotivoSelecionado
             // 
             this.CbTipoMotivoSelecionado.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.CbTipoMotivoSelecionado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CbTipoMotivoSelecionado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CbTipoMotivoSelecionado.FormattingEnabled = true;
             this.CbTipoMotivoSelecionado.Location = new System.Drawing.Point(295, 422);
@@ -474,6 +475,7 @@
             // CbMotivoChamado
             // 
             this.CbMotivoChamado.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.CbMotivoChamado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CbMotivoChamado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CbMotivoChamado.FormattingEnabled = true;
             this.CbMotivoChamado.Items.AddRange(new object[] {
@@ -1304,6 +1306,20 @@
             this.panel3.Size = new System.Drawing.Size(1021, 214);
             this.panel3.TabIndex = 2;
             // 
+            // button4
+            // 
+            this.button4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button4.BackColor = System.Drawing.Color.SeaGreen;
+            this.button4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.Color.White;
+            this.button4.Location = new System.Drawing.Point(6, 175);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(105, 36);
+            this.button4.TabIndex = 38;
+            this.button4.Text = "Opções";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // button3
             // 
             this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -1487,6 +1503,7 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "",
@@ -1523,20 +1540,6 @@
             this.label29.Size = new System.Drawing.Size(147, 18);
             this.label29.TabIndex = 0;
             this.label29.Text = "Selecione a Unidade:";
-            // 
-            // button4
-            // 
-            this.button4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button4.BackColor = System.Drawing.Color.SeaGreen;
-            this.button4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(6, 175);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(105, 36);
-            this.button4.TabIndex = 38;
-            this.button4.Text = "Opções";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // ConfirmaSolicitacao
             // 

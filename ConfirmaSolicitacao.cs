@@ -1054,7 +1054,7 @@ namespace Solicitacao_de_Ambulancias
         private void SelectPacientes()
         {
             Opcoes op = new Opcoes();
-            dataOp = op.DATAop;
+            dataOp = op.DATAop1;
             SqlConnection conexao = ConexaoSqlServer.GetConexao();
             string sqlQuery = "SELECT * FROM solicitacoes_paciente WHERE Origem LIKE 'UPA " + UPAselecionada + "%' "+dataOp+"";
             //DtHrdoInicio BETWEEN '" + dataOp + "' AND '" + now + "'";

@@ -14,7 +14,13 @@ namespace Solicitacao_de_Ambulancias
     public partial class Opcoes : Form
     {
 
-        public string DATAop;
+        private string DATAop;
+
+        public string DATAop1
+        {
+            get { return DATAop; }
+            set { DATAop = value; }
+        }
 
         public Opcoes()
         {
