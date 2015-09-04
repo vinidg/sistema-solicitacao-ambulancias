@@ -156,3 +156,6 @@ $RECYCLE.BIN/
 # Mac desktop service store files
 .DS_Store
 *.application
+*.manifest
+bin/Release/Solicitacao de Ambulancias.vshost.exe.manifest
+*.manifest
