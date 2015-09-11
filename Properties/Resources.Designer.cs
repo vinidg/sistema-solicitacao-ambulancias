@@ -59,15 +59,5 @@ namespace Solicitacao_de_Ambulancias.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Coisado {
-            get {
-                object obj = ResourceManager.GetObject("Coisado", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }

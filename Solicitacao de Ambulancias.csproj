@@ -135,7 +135,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Coisado.png" />
     <Content Include="Icons-Land-Transport-Ambulance.ico" />
   </ItemGroup>
   <ItemGroup>
