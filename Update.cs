@@ -23,7 +23,8 @@ namespace Solicitacao_de_Ambulancias
             
             string donwloadurl = "";
             Version newVersion = null;
-            string xmlURL = @"\\\div-hos-ad03\\Publica\\Sistema de Solicitacao\\update\\update.xml";
+
+            string xmlURL = @"\\\10.1.0.7\\Mapa_de_Leitos\\Sistemas - Vinicius\\Sistema de Solicitacao de Ambulancias\\update.xml";
             XmlTextReader reader = null;
 
             try
