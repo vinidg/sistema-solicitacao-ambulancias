@@ -4,7 +4,7 @@
   <description asmv2:iconFile="Icons-Land-Transport-Ambulance.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="Solicitacao de Ambulancias" version="9.0.0.1" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="Solicitacao de Ambulancias" version="9.0.1.1" language="neutral" processorArchitecture="msil" />
     <commandLine file="Solicitacao de Ambulancias.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -55,14 +55,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Solicitacao de Ambulancias.exe" size="913920">
-      <assemblyIdentity name="Solicitacao de Ambulancias" version="9.0.0.1" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Solicitacao de Ambulancias.exe" size="819712">
+      <assemblyIdentity name="Solicitacao de Ambulancias" version="9.0.1.1" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ZShd+AzxQpS9RE9lrYjaQB+nBjz7NQ0qrtYd27hh85o=</dsig:DigestValue>
+        <dsig:DigestValue>C2rI6Pbz0D9oOvxbvXdGeZV2+J3iaReK5iZfHtNHZz4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -99,55 +99,7 @@ namespace Solicitacao_de_Ambulancias
 
         public void Limpar()
         {
-            /*  label2.Visible = false;
-            Btnagendanao.Visible = false;
-            Btnagendasim.Visible = false;
-            label3.Visible = false;
-            txtAtendMarcado.Visible = false;
-            label4.Visible = false;
-            label5.Visible = false;
-            txtNomeSolicitante.Visible = false;
-            label6.Visible = false;
-            CbLocalSolicita.Visible = false;
-            label7.Visible = false;
-            txtTelefone.Visible = false;
-            label8.Visible = false;
-            label9.Visible = false;
-            txtNomePaciente.Visible = false;
-            label10.Visible = false;
-            RbFemenino.Visible = false;
-            RbMasculino.Visible = false;
-            label11.Visible = false;
-            txtIdade.Visible = false;
-            label12.Visible = false;
-            txtDiagnostico.Visible = false;
-            label13.Visible = false;
-            CbMotivoChamado.Visible = false;
-            label14.Visible = false;
-            CbTipoMotivoSelecionado.Visible = false;
-            CbAtendimentoPrioridade.Visible = false;
-            label15.Visible = false;
-            label16.Visible = false;
-            CbOrigem.Visible = false;
-            label17.Visible = false;
-            CbDestino.Visible = false;
-            label18.Visible = false;
-            txtEnderecoOrigem.Visible = false;
-            label19.Visible = false;
-            txtEnderecoDestino.Visible = false;
-            label20.Visible = false;
-            richTextBox1.Visible = false;
-            BtnSalvar.Visible = false;
-            Btnagendasim.BackColor = Color.PaleTurquoise;
-            Btnagendanao.BackColor = Color.PaleTurquoise;
-            BtnAvancada.BackColor = Color.PaleTurquoise;
-            BtnBasica.BackColor = Color.PaleTurquoise;
-            Btnagendasim.ForeColor = Color.DimGray;
-            Btnagendanao.ForeColor = Color.DimGray;
-            BtnAvancada.ForeColor = Color.DimGray;
-            BtnBasica.ForeColor = Color.DimGray;
-            */
-
+     
             txtAtendMarcado.Text = "";
             txtNomeSolicitante.Text = "";
             CbLocalSolicita.Text = "";
@@ -561,14 +513,17 @@ namespace Solicitacao_de_Ambulancias
         private void CbMotivoChamado_SelectedIndexChanged(object sender, EventArgs e)
         {
             CbTipoMotivoSelecionado.Items.Clear();
-
+            if (pegamotivo == "[INTERNAÇÃO_EM_UTI]" || pegamotivo == "[SALA_VERMELHA/EMERGÊNCIA]")
+            {
+                BtnAvancada.PerformClick();
+            }
         }
 
         private void CbTipoMotivoSelecionado_Click(object sender, EventArgs e)
         {
             Motivo();
-        }
 
+        }
 
         /////////////////////////////////////////////////////////////////STATUS AM////////////////////////////////////////////////////////////////////
 
@@ -1223,5 +1178,29 @@ namespace Solicitacao_de_Ambulancias
             string anos = ano.ToString("yyyy");
             DATAop = "AND year(DtHrdoInicio)='" + anos + "'";
         }
+
+        private void CbMotivoChamado_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            if (CbMotivoChamado.Text == "INTERNAÇÃO EM UTI" || CbMotivoChamado.Text == "SALA VERMELHA/EMERGÊNCIA")
+            {
+                BtnAvancada.PerformClick();
+                BtnAvancada.Enabled = false;
+                BtnBasica.Enabled = false;
+            }
+            else
+            {
+                label2.Visible = true;
+                Btnagendanao.Visible = true;
+                Btnagendasim.Visible = true;
+                TipoAM = "";
+                BtnAvancada.Enabled = true;
+                BtnBasica.Enabled = true;
+                BtnAvancada.BackColor = Color.PaleTurquoise;
+                BtnAvancada.ForeColor = Color.Teal;
+                BtnBasica.ForeColor = Color.Teal;
+                BtnBasica.BackColor = Color.PaleTurquoise;
+            }
+        }
+
     }
 }
