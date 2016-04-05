@@ -89,18 +89,18 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.BtnAM03 = new System.Windows.Forms.Button();
             this.BtnAMRC = new System.Windows.Forms.Button();
-            this.BtnAM14 = new System.Windows.Forms.Button();
+            this.BtnAM11 = new System.Windows.Forms.Button();
+            this.BtnAM04 = new System.Windows.Forms.Button();
+            this.BtnAM08 = new System.Windows.Forms.Button();
+            this.BtnAM12 = new System.Windows.Forms.Button();
+            this.BtnAM52 = new System.Windows.Forms.Button();
             this.BtnAM05 = new System.Windows.Forms.Button();
             this.BtnAM10 = new System.Windows.Forms.Button();
-            this.BtnAM15 = new System.Windows.Forms.Button();
-            this.BtnAM52 = new System.Windows.Forms.Button();
-            this.BtnAM06 = new System.Windows.Forms.Button();
-            this.BtnAM13 = new System.Windows.Forms.Button();
             this.BtnAM46 = new System.Windows.Forms.Button();
-            this.BtnAM08 = new System.Windows.Forms.Button();
             this.BtnAM07 = new System.Windows.Forms.Button();
+            this.BtnAM06 = new System.Windows.Forms.Button();
             this.BtnAM47 = new System.Windows.Forms.Button();
-            this.BtnAM12 = new System.Windows.Forms.Button();
+            this.BtnAM09 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.BtnAM02 = new System.Windows.Forms.Button();
             this.BtnAM01 = new System.Windows.Forms.Button();
@@ -892,18 +892,18 @@
             this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.groupBox2.Controls.Add(this.BtnAM03);
             this.groupBox2.Controls.Add(this.BtnAMRC);
-            this.groupBox2.Controls.Add(this.BtnAM14);
+            this.groupBox2.Controls.Add(this.BtnAM11);
+            this.groupBox2.Controls.Add(this.BtnAM04);
+            this.groupBox2.Controls.Add(this.BtnAM08);
+            this.groupBox2.Controls.Add(this.BtnAM12);
+            this.groupBox2.Controls.Add(this.BtnAM52);
             this.groupBox2.Controls.Add(this.BtnAM05);
             this.groupBox2.Controls.Add(this.BtnAM10);
-            this.groupBox2.Controls.Add(this.BtnAM15);
-            this.groupBox2.Controls.Add(this.BtnAM52);
-            this.groupBox2.Controls.Add(this.BtnAM06);
-            this.groupBox2.Controls.Add(this.BtnAM13);
             this.groupBox2.Controls.Add(this.BtnAM46);
-            this.groupBox2.Controls.Add(this.BtnAM08);
             this.groupBox2.Controls.Add(this.BtnAM07);
+            this.groupBox2.Controls.Add(this.BtnAM06);
             this.groupBox2.Controls.Add(this.BtnAM47);
-            this.groupBox2.Controls.Add(this.BtnAM12);
+            this.groupBox2.Controls.Add(this.BtnAM09);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(32, 238);
             this.groupBox2.Name = "groupBox2";
@@ -915,20 +915,20 @@
             // BtnAM03
             // 
             this.BtnAM03.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnAM03.BackColor = System.Drawing.Color.LimeGreen;
+            this.BtnAM03.BackColor = System.Drawing.Color.Linen;
             this.BtnAM03.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnAM03.ForeColor = System.Drawing.Color.White;
             this.BtnAM03.Location = new System.Drawing.Point(6, 25);
             this.BtnAM03.Name = "BtnAM03";
             this.BtnAM03.Size = new System.Drawing.Size(157, 76);
             this.BtnAM03.TabIndex = 5;
-            this.BtnAM03.Text = "AM 04";
+            this.BtnAM03.Text = "AM 03";
             this.BtnAM03.UseVisualStyleBackColor = false;
             // 
             // BtnAMRC
             // 
             this.BtnAMRC.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnAMRC.BackColor = System.Drawing.Color.LimeGreen;
+            this.BtnAMRC.BackColor = System.Drawing.Color.Linen;
             this.BtnAMRC.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnAMRC.ForeColor = System.Drawing.Color.White;
             this.BtnAMRC.Location = new System.Drawing.Point(6, 189);
@@ -938,62 +938,62 @@
             this.BtnAMRC.Text = "AM RC";
             this.BtnAMRC.UseVisualStyleBackColor = false;
             // 
-            // BtnAM14
+            // BtnAM11
             // 
-            this.BtnAM14.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnAM14.BackColor = System.Drawing.Color.LimeGreen;
-            this.BtnAM14.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnAM14.ForeColor = System.Drawing.Color.White;
-            this.BtnAM14.Location = new System.Drawing.Point(494, 107);
-            this.BtnAM14.Name = "BtnAM14";
-            this.BtnAM14.Size = new System.Drawing.Size(157, 76);
-            this.BtnAM14.TabIndex = 3;
-            this.BtnAM14.Text = "AM 14";
-            this.BtnAM14.UseVisualStyleBackColor = false;
+            this.BtnAM11.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnAM11.BackColor = System.Drawing.Color.Linen;
+            this.BtnAM11.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnAM11.ForeColor = System.Drawing.Color.White;
+            this.BtnAM11.Location = new System.Drawing.Point(494, 107);
+            this.BtnAM11.Name = "BtnAM11";
+            this.BtnAM11.Size = new System.Drawing.Size(157, 76);
+            this.BtnAM11.TabIndex = 3;
+            this.BtnAM11.Text = "AM 11";
+            this.BtnAM11.UseVisualStyleBackColor = false;
             // 
-            // BtnAM05
+            // BtnAM04
             // 
-            this.BtnAM05.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnAM05.BackColor = System.Drawing.Color.LimeGreen;
-            this.BtnAM05.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnAM05.ForeColor = System.Drawing.Color.White;
-            this.BtnAM05.Location = new System.Drawing.Point(169, 25);
-            this.BtnAM05.Name = "BtnAM05";
-            this.BtnAM05.Size = new System.Drawing.Size(157, 76);
-            this.BtnAM05.TabIndex = 6;
-            this.BtnAM05.Text = "AM 05";
-            this.BtnAM05.UseVisualStyleBackColor = false;
+            this.BtnAM04.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnAM04.BackColor = System.Drawing.Color.Linen;
+            this.BtnAM04.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnAM04.ForeColor = System.Drawing.Color.White;
+            this.BtnAM04.Location = new System.Drawing.Point(169, 25);
+            this.BtnAM04.Name = "BtnAM04";
+            this.BtnAM04.Size = new System.Drawing.Size(157, 76);
+            this.BtnAM04.TabIndex = 6;
+            this.BtnAM04.Text = "AM 04";
+            this.BtnAM04.UseVisualStyleBackColor = false;
             // 
-            // BtnAM10
+            // BtnAM08
             // 
-            this.BtnAM10.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnAM10.BackColor = System.Drawing.Color.LimeGreen;
-            this.BtnAM10.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnAM10.ForeColor = System.Drawing.Color.White;
-            this.BtnAM10.Location = new System.Drawing.Point(5, 107);
-            this.BtnAM10.Name = "BtnAM10";
-            this.BtnAM10.Size = new System.Drawing.Size(157, 76);
-            this.BtnAM10.TabIndex = 7;
-            this.BtnAM10.Text = "AM 10";
-            this.BtnAM10.UseVisualStyleBackColor = false;
+            this.BtnAM08.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnAM08.BackColor = System.Drawing.Color.Linen;
+            this.BtnAM08.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnAM08.ForeColor = System.Drawing.Color.White;
+            this.BtnAM08.Location = new System.Drawing.Point(5, 107);
+            this.BtnAM08.Name = "BtnAM08";
+            this.BtnAM08.Size = new System.Drawing.Size(157, 76);
+            this.BtnAM08.TabIndex = 7;
+            this.BtnAM08.Text = "AM 08";
+            this.BtnAM08.UseVisualStyleBackColor = false;
             // 
-            // BtnAM15
+            // BtnAM12
             // 
-            this.BtnAM15.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnAM15.BackColor = System.Drawing.Color.LimeGreen;
-            this.BtnAM15.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnAM15.ForeColor = System.Drawing.Color.White;
-            this.BtnAM15.Location = new System.Drawing.Point(658, 107);
-            this.BtnAM15.Name = "BtnAM15";
-            this.BtnAM15.Size = new System.Drawing.Size(157, 76);
-            this.BtnAM15.TabIndex = 8;
-            this.BtnAM15.Text = "AM 15";
-            this.BtnAM15.UseVisualStyleBackColor = false;
+            this.BtnAM12.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnAM12.BackColor = System.Drawing.Color.Linen;
+            this.BtnAM12.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnAM12.ForeColor = System.Drawing.Color.White;
+            this.BtnAM12.Location = new System.Drawing.Point(658, 107);
+            this.BtnAM12.Name = "BtnAM12";
+            this.BtnAM12.Size = new System.Drawing.Size(157, 76);
+            this.BtnAM12.TabIndex = 8;
+            this.BtnAM12.Text = "AM 12";
+            this.BtnAM12.UseVisualStyleBackColor = false;
             // 
             // BtnAM52
             // 
             this.BtnAM52.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnAM52.BackColor = System.Drawing.Color.LimeGreen;
+            this.BtnAM52.BackColor = System.Drawing.Color.Linen;
             this.BtnAM52.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnAM52.ForeColor = System.Drawing.Color.White;
             this.BtnAM52.Location = new System.Drawing.Point(495, 189);
@@ -1003,37 +1003,37 @@
             this.BtnAM52.Text = "AM 52";
             this.BtnAM52.UseVisualStyleBackColor = false;
             // 
-            // BtnAM06
+            // BtnAM05
             // 
-            this.BtnAM06.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnAM06.BackColor = System.Drawing.Color.LimeGreen;
-            this.BtnAM06.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnAM06.ForeColor = System.Drawing.Color.White;
-            this.BtnAM06.Location = new System.Drawing.Point(332, 25);
-            this.BtnAM06.Name = "BtnAM06";
-            this.BtnAM06.Size = new System.Drawing.Size(157, 76);
-            this.BtnAM06.TabIndex = 9;
-            this.BtnAM06.Text = "AM 06";
-            this.BtnAM06.UseVisualStyleBackColor = false;
+            this.BtnAM05.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnAM05.BackColor = System.Drawing.Color.Linen;
+            this.BtnAM05.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnAM05.ForeColor = System.Drawing.Color.White;
+            this.BtnAM05.Location = new System.Drawing.Point(332, 25);
+            this.BtnAM05.Name = "BtnAM05";
+            this.BtnAM05.Size = new System.Drawing.Size(157, 76);
+            this.BtnAM05.TabIndex = 9;
+            this.BtnAM05.Text = "AM 05";
+            this.BtnAM05.UseVisualStyleBackColor = false;
             // 
-            // BtnAM13
+            // BtnAM10
             // 
-            this.BtnAM13.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnAM13.AutoEllipsis = true;
-            this.BtnAM13.BackColor = System.Drawing.Color.RoyalBlue;
-            this.BtnAM13.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnAM13.ForeColor = System.Drawing.Color.White;
-            this.BtnAM13.Location = new System.Drawing.Point(331, 107);
-            this.BtnAM13.Name = "BtnAM13";
-            this.BtnAM13.Size = new System.Drawing.Size(157, 76);
-            this.BtnAM13.TabIndex = 16;
-            this.BtnAM13.Text = "AM 13";
-            this.BtnAM13.UseVisualStyleBackColor = false;
+            this.BtnAM10.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnAM10.AutoEllipsis = true;
+            this.BtnAM10.BackColor = System.Drawing.Color.Linen;
+            this.BtnAM10.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnAM10.ForeColor = System.Drawing.Color.White;
+            this.BtnAM10.Location = new System.Drawing.Point(331, 107);
+            this.BtnAM10.Name = "BtnAM10";
+            this.BtnAM10.Size = new System.Drawing.Size(157, 76);
+            this.BtnAM10.TabIndex = 16;
+            this.BtnAM10.Text = "AM 10";
+            this.BtnAM10.UseVisualStyleBackColor = false;
             // 
             // BtnAM46
             // 
             this.BtnAM46.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnAM46.BackColor = System.Drawing.Color.LimeGreen;
+            this.BtnAM46.BackColor = System.Drawing.Color.Linen;
             this.BtnAM46.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnAM46.ForeColor = System.Drawing.Color.White;
             this.BtnAM46.Location = new System.Drawing.Point(169, 189);
@@ -1043,36 +1043,36 @@
             this.BtnAM46.Text = "AM 46";
             this.BtnAM46.UseVisualStyleBackColor = false;
             // 
-            // BtnAM08
-            // 
-            this.BtnAM08.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnAM08.BackColor = System.Drawing.Color.Brown;
-            this.BtnAM08.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnAM08.ForeColor = System.Drawing.Color.White;
-            this.BtnAM08.Location = new System.Drawing.Point(658, 25);
-            this.BtnAM08.Name = "BtnAM08";
-            this.BtnAM08.Size = new System.Drawing.Size(157, 76);
-            this.BtnAM08.TabIndex = 15;
-            this.BtnAM08.Text = "AM 08";
-            this.BtnAM08.UseVisualStyleBackColor = false;
-            // 
             // BtnAM07
             // 
             this.BtnAM07.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnAM07.BackColor = System.Drawing.Color.LimeGreen;
+            this.BtnAM07.BackColor = System.Drawing.Color.Linen;
             this.BtnAM07.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnAM07.ForeColor = System.Drawing.Color.White;
-            this.BtnAM07.Location = new System.Drawing.Point(495, 25);
+            this.BtnAM07.Location = new System.Drawing.Point(658, 25);
             this.BtnAM07.Name = "BtnAM07";
             this.BtnAM07.Size = new System.Drawing.Size(157, 76);
-            this.BtnAM07.TabIndex = 12;
+            this.BtnAM07.TabIndex = 15;
             this.BtnAM07.Text = "AM 07";
             this.BtnAM07.UseVisualStyleBackColor = false;
+            // 
+            // BtnAM06
+            // 
+            this.BtnAM06.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnAM06.BackColor = System.Drawing.Color.Linen;
+            this.BtnAM06.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnAM06.ForeColor = System.Drawing.Color.White;
+            this.BtnAM06.Location = new System.Drawing.Point(495, 25);
+            this.BtnAM06.Name = "BtnAM06";
+            this.BtnAM06.Size = new System.Drawing.Size(157, 76);
+            this.BtnAM06.TabIndex = 12;
+            this.BtnAM06.Text = "AM 06";
+            this.BtnAM06.UseVisualStyleBackColor = false;
             // 
             // BtnAM47
             // 
             this.BtnAM47.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnAM47.BackColor = System.Drawing.Color.LimeGreen;
+            this.BtnAM47.BackColor = System.Drawing.Color.Linen;
             this.BtnAM47.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnAM47.ForeColor = System.Drawing.Color.White;
             this.BtnAM47.Location = new System.Drawing.Point(332, 189);
@@ -1082,18 +1082,18 @@
             this.BtnAM47.Text = "AM 47";
             this.BtnAM47.UseVisualStyleBackColor = false;
             // 
-            // BtnAM12
+            // BtnAM09
             // 
-            this.BtnAM12.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnAM12.BackColor = System.Drawing.Color.LimeGreen;
-            this.BtnAM12.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnAM12.ForeColor = System.Drawing.Color.White;
-            this.BtnAM12.Location = new System.Drawing.Point(168, 107);
-            this.BtnAM12.Name = "BtnAM12";
-            this.BtnAM12.Size = new System.Drawing.Size(157, 76);
-            this.BtnAM12.TabIndex = 13;
-            this.BtnAM12.Text = "AM 12";
-            this.BtnAM12.UseVisualStyleBackColor = false;
+            this.BtnAM09.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnAM09.BackColor = System.Drawing.Color.Linen;
+            this.BtnAM09.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnAM09.ForeColor = System.Drawing.Color.White;
+            this.BtnAM09.Location = new System.Drawing.Point(168, 107);
+            this.BtnAM09.Name = "BtnAM09";
+            this.BtnAM09.Size = new System.Drawing.Size(157, 76);
+            this.BtnAM09.TabIndex = 13;
+            this.BtnAM09.Text = "AM 09";
+            this.BtnAM09.UseVisualStyleBackColor = false;
             // 
             // groupBox1
             // 
@@ -1111,7 +1111,7 @@
             // BtnAM02
             // 
             this.BtnAM02.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnAM02.BackColor = System.Drawing.Color.LimeGreen;
+            this.BtnAM02.BackColor = System.Drawing.Color.Linen;
             this.BtnAM02.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnAM02.ForeColor = System.Drawing.Color.White;
             this.BtnAM02.Location = new System.Drawing.Point(169, 31);
@@ -1124,7 +1124,7 @@
             // BtnAM01
             // 
             this.BtnAM01.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnAM01.BackColor = System.Drawing.Color.LimeGreen;
+            this.BtnAM01.BackColor = System.Drawing.Color.Linen;
             this.BtnAM01.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnAM01.ForeColor = System.Drawing.Color.White;
             this.BtnAM01.Location = new System.Drawing.Point(6, 31);
@@ -1784,18 +1784,18 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button BtnAM03;
         private System.Windows.Forms.Button BtnAMRC;
-        private System.Windows.Forms.Button BtnAM14;
+        private System.Windows.Forms.Button BtnAM11;
+        private System.Windows.Forms.Button BtnAM04;
+        private System.Windows.Forms.Button BtnAM08;
+        private System.Windows.Forms.Button BtnAM12;
+        private System.Windows.Forms.Button BtnAM52;
         private System.Windows.Forms.Button BtnAM05;
         private System.Windows.Forms.Button BtnAM10;
-        private System.Windows.Forms.Button BtnAM15;
-        private System.Windows.Forms.Button BtnAM52;
-        private System.Windows.Forms.Button BtnAM06;
-        private System.Windows.Forms.Button BtnAM13;
         private System.Windows.Forms.Button BtnAM46;
-        private System.Windows.Forms.Button BtnAM08;
         private System.Windows.Forms.Button BtnAM07;
+        private System.Windows.Forms.Button BtnAM06;
         private System.Windows.Forms.Button BtnAM47;
-        private System.Windows.Forms.Button BtnAM12;
+        private System.Windows.Forms.Button BtnAM09;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button BtnAM02;
         private System.Windows.Forms.Button BtnAM01;

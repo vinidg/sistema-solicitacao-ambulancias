@@ -587,6 +587,19 @@ namespace Solicitacao_de_Ambulancias
                 BtnAM03.BackColor = Color.Firebrick;
             }
 
+            if (d.AM041 == "BLOQUEADA")
+            {
+                BtnAM04.BackColor = Color.RoyalBlue;
+            }
+            if (d.AM041 == "OCUPADA")
+            {
+                BtnAM04.BackColor = Color.Firebrick;
+            }
+            if (d.AM041 == "DISPONIVEL")
+            {
+                BtnAM04.BackColor = Color.LimeGreen;
+            }
+
             if (d.AM051 == "BLOQUEADA")
             {
                 BtnAM05.BackColor = Color.RoyalBlue;
@@ -641,6 +654,19 @@ namespace Solicitacao_de_Ambulancias
                 BtnAM08.BackColor = Color.Firebrick;
             }
 
+            if (d.AM091 == "BLOQUEADA")
+            {
+                BtnAM09.BackColor = Color.RoyalBlue;
+            }
+            if (d.AM091 == "DISPONIVEL")
+            {
+                BtnAM09.BackColor = Color.LimeGreen;
+            }
+            if (d.AM091 == "OCUPADA")
+            {
+                BtnAM09.BackColor = Color.Firebrick;
+            }
+
             if (d.AM101 == "BLOQUEADA")
             {
                 BtnAM10.BackColor = Color.RoyalBlue;
@@ -653,6 +679,20 @@ namespace Solicitacao_de_Ambulancias
             {
                 BtnAM10.BackColor = Color.Firebrick;
             }
+
+            if (d.AM111 == "BLOQUEADA")
+            {
+                BtnAM11.BackColor = Color.RoyalBlue;
+            }
+            if (d.AM111 == "DISPONIVEL")
+            {
+                BtnAM11.BackColor = Color.LimeGreen;
+            }
+            if (d.AM111 == "OCUPADA")
+            {
+                BtnAM11.BackColor = Color.Firebrick;
+            }
+
             if (d.AM121 == "BLOQUEADA")
             {
                 BtnAM12.BackColor = Color.RoyalBlue;
@@ -664,45 +704,6 @@ namespace Solicitacao_de_Ambulancias
             if (d.AM121 == "OCUPADA")
             {
                 BtnAM12.BackColor = Color.Firebrick;
-            }
-
-            if (d.AM131 == "OCUPADA")
-            {
-                BtnAM13.BackColor = Color.Firebrick;
-            }
-            if (d.AM131 == "DISPONIVEL")
-            {
-                BtnAM13.BackColor = Color.LimeGreen;
-            }
-            if (d.AM131 == "BLOQUEADA")
-            {
-                BtnAM13.BackColor = Color.RoyalBlue;
-            }
-
-            if (d.AM141 == "BLOQUEADA")
-            {
-                BtnAM14.BackColor = Color.RoyalBlue;
-            }
-            if (d.AM141 == "DISPONIVEL")
-            {
-                BtnAM14.BackColor = Color.LimeGreen;
-            }
-            if (d.AM141 == "OCUPADA")
-            {
-                BtnAM14.BackColor = Color.Firebrick;
-            }
-
-            if (d.AM151 == "OCUPADA")
-            {
-                BtnAM15.BackColor = Color.Firebrick;
-            }
-            if (d.AM151 == "DISPONIVEL")
-            {
-                BtnAM15.BackColor = Color.LimeGreen;
-            }
-            if (d.AM151 == "BLOQUEADA")
-            {
-                BtnAM15.BackColor = Color.RoyalBlue;
             }
 
             if (d.AM461 == "DISPONIVEL")
