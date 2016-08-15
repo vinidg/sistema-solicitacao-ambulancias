@@ -14,14 +14,14 @@
     <framework targetVersion="4.5" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="Solicitacao de Ambulancias.exe.manifest" size="6087">
+    <dependentAssembly dependencyType="install" codebase="Solicitacao de Ambulancias.exe.manifest" size="7465">
       <assemblyIdentity name="Solicitacao de Ambulancias.exe" version="3.0.0.0" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ZE5O6LYxtcl1MVMXEP3/Wjttn8JEF6BO8onbUrev/Ig=</dsig:DigestValue>
+        <dsig:DigestValue>AtcFn0FsOcdtcDDRGEWAGmQTYEKmJeYjpxWYkRFrxPA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

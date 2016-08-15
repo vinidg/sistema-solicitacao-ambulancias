@@ -4,7 +4,7 @@
   <description asmv2:iconFile="Icons-Land-Transport-Ambulance.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="Solicitacao de Ambulancias" version="9.0.1.2" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="Solicitacao de Ambulancias" version="9.0.1.6" language="neutral" processorArchitecture="msil" />
     <commandLine file="Solicitacao de Ambulancias.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -43,26 +43,50 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MySql.Data.dll" size="457216">
-      <assemblyIdentity name="MySql.Data" version="6.9.5.0" publicKeyToken="C5687FC88969C44D" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="db_transporte_sanitario.dll" size="93184">
+      <assemblyIdentity name="db_transporte_sanitario" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Hl8oqKVoHKoYBkB+RW44pglVNNEg+FMieB/chRgR6hQ=</dsig:DigestValue>
+        <dsig:DigestValue>YcrFT0cltK89fqYzQDpkbz+Q7bw/JFONjQZm+Xo59nI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Solicitacao de Ambulancias.exe" size="815616">
-      <assemblyIdentity name="Solicitacao de Ambulancias" version="9.0.1.2" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EntityFramework.dll" size="5185232">
+      <assemblyIdentity name="EntityFramework" version="6.0.0.0" publicKeyToken="B77A5C561934E089" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>X0eN+v9gXc46NeSs83zaxktCAN0qEB4tknopgSjofp0=</dsig:DigestValue>
+        <dsig:DigestValue>EdmM9D7hw+9Ch7gZW/FJgfuv+sD79wajzQSp/0gdoQQ=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EntityFramework.SqlServer.dll" size="599760">
+      <assemblyIdentity name="EntityFramework.SqlServer" version="6.0.0.0" publicKeyToken="B77A5C561934E089" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>/rSpaCGzK6jlLMEE6y52x2eaaAG5QjTR+APHlf+hcoA=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Solicitacao de Ambulancias.exe" size="439296">
+      <assemblyIdentity name="Solicitacao de Ambulancias" version="9.0.1.6" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>+oo/TIKbsLTfGhotOc7UKIiIep1m5JHLZPZGf487YsU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -75,13 +99,13 @@
       <dsig:DigestValue>PATU+AvXSe5k8MTwqRALzpqCSRxjY7URGHg/8+iIOB0=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Solicitacao de Ambulancias.exe.config" size="574">
+  <file name="Solicitacao de Ambulancias.exe.config" size="540">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>q9s5xHjb1lWz2UvB2Hc4r0nGMLAwpPBsBTYnZtigIfs=</dsig:DigestValue>
+      <dsig:DigestValue>nbBcJirG2YderRX7abfUVD0Rfn6EhDOO2rP/mKmYULw=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">

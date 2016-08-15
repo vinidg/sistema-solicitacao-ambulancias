@@ -56,7 +56,7 @@
     <ApplicationIcon>Icons-Land-Transport-Ambulance.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>E542A0ED0CF633B8006744E148C88690A86B0276</ManifestCertificateThumbprint>
@@ -78,11 +78,18 @@
     <StartupObject>Solicitacao_de_Ambulancias.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MySql.Data, Version=6.9.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\Controle Ambulancias\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\Controle Ambulancias\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -94,17 +101,15 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="conexaoMysql.cs" />
-    <Compile Include="ConexaoSqlServer.cs" />
     <Compile Include="ConfirmaSolicitacao.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ConfirmaSolicitacao.designer.cs">
       <DependentUpon>ConfirmaSolicitacao.cs</DependentUpon>
     </Compile>
+    <Compile Include="InsercoesDoBanco.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StatusBD.cs" />
     <Compile Include="Update.cs" />
     <EmbeddedResource Include="ConfirmaSolicitacao.resx">
       <DependentUpon>ConfirmaSolicitacao.cs</DependentUpon>
@@ -165,6 +170,15 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\db_transporte_sanitario\db_transporte_sanitario.csproj">
+      <Project>{d43b3b37-ae11-473e-8177-4d448f306514}</Project>
+      <Name>db_transporte_sanitario</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
