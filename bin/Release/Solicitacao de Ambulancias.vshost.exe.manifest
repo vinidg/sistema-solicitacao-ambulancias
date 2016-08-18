@@ -50,7 +50,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>jJLrBXfTBY8HLf69Kvax1IFLTFTEyJSU3S+eeToluus=</dsig:DigestValue>
+        <dsig:DigestValue>//+ESagg+I05HW20p+WcddtqFDGMkRrUbGM6nMypPYE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -79,14 +79,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Solicitacao de Ambulancias.exe" size="439296">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Solicitacao de Ambulancias.exe" size="834048">
       <assemblyIdentity name="Solicitacao de Ambulancias" version="9.0.1.6" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>eIic7byxIDH7K4bFhsj/AXS4zV+x4z2cdqxFnuJQAAE=</dsig:DigestValue>
+        <dsig:DigestValue>xEVvaqebKEBU1W12u+4xcloPWLbS7Gp2HtvWlK7c5BU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -99,13 +99,13 @@
       <dsig:DigestValue>PATU+AvXSe5k8MTwqRALzpqCSRxjY7URGHg/8+iIOB0=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Solicitacao de Ambulancias.exe.config" size="540">
+  <file name="Solicitacao de Ambulancias.exe.config" size="554">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>nbBcJirG2YderRX7abfUVD0Rfn6EhDOO2rP/mKmYULw=</dsig:DigestValue>
+      <dsig:DigestValue>YgESLKxWx1PssefZkbX0UEoTTx5AjCsBNYVfk+ETDGA=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">

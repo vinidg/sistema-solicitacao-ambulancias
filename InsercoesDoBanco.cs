@@ -47,7 +47,7 @@ namespace Solicitacao_de_Ambulancias
                 hi.DtHrRegistro = DtHrRegistro;
 
                 dahue.solicitacoes_paciente.Add(solicitacoesPaciente);
-                dahue.historicoes.Add(hi);
+                dahue.historico.Add(hi);
                 dahue.SaveChanges();
             }
         }
