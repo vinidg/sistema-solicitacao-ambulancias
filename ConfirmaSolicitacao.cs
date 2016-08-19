@@ -18,12 +18,12 @@ namespace Solicitacao_de_Ambulancias
     {
         string TipoAM = null;
         string Agendamento = null;
-        DateTime now = DateTime.Now;
+
         string pegaUnidade;     //para pegar o telefone com o nome da unidade
         string pegaUnidadeEnd;  //para pegar o endereco com o nome da unidade
         string Sexo, pegamotivo, Id;
         string Endereco1, UnidadeSelecionada, destino, origem;
-        string DATAop;
+        int IdSolicitacaoAmbulancia;
         
         public ConfirmaSolicitacao()
         {
@@ -32,7 +32,7 @@ namespace Solicitacao_de_Ambulancias
             pegarDadosDasAmbulancias();
             countparaSol();
             countparaSolAgendadas();
-            txtAtendMarcado.Text = now.ToString();
+            txtAtendMarcado.Text = DateTime.Now.ToString();
             StartPosition = FormStartPosition.CenterScreen;
             Endereco();
             label3.Visible = false;
@@ -333,10 +333,10 @@ namespace Solicitacao_de_Ambulancias
 
             try
             {
-                IB.inserirSolicitacaoDoPaciente(TipoAM, now.ToString(), Agendamento, this.txtAtendMarcado.Text, this.txtNomeSolicitante.Text, this.CbLocalSolicita.Text, this.txtTelefone.Text,
+                IB.inserirSolicitacaoDoPaciente(TipoAM, DateTime.Now.ToString(), Agendamento, this.txtAtendMarcado.Text, this.txtNomeSolicitante.Text, this.CbLocalSolicita.Text, this.txtTelefone.Text,
                 this.txtNomePaciente.Text, Sexo, this.txtIdade.Text, this.txtDiagnostico.Text, this.CbMotivoChamado.Text, this.CbTipoMotivoSelecionado.Text,
                 this.CbAtendimentoPrioridade.Checked.ToString(), this.CbOrigem.Text, this.txtEnderecoOrigem.Text, this.CbDestino.Text, this.txtEnderecoDestino.Text, this.richTextBox1.Text,
-                0, this.PacienteNaoAcompanhante.Checked.ToString(), System.Environment.UserName, now);
+                0, this.PacienteNaoAcompanhante.Checked.ToString(), System.Environment.UserName, DateTime.Now);
 
             }
             catch (Exception ex)
@@ -673,10 +673,15 @@ namespace Solicitacao_de_Ambulancias
             using (DAHUEEntities db = new DAHUEEntities())
             {
                 var query = (from sp in db.solicitacoes_paciente
+                             join b in db.solicitacoes_ambulancias 
+                             on new { idPaciente_Solicitacoes = sp.idPaciente_Solicitacoes } equals new { idPaciente_Solicitacoes = (int)b.idSolicitacoesPacientes } into b_join
+                             from b in b_join.DefaultIfEmpty()
                              where sp.Origem == UnidadeSelecionada
+                             orderby sp.idPaciente_Solicitacoes
                              select new
                              {
                                  Id = sp.idPaciente_Solicitacoes,
+                                 idSolicitacoes_Ambulancias = b.idSolicitacoes_Ambulancias,
                                  Tipo = sp.TipoSolicitacao,
                                  sp.DtHrdoInicio,
                                  sp.Agendamento,
@@ -698,7 +703,8 @@ namespace Solicitacao_de_Ambulancias
                 Lista.DataSource = query;
                 Lista.Refresh();
 
-                Lista.Columns[0].Visible = false;
+                Lista.Columns["Id"].Visible = false;
+                Lista.Columns["idSolicitacoes_Ambulancias"].Visible = false;
             }
         }
 
@@ -706,9 +712,9 @@ namespace Solicitacao_de_Ambulancias
         {
             using (DAHUEEntities db = new DAHUEEntities())
             {
-
                 var query = (from sa in db.solicitacoes_ambulancias
-                             //where sa.idSolicitacoes_Ambulancias == SolicitaAM
+                             where sa.idSolicitacoes_Ambulancias == IdSolicitacaoAmbulancia
+
                              select new
                              {
                                  sa.DtHrCiencia,
@@ -800,13 +806,12 @@ namespace Solicitacao_de_Ambulancias
         private void hoje_Click_1(object sender, EventArgs e)
         {
             DateTime data = DateTime.Now;
-            string dataAtual = data.ToString("dd/MM/yyyy hh:MM:ss");
 
             using(DAHUEEntities db = new DAHUEEntities())
             {
                 var query = (from sp in db.solicitacoes_paciente
                             where sp.Origem == UnidadeSelecionada &&
-                            sp.DtHrdoInicio == dataAtual
+                            sp.DtHrdoInicio == data
                              select new
                              {
                                  Id = sp.idPaciente_Solicitacoes,
@@ -835,16 +840,13 @@ namespace Solicitacao_de_Ambulancias
 
             DateTime data = DateTime.Now;
             DateTime ontem = DateTime.Now.AddDays(-1);
-            string dataAtual = data.ToString("dd/MM/yyyy hh:MM:ss");
-            string dataaOntem = ontem.ToString("dd/MM/yyyy hh:MM:ss");
 
             using(DAHUEEntities db = new DAHUEEntities())
             {
                 var query = (from sp in db.solicitacoes_paciente
-                             where
-                               sp.Origem == UnidadeSelecionada &&
-                               //sp.DtHrdoInicio >= dataaOntem && sp.DtHrdoInicio <= dataAtual
-                             select new 
+                             where sp.Origem == UnidadeSelecionada
+                             && sp.DtHrdoInicio >= ontem && sp.DtHrdoInicio <= data
+                             select new
                              {
                                  Id = sp.idPaciente_Solicitacoes,
                                  Tipo = sp.TipoSolicitacao,
@@ -869,44 +871,200 @@ namespace Solicitacao_de_Ambulancias
 
         private void dias2_Click_1(object sender, EventArgs e)
         {
-            DateTime dsds = DateTime.Now;
-            string sdsd = dsds.ToString("dd/MM/yyyy hh:MM:ss");
-            DATAop = "AND DtHrdoInicio BETWEEN GETDATE() - 2 AND '" + sdsd + "'";
+            DateTime data = DateTime.Now;
+            DateTime ontem = DateTime.Now.AddDays(-2);
+
+            using (DAHUEEntities db = new DAHUEEntities())
+            {
+                var query = (from sp in db.solicitacoes_paciente
+                             where sp.Origem == UnidadeSelecionada
+                             && sp.DtHrdoInicio >= ontem && sp.DtHrdoInicio <= data
+                             select new
+                             {
+                                 Id = sp.idPaciente_Solicitacoes,
+                                 Tipo = sp.TipoSolicitacao,
+                                 sp.DtHrdoInicio,
+                                 sp.Agendamento,
+                                 sp.DtHrAgendamento,
+                                 sp.NomeSolicitante,
+                                 sp.LocalSolicitacao,
+                                 sp.Telefone,
+                                 sp.Paciente,
+                                 sp.Genero,
+                                 sp.Idade,
+                                 sp.Diagnostico,
+                                 sp.Motivo,
+                                 sp.SubMotivo,
+                                 sp.Origem,
+                                 sp.Destino,
+                                 sp.ObsGerais
+                             }).ToList();
+            }
+
         }
 
         private void dias5_Click_1(object sender, EventArgs e)
         {
-            DateTime dsds = DateTime.Now;
-            string sdsd = dsds.ToString("dd/MM/yyyy hh:MM:ss");
-            DATAop = "AND DtHrdoInicio BETWEEN GETDATE() - 5 AND '" + sdsd + "'";
+            DateTime data = DateTime.Now;
+            DateTime ontem = DateTime.Now.AddDays(-5);
+
+            using (DAHUEEntities db = new DAHUEEntities())
+            {
+                var query = (from sp in db.solicitacoes_paciente
+                             where sp.Origem == UnidadeSelecionada
+                             && sp.DtHrdoInicio >= ontem && sp.DtHrdoInicio <= data
+                             select new
+                             {
+                                 Id = sp.idPaciente_Solicitacoes,
+                                 Tipo = sp.TipoSolicitacao,
+                                 sp.DtHrdoInicio,
+                                 sp.Agendamento,
+                                 sp.DtHrAgendamento,
+                                 sp.NomeSolicitante,
+                                 sp.LocalSolicitacao,
+                                 sp.Telefone,
+                                 sp.Paciente,
+                                 sp.Genero,
+                                 sp.Idade,
+                                 sp.Diagnostico,
+                                 sp.Motivo,
+                                 sp.SubMotivo,
+                                 sp.Origem,
+                                 sp.Destino,
+                                 sp.ObsGerais
+                             }).ToList();
+            }
         }
 
         private void semana1_Click_1(object sender, EventArgs e)
         {
-            DateTime dsds = DateTime.Now;
-            string sdsd = dsds.ToString("dd/MM/yyyy hh:MM:ss");
-            DATAop = "AND DtHrdoInicio BETWEEN GETDATE() - 7 AND '" + sdsd + "'";
+            DateTime data = DateTime.Now;
+            DateTime ontem = DateTime.Now.AddDays(-7);
+
+            using (DAHUEEntities db = new DAHUEEntities())
+            {
+                var query = (from sp in db.solicitacoes_paciente
+                             where sp.Origem == UnidadeSelecionada
+                             && sp.DtHrdoInicio >= ontem && sp.DtHrdoInicio <= data
+                             select new
+                             {
+                                 Id = sp.idPaciente_Solicitacoes,
+                                 Tipo = sp.TipoSolicitacao,
+                                 sp.DtHrdoInicio,
+                                 sp.Agendamento,
+                                 sp.DtHrAgendamento,
+                                 sp.NomeSolicitante,
+                                 sp.LocalSolicitacao,
+                                 sp.Telefone,
+                                 sp.Paciente,
+                                 sp.Genero,
+                                 sp.Idade,
+                                 sp.Diagnostico,
+                                 sp.Motivo,
+                                 sp.SubMotivo,
+                                 sp.Origem,
+                                 sp.Destino,
+                                 sp.ObsGerais
+                             }).ToList();
+            }
         }
 
         private void semana2_Click_1(object sender, EventArgs e)
         {
-            DateTime dsds = DateTime.Now;
-            string sdsd = dsds.ToString("dd/MM/yyyy hh:MM:ss");
-            DATAop = "AND DtHrdoInicio BETWEEN GETDATE() - 14 AND '" + sdsd + "'";
+            DateTime data = DateTime.Now;
+            DateTime ontem = DateTime.Now.AddDays(-14);
+
+            using (DAHUEEntities db = new DAHUEEntities())
+            {
+                var query = (from sp in db.solicitacoes_paciente
+                             where sp.Origem == UnidadeSelecionada
+                             && sp.DtHrdoInicio >= ontem && sp.DtHrdoInicio <= data
+                             select new
+                             {
+                                 Id = sp.idPaciente_Solicitacoes,
+                                 Tipo = sp.TipoSolicitacao,
+                                 sp.DtHrdoInicio,
+                                 sp.Agendamento,
+                                 sp.DtHrAgendamento,
+                                 sp.NomeSolicitante,
+                                 sp.LocalSolicitacao,
+                                 sp.Telefone,
+                                 sp.Paciente,
+                                 sp.Genero,
+                                 sp.Idade,
+                                 sp.Diagnostico,
+                                 sp.Motivo,
+                                 sp.SubMotivo,
+                                 sp.Origem,
+                                 sp.Destino,
+                                 sp.ObsGerais
+                             }).ToList();
+            }
         }
 
         private void mes1_Click_1(object sender, EventArgs e)
         {
-            DateTime mes1 = DateTime.Now;
-            string MES = mes1.ToString("MM");
-            DATAop = "AND month(DtHrdoInicio)='" + MES + "'";
+            string mes = DateTime.Now.Month.ToString("MM");
+            string ano = DateTime.Now.Year.ToString("yyyy");
+            using (DAHUEEntities db = new DAHUEEntities())
+            {
+                var query = (from sp in db.solicitacoes_paciente
+                             where sp.Origem == UnidadeSelecionada &&
+                             SqlFunctions.DatePart("month", sp.DtHrdoInicio) == Convert.ToInt32(mes) &&
+                             SqlFunctions.DatePart("year", sp.DtHrdoInicio) == Convert.ToInt32(ano)
+                             select new
+                             {
+                                 Id = sp.idPaciente_Solicitacoes,
+                                 Tipo = sp.TipoSolicitacao,
+                                 sp.DtHrdoInicio,
+                                 sp.Agendamento,
+                                 sp.DtHrAgendamento,
+                                 sp.NomeSolicitante,
+                                 sp.LocalSolicitacao,
+                                 sp.Telefone,
+                                 sp.Paciente,
+                                 sp.Genero,
+                                 sp.Idade,
+                                 sp.Diagnostico,
+                                 sp.Motivo,
+                                 sp.SubMotivo,
+                                 sp.Origem,
+                                 sp.Destino,
+                                 sp.ObsGerais
+                             }).ToList();
+            }
+
         }
 
         private void ano1_Click_1(object sender, EventArgs e)
         {
-            DateTime ano = DateTime.Now;
-            string anos = ano.ToString("yyyy");
-            DATAop = "AND year(DtHrdoInicio)='" + anos + "'";
+            string ano = DateTime.Now.Year.ToString("yyyy");
+            using (DAHUEEntities db = new DAHUEEntities())
+            {
+                var query = (from sp in db.solicitacoes_paciente
+                             where sp.Origem == UnidadeSelecionada &&
+                             SqlFunctions.DatePart("year", sp.DtHrdoInicio) == Convert.ToInt32(ano)
+                             select new
+                             {
+                                 Id = sp.idPaciente_Solicitacoes,
+                                 Tipo = sp.TipoSolicitacao,
+                                 sp.DtHrdoInicio,
+                                 sp.Agendamento,
+                                 sp.DtHrAgendamento,
+                                 sp.NomeSolicitante,
+                                 sp.LocalSolicitacao,
+                                 sp.Telefone,
+                                 sp.Paciente,
+                                 sp.Genero,
+                                 sp.Idade,
+                                 sp.Diagnostico,
+                                 sp.Motivo,
+                                 sp.SubMotivo,
+                                 sp.Origem,
+                                 sp.Destino,
+                                 sp.ObsGerais
+                             }).ToList();
+            }
         }
 
         private void CbMotivoChamado_SelectedIndexChanged_1(object sender, EventArgs e)
@@ -939,7 +1097,9 @@ namespace Solicitacao_de_Ambulancias
 
         private void Lista_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            Id = Lista.Rows[e.RowIndex].Cells[0].Value.ToString();
+                Id = Lista.Rows[e.RowIndex].Cells["Id"].Value.ToString();
+                IdSolicitacaoAmbulancia = Convert.ToInt32(Lista.Rows[e.RowIndex].Cells["idSolicitacoes_Ambulancias"].Value.ToString());
+
                 Horarios();
 
                 origem = Lista.Rows[e.RowIndex].Cells["Origem"].Value.ToString();
