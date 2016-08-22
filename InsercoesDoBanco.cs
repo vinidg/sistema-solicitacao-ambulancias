@@ -10,10 +10,10 @@ namespace Solicitacao_de_Ambulancias
     public class InsercoesDoBanco
     {
 
-        public void inserirSolicitacaoDoPaciente(string TipoSolicitacao, string DtHrdoInicio, string Agendamento, string DtHrAgendamento,
+        public void inserirSolicitacaoDoPaciente(string TipoSolicitacao, DateTime DtHrdoInicio, string Agendamento, string DtHrAgendamento,
             string NomeSolicitante, string LocalSolicitacao, string Telefone, string Paciente, string Genero, string Idade,string Diagnostico, 
             string Motivo, string SubMotivo, string Prioridade, string Origem, string EnderecoOrigem, string Destino, string EnderecoDestino, 
-            string ObsGerais, int AmSolicitada, string PacienteNaoAcompanhante, string usuario, DateTime DtHrRegistro)
+            string ObsGerais, int AmSolicitada, string usuario, DateTime DtHrRegistro)
         {
 
             using (DAHUEEntities dahue = new DAHUEEntities())

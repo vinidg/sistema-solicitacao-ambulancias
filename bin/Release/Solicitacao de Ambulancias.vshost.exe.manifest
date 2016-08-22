@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="db_transporte_sanitario.dll" size="93184">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="db_transporte_sanitario.dll" size="94208">
       <assemblyIdentity name="db_transporte_sanitario" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>//+ESagg+I05HW20p+WcddtqFDGMkRrUbGM6nMypPYE=</dsig:DigestValue>
+        <dsig:DigestValue>LYHzu3F0zWQpf/k0zP4o+uwHLMwl6t3UfG15oC8znDs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -79,14 +79,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Solicitacao de Ambulancias.exe" size="834048">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Solicitacao de Ambulancias.exe" size="877568">
       <assemblyIdentity name="Solicitacao de Ambulancias" version="9.0.1.6" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>xEVvaqebKEBU1W12u+4xcloPWLbS7Gp2HtvWlK7c5BU=</dsig:DigestValue>
+        <dsig:DigestValue>f26n9OK65zp8+KKYFPqJbrzZNWiVgaqgVu7reapehx0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -105,7 +105,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>YgESLKxWx1PssefZkbX0UEoTTx5AjCsBNYVfk+ETDGA=</dsig:DigestValue>
+      <dsig:DigestValue>M0wjo26iTZ1K5KpdZsMDk47e8ruUPOd/Gwq24ly9Ic0=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
