@@ -25,6 +25,7 @@ namespace Solicitacao_de_Ambulancias
                 solicitacoesPaciente.DtHrdoInicio = DtHrdoInicio;
                 solicitacoesPaciente.Agendamento = Agendamento;
                 solicitacoesPaciente.DtHrAgendamento = DtHrAgendamento;
+                solicitacoesPaciente.DtHrdoAgendamento = Convert.ToDateTime(DtHrAgendamento);
                 solicitacoesPaciente.NomeSolicitante = NomeSolicitante;
                 solicitacoesPaciente.LocalSolicitacao = LocalSolicitacao;
                 solicitacoesPaciente.Telefone = Telefone;
@@ -41,7 +42,14 @@ namespace Solicitacao_de_Ambulancias
                 solicitacoesPaciente.EnderecoDestino = EnderecoDestino;
                 solicitacoesPaciente.ObsGerais = ObsGerais;
                 solicitacoesPaciente.AmSolicitada = AmSolicitada;
-
+                if (Agendamento == "Sim")
+                {
+                    solicitacoesPaciente.Registrado = "Aguardando resposta do controle";
+                }
+                else
+                {
+                    solicitacoesPaciente.Registrado = "Sim";
+                }
                 historico hi = new historico();
                 hi.Usuario = usuario;
                 hi.DtHrRegistro = DtHrRegistro;

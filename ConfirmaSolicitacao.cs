@@ -403,7 +403,7 @@ namespace Solicitacao_de_Ambulancias
                              equals new { idPaciente_Solicitacoes = (Int32)sa.idSolicitacoesPacientes } into b_join
                              from sa in b_join.DefaultIfEmpty()
                              where
-                               sp.LocalSolicitacao == UnidadeSelecionada && sa.idSolicitacoes_Ambulancias != null
+                               sp.LocalSolicitacao == UnidadeSelecionada
                              orderby
                                sp.idPaciente_Solicitacoes
                              select new
@@ -521,7 +521,7 @@ namespace Solicitacao_de_Ambulancias
         private void hoje_Click_1(object sender, EventArgs e)
         {
             Lista.DataSource = "";
-            DateTime data = DateTime.Now;
+            string data = DateTime.Now.ToString("dd/MM/yyyy");
 
             using(DAHUEEntities db = new DAHUEEntities())
             {
@@ -531,8 +531,8 @@ namespace Solicitacao_de_Ambulancias
                              equals new { idPaciente_Solicitacoes = (int)sa.idSolicitacoesPacientes } into b_join
                              from sa in b_join.DefaultIfEmpty()
                              where
-                               sp.LocalSolicitacao == UnidadeSelecionada && sa.idSolicitacoes_Ambulancias != null &&
-                               sp.DtHrdoInicio == data
+                               sp.LocalSolicitacao == UnidadeSelecionada &&
+                              Convert.ToDateTime(sp.DtHrdoInicio) = data
                              orderby
                                sp.idPaciente_Solicitacoes
                              select new
@@ -1038,15 +1038,8 @@ namespace Solicitacao_de_Ambulancias
             else
             {
                 RegistrarSolicitacao();
-                DialogResult ms = MessageBox.Show("Deseja criar uma nova solicitação ?", " ", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (ms == DialogResult.Yes)
-                {
-                    Limpar();
-                }
-                else
-                {
-                    this.Close();
-                }
+                Limpar();
+                
 
             }
         }

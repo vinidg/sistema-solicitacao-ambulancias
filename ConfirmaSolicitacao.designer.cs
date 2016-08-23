@@ -133,6 +133,7 @@
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaUsb)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.Aba2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.Aba3.SuspendLayout();
@@ -160,7 +161,6 @@
             // 
             // Aba1
             // 
-            this.Aba1.Controls.Add(this.listaUsa);
             this.Aba1.Controls.Add(this.label28);
             this.Aba1.Controls.Add(this.label27);
             this.Aba1.Controls.Add(this.label26);
@@ -188,12 +188,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listaUsa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.listaUsa.Location = new System.Drawing.Point(14, 102);
+            this.listaUsa.Location = new System.Drawing.Point(6, 20);
             this.listaUsa.Name = "listaUsa";
             this.listaUsa.ReadOnly = true;
             this.listaUsa.RowHeadersVisible = false;
             this.listaUsa.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.listaUsa.Size = new System.Drawing.Size(743, 101);
+            this.listaUsa.Size = new System.Drawing.Size(748, 101);
             this.listaUsa.TabIndex = 0;
             this.listaUsa.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.listaUsa_CellFormatting);
             // 
@@ -349,6 +349,7 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.listaUsa);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(8, 82);
             this.groupBox1.Name = "groupBox1";
@@ -1105,7 +1106,8 @@
             this.Lista.AllowUserToAddRows = false;
             this.Lista.AllowUserToDeleteRows = false;
             this.Lista.AllowUserToResizeRows = false;
-            this.Lista.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.Lista.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Lista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Lista.Location = new System.Drawing.Point(8, 93);
@@ -1414,6 +1416,7 @@
             this.panel2.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.listaUsb)).EndInit();
+            this.groupBox1.ResumeLayout(false);
             this.Aba2.ResumeLayout(false);
             this.Aba2.PerformLayout();
             this.panel1.ResumeLayout(false);
