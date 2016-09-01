@@ -38,23 +38,11 @@ namespace Solicitacao_de_Ambulancias
             label3.Visible = false;
             txtAtendMarcado.Visible = false;
             Limpar();
-            update();
             this.Text = "Sistema de Solicitação de Ambulancias. Versão: " + appverion;
             AbasControle.SelectedTab = Aba2;
             
         }
        
-        public void update()
-        {
-            Update updatando = new Update();
-            updatando.up();
-            
-            if (updatando.Yn == true)
-            {
-                Environment.Exit(1);
-            }
-            
-        }
         Version appverion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
 
         public void Limpar()
@@ -531,8 +519,8 @@ namespace Solicitacao_de_Ambulancias
                              equals new { idPaciente_Solicitacoes = (int)sa.idSolicitacoesPacientes } into b_join
                              from sa in b_join.DefaultIfEmpty()
                              where
-                               sp.LocalSolicitacao == UnidadeSelecionada &&
-                              Convert.ToDateTime(sp.DtHrdoInicio) = data
+                               sp.LocalSolicitacao == UnidadeSelecionada 
+                              // && Convert.ToDateTime(sp.DtHrdoInicio) = data
                              orderby
                                sp.idPaciente_Solicitacoes
                              select new
