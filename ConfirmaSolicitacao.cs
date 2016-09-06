@@ -32,11 +32,11 @@ namespace Solicitacao_de_Ambulancias
             pegarDadosDasAmbulancias();
             countparaSol();
             countparaSolAgendadas();
-            txtAtendMarcado.Text = DateTime.Now.ToString();
+            countparaSolAgendadasPendentes();
             StartPosition = FormStartPosition.CenterScreen;
             Endereco();
             label3.Visible = false;
-            txtAtendMarcado.Visible = false;
+            dataAgendamento.Visible = false;
             Limpar();
             this.Text = "Sistema de Solicitação de Ambulancias. Versão: " + appverion;
             AbasControle.SelectedTab = Aba2;
@@ -47,24 +47,24 @@ namespace Solicitacao_de_Ambulancias
 
         public void Limpar()
         {
-     
-            txtAtendMarcado.Text = "";
-            txtNomeSolicitante.Text = "";
-            CbLocalSolicita.Text = "";
-            txtTelefone.Text = "";
-            txtNomePaciente.Text = "";
+
             RbFemenino.Checked = false;
             RbMasculino.Checked = false;
-            txtIdade.Text = "";
-            txtDiagnostico.Text = "";
-            CbMotivoChamado.Text = "";
-            CbTipoMotivoSelecionado.Text = "";
-            Prioridade.Text = "";
-            CbOrigem.Text = "";
-            CbDestino.Text = "";
-            txtEnderecoOrigem.Text = "";
-            txtEnderecoDestino.Text = "";
-            richTextBox1.Text = "";
+            TipoAM = "";
+            Agendamento = "";
+            Obs.Text = "";
+            label3.Visible = false;
+            dataAgendamento.Visible = false;
+
+            Btnagendasim.BackColor = Color.FromArgb(69, 173, 168);
+            Btnagendasim.ForeColor = Color.FromArgb(229, 252, 194);
+            Btnagendanao.BackColor = Color.FromArgb(69, 173, 168);
+            Btnagendanao.ForeColor = Color.FromArgb(229, 252, 194);
+
+            BtnAvancada.BackColor = Color.FromArgb(69, 173, 168);
+            BtnAvancada.ForeColor = Color.FromArgb(229, 252, 194);
+            BtnBasica.BackColor = Color.FromArgb(69, 173, 168);
+            BtnBasica.ForeColor = Color.FromArgb(229, 252, 194);
 
         }
 
@@ -146,21 +146,17 @@ namespace Solicitacao_de_Ambulancias
         {
             InsercoesDoBanco IB = new InsercoesDoBanco();
 
-            if (Agendamento == "Nao")
-            {
-                txtAtendMarcado.Text = " ";
-            }
             VerificarPontos(this);
 
             try
             {
-                IB.inserirSolicitacaoDoPaciente(TipoAM, DateTime.Now, Agendamento, this.txtAtendMarcado.Text, this.txtNomeSolicitante.Text, this.CbLocalSolicita.Text, this.txtTelefone.Text,
+                IB.inserirSolicitacaoDoPaciente(TipoAM, DateTime.Now, Agendamento, this.dataAgendamento.Value, this.txtNomeSolicitante.Text, this.CbLocalSolicita.Text, this.txtTelefone.Text,
                 this.txtNomePaciente.Text, Sexo, this.txtIdade.Text, this.txtDiagnostico.Text, this.CbMotivoChamado.Text, this.CbTipoMotivoSelecionado.Text,
-                this.Prioridade.Text, this.CbOrigem.Text, this.txtEnderecoOrigem.Text, this.CbDestino.Text, this.txtEnderecoDestino.Text, this.richTextBox1.Text,
+                this.Prioridade.Text, this.CbOrigem.Text, this.txtEnderecoOrigem.Text, this.CbDestino.Text, this.txtEnderecoDestino.Text, this.Obs.Text,
                 0, System.Environment.UserName, DateTime.Now);
 
             }
-            catch (Exception ex)
+             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return ;
@@ -329,44 +325,46 @@ namespace Solicitacao_de_Ambulancias
         {
             using (DAHUEEntities db = new DAHUEEntities())
             {
-                var query = from sp in db.solicitacoes_paciente
-                            where sp.AmSolicitada == 0 && sp.Agendamento == "Nao"
-                            select sp.idPaciente_Solicitacoes;
+                var query = (from sp in db.solicitacoes_paciente
+                             where sp.AmSolicitada == 0 && sp.Agendamento == "Nao"
+                             select sp.idPaciente_Solicitacoes).Count();
 
-                var countQuery = query.Count();
-                txtSolicitacoes.Text = countQuery.ToString();
+                solPendentes.Text = query.ToString();
             }
         }
 
 
         private void countparaSolAgendadas()
         {
-            DateTime Data = DateTime.Now;
-            int i = 0;
-            int contagem = 0;
-            string dataHoje = Data.ToString("dd/MM/yyyy");
-
             //CONTA AS solicitacoes agendadas
             using (DAHUEEntities db = new DAHUEEntities())
             {
 
-                var query = from solicitacoes_paciente in db.solicitacoes_paciente
-                            where solicitacoes_paciente.Agendamento == "Sim" &&
-                            solicitacoes_paciente.AmSolicitada == 0
-                            select solicitacoes_paciente.DtHrAgendamento;
+                var query = (from sp in db.solicitacoes_paciente
+                             join saa in db.solicitacoes_agendamentos
+                             on sp.idReagendamento equals saa.idSolicitacaoAgendamento
+                             where sp.Agendamento == "Sim" &&
+                             sp.AmSolicitada == 0 &&
+                             sp.Registrado == "Sim" &&
+                             SqlFunctions.DateDiff("day", DateTime.Now, saa.DtHrAgendamento) == 0
+                             select sp.idPaciente_Solicitacoes).Count();
 
-                var queryPaciente = query.ToList();
-                foreach (var item in queryPaciente)
-                {
-                    string data = item.Substring(0, 10);
-                    if (data == dataHoje)
-                    {
-                        contagem++;
-                    }
-                    i++;
-                }
+                solAgendadasHoje.Text = query.ToString();    
             }
-            txtAgendadasHoje.Text = contagem.ToString();    
+        }
+
+        private void countparaSolAgendadasPendentes()
+        {
+            using (DAHUEEntities db = new DAHUEEntities())
+            {
+                var query = (from sp in db.solicitacoes_paciente
+                             where sp.AmSolicitada == 0 && sp.Agendamento == "Sim"
+                             && sp.Registrado == "Aguardando resposta do solicitante"
+                             select sp.idPaciente_Solicitacoes).Count();
+
+                solAgendadasPendentes.Text = query.ToString();
+            }
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -387,8 +385,8 @@ namespace Solicitacao_de_Ambulancias
             {
                 var query = (from sp in db.solicitacoes_paciente
                              join sa in db.solicitacoes_ambulancias 
-                             on new { idPaciente_Solicitacoes = sp.idPaciente_Solicitacoes } 
-                             equals new { idPaciente_Solicitacoes = (Int32)sa.idSolicitacoesPacientes } into b_join
+                             on sp.idPaciente_Solicitacoes
+                             equals sa.idSolicitacoesPacientes into b_join
                              from sa in b_join.DefaultIfEmpty()
                              where
                                sp.LocalSolicitacao == UnidadeSelecionada
@@ -401,7 +399,7 @@ namespace Solicitacao_de_Ambulancias
                                  Tipo = sp.TipoSolicitacao,
                                  sp.DtHrdoInicio,
                                  sp.Agendamento,
-                                 sp.DtHrAgendamento,
+                                 sp.DtHrdoAgendamento,
                                  sp.NomeSolicitante,
                                  sp.LocalSolicitacao,
                                  sp.Telefone,
@@ -415,7 +413,7 @@ namespace Solicitacao_de_Ambulancias
                                  sp.Origem,
                                  sp.Destino,
                                  sp.ObsGerais
-                             }).ToList();
+                             }).DefaultIfEmpty().ToList();
                 
    
                 Lista.DataSource = query;
@@ -509,7 +507,6 @@ namespace Solicitacao_de_Ambulancias
         private void hoje_Click_1(object sender, EventArgs e)
         {
             Lista.DataSource = "";
-            string data = DateTime.Now.ToString("dd/MM/yyyy");
 
             using(DAHUEEntities db = new DAHUEEntities())
             {
@@ -519,8 +516,8 @@ namespace Solicitacao_de_Ambulancias
                              equals new { idPaciente_Solicitacoes = (int)sa.idSolicitacoesPacientes } into b_join
                              from sa in b_join.DefaultIfEmpty()
                              where
-                               sp.LocalSolicitacao == UnidadeSelecionada 
-                              // && Convert.ToDateTime(sp.DtHrdoInicio) = data
+                               sp.LocalSolicitacao == UnidadeSelecionada &&
+                              SqlFunctions.DateDiff("day", DateTime.Now, sp.DtHrdoAgendamento) == 0 
                              orderby
                                sp.idPaciente_Solicitacoes
                              select new
@@ -530,7 +527,7 @@ namespace Solicitacao_de_Ambulancias
                                  Tipo = sp.TipoSolicitacao,
                                  sp.DtHrdoInicio,
                                  sp.Agendamento,
-                                 sp.DtHrAgendamento,
+                                 sp.DtHrdoAgendamento,
                                  sp.NomeSolicitante,
                                  sp.LocalSolicitacao,
                                  sp.Telefone,
@@ -579,7 +576,7 @@ namespace Solicitacao_de_Ambulancias
                                  Tipo = sp.TipoSolicitacao,
                                  sp.DtHrdoInicio,
                                  sp.Agendamento,
-                                 sp.DtHrAgendamento,
+                                 sp.DtHrdoAgendamento,
                                  sp.NomeSolicitante,
                                  sp.LocalSolicitacao,
                                  sp.Telefone,
@@ -628,7 +625,7 @@ namespace Solicitacao_de_Ambulancias
                                  Tipo = sp.TipoSolicitacao,
                                  sp.DtHrdoInicio,
                                  sp.Agendamento,
-                                 sp.DtHrAgendamento,
+                                 sp.DtHrdoAgendamento,
                                  sp.NomeSolicitante,
                                  sp.LocalSolicitacao,
                                  sp.Telefone,
@@ -678,7 +675,7 @@ namespace Solicitacao_de_Ambulancias
                                  Tipo = sp.TipoSolicitacao,
                                  sp.DtHrdoInicio,
                                  sp.Agendamento,
-                                 sp.DtHrAgendamento,
+                                 sp.DtHrdoAgendamento,
                                  sp.NomeSolicitante,
                                  sp.LocalSolicitacao,
                                  sp.Telefone,
@@ -727,7 +724,7 @@ namespace Solicitacao_de_Ambulancias
                                  Tipo = sp.TipoSolicitacao,
                                  sp.DtHrdoInicio,
                                  sp.Agendamento,
-                                 sp.DtHrAgendamento,
+                                 sp.DtHrdoAgendamento,
                                  sp.NomeSolicitante,
                                  sp.LocalSolicitacao,
                                  sp.Telefone,
@@ -776,7 +773,7 @@ namespace Solicitacao_de_Ambulancias
                                  Tipo = sp.TipoSolicitacao,
                                  sp.DtHrdoInicio,
                                  sp.Agendamento,
-                                 sp.DtHrAgendamento,
+                                 sp.DtHrdoAgendamento,
                                  sp.NomeSolicitante,
                                  sp.LocalSolicitacao,
                                  sp.Telefone,
@@ -826,7 +823,7 @@ namespace Solicitacao_de_Ambulancias
                                  Tipo = sp.TipoSolicitacao,
                                  sp.DtHrdoInicio,
                                  sp.Agendamento,
-                                 sp.DtHrAgendamento,
+                                 sp.DtHrdoAgendamento,
                                  sp.NomeSolicitante,
                                  sp.LocalSolicitacao,
                                  sp.Telefone,
@@ -874,7 +871,7 @@ namespace Solicitacao_de_Ambulancias
                                  Tipo = sp.TipoSolicitacao,
                                  sp.DtHrdoInicio,
                                  sp.Agendamento,
-                                 sp.DtHrAgendamento,
+                                 sp.DtHrdoAgendamento,
                                  sp.NomeSolicitante,
                                  sp.LocalSolicitacao,
                                  sp.Telefone,
@@ -954,30 +951,11 @@ namespace Solicitacao_de_Ambulancias
                 listaUsa.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.White;
             }
         }
-
-        private void CbTipoMotivoSelecionado_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-            Motivo();
-        }
-
-        private void CbTipoMotivoSelecionado_TextChanged(object sender, EventArgs e)
-        {
-            Motivo();
-
-            if (Agendamento == "Sim")
-            {
-                Prioridade.Visible = false;
-            }
-            else
-            {
-                Prioridade.Visible = true;
-            }
-
-        }
-
         private void BtnLimpar_Click(object sender, EventArgs e)
         {
             Limpar();
+            ClearComboBox();
+            ClearTextBoxes();
         }
 
         private void CbLocalSolicita_SelectedIndexChanged_1(object sender, EventArgs e)
@@ -1027,6 +1005,8 @@ namespace Solicitacao_de_Ambulancias
             {
                 RegistrarSolicitacao();
                 Limpar();
+                ClearTextBoxes();
+                ClearComboBox();
                 
 
             }
@@ -1039,17 +1019,17 @@ namespace Solicitacao_de_Ambulancias
             Btnagendasim.Visible = true;
             TipoAM = "Basica";
 
-            if (BtnAvancada.BackColor == Color.PaleTurquoise)
+            if (BtnAvancada.BackColor == Color.FromArgb(69, 173, 168))
             {
-                BtnBasica.BackColor = Color.PaleTurquoise;
-                BtnBasica.ForeColor = Color.Teal;
-                BtnAvancada.ForeColor = Color.Teal;
-                BtnAvancada.BackColor = Color.PaleTurquoise;
+                BtnBasica.BackColor = Color.FromArgb(229, 252, 194);
+                BtnBasica.ForeColor = Color.FromArgb(69, 173, 168);
+                BtnAvancada.ForeColor = Color.FromArgb(69, 173, 168);
+                BtnAvancada.BackColor = Color.FromArgb(229, 252, 194);
             }
-            BtnAvancada.BackColor = Color.PaleTurquoise;
-            BtnBasica.BackColor = Color.Teal;
-            BtnBasica.ForeColor = Color.PaleTurquoise;
-            BtnAvancada.ForeColor = Color.Teal;
+            BtnAvancada.BackColor = Color.FromArgb(229, 252, 194);
+            BtnBasica.BackColor = Color.FromArgb(69, 173, 168);
+            BtnBasica.ForeColor = Color.FromArgb(229, 252, 194);
+            BtnAvancada.ForeColor = Color.FromArgb(69, 173, 168);
         }
 
         private void BtnAvancada_Click(object sender, EventArgs e)
@@ -1059,23 +1039,23 @@ namespace Solicitacao_de_Ambulancias
             Btnagendasim.Visible = true;
             TipoAM = "Avancada";
 
-            if (BtnBasica.BackColor == Color.PaleTurquoise)
+            if (BtnBasica.BackColor == Color.FromArgb(69, 173, 168))
             {
-                BtnAvancada.BackColor = Color.PaleTurquoise;
-                BtnAvancada.ForeColor = Color.Teal;
-                BtnBasica.ForeColor = Color.Teal;
-                BtnBasica.BackColor = Color.PaleTurquoise;
+                BtnAvancada.BackColor = Color.FromArgb(229, 252, 194);
+                BtnAvancada.ForeColor = Color.FromArgb(69, 173, 168);
+                BtnBasica.ForeColor = Color.FromArgb(69, 173, 168);
+                BtnBasica.BackColor = Color.FromArgb(229, 252, 194);
             }
-            BtnBasica.BackColor = Color.PaleTurquoise;
-            BtnAvancada.BackColor = Color.Teal;
-            BtnAvancada.ForeColor = Color.PaleTurquoise;
-            BtnBasica.ForeColor = Color.Teal;
+            BtnBasica.BackColor = Color.FromArgb(229, 252, 194);
+            BtnAvancada.BackColor = Color.FromArgb(69, 173, 168);
+            BtnAvancada.ForeColor = Color.FromArgb(229, 252, 194);
+            BtnBasica.ForeColor = Color.FromArgb(69, 173, 168);
         }
 
         private void Btnagendanao_Click(object sender, EventArgs e)
         {
             label3.Visible = false;
-            txtAtendMarcado.Visible = false;
+            dataAgendamento.Visible = false;
             label4.Visible = true;
             label5.Visible = true;
             txtNomeSolicitante.Visible = true;
@@ -1084,41 +1064,40 @@ namespace Solicitacao_de_Ambulancias
             label7.Visible = true;
             txtTelefone.Visible = true;
             Agendamento = "Nao";
-            if (Btnagendasim.BackColor == Color.PaleTurquoise)
+            if (Btnagendasim.BackColor == Color.FromArgb(69, 173, 168))
             {
-                Btnagendasim.BackColor = Color.PaleTurquoise;
-                Btnagendasim.ForeColor = Color.Teal;
-                Btnagendanao.ForeColor = Color.Teal;
-                Btnagendanao.BackColor = Color.PaleTurquoise;
+                Btnagendasim.BackColor = Color.FromArgb(229, 252, 194);
+                Btnagendasim.ForeColor = Color.FromArgb(69, 173, 168);
+                Btnagendanao.BackColor = Color.FromArgb(69, 173, 168);
+                Btnagendanao.ForeColor = Color.FromArgb(229, 252, 194);
 
             }
 
-            Btnagendasim.BackColor = Color.PaleTurquoise;
-            Btnagendanao.BackColor = Color.Teal;
-            Btnagendanao.ForeColor = Color.PaleTurquoise;
-            Btnagendasim.ForeColor = Color.Teal;
+            Btnagendasim.BackColor = Color.FromArgb(229, 252, 194);
+            Btnagendanao.BackColor = Color.FromArgb(69, 173, 168);
+            Btnagendasim.ForeColor = Color.FromArgb(69, 173, 168);
+            Btnagendanao.ForeColor = Color.FromArgb(229, 252, 194);
         }
 
         private void Btnagendasim_Click(object sender, EventArgs e)
         {
             label3.Visible = true;
-            txtAtendMarcado.Visible = true;
-            txtAtendMarcado.Focus();
-            txtAtendMarcado.Text = DateTime.Now.ToString();
+            dataAgendamento.Visible = true;
+            dataAgendamento.Focus();
             Agendamento = "Sim";
 
-            if (Btnagendanao.BackColor == Color.PaleTurquoise)
+            if (Btnagendanao.BackColor == Color.FromArgb(69, 173, 168))
             {
-                Btnagendanao.BackColor = Color.PaleTurquoise;
-                Btnagendanao.ForeColor = Color.Teal;
-                Btnagendasim.ForeColor = Color.Teal;
-                Btnagendasim.BackColor = Color.PaleTurquoise;
+                Btnagendanao.BackColor = Color.FromArgb(229, 252, 194);
+                Btnagendanao.ForeColor = Color.FromArgb(69, 173, 168);
+                Btnagendasim.ForeColor = Color.FromArgb(69, 173, 168);
+                Btnagendasim.BackColor = Color.FromArgb(229, 252, 194);
 
             }
-            Btnagendanao.BackColor = Color.PaleTurquoise;
-            Btnagendasim.BackColor = Color.Teal;
-            Btnagendasim.ForeColor = Color.PaleTurquoise;
-            Btnagendanao.ForeColor = Color.Teal;
+            Btnagendanao.BackColor = Color.FromArgb(229, 252, 194);
+            Btnagendasim.BackColor = Color.FromArgb(69, 173, 168);
+            Btnagendasim.ForeColor = Color.FromArgb(229, 252, 194);
+            Btnagendanao.ForeColor = Color.FromArgb(69, 173, 168);
         }
 
         private void CbOrigem_SelectedIndexChanged(object sender, EventArgs e)
@@ -1155,18 +1134,13 @@ namespace Solicitacao_de_Ambulancias
                 TipoAM = "";
                 BtnAvancada.Enabled = true;
                 BtnBasica.Enabled = true;
-                BtnAvancada.BackColor = Color.PaleTurquoise;
-                BtnAvancada.ForeColor = Color.Teal;
-                BtnBasica.ForeColor = Color.Teal;
-                BtnBasica.BackColor = Color.PaleTurquoise;
+                BtnAvancada.BackColor = Color.FromArgb(69, 173, 168);
+                BtnAvancada.ForeColor = Color.FromArgb(229, 252, 194);
+                BtnBasica.ForeColor = Color.FromArgb(229, 252, 194);
+                BtnBasica.BackColor = Color.FromArgb(69, 173, 168);
             }
-        }
-
-        private void CbTipoMotivoSelecionado_Click(object sender, EventArgs e)
-        {
             Motivo();
         }
-
         private void txtIdade_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
@@ -1177,5 +1151,40 @@ namespace Solicitacao_de_Ambulancias
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
+        private void Reagendamentos_Click(object sender, EventArgs e)
+        {
+            RespostaDeAmbulancias ra = new RespostaDeAmbulancias();
+            ra.ShowDialog();
+        }
+        private void ClearTextBoxes()
+        {
+            Action<Control.ControlCollection> func = null;
+
+            func = (controls) =>
+            {
+                foreach (Control control in controls)
+                    if (control is TextBox)
+                        (control as TextBox).Clear();
+                    else
+                        func(control.Controls);
+            };
+
+            func(Controls);
+        }
+        private void ClearComboBox()
+        {
+            Action<Control.ControlCollection> func = null;
+
+            func = (controls) =>
+            {
+                foreach (Control control in controls)
+                    if (control is ComboBox)
+                        (control as ComboBox).SelectedIndex = -1;
+                    else
+                        func(control.Controls);
+            };
+
+            func(Controls);
+        }
     }
 }

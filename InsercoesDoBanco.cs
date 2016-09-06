@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using db_transporte_sanitario;
+using System.Windows;
 
 namespace Solicitacao_de_Ambulancias
 {
     public class InsercoesDoBanco
     {
 
-        public void inserirSolicitacaoDoPaciente(string TipoSolicitacao, DateTime DtHrdoInicio, string Agendamento, string DtHrAgendamento,
+        public void inserirSolicitacaoDoPaciente(string TipoSolicitacao, DateTime DtHrdoInicio, string Agendamento, DateTime DtHrdoAgendamento,
             string NomeSolicitante, string LocalSolicitacao, string Telefone, string Paciente, string Genero, string Idade,string Diagnostico, 
             string Motivo, string SubMotivo, string Prioridade, string Origem, string EnderecoOrigem, string Destino, string EnderecoDestino, 
             string ObsGerais, int AmSolicitada, string usuario, DateTime DtHrRegistro)
@@ -24,8 +25,7 @@ namespace Solicitacao_de_Ambulancias
                 solicitacoesPaciente.TipoSolicitacao = TipoSolicitacao;
                 solicitacoesPaciente.DtHrdoInicio = DtHrdoInicio;
                 solicitacoesPaciente.Agendamento = Agendamento;
-                solicitacoesPaciente.DtHrAgendamento = DtHrAgendamento;
-                solicitacoesPaciente.DtHrdoAgendamento = Convert.ToDateTime(DtHrAgendamento);
+                solicitacoesPaciente.DtHrdoAgendamento = DtHrdoAgendamento;
                 solicitacoesPaciente.NomeSolicitante = NomeSolicitante;
                 solicitacoesPaciente.LocalSolicitacao = LocalSolicitacao;
                 solicitacoesPaciente.Telefone = Telefone;
@@ -58,6 +58,7 @@ namespace Solicitacao_de_Ambulancias
                 dahue.historico.Add(hi);
                 dahue.SaveChanges();
             }
+            MessageBox.Show("Solicitação salva com sucesso !!!");
         }
 
     }

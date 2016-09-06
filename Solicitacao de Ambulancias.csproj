@@ -110,6 +110,24 @@
     <Compile Include="InsercoesDoBanco.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reagedamentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reagedamentos.Designer.cs">
+      <DependentUpon>Reagedamentos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reagendar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reagendar.Designer.cs">
+      <DependentUpon>Reagendar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RespostaDeAmbulancias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RespostaDeAmbulancias.Designer.cs">
+      <DependentUpon>RespostaDeAmbulancias.cs</DependentUpon>
+    </Compile>
     <Compile Include="Update.cs" />
     <EmbeddedResource Include="ConfirmaSolicitacao.resx">
       <DependentUpon>ConfirmaSolicitacao.cs</DependentUpon>
@@ -124,6 +142,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reagedamentos.resx">
+      <DependentUpon>Reagedamentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reagendar.resx">
+      <DependentUpon>Reagendar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RespostaDeAmbulancias.resx">
+      <DependentUpon>RespostaDeAmbulancias.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="App.Config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">

@@ -73,3 +73,6 @@ D:\source\Solicitacao de Ambulancias\Solicitacao de Ambulancias\obj\Release\Soli
 D:\source\Solicitacao de Ambulancias\Solicitacao de Ambulancias\obj\Release\Solicitacao de Ambulancias.pdb
 D:\source\Solicitacao de Ambulancias\Solicitacao de Ambulancias\bin\Release\Solicitacao de Ambulancias.exe.config
 D:\source\Solicitacao de Ambulancias\Solicitacao de Ambulancias\bin\Release\Solicitacao de Ambulancias.pdb
+D:\source\Solicitacao de Ambulancias\Solicitacao de Ambulancias\obj\Release\Solicitacao_de_Ambulancias.Reagedamentos.resources
+D:\source\Solicitacao de Ambulancias\Solicitacao de Ambulancias\obj\Release\Solicitacao_de_Ambulancias.Reagendar.resources
+D:\source\Solicitacao de Ambulancias\Solicitacao de Ambulancias\obj\Release\Solicitacao_de_Ambulancias.RespostaDeAmbulancias.resources
