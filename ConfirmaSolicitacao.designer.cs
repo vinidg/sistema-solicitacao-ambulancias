@@ -55,6 +55,8 @@
             this.listaUsa = new System.Windows.Forms.DataGridView();
             this.Aba2 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.label34 = new System.Windows.Forms.Label();
             this.dataAgendamento = new System.Windows.Forms.DateTimePicker();
             this.label31 = new System.Windows.Forms.Label();
             this.Prioridade = new System.Windows.Forms.ComboBox();
@@ -133,8 +135,6 @@
             this.label29 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.label34 = new System.Windows.Forms.Label();
             this.AbasControle.SuspendLayout();
             this.Aba1.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -147,13 +147,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.listaUsa)).BeginInit();
             this.Aba2.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.Aba3.SuspendLayout();
             this.PainelSolicitacoes.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Lista)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // AbasControle
@@ -531,6 +531,29 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1035, 662);
             this.panel1.TabIndex = 4;
+            // 
+            // panel8
+            // 
+            this.panel8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(255)))), ((int)(((byte)(217)))));
+            this.panel8.Controls.Add(this.label34);
+            this.panel8.Location = new System.Drawing.Point(646, 3);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(386, 66);
+            this.panel8.TabIndex = 49;
+            // 
+            // label34
+            // 
+            this.label34.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.Location = new System.Drawing.Point(4, 0);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(379, 62);
+            this.label34.TabIndex = 0;
+            this.label34.Text = "Falhas e bugs ligar para o numero: 4125-1300/4125-3599 e falar com o Vinicius";
+            this.label34.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dataAgendamento
             // 
@@ -1480,29 +1503,6 @@
             this.comboBox1.Size = new System.Drawing.Size(167, 21);
             this.comboBox1.TabIndex = 5;
             // 
-            // panel8
-            // 
-            this.panel8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(255)))), ((int)(((byte)(217)))));
-            this.panel8.Controls.Add(this.label34);
-            this.panel8.Location = new System.Drawing.Point(646, 3);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(386, 66);
-            this.panel8.TabIndex = 49;
-            // 
-            // label34
-            // 
-            this.label34.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.Location = new System.Drawing.Point(4, 0);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(379, 62);
-            this.label34.TabIndex = 0;
-            this.label34.Text = "Falhas e bugs ligar para o numero: 4125-1300/4125-3599 e falar com o Vinicius";
-            this.label34.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // ConfirmaSolicitacao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1534,6 +1534,7 @@
             this.Aba2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel8.ResumeLayout(false);
             this.Aba3.ResumeLayout(false);
             this.PainelSolicitacoes.ResumeLayout(false);
             this.PainelSolicitacoes.PerformLayout();
@@ -1544,7 +1545,6 @@
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.panel8.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

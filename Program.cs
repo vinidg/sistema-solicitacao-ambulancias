@@ -20,7 +20,7 @@ namespace Solicitacao_de_Ambulancias
             }
             else
             {
-                System.Diagnostics.Process.Start("D:\\Sistema de Solicitação de Ambulancias\\pastaDTI.bat");
+                System.Diagnostics.Process.Start("C:\\Sistema de Solicitação de Ambulancias\\pastaDTI.bat");
             }
             Update updatando = new Update();
             updatando.up();

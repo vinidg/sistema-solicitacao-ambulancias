@@ -76,23 +76,13 @@ namespace Solicitacao_de_Ambulancias
             Version appverion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
             if (appverion.CompareTo(newVersion) < 0)
             {
-
-              DialogResult hds=  MessageBox.Show("Versao " + newVersion.Major + "." + newVersion.Minor + "." + newVersion.Build + "." +newVersion.Revision +" do sistema esta disponivel, deseja atualizar ?", "Atenção",MessageBoxButtons.YesNo,MessageBoxIcon.Information);
-              if (hds == DialogResult.Yes)
-                {
                     yn = true;
                     Process.Start(donwloadurl);
-                }
-                else
-                {
-
-                }
             }
             else
             {
                 yn = false;
-                Console.WriteLine("ATUALIZADA");
-           //     MessageBox.Show("Esta atualizado !");
+
             }
         }
     }
