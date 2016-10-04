@@ -88,6 +88,7 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -115,6 +116,12 @@
     </Compile>
     <Compile Include="Reagedamentos.Designer.cs">
       <DependentUpon>Reagedamentos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReagendamentoUnidade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReagendamentoUnidade.Designer.cs">
+      <DependentUpon>ReagendamentoUnidade.cs</DependentUpon>
     </Compile>
     <Compile Include="Reagendar.cs">
       <SubType>Form</SubType>
@@ -144,6 +151,9 @@
     </Compile>
     <EmbeddedResource Include="Reagedamentos.resx">
       <DependentUpon>Reagedamentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReagendamentoUnidade.resx">
+      <DependentUpon>ReagendamentoUnidade.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reagendar.resx">
       <DependentUpon>Reagendar.cs</DependentUpon>

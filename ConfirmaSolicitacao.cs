@@ -40,7 +40,8 @@ namespace Solicitacao_de_Ambulancias
             Limpar();
             this.Text = "Sistema de Solicitação de Ambulancias. Versão: " + appverion;
             AbasControle.SelectedTab = Aba2;
-            
+            Detalhes.Text = "";
+
         }
        
         Version appverion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
@@ -140,6 +141,7 @@ namespace Solicitacao_de_Ambulancias
             this.listaUsb.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.listaUsb.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             this.listaUsb.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            label28.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
         }
 
         private void RegistrarSolicitacao()
@@ -424,6 +426,49 @@ namespace Solicitacao_de_Ambulancias
             }
         }
 
+        private void SelectPacientesParaCancelar()
+        {
+            using (DAHUEEntities db = new DAHUEEntities())
+            {
+                var query = (from sp in db.solicitacoes_paciente
+                             join sa in db.solicitacoes_ambulancias
+                             on sp.idPaciente_Solicitacoes
+                             equals sa.idSolicitacoesPacientes into b_join
+                             from sa in b_join.DefaultIfEmpty()
+                             where
+                               sp.LocalSolicitacao == UnidadeSelecionada
+                             orderby
+                               sp.idPaciente_Solicitacoes
+                             select new
+                             {
+                                 Id = sp.idPaciente_Solicitacoes,
+                                 idSolicitacoes_Ambulancias = sa.idSolicitacoes_Ambulancias,
+                                 Tipo = sp.TipoSolicitacao,
+                                 sp.DtHrdoInicio,
+                                 sp.Agendamento,
+                                 sp.DtHrdoAgendamento,
+                                 sp.NomeSolicitante,
+                                 sp.LocalSolicitacao,
+                                 sp.Telefone,
+                                 sp.Paciente,
+                                 sp.Genero,
+                                 sp.Idade,
+                                 sp.Diagnostico,
+                                 sp.Prioridade,
+                                 sp.Motivo,
+                                 sp.SubMotivo,
+                                 sp.Origem,
+                                 sp.Destino,
+                                 sp.ObsGerais
+                             }).DefaultIfEmpty().ToList();
+
+
+                ListaCancelar.DataSource = query;
+                ListaCancelar.Refresh();
+
+            }
+        }
+
         private void Horarios()
         {
             using (DAHUEEntities db = new DAHUEEntities())
@@ -516,7 +561,7 @@ namespace Solicitacao_de_Ambulancias
                              equals new { idPaciente_Solicitacoes = (int)sa.idSolicitacoesPacientes } into b_join
                              from sa in b_join.DefaultIfEmpty()
                              where
-                               sp.LocalSolicitacao == UnidadeSelecionada &&
+                              sp.LocalSolicitacao == UnidadeSelecionada &&
                               SqlFunctions.DateDiff("day", DateTime.Now, sp.DtHrdoAgendamento) == 0 
                              orderby
                                sp.idPaciente_Solicitacoes
@@ -973,7 +1018,6 @@ namespace Solicitacao_de_Ambulancias
             else if (RbMasculino.Checked)
             {
                 Sexo = "M";
-
             }
 
             if (Agendamento == "" || TipoAM == "" || Agendamento == null || TipoAM == null)
@@ -1153,8 +1197,8 @@ namespace Solicitacao_de_Ambulancias
 
         private void Reagendamentos_Click(object sender, EventArgs e)
         {
-            RespostaDeAmbulancias ra = new RespostaDeAmbulancias();
-            ra.ShowDialog();
+            ReagendamentoUnidade rr = new ReagendamentoUnidade();
+            rr.ShowDialog();
         }
         private void ClearTextBoxes()
         {
@@ -1186,5 +1230,43 @@ namespace Solicitacao_de_Ambulancias
 
             func(Controls);
         }
+
+        string AvisoReagendamento = "Número de solicitações que o Transporte Sanitario irá Aceitar ou Reagendar !";
+
+        private void panel7_MouseEnter(object sender, EventArgs e)
+        {
+            Detalhes.Text = AvisoReagendamento;
+        }
+
+        private void label33_MouseEnter(object sender, EventArgs e)
+        {
+            Detalhes.Text = AvisoReagendamento;
+        }
+
+        private void solAgendadasPendentes_MouseEnter(object sender, EventArgs e)
+        {
+            Detalhes.Text = AvisoReagendamento;
+        }
+        private void panel7_MouseLeave(object sender, EventArgs e)
+        {
+            Detalhes.Text = "";
+        }
+
+        private void solAgendadasPendentes_MouseLeave(object sender, EventArgs e)
+        {
+            Detalhes.Text = "";
+        }
+
+        private void label33_MouseLeave(object sender, EventArgs e)
+        {
+            Detalhes.Text = "";
+        }
+
+        private void Obs_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.KeyChar = Char.ToUpper(e.KeyChar);
+        }
+
+
     }
 }
