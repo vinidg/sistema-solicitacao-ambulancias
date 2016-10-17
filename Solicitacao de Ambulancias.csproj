@@ -102,6 +102,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CancelarSolicitacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CancelarSolicitacao.Designer.cs">
+      <DependentUpon>CancelarSolicitacao.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConfirmaSolicitacao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,12 +123,6 @@
     <Compile Include="Reagedamentos.Designer.cs">
       <DependentUpon>Reagedamentos.cs</DependentUpon>
     </Compile>
-    <Compile Include="ReagendamentoUnidade.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ReagendamentoUnidade.Designer.cs">
-      <DependentUpon>ReagendamentoUnidade.cs</DependentUpon>
-    </Compile>
     <Compile Include="Reagendar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +136,9 @@
       <DependentUpon>RespostaDeAmbulancias.cs</DependentUpon>
     </Compile>
     <Compile Include="Update.cs" />
+    <EmbeddedResource Include="CancelarSolicitacao.resx">
+      <DependentUpon>CancelarSolicitacao.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ConfirmaSolicitacao.resx">
       <DependentUpon>ConfirmaSolicitacao.cs</DependentUpon>
     </EmbeddedResource>
@@ -151,9 +154,6 @@
     </Compile>
     <EmbeddedResource Include="Reagedamentos.resx">
       <DependentUpon>Reagedamentos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ReagendamentoUnidade.resx">
-      <DependentUpon>ReagendamentoUnidade.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reagendar.resx">
       <DependentUpon>Reagendar.cs</DependentUpon>

@@ -24,7 +24,7 @@ namespace Solicitacao_de_Ambulancias
         string Sexo, pegamotivo, Id;
         string Endereco1, UnidadeSelecionada, destino, origem;
         int IdSolicitacaoAmbulancia;
-        
+        int idPaciente;
         public ConfirmaSolicitacao()
         {
             InitializeComponent();
@@ -37,14 +37,13 @@ namespace Solicitacao_de_Ambulancias
             Endereco();
             label3.Visible = false;
             dataAgendamento.Visible = false;
-            Limpar();
-            this.Text = "Sistema de Solicitação de Ambulancias. Versão: " + appverion;
-            AbasControle.SelectedTab = Aba2;
+            this.Text = "Sistema de Solicitação de Ambulancias. Versão: " + appversion;
+            AbasControle.SelectedTab = NovaSolicitacao;
             Detalhes.Text = "";
 
         }
        
-        Version appverion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+        Version appversion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
 
         public void Limpar()
         {
@@ -66,6 +65,11 @@ namespace Solicitacao_de_Ambulancias
             BtnAvancada.ForeColor = Color.FromArgb(229, 252, 194);
             BtnBasica.BackColor = Color.FromArgb(69, 173, 168);
             BtnBasica.ForeColor = Color.FromArgb(229, 252, 194);
+
+            Btnagendanao.Enabled = true;
+            Btnagendasim.Enabled = true;
+            BtnAvancada.Enabled = true;
+            BtnBasica.Enabled = true;
 
         }
 
@@ -158,13 +162,11 @@ namespace Solicitacao_de_Ambulancias
                 0, System.Environment.UserName, DateTime.Now);
 
             }
-             catch (Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return ;
+                return;
             }
-
-                MessageBox.Show("Solicitação salva com sucesso !!!");
         }
         private void VerificarPontos(Control container)
         {
@@ -297,7 +299,10 @@ namespace Solicitacao_de_Ambulancias
 
             using (DAHUEEntities db = new DAHUEEntities())
             {
-                CbTipoMotivoSelecionado.DataSource = db.referencias.ToList();
+                var query = (from r in db.referencias
+                             orderby pegamotivo ascending
+                             select r).ToList();
+                CbTipoMotivoSelecionado.DataSource = query;
                 CbTipoMotivoSelecionado.ValueMember = pegamotivo;
                 CbTipoMotivoSelecionado.DisplayMember = pegamotivo;
             }
@@ -351,7 +356,7 @@ namespace Solicitacao_de_Ambulancias
                              SqlFunctions.DateDiff("day", DateTime.Now, saa.DtHrAgendamento) == 0
                              select sp.idPaciente_Solicitacoes).Count();
 
-                solAgendadasHoje.Text = query.ToString();    
+                solAgendadasHoje.Text = query.ToString();
             }
         }
 
@@ -374,7 +379,7 @@ namespace Solicitacao_de_Ambulancias
 
             if (comboBox1.Text == "")
             {
-                MessageBox.Show("Selecione a unidade !", "Atenção !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Selecione a unidade !", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
                     PainelSolicitacoes.Visible = true;
@@ -414,7 +419,8 @@ namespace Solicitacao_de_Ambulancias
                                  sp.SubMotivo,
                                  sp.Origem,
                                  sp.Destino,
-                                 sp.ObsGerais
+                                 sp.ObsGerais,
+                                 sp.AmSolicitada
                              }).DefaultIfEmpty().ToList();
                 
    
@@ -422,50 +428,7 @@ namespace Solicitacao_de_Ambulancias
                 Lista.Refresh();
 
                 Lista.Columns["idSolicitacoes_Ambulancias"].Visible = false;
-
-            }
-        }
-
-        private void SelectPacientesParaCancelar()
-        {
-            using (DAHUEEntities db = new DAHUEEntities())
-            {
-                var query = (from sp in db.solicitacoes_paciente
-                             join sa in db.solicitacoes_ambulancias
-                             on sp.idPaciente_Solicitacoes
-                             equals sa.idSolicitacoesPacientes into b_join
-                             from sa in b_join.DefaultIfEmpty()
-                             where
-                               sp.LocalSolicitacao == UnidadeSelecionada
-                             orderby
-                               sp.idPaciente_Solicitacoes
-                             select new
-                             {
-                                 Id = sp.idPaciente_Solicitacoes,
-                                 idSolicitacoes_Ambulancias = sa.idSolicitacoes_Ambulancias,
-                                 Tipo = sp.TipoSolicitacao,
-                                 sp.DtHrdoInicio,
-                                 sp.Agendamento,
-                                 sp.DtHrdoAgendamento,
-                                 sp.NomeSolicitante,
-                                 sp.LocalSolicitacao,
-                                 sp.Telefone,
-                                 sp.Paciente,
-                                 sp.Genero,
-                                 sp.Idade,
-                                 sp.Diagnostico,
-                                 sp.Prioridade,
-                                 sp.Motivo,
-                                 sp.SubMotivo,
-                                 sp.Origem,
-                                 sp.Destino,
-                                 sp.ObsGerais
-                             }).DefaultIfEmpty().ToList();
-
-
-                ListaCancelar.DataSource = query;
-                ListaCancelar.Refresh();
-
+                Lista.Columns["AmSolicitada"].Visible = false;
             }
         }
 
@@ -489,57 +452,60 @@ namespace Solicitacao_de_Ambulancias
                                  sa.DtHrLiberacaoEquipeReg,
                                  sa.DtHrEquipePatio,
                                  sa.DtHrEquipePatioReg
-                             }).FirstOrDefault();
+                             }).DefaultIfEmpty().FirstOrDefault();
 
-                if (query.DtHrCiencia != null)
-                {
-                    txtHora.Text = query.DtHrCiencia;
+                if(query != null){
+
+                    if (query.DtHrCiencia != null)
+                    {
+                        txtHora.Text = query.DtHrCiencia;
+                    }
+                    if (query.DtHrChegadaOrigem != null)
+                    {
+                        txtHora2.Text = query.DtHrChegadaOrigem;
+                    }
+                    if (query.DtHrSaidaOrigem != null)
+                    {
+                        txtHora3.Text = query.DtHrSaidaOrigem;
+                    }
+                    if (query.DtHrChegadaDestino != null)
+                    {
+                        txtHora4.Text = query.DtHrChegadaDestino;
+                    }
+                    if (query.DtHrLiberacaoEquipe != null)
+                    {
+                        txtHora5.Text = query.DtHrLiberacaoEquipe;
+                    }
+                    if (query.DtHrEquipePatio != null)
+                    {
+                        txtHora6.Text = query.DtHrEquipePatio;
+                    }
+                    /*if (query.DtHrCienciaReg != null)
+                    {
+                        txtAlterador.Text = query.DtHrCienciaReg;
+                    }
+                    if (query.DtHrChegadaOrigemReg != null)
+                    {
+                        txtAlterador2.Text = query.DtHrChegadaOrigemReg;
+                    }
+                    if (query.DtHrSaidaOrigemReg != null)
+                    {
+                        txtAlterador3.Text = query.DtHrSaidaOrigemReg;
+                    }
+                    if (query.DtHrChegadaDestinoReg != null)
+                    {
+                        txtAlterador4.Text = query.DtHrChegadaDestinoReg;
+                    }
+                    if (query.DtHrLiberacaoEquipeReg != null)
+                    {
+                        txtAlterador5.Text = query.DtHrLiberacaoEquipeReg;
+                    }
+                    if (query.DtHrEquipePatioReg != null)
+                    {
+                        txtAlterador6.Text = query.DtHrEquipePatioReg;
+                    }*/
+                    }
                 }
-                if (query.DtHrChegadaOrigem != null)
-                {
-                    txtHora2.Text = query.DtHrChegadaOrigem;
-                }
-                if (query.DtHrSaidaOrigem != null)
-                {
-                    txtHora3.Text = query.DtHrSaidaOrigem;
-                }
-                if (query.DtHrChegadaDestino != null)
-                {
-                    txtHora4.Text = query.DtHrChegadaDestino;
-                }
-                if (query.DtHrLiberacaoEquipe != null)
-                {
-                    txtHora5.Text = query.DtHrLiberacaoEquipe;
-                }
-                if (query.DtHrEquipePatio != null)
-                {
-                    txtHora6.Text = query.DtHrEquipePatio;
-                }
-                /*if (query.DtHrCienciaReg != null)
-                {
-                    txtAlterador.Text = query.DtHrCienciaReg;
-                }
-                if (query.DtHrChegadaOrigemReg != null)
-                {
-                    txtAlterador2.Text = query.DtHrChegadaOrigemReg;
-                }
-                if (query.DtHrSaidaOrigemReg != null)
-                {
-                    txtAlterador3.Text = query.DtHrSaidaOrigemReg;
-                }
-                if (query.DtHrChegadaDestinoReg != null)
-                {
-                    txtAlterador4.Text = query.DtHrChegadaDestinoReg;
-                }
-                if (query.DtHrLiberacaoEquipeReg != null)
-                {
-                    txtAlterador5.Text = query.DtHrLiberacaoEquipeReg;
-                }
-                if (query.DtHrEquipePatioReg != null)
-                {
-                    txtAlterador6.Text = query.DtHrEquipePatioReg;
-                }*/
-            }
 
         }
 
@@ -585,14 +551,15 @@ namespace Solicitacao_de_Ambulancias
                                  sp.SubMotivo,
                                  sp.Origem,
                                  sp.Destino,
-                                 sp.ObsGerais
-                             }).ToList();
+                                 sp.ObsGerais,
+                                 sp.AmSolicitada
+                             }).DefaultIfEmpty().ToList();
             
                 Lista.DataSource = query;
                 Lista.Refresh();
-
-                Lista.Columns["Id"].Visible = false;
+                                
                 Lista.Columns["idSolicitacoes_Ambulancias"].Visible = false;
+                Lista.Columns["AmSolicitada"].Visible = false;
             }
         }
 
@@ -611,7 +578,7 @@ namespace Solicitacao_de_Ambulancias
                              from sa in b_join.DefaultIfEmpty()
                              where
                                sp.LocalSolicitacao == UnidadeSelecionada && sa.idSolicitacoes_Ambulancias != null 
-                               && sp.DtHrdoInicio >= ontem && sp.DtHrdoInicio <= data
+                               && sp.DtHrdoInicio >= ontem && sp.DtHrdoInicio < data
                              orderby
                                sp.idPaciente_Solicitacoes
                              select new
@@ -634,14 +601,15 @@ namespace Solicitacao_de_Ambulancias
                                  sp.SubMotivo,
                                  sp.Origem,
                                  sp.Destino,
-                                 sp.ObsGerais
-                             }).ToList();
+                                 sp.ObsGerais,
+                                 sp.AmSolicitada
+                             }).DefaultIfEmpty().ToList();
 
                 Lista.DataSource = query;
                 Lista.Refresh();
 
-                Lista.Columns["Id"].Visible = false;
                 Lista.Columns["idSolicitacoes_Ambulancias"].Visible = false;
+                Lista.Columns["AmSolicitada"].Visible = false;
             }
         }
 
@@ -683,14 +651,16 @@ namespace Solicitacao_de_Ambulancias
                                  sp.SubMotivo,
                                  sp.Origem,
                                  sp.Destino,
-                                 sp.ObsGerais
-                             }).ToList();
+                                 sp.ObsGerais,
+                                 sp.AmSolicitada
+                             }).DefaultIfEmpty().ToList();
 
                 Lista.DataSource = query;
                 Lista.Refresh();
 
-                Lista.Columns["Id"].Visible = false;
+                
                 Lista.Columns["idSolicitacoes_Ambulancias"].Visible = false;
+                Lista.Columns["AmSolicitada"].Visible = false;
             }
 
         }
@@ -733,14 +703,16 @@ namespace Solicitacao_de_Ambulancias
                                  sp.SubMotivo,
                                  sp.Origem,
                                  sp.Destino,
-                                 sp.ObsGerais
-                             }).ToList();
+                                 sp.ObsGerais,
+                                 sp.AmSolicitada
+                             }).DefaultIfEmpty().ToList();
 
                 Lista.DataSource = query;
                 Lista.Refresh();
 
-                Lista.Columns["Id"].Visible = false;
+                
                 Lista.Columns["idSolicitacoes_Ambulancias"].Visible = false;
+                Lista.Columns["AmSolicitada"].Visible = false;
             }
         }
 
@@ -782,14 +754,16 @@ namespace Solicitacao_de_Ambulancias
                                  sp.SubMotivo,
                                  sp.Origem,
                                  sp.Destino,
-                                 sp.ObsGerais
-                             }).ToList();
+                                 sp.ObsGerais,
+                                 sp.AmSolicitada
+                             }).DefaultIfEmpty().ToList();
 
                 Lista.DataSource = query;
                 Lista.Refresh();
 
-                Lista.Columns["Id"].Visible = false;
+                
                 Lista.Columns["idSolicitacoes_Ambulancias"].Visible = false;
+                Lista.Columns["AmSolicitada"].Visible = false;
             }
         }
 
@@ -831,14 +805,16 @@ namespace Solicitacao_de_Ambulancias
                                  sp.SubMotivo,
                                  sp.Origem,
                                  sp.Destino,
-                                 sp.ObsGerais
-                             }).ToList();
+                                 sp.ObsGerais,
+                                 sp.AmSolicitada
+                             }).DefaultIfEmpty().ToList();
 
                 Lista.DataSource = query;
                 Lista.Refresh();
 
-                Lista.Columns["Id"].Visible = false;
+                
                 Lista.Columns["idSolicitacoes_Ambulancias"].Visible = false;
+                Lista.Columns["AmSolicitada"].Visible = false;
             }
         }
 
@@ -881,14 +857,16 @@ namespace Solicitacao_de_Ambulancias
                                  sp.SubMotivo,
                                  sp.Origem,
                                  sp.Destino,
-                                 sp.ObsGerais
-                             }).ToList();
+                                 sp.ObsGerais,
+                                 sp.AmSolicitada
+                             }).DefaultIfEmpty().ToList();
 
                 Lista.DataSource = query;
                 Lista.Refresh();
 
-                Lista.Columns["Id"].Visible = false;
+                
                 Lista.Columns["idSolicitacoes_Ambulancias"].Visible = false;
+                Lista.Columns["AmSolicitada"].Visible = false;
             }
 
         }
@@ -929,34 +907,22 @@ namespace Solicitacao_de_Ambulancias
                                  sp.SubMotivo,
                                  sp.Origem,
                                  sp.Destino,
-                                 sp.ObsGerais
-                             }).ToList();
+                                 sp.ObsGerais,
+                                 sp.AmSolicitada
+                             }).DefaultIfEmpty().ToList();
 
                 Lista.DataSource = query;
                 Lista.Refresh();
 
-                Lista.Columns["Id"].Visible = false;
+                
                 Lista.Columns["idSolicitacoes_Ambulancias"].Visible = false;
+                Lista.Columns["AmSolicitada"].Visible = false;
             }
         }
 
         private void AtualizarBtn_Click(object sender, EventArgs e)
         {
             pegarDadosDasAmbulancias();
-        }
-
-        private void Lista_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-                Id = Lista.Rows[e.RowIndex].Cells["Id"].Value.ToString();
-                IdSolicitacaoAmbulancia = Convert.ToInt32(Lista.Rows[e.RowIndex].Cells["idSolicitacoes_Ambulancias"].Value.ToString());
-
-                Horarios();
-
-                origem = Lista.Rows[e.RowIndex].Cells["Origem"].Value.ToString();
-                destino = Lista.Rows[e.RowIndex].Cells["Destino"].Value.ToString();
-  
-                lbDestino.Text = destino;
-                lbOrigem.Text = origem;
         }
 
         private void listaUsb_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -1195,11 +1161,6 @@ namespace Solicitacao_de_Ambulancias
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
-        private void Reagendamentos_Click(object sender, EventArgs e)
-        {
-            ReagendamentoUnidade rr = new ReagendamentoUnidade();
-            rr.ShowDialog();
-        }
         private void ClearTextBoxes()
         {
             Action<Control.ControlCollection> func = null;
@@ -1265,6 +1226,398 @@ namespace Solicitacao_de_Ambulancias
         private void Obs_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.KeyChar = Char.ToUpper(e.KeyChar);
+        }
+
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            if(idPaciente != 0)
+            {
+                CancelarSolicitacao cas = new CancelarSolicitacao(idPaciente);
+                cas.ShowDialog();
+                SelectPacientesParaCancelar();
+                ClearTextBoxes();
+                ClearComboBox();
+            }
+            else
+            {
+                MessageBox.Show("Não há nenhuma solicitação selecionada !", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        private void ListaCancelar_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                idPaciente = Convert.ToInt32(ListaCancelar.Rows[e.RowIndex].Cells[0].Value.ToString());
+                using (DAHUEEntities db = new DAHUEEntities())
+                {
+                    var query = (from sp in db.solicitacoes_paciente
+                                 where sp.idPaciente_Solicitacoes == idPaciente
+                                 select sp).FirstOrDefault();
+
+                    CodigoId.Text = query.idPaciente_Solicitacoes.ToString();
+                    Tipo.Text = query.TipoSolicitacao;
+                    DataInicio.Text = query.DtHrdoInicio.ToString();
+                    DataHrAgendamento.Text = query.DtHrdoAgendamento.ToString();
+                    NomeSolicitante.Text = query.NomeSolicitante;
+                    LocalSolicitacao.Text = query.LocalSolicitacao;
+                    Telefone.Text = query.Telefone;
+                    NomePaciente.Text = query.Paciente;
+                    if (query.Genero == "F")
+                    {
+                        RbFemenino.Checked = true;
+                    }
+                    else
+                    {
+                        RbMasculino.Checked = true;
+                    }
+                    Idade.Text = query.Idade;
+                    Diagnostico.Text = query.Diagnostico;
+                    MotivoChamado.Text = query.Motivo;
+                    TipoMotivoSelecionado.Text = query.SubMotivo;
+                    PrioridadeCancelar.Text = query.Prioridade;
+                    COrigem.Text = query.Origem;
+                    CEnderecoOrigem.Text = query.EnderecoOrigem;
+                    CDestino.Text = query.Destino;
+                    CEnderecoDestino.Text = query.EnderecoDestino;
+                    CObs.Text = query.ObsGerais;
+
+                }
+
+            }
+        }
+        private void SelectPacientesParaCancelar()
+        {
+            using (DAHUEEntities db = new DAHUEEntities())
+            {
+                var query = (from sp in db.solicitacoes_paciente
+                             where sp.LocalSolicitacao == UnidadeSelecionada &&
+                             sp.AmSolicitada == 0 &&
+                             sp.Registrado == "Sim"
+                             orderby sp.DtHrdoInicio descending
+                             select new
+                             {
+                                 Id = sp.idPaciente_Solicitacoes,
+                                 Tipo = sp.TipoSolicitacao,
+                                 sp.DtHrdoInicio,
+                                 sp.Agendamento,
+                                 sp.DtHrdoAgendamento,
+                                 sp.NomeSolicitante,
+                                 sp.LocalSolicitacao,
+                                 sp.Telefone,
+                                 sp.Paciente,
+                                 sp.Genero,
+                                 sp.Idade,
+                                 sp.Diagnostico,
+                                 sp.Prioridade,
+                                 sp.Motivo,
+                                 sp.SubMotivo,
+                                 sp.Origem,
+                                 sp.Destino,
+                                 sp.ObsGerais
+                             }).DefaultIfEmpty().ToList();
+
+                ListaCancelar.DataSource = query;
+                ListaCancelar.Refresh();
+
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (SelecionarUnidade.Text == "")
+            {
+                MessageBox.Show("Selecione a unidade !", "Atenção !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+                    PainelCancelar.Visible = true;
+                    UnidadeSelecionada = SelecionarUnidade.Text;
+                    SelectPacientesParaCancelar();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ListaCancelar.DataSource = "";
+            SelectPacientesParaCancelar();
+        }
+
+        private void label37_Click(object sender, EventArgs e)
+        {
+            PainelCancelar.Visible = false;
+        }
+
+        private void Lista_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(Lista.Rows[e.RowIndex].Cells["idSolicitacoes_Ambulancias"].Equals(0) || Lista.Rows[e.RowIndex].Cells["idSolicitacoes_Ambulancias"].Equals(null) ||
+                String.IsNullOrEmpty(Lista.Rows[e.RowIndex].Cells["idSolicitacoes_Ambulancias"].Value as String) && Lista.Rows[e.RowIndex].Cells["AmSolicitada"].Equals(0))
+            {
+                Status.Text = "Aguardando vaga";
+            }
+            else if (Convert.ToInt32(Lista.Rows[e.RowIndex].Cells["AmSolicitada"].Value) == 1)
+            {
+                Status.Text = "Solicitação encerrada";
+            }
+            else
+            {
+                Status.Text = "Solicitação à caminho";
+                IdSolicitacaoAmbulancia = Convert.ToInt32(Lista.Rows[e.RowIndex].Cells["idSolicitacoes_Ambulancias"].Value);
+            }
+            if (e.RowIndex > -1)
+            {
+                Id = Lista.Rows[e.RowIndex].Cells["Id"].Value.ToString();
+
+
+                Horarios();
+
+                origem = Lista.Rows[e.RowIndex].Cells["Origem"].Value.ToString();
+                destino = Lista.Rows[e.RowIndex].Cells["Destino"].Value.ToString();
+
+                lbDestino.Text = destino;
+                lbOrigem.Text = origem;
+                IdPacienteLabel.Text = Id;
+                NomePacienteLabel.Text = Lista.Rows[e.RowIndex].Cells["Paciente"].Value.ToString();
+            }
+        }
+
+        private void label59_Click(object sender, EventArgs e)
+        {
+            PainelSolicitacoes.Visible = false;
+        }
+        string UnidadeReagendamento;
+        public void puxarAgendadasNegadas()
+        {
+            int zero = 0;
+            var final = Calendario.SelectionRange.End;
+            var comeco = Calendario.SelectionRange.Start;
+            using (DAHUEEntities db = new DAHUEEntities())
+            {
+                var query = from sp in db.solicitacoes_paciente
+                            where sp.AmSolicitada == zero &&
+                            sp.Agendamento == "Sim" &&
+                            SqlFunctions.DateDiff("day", final, sp.DtHrdoAgendamento) == 0 &&
+                            sp.Registrado == "Aguardando resposta do solicitante" &&
+                            sp.LocalSolicitacao == UnidadeReagendamento
+                            select new
+                            {
+                                ID = sp.idPaciente_Solicitacoes,
+                                sp.Paciente,
+                                Tipo = sp.TipoSolicitacao,
+                                sp.DtHrdoInicio,
+                                sp.LocalSolicitacao,
+                                sp.Agendamento,
+                                sp.DtHrdoAgendamento,
+                                sp.Prioridade,
+                                sp.Motivo,
+                                sp.Origem,
+                                sp.Destino
+                            };
+                var quertCont = query.Count();
+                var queryAmbu = query.ToList();
+                RespostasNegadas.Text = "Respostas negadas (" + quertCont + ")";
+                ListaAgendados.DataSource = queryAmbu;
+                ListaAgendados.ClearSelection();
+
+            }
+        }
+
+        public void puxarAgendadasPendentes()
+        {
+
+            int zero = 0;
+            var data = Calendario.SelectionRange.End;
+            using (DAHUEEntities db = new DAHUEEntities())
+            {
+                var query = from sp in db.solicitacoes_paciente
+                            where sp.AmSolicitada == zero &&
+                            sp.Agendamento == "Sim" &&
+                            SqlFunctions.DateDiff("day", data, sp.DtHrdoAgendamento) == 0 &&
+                            sp.Registrado == "Aguardando resposta do controle" &&
+                            sp.LocalSolicitacao == UnidadeReagendamento
+                            select new
+                            {
+                                ID = sp.idPaciente_Solicitacoes,
+                                sp.Paciente,
+                                Tipo = sp.TipoSolicitacao,
+                                sp.DtHrdoInicio,
+                                sp.LocalSolicitacao,
+                                sp.Agendamento,
+                                sp.DtHrdoAgendamento,
+                                sp.Prioridade,
+                                sp.Motivo,
+                                sp.Origem,
+                                sp.Destino
+                            };
+
+                var queryAmbu = query.ToList();
+                var querycont = query.Count();
+                RespostaDoControle.Text = "Solicitações agendadas (" + querycont + ")";
+                ListaAgendados.DataSource = queryAmbu;
+                ListaAgendados.ClearSelection();
+
+            }
+        }
+
+        private void ListaAgendados_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                idPaciente = Convert.ToInt32(ListaAgendados.Rows[e.RowIndex].Cells[0].Value.ToString());
+                using (DAHUEEntities db = new DAHUEEntities())
+                {
+                    var query = (from sp in db.solicitacoes_paciente
+                                 join saa in db.solicitacoes_agendamentos
+                                 on sp.idReagendamento equals saa.idSolicitacaoAgendamento into saa_sp_join
+                                 from saa in saa_sp_join.DefaultIfEmpty()
+                                 where sp.idPaciente_Solicitacoes == idPaciente
+                                 select new { sp, saa }).FirstOrDefault();
+
+                    CodigoPacienteReagendamento.Text = query.sp.idPaciente_Solicitacoes.ToString();
+                    TipoAmbulanciaReagendamentos.Text = query.sp.TipoSolicitacao;
+                    dataAberturaReagendamentos.Text = query.sp.DtHrdoInicio.ToString();
+                    dataAgendamentoReagendamentos.Text = query.sp.DtHrdoAgendamento.ToString();
+                    solicitanteReagendamentos.Text = query.sp.NomeSolicitante;
+                    localReagendamentos.Text = query.sp.LocalSolicitacao;
+                    telefoneReagendamentos.Text = query.sp.Telefone;
+                    pacienteReagendamentos.Text = query.sp.Paciente;
+                    if (query.sp.Genero == "F")
+                    {
+                        femininoReagendamentos.Checked = true;
+                    }
+                    else
+                    {
+                        masculinoReagendamentos.Checked = true;
+                    }
+                    idadeReagendamentos.Text = query.sp.Idade;
+                    diagnosticosReagendamentos.Text = query.sp.Diagnostico;
+                    motivoReagendamentos.Text = query.sp.Motivo;
+                    tipoMotivoReagendamentos.Text = query.sp.SubMotivo;
+                    prioridadeReagendamentos.Text = query.sp.Prioridade;
+                    origemReagendamentos.Text = query.sp.Origem;
+                    EnderecoOrigemReagendamentos.Text = query.sp.EnderecoOrigem;
+                    destinoReagendamentos.Text = query.sp.Destino;
+                    EnderecoDestinoReagendamentos.Text = query.sp.EnderecoDestino;
+                    ObsReagendamentos.Text = query.sp.ObsGerais;
+                    if (query.saa != null)
+                    {
+                        dtHrReagendamento.Text = query.saa.DtHrAgendamento.ToString();
+                    }
+
+                }
+
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (RespostasNegadas.Checked == true)
+            {
+                puxarAgendadasNegadas();
+                RespostasNegadas.Checked = true;
+            }
+            else
+            {
+                puxarAgendadasPendentes();
+                RespostaDoControle.Checked = true;
+            }
+            UnidadeReagendamento = unidadesReagenda.Text;
+            painelReagendamento.Visible = true;
+        }
+
+        private void label62_Click(object sender, EventArgs e)
+        {
+            painelReagendamento.Visible = false;
+        }
+
+        private void Calendario_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            if (RespostasNegadas.Checked == true)
+            {
+                puxarAgendadasNegadas();
+            }
+            else if (RespostaDoControle.Checked == true)
+            {
+                puxarAgendadasPendentes();
+            }
+        }
+
+        private void Encaminhados_Click(object sender, EventArgs e)
+        {
+            puxarAgendadasPendentes();
+            BtnReagendar.Visible = false;
+        }
+
+        private void Respondidos_Click(object sender, EventArgs e)
+        {
+            puxarAgendadasNegadas();
+            BtnReagendar.Visible = true;
+        }
+
+        private void BtnReagendar_Click(object sender, EventArgs e)
+        {
+            if (CodigoPacienteReagendamento.Text != "")
+            {
+                this.ClearTextBoxes();
+                this.ClearComboBox();
+                this.CodigoPacienteReagendamento.Text = "";
+                this.dtHrReagendamento.Text = "";
+                this.RbFemenino.Checked = false;
+                this.RbMasculino.Checked = false;
+                this.Obs.Text = "";
+                Reagendar re = new Reagendar(DataHrAgendamento.Text, idPaciente);
+                re.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Selecione a solicitação que deseja reagendar !", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void TodosReagendamentos_Click(object sender, EventArgs e)
+        {
+            if (CodigoPacienteReagendamento.Text != "")
+            {
+                Reagedamentos re = new Reagedamentos(idPaciente);
+                re.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Selecione a solicitação que deseja ver o histórico de reagendamentos !", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void AbasControle_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(AbasControle.SelectedTab == AbasControle.TabPages["ReagendamentosTab"])
+            {
+                if (RespostasNegadas.Checked == true)
+                {
+                    puxarAgendadasNegadas();
+                    RespostasNegadas.Checked = true;
+                }
+                else
+                {
+                    puxarAgendadasPendentes();
+                    RespostaDoControle.Checked = true;
+                }
+            }
+        }
+
+        private void CancelarReagendamento_Click(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(CodigoPacienteReagendamento.Text) != 0 || CodigoPacienteReagendamento.Text != "" || CodigoPacienteReagendamento.Text != "ID")
+            {
+                CancelarSolicitacao cas = new CancelarSolicitacao(Convert.ToInt32(CodigoPacienteReagendamento.Text));
+                cas.ShowDialog();
+                SelectPacientesParaCancelar();
+                ClearTextBoxes();
+                ClearComboBox();
+            }
+            else
+            {
+                MessageBox.Show("Não há nenhuma solicitação selecionada !", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
         }
 
 

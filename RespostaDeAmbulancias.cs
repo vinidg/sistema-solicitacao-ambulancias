@@ -21,8 +21,6 @@ namespace Solicitacao_de_Ambulancias
             InitializeComponent();
             puxarAgendadasRespondidasPeloSolicitante();
             puxarAgendadasPendentes();
-            id.Text = "";
-            dtHrReagendamento.Text = "";
             Unidade = unidade;
         }
 
