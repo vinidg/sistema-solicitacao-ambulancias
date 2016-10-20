@@ -195,7 +195,7 @@
             this.label82 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.label83 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
+            this.EntrarReagendamentos = new System.Windows.Forms.Button();
             this.unidadesReagenda = new System.Windows.Forms.ComboBox();
             this.Cancelar = new System.Windows.Forms.TabPage();
             this.PainelCancelar = new System.Windows.Forms.Panel();
@@ -203,7 +203,7 @@
             this.CodigoId = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
             this.BtnCancelar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.BtnCancelarAtualizar = new System.Windows.Forms.Button();
             this.CObs = new System.Windows.Forms.RichTextBox();
             this.label51 = new System.Windows.Forms.Label();
             this.label57 = new System.Windows.Forms.Label();
@@ -924,7 +924,8 @@
             "RETORNO",
             "SALA VERMELHA/EMERGÊNCIA",
             "TRANSPORTE DE INSUMOS/PRODUTOS/MATERIAIS",
-            "TRANSPORTE DE PROFISSIONAIS"});
+            "TRANSPORTE DE PROFISSIONAIS",
+            "TRANSFERENCIA"});
             this.CbMotivoChamado.Location = new System.Drawing.Point(29, 462);
             this.CbMotivoChamado.Name = "CbMotivoChamado";
             this.CbMotivoChamado.Size = new System.Drawing.Size(243, 23);
@@ -1019,6 +1020,7 @@
             this.txtNomePaciente.Name = "txtNomePaciente";
             this.txtNomePaciente.Size = new System.Drawing.Size(265, 21);
             this.txtNomePaciente.TabIndex = 17;
+            this.txtNomePaciente.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtNomePaciente_KeyUp);
             // 
             // label9
             // 
@@ -1224,7 +1226,6 @@
             this.PainelSolicitacoes.Controls.Add(this.Lista);
             this.PainelSolicitacoes.Controls.Add(this.panel3);
             this.PainelSolicitacoes.Controls.Add(this.label30);
-            this.PainelSolicitacoes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PainelSolicitacoes.Location = new System.Drawing.Point(3, 3);
             this.PainelSolicitacoes.Name = "PainelSolicitacoes";
             this.PainelSolicitacoes.Size = new System.Drawing.Size(1035, 662);
@@ -2342,7 +2343,7 @@
             // 
             this.panel11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.panel11.Controls.Add(this.label83);
-            this.panel11.Controls.Add(this.button6);
+            this.panel11.Controls.Add(this.EntrarReagendamentos);
             this.panel11.Controls.Add(this.unidadesReagenda);
             this.panel11.Location = new System.Drawing.Point(428, 192);
             this.panel11.Name = "panel11";
@@ -2360,19 +2361,19 @@
             this.label83.TabIndex = 0;
             this.label83.Text = "Selecione a Unidade:";
             // 
-            // button6
+            // EntrarReagendamentos
             // 
-            this.button6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(205)))), ((int)(((byte)(169)))));
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(253)))), ((int)(((byte)(243)))));
-            this.button6.Location = new System.Drawing.Point(20, 145);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(167, 38);
-            this.button6.TabIndex = 2;
-            this.button6.Text = "Entrar";
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.EntrarReagendamentos.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.EntrarReagendamentos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(205)))), ((int)(((byte)(169)))));
+            this.EntrarReagendamentos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EntrarReagendamentos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(253)))), ((int)(((byte)(243)))));
+            this.EntrarReagendamentos.Location = new System.Drawing.Point(20, 145);
+            this.EntrarReagendamentos.Name = "EntrarReagendamentos";
+            this.EntrarReagendamentos.Size = new System.Drawing.Size(167, 38);
+            this.EntrarReagendamentos.TabIndex = 2;
+            this.EntrarReagendamentos.Text = "Entrar";
+            this.EntrarReagendamentos.UseVisualStyleBackColor = false;
+            this.EntrarReagendamentos.Click += new System.EventHandler(this.EntrarReagendamentos_Click);
             // 
             // unidadesReagenda
             // 
@@ -2417,7 +2418,7 @@
             this.PainelCancelar.Controls.Add(this.CodigoId);
             this.PainelCancelar.Controls.Add(this.label35);
             this.PainelCancelar.Controls.Add(this.BtnCancelar);
-            this.PainelCancelar.Controls.Add(this.button1);
+            this.PainelCancelar.Controls.Add(this.BtnCancelarAtualizar);
             this.PainelCancelar.Controls.Add(this.CObs);
             this.PainelCancelar.Controls.Add(this.label51);
             this.PainelCancelar.Controls.Add(this.label57);
@@ -2520,19 +2521,19 @@
             this.BtnCancelar.UseVisualStyleBackColor = false;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
-            // button1
+            // BtnCancelarAtualizar
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(124)))), ((int)(((byte)(185)))));
-            this.button1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(921, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(111, 36);
-            this.button1.TabIndex = 38;
-            this.button1.Text = "Atualizar";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.BtnCancelarAtualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnCancelarAtualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(124)))), ((int)(((byte)(185)))));
+            this.BtnCancelarAtualizar.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCancelarAtualizar.ForeColor = System.Drawing.Color.White;
+            this.BtnCancelarAtualizar.Location = new System.Drawing.Point(921, 3);
+            this.BtnCancelarAtualizar.Name = "BtnCancelarAtualizar";
+            this.BtnCancelarAtualizar.Size = new System.Drawing.Size(111, 36);
+            this.BtnCancelarAtualizar.TabIndex = 38;
+            this.BtnCancelarAtualizar.Text = "Atualizar";
+            this.BtnCancelarAtualizar.UseVisualStyleBackColor = false;
+            this.BtnCancelarAtualizar.Click += new System.EventHandler(this.button1_Click);
             // 
             // CObs
             // 
@@ -3202,7 +3203,7 @@
         private System.Windows.Forms.Label Detalhes;
         private System.Windows.Forms.TabPage Cancelar;
         private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button BtnCancelarAtualizar;
         private System.Windows.Forms.DataGridView ListaCancelar;
         private System.Windows.Forms.TextBox DataInicio;
         private System.Windows.Forms.Label label36;
@@ -3310,7 +3311,7 @@
         private System.Windows.Forms.Label CodigoPacienteReagendamento;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Label label83;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button EntrarReagendamentos;
         private System.Windows.Forms.ComboBox unidadesReagenda;
         private System.Windows.Forms.Label Status;
         private System.Windows.Forms.Button CancelarReagendamento;
