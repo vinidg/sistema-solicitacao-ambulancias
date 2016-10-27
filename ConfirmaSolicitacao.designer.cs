@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConfirmaSolicitacao));
             this.AbasControle = new System.Windows.Forms.TabControl();
-            this.Aba1 = new System.Windows.Forms.TabPage();
-            this.Reagendamentos = new System.Windows.Forms.Button();
+            this.StatusAmbulancias = new System.Windows.Forms.TabPage();
+            this.Detalhes = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label33 = new System.Windows.Forms.Label();
             this.solAgendadasPendentes = new System.Windows.Forms.Label();
@@ -53,7 +53,7 @@
             this.listaUsb = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.listaUsa = new System.Windows.Forms.DataGridView();
-            this.Aba2 = new System.Windows.Forms.TabPage();
+            this.NovaSolicitacao = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label34 = new System.Windows.Forms.Label();
@@ -101,8 +101,9 @@
             this.BtnAvancada = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.BtnBasica = new System.Windows.Forms.Button();
-            this.Aba3 = new System.Windows.Forms.TabPage();
+            this.TodasSolicitacoes = new System.Windows.Forms.TabPage();
             this.PainelSolicitacoes = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.hoje = new System.Windows.Forms.RadioButton();
             this.ano1 = new System.Windows.Forms.RadioButton();
@@ -114,7 +115,10 @@
             this.Ontem = new System.Windows.Forms.RadioButton();
             this.Lista = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
+            this.Status = new System.Windows.Forms.Label();
+            this.NomePacienteLabel = new System.Windows.Forms.Label();
+            this.IdPacienteLabel = new System.Windows.Forms.Label();
+            this.label59 = new System.Windows.Forms.Label();
             this.txtHora6 = new System.Windows.Forms.TextBox();
             this.txtHora5 = new System.Windows.Forms.TextBox();
             this.txtHora4 = new System.Windows.Forms.TextBox();
@@ -135,8 +139,118 @@
             this.label29 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.ReagendamentosTab = new System.Windows.Forms.TabPage();
+            this.painelReagendamento = new System.Windows.Forms.Panel();
+            this.CancelarReagendamento = new System.Windows.Forms.Button();
+            this.CodigoPacienteReagendamento = new System.Windows.Forms.Label();
+            this.destinoReagendamentos = new System.Windows.Forms.TextBox();
+            this.origemReagendamentos = new System.Windows.Forms.TextBox();
+            this.dtHrReagendamento = new System.Windows.Forms.Label();
+            this.label60 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.RespostaDoControle = new System.Windows.Forms.RadioButton();
+            this.ListaAgendados = new System.Windows.Forms.DataGridView();
+            this.RespostasNegadas = new System.Windows.Forms.RadioButton();
+            this.Calendario = new System.Windows.Forms.MonthCalendar();
+            this.TodosReagendamentos = new System.Windows.Forms.Button();
+            this.BtnReagendar = new System.Windows.Forms.Button();
+            this.dataAberturaReagendamentos = new System.Windows.Forms.TextBox();
+            this.label61 = new System.Windows.Forms.Label();
+            this.label62 = new System.Windows.Forms.Label();
+            this.prioridadeReagendamentos = new System.Windows.Forms.TextBox();
+            this.motivoReagendamentos = new System.Windows.Forms.TextBox();
+            this.tipoMotivoReagendamentos = new System.Windows.Forms.TextBox();
+            this.localReagendamentos = new System.Windows.Forms.TextBox();
+            this.label63 = new System.Windows.Forms.Label();
+            this.label64 = new System.Windows.Forms.Label();
+            this.TipoAmbulanciaReagendamentos = new System.Windows.Forms.TextBox();
+            this.dataAgendamentoReagendamentos = new System.Windows.Forms.TextBox();
+            this.label65 = new System.Windows.Forms.Label();
+            this.ObsReagendamentos = new System.Windows.Forms.RichTextBox();
+            this.label66 = new System.Windows.Forms.Label();
+            this.EnderecoDestinoReagendamentos = new System.Windows.Forms.TextBox();
+            this.label67 = new System.Windows.Forms.Label();
+            this.EnderecoOrigemReagendamentos = new System.Windows.Forms.TextBox();
+            this.label68 = new System.Windows.Forms.Label();
+            this.label69 = new System.Windows.Forms.Label();
+            this.label70 = new System.Windows.Forms.Label();
+            this.label71 = new System.Windows.Forms.Label();
+            this.label72 = new System.Windows.Forms.Label();
+            this.label73 = new System.Windows.Forms.Label();
+            this.diagnosticosReagendamentos = new System.Windows.Forms.TextBox();
+            this.label74 = new System.Windows.Forms.Label();
+            this.idadeReagendamentos = new System.Windows.Forms.TextBox();
+            this.label75 = new System.Windows.Forms.Label();
+            this.label76 = new System.Windows.Forms.Label();
+            this.femininoReagendamentos = new System.Windows.Forms.RadioButton();
+            this.masculinoReagendamentos = new System.Windows.Forms.RadioButton();
+            this.pacienteReagendamentos = new System.Windows.Forms.TextBox();
+            this.label77 = new System.Windows.Forms.Label();
+            this.label78 = new System.Windows.Forms.Label();
+            this.telefoneReagendamentos = new System.Windows.Forms.TextBox();
+            this.solicitanteReagendamentos = new System.Windows.Forms.TextBox();
+            this.label79 = new System.Windows.Forms.Label();
+            this.label80 = new System.Windows.Forms.Label();
+            this.label81 = new System.Windows.Forms.Label();
+            this.label82 = new System.Windows.Forms.Label();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.label83 = new System.Windows.Forms.Label();
+            this.EntrarReagendamentos = new System.Windows.Forms.Button();
+            this.unidadesReagenda = new System.Windows.Forms.ComboBox();
+            this.Cancelar = new System.Windows.Forms.TabPage();
+            this.PainelCancelar = new System.Windows.Forms.Panel();
+            this.ListaCancelar = new System.Windows.Forms.DataGridView();
+            this.CodigoId = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.BtnCancelar = new System.Windows.Forms.Button();
+            this.BtnCancelarAtualizar = new System.Windows.Forms.Button();
+            this.CObs = new System.Windows.Forms.RichTextBox();
+            this.label51 = new System.Windows.Forms.Label();
+            this.label57 = new System.Windows.Forms.Label();
+            this.label50 = new System.Windows.Forms.Label();
+            this.COrigem = new System.Windows.Forms.TextBox();
+            this.label49 = new System.Windows.Forms.Label();
+            this.CDestino = new System.Windows.Forms.TextBox();
+            this.label48 = new System.Windows.Forms.Label();
+            this.CEnderecoDestino = new System.Windows.Forms.TextBox();
+            this.NomeSolicitante = new System.Windows.Forms.TextBox();
+            this.label52 = new System.Windows.Forms.Label();
+            this.Telefone = new System.Windows.Forms.TextBox();
+            this.CEnderecoOrigem = new System.Windows.Forms.TextBox();
+            this.label47 = new System.Windows.Forms.Label();
+            this.label53 = new System.Windows.Forms.Label();
+            this.label46 = new System.Windows.Forms.Label();
+            this.label54 = new System.Windows.Forms.Label();
+            this.NomePaciente = new System.Windows.Forms.TextBox();
+            this.label55 = new System.Windows.Forms.Label();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.label56 = new System.Windows.Forms.Label();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.DataInicio = new System.Windows.Forms.TextBox();
+            this.label45 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label44 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.Idade = new System.Windows.Forms.TextBox();
+            this.PrioridadeCancelar = new System.Windows.Forms.TextBox();
+            this.label43 = new System.Windows.Forms.Label();
+            this.MotivoChamado = new System.Windows.Forms.TextBox();
+            this.Diagnostico = new System.Windows.Forms.TextBox();
+            this.TipoMotivoSelecionado = new System.Windows.Forms.TextBox();
+            this.label42 = new System.Windows.Forms.Label();
+            this.LocalSolicitacao = new System.Windows.Forms.TextBox();
+            this.label41 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
+            this.DataHrAgendamento = new System.Windows.Forms.TextBox();
+            this.Tipo = new System.Windows.Forms.TextBox();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.label58 = new System.Windows.Forms.Label();
+            this.EntrarCancelar = new System.Windows.Forms.Button();
+            this.SelecionarUnidade = new System.Windows.Forms.ComboBox();
             this.AbasControle.SuspendLayout();
-            this.Aba1.SuspendLayout();
+            this.StatusAmbulancias.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -145,15 +259,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.listaUsb)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaUsa)).BeginInit();
-            this.Aba2.SuspendLayout();
+            this.NovaSolicitacao.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel8.SuspendLayout();
-            this.Aba3.SuspendLayout();
+            this.TodasSolicitacoes.SuspendLayout();
             this.PainelSolicitacoes.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Lista)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.ReagendamentosTab.SuspendLayout();
+            this.painelReagendamento.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ListaAgendados)).BeginInit();
+            this.panel11.SuspendLayout();
+            this.Cancelar.SuspendLayout();
+            this.PainelCancelar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ListaCancelar)).BeginInit();
+            this.panel9.SuspendLayout();
             this.SuspendLayout();
             // 
             // AbasControle
@@ -161,49 +284,48 @@
             this.AbasControle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.AbasControle.Controls.Add(this.Aba1);
-            this.AbasControle.Controls.Add(this.Aba2);
-            this.AbasControle.Controls.Add(this.Aba3);
+            this.AbasControle.Controls.Add(this.StatusAmbulancias);
+            this.AbasControle.Controls.Add(this.NovaSolicitacao);
+            this.AbasControle.Controls.Add(this.TodasSolicitacoes);
+            this.AbasControle.Controls.Add(this.ReagendamentosTab);
+            this.AbasControle.Controls.Add(this.Cancelar);
             this.AbasControle.Location = new System.Drawing.Point(3, 4);
             this.AbasControle.Multiline = true;
             this.AbasControle.Name = "AbasControle";
             this.AbasControle.SelectedIndex = 0;
             this.AbasControle.Size = new System.Drawing.Size(1049, 694);
             this.AbasControle.TabIndex = 44;
+            this.AbasControle.SelectedIndexChanged += new System.EventHandler(this.AbasControle_SelectedIndexChanged);
             // 
-            // Aba1
+            // StatusAmbulancias
             // 
-            this.Aba1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(252)))), ((int)(((byte)(194)))));
-            this.Aba1.Controls.Add(this.Reagendamentos);
-            this.Aba1.Controls.Add(this.panel7);
-            this.Aba1.Controls.Add(this.panel6);
-            this.Aba1.Controls.Add(this.panel5);
-            this.Aba1.Controls.Add(this.label28);
-            this.Aba1.Controls.Add(this.label27);
-            this.Aba1.Controls.Add(this.label26);
-            this.Aba1.Controls.Add(this.AtualizarBtn);
-            this.Aba1.Controls.Add(this.panel2);
-            this.Aba1.Controls.Add(this.groupBox2);
-            this.Aba1.Controls.Add(this.groupBox1);
-            this.Aba1.Location = new System.Drawing.Point(4, 22);
-            this.Aba1.Name = "Aba1";
-            this.Aba1.Padding = new System.Windows.Forms.Padding(3);
-            this.Aba1.Size = new System.Drawing.Size(1041, 668);
-            this.Aba1.TabIndex = 0;
-            this.Aba1.Text = "Status da Ambulancias";
+            this.StatusAmbulancias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(252)))), ((int)(((byte)(194)))));
+            this.StatusAmbulancias.Controls.Add(this.Detalhes);
+            this.StatusAmbulancias.Controls.Add(this.panel7);
+            this.StatusAmbulancias.Controls.Add(this.panel6);
+            this.StatusAmbulancias.Controls.Add(this.panel5);
+            this.StatusAmbulancias.Controls.Add(this.label28);
+            this.StatusAmbulancias.Controls.Add(this.label27);
+            this.StatusAmbulancias.Controls.Add(this.label26);
+            this.StatusAmbulancias.Controls.Add(this.AtualizarBtn);
+            this.StatusAmbulancias.Controls.Add(this.panel2);
+            this.StatusAmbulancias.Controls.Add(this.groupBox2);
+            this.StatusAmbulancias.Controls.Add(this.groupBox1);
+            this.StatusAmbulancias.Location = new System.Drawing.Point(4, 22);
+            this.StatusAmbulancias.Name = "StatusAmbulancias";
+            this.StatusAmbulancias.Padding = new System.Windows.Forms.Padding(3);
+            this.StatusAmbulancias.Size = new System.Drawing.Size(1041, 668);
+            this.StatusAmbulancias.TabIndex = 0;
+            this.StatusAmbulancias.Text = "Status da Ambulancias";
             // 
-            // Reagendamentos
+            // Detalhes
             // 
-            this.Reagendamentos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(173)))), ((int)(((byte)(168)))));
-            this.Reagendamentos.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Reagendamentos.ForeColor = System.Drawing.Color.White;
-            this.Reagendamentos.Location = new System.Drawing.Point(16, 119);
-            this.Reagendamentos.Name = "Reagendamentos";
-            this.Reagendamentos.Size = new System.Drawing.Size(149, 36);
-            this.Reagendamentos.TabIndex = 44;
-            this.Reagendamentos.Text = "REAGENDAMENTOS";
-            this.Reagendamentos.UseVisualStyleBackColor = false;
-            this.Reagendamentos.Click += new System.EventHandler(this.Reagendamentos_Click);
+            this.Detalhes.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.Detalhes.Location = new System.Drawing.Point(826, 45);
+            this.Detalhes.Name = "Detalhes";
+            this.Detalhes.Size = new System.Drawing.Size(174, 68);
+            this.Detalhes.TabIndex = 45;
+            this.Detalhes.Text = "label35";
             // 
             // panel7
             // 
@@ -211,10 +333,12 @@
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(244)))), ((int)(((byte)(231)))));
             this.panel7.Controls.Add(this.label33);
             this.panel7.Controls.Add(this.solAgendadasPendentes);
-            this.panel7.Location = new System.Drawing.Point(601, 41);
+            this.panel7.Location = new System.Drawing.Point(572, 41);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(248, 72);
             this.panel7.TabIndex = 43;
+            this.panel7.MouseEnter += new System.EventHandler(this.panel7_MouseEnter);
+            this.panel7.MouseLeave += new System.EventHandler(this.panel7_MouseLeave);
             // 
             // label33
             // 
@@ -227,6 +351,8 @@
             this.label33.TabIndex = 40;
             this.label33.Text = "SOLICITAÇÕES REAGENDADAS PENDENTES:";
             this.label33.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label33.MouseEnter += new System.EventHandler(this.label33_MouseEnter);
+            this.label33.MouseLeave += new System.EventHandler(this.label33_MouseLeave);
             // 
             // solAgendadasPendentes
             // 
@@ -238,6 +364,8 @@
             this.solAgendadasPendentes.Size = new System.Drawing.Size(32, 16);
             this.solAgendadasPendentes.TabIndex = 44;
             this.solAgendadasPendentes.Text = "123";
+            this.solAgendadasPendentes.MouseEnter += new System.EventHandler(this.solAgendadasPendentes_MouseEnter);
+            this.solAgendadasPendentes.MouseLeave += new System.EventHandler(this.solAgendadasPendentes_MouseLeave);
             // 
             // panel6
             // 
@@ -245,7 +373,7 @@
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(244)))), ((int)(((byte)(231)))));
             this.panel6.Controls.Add(this.solAgendadasHoje);
             this.panel6.Controls.Add(this.label21);
-            this.panel6.Location = new System.Drawing.Point(402, 41);
+            this.panel6.Location = new System.Drawing.Point(373, 41);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(181, 72);
             this.panel6.TabIndex = 43;
@@ -279,7 +407,7 @@
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(244)))), ((int)(((byte)(231)))));
             this.panel5.Controls.Add(this.label22);
             this.panel5.Controls.Add(this.solPendentes);
-            this.panel5.Location = new System.Drawing.Point(213, 41);
+            this.panel5.Location = new System.Drawing.Point(184, 41);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(166, 72);
             this.panel5.TabIndex = 42;
@@ -374,7 +502,7 @@
             this.label23.BackColor = System.Drawing.Color.Green;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ForeColor = System.Drawing.Color.White;
-            this.label23.Location = new System.Drawing.Point(524, 5);
+            this.label23.Location = new System.Drawing.Point(464, 5);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(82, 16);
             this.label23.TabIndex = 22;
@@ -386,7 +514,7 @@
             this.label24.BackColor = System.Drawing.Color.DarkBlue;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.ForeColor = System.Drawing.Color.White;
-            this.label24.Location = new System.Drawing.Point(665, 5);
+            this.label24.Location = new System.Drawing.Point(605, 5);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(84, 16);
             this.label24.TabIndex = 23;
@@ -398,7 +526,7 @@
             this.label25.BackColor = System.Drawing.Color.Red;
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label25.ForeColor = System.Drawing.Color.White;
-            this.label25.Location = new System.Drawing.Point(391, 5);
+            this.label25.Location = new System.Drawing.Point(331, 5);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(71, 16);
             this.label25.TabIndex = 21;
@@ -466,16 +594,16 @@
             this.listaUsa.TabIndex = 0;
             this.listaUsa.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.listaUsa_CellFormatting);
             // 
-            // Aba2
+            // NovaSolicitacao
             // 
-            this.Aba2.Controls.Add(this.panel1);
-            this.Aba2.Location = new System.Drawing.Point(4, 22);
-            this.Aba2.Name = "Aba2";
-            this.Aba2.Padding = new System.Windows.Forms.Padding(3);
-            this.Aba2.Size = new System.Drawing.Size(1041, 668);
-            this.Aba2.TabIndex = 1;
-            this.Aba2.Text = "Nova Solicitação";
-            this.Aba2.UseVisualStyleBackColor = true;
+            this.NovaSolicitacao.Controls.Add(this.panel1);
+            this.NovaSolicitacao.Location = new System.Drawing.Point(4, 22);
+            this.NovaSolicitacao.Name = "NovaSolicitacao";
+            this.NovaSolicitacao.Padding = new System.Windows.Forms.Padding(3);
+            this.NovaSolicitacao.Size = new System.Drawing.Size(1041, 668);
+            this.NovaSolicitacao.TabIndex = 1;
+            this.NovaSolicitacao.Text = "Nova Solicitação";
+            this.NovaSolicitacao.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -552,14 +680,14 @@
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(379, 62);
             this.label34.TabIndex = 0;
-            this.label34.Text = "Falhas e bugs ligar para o numero: 4125-1300/4125-3599 e falar com o Vinicius";
+            this.label34.Text = "Falhas e bugs ligar para o numero: 2630-6167 e falar com o Vinicius";
             this.label34.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dataAgendamento
             // 
             this.dataAgendamento.CustomFormat = "dd/MM/yyyy HH:mm";
             this.dataAgendamento.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dataAgendamento.Location = new System.Drawing.Point(285, 140);
+            this.dataAgendamento.Location = new System.Drawing.Point(284, 157);
             this.dataAgendamento.Name = "dataAgendamento";
             this.dataAgendamento.Size = new System.Drawing.Size(200, 20);
             this.dataAgendamento.TabIndex = 48;
@@ -582,6 +710,7 @@
             this.Prioridade.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Prioridade.FormattingEnabled = true;
             this.Prioridade.Items.AddRange(new object[] {
+            "SEM PRIORIDADE",
             "P0 PRIORIDADE ABSOLUTA RESOLVER EM IMEDIATO",
             "P1 PRIORIDADE ALTA RESOLVER EM 2 HORAS",
             "P2 PRIORIDADE MODERADA RESOLVER EM 12 HORAS",
@@ -627,6 +756,7 @@
             this.Obs.Size = new System.Drawing.Size(399, 109);
             this.Obs.TabIndex = 40;
             this.Obs.Text = "";
+            this.Obs.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Obs_KeyPress);
             // 
             // label20
             // 
@@ -642,6 +772,7 @@
             // txtEnderecoDestino
             // 
             this.txtEnderecoDestino.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.txtEnderecoDestino.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtEnderecoDestino.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEnderecoDestino.Location = new System.Drawing.Point(853, 265);
             this.txtEnderecoDestino.Name = "txtEnderecoDestino";
@@ -662,6 +793,7 @@
             // txtEnderecoOrigem
             // 
             this.txtEnderecoOrigem.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.txtEnderecoOrigem.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtEnderecoOrigem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEnderecoOrigem.Location = new System.Drawing.Point(852, 218);
             this.txtEnderecoOrigem.Name = "txtEnderecoOrigem";
@@ -792,7 +924,8 @@
             "RETORNO",
             "SALA VERMELHA/EMERGÊNCIA",
             "TRANSPORTE DE INSUMOS/PRODUTOS/MATERIAIS",
-            "TRANSPORTE DE PROFISSIONAIS"});
+            "TRANSPORTE DE PROFISSIONAIS",
+            "TRANSFERENCIA"});
             this.CbMotivoChamado.Location = new System.Drawing.Point(29, 462);
             this.CbMotivoChamado.Name = "CbMotivoChamado";
             this.CbMotivoChamado.Size = new System.Drawing.Size(243, 23);
@@ -802,6 +935,7 @@
             // txtDiagnostico
             // 
             this.txtDiagnostico.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtDiagnostico.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDiagnostico.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDiagnostico.Location = new System.Drawing.Point(27, 409);
             this.txtDiagnostico.Name = "txtDiagnostico";
@@ -880,11 +1014,13 @@
             this.txtNomePaciente.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtNomePaciente.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtNomePaciente.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtNomePaciente.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNomePaciente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNomePaciente.Location = new System.Drawing.Point(27, 356);
             this.txtNomePaciente.Name = "txtNomePaciente";
             this.txtNomePaciente.Size = new System.Drawing.Size(265, 21);
             this.txtNomePaciente.TabIndex = 17;
+            this.txtNomePaciente.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtNomePaciente_KeyUp);
             // 
             // label9
             // 
@@ -953,6 +1089,7 @@
             // txtNomeSolicitante
             // 
             this.txtNomeSolicitante.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtNomeSolicitante.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNomeSolicitante.Location = new System.Drawing.Point(27, 260);
             this.txtNomeSolicitante.Name = "txtNomeSolicitante";
             this.txtNomeSolicitante.Size = new System.Drawing.Size(141, 20);
@@ -985,7 +1122,7 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(91, 140);
+            this.label3.Location = new System.Drawing.Point(90, 157);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(190, 18);
             this.label3.TabIndex = 6;
@@ -997,7 +1134,7 @@
             this.Btnagendasim.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(173)))), ((int)(((byte)(168)))));
             this.Btnagendasim.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btnagendasim.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(252)))), ((int)(((byte)(194)))));
-            this.Btnagendasim.Location = new System.Drawing.Point(494, 103);
+            this.Btnagendasim.Location = new System.Drawing.Point(494, 107);
             this.Btnagendasim.Name = "Btnagendasim";
             this.Btnagendasim.Size = new System.Drawing.Size(82, 23);
             this.Btnagendasim.TabIndex = 5;
@@ -1011,7 +1148,7 @@
             this.Btnagendanao.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(173)))), ((int)(((byte)(168)))));
             this.Btnagendanao.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btnagendanao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(252)))), ((int)(((byte)(194)))));
-            this.Btnagendanao.Location = new System.Drawing.Point(413, 103);
+            this.Btnagendanao.Location = new System.Drawing.Point(413, 107);
             this.Btnagendanao.Name = "Btnagendanao";
             this.Btnagendanao.Size = new System.Drawing.Size(75, 23);
             this.Btnagendanao.TabIndex = 4;
@@ -1024,7 +1161,7 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(26, 104);
+            this.label2.Location = new System.Drawing.Point(26, 108);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(376, 18);
             this.label2.TabIndex = 3;
@@ -1069,31 +1206,45 @@
             this.BtnBasica.UseVisualStyleBackColor = false;
             this.BtnBasica.Click += new System.EventHandler(this.BtnBasica_Click_1);
             // 
-            // Aba3
+            // TodasSolicitacoes
             // 
-            this.Aba3.Controls.Add(this.PainelSolicitacoes);
-            this.Aba3.Controls.Add(this.panel4);
-            this.Aba3.Location = new System.Drawing.Point(4, 22);
-            this.Aba3.Name = "Aba3";
-            this.Aba3.Padding = new System.Windows.Forms.Padding(3);
-            this.Aba3.Size = new System.Drawing.Size(1041, 668);
-            this.Aba3.TabIndex = 2;
-            this.Aba3.Text = "Solicitações Realizadas";
-            this.Aba3.UseVisualStyleBackColor = true;
+            this.TodasSolicitacoes.Controls.Add(this.PainelSolicitacoes);
+            this.TodasSolicitacoes.Controls.Add(this.panel4);
+            this.TodasSolicitacoes.Location = new System.Drawing.Point(4, 22);
+            this.TodasSolicitacoes.Name = "TodasSolicitacoes";
+            this.TodasSolicitacoes.Padding = new System.Windows.Forms.Padding(3);
+            this.TodasSolicitacoes.Size = new System.Drawing.Size(1041, 668);
+            this.TodasSolicitacoes.TabIndex = 2;
+            this.TodasSolicitacoes.Text = "Todas Solicitações";
+            this.TodasSolicitacoes.UseVisualStyleBackColor = true;
             // 
             // PainelSolicitacoes
             // 
             this.PainelSolicitacoes.AutoScroll = true;
+            this.PainelSolicitacoes.Controls.Add(this.button3);
             this.PainelSolicitacoes.Controls.Add(this.groupBox3);
             this.PainelSolicitacoes.Controls.Add(this.Lista);
             this.PainelSolicitacoes.Controls.Add(this.panel3);
             this.PainelSolicitacoes.Controls.Add(this.label30);
-            this.PainelSolicitacoes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PainelSolicitacoes.Location = new System.Drawing.Point(3, 3);
             this.PainelSolicitacoes.Name = "PainelSolicitacoes";
             this.PainelSolicitacoes.Size = new System.Drawing.Size(1035, 662);
             this.PainelSolicitacoes.TabIndex = 4;
             this.PainelSolicitacoes.Visible = false;
+            // 
+            // button3
+            // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(124)))), ((int)(((byte)(185)))));
+            this.button3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Location = new System.Drawing.Point(921, 2);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(111, 36);
+            this.button3.TabIndex = 37;
+            this.button3.Text = "Atualizar";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // groupBox3
             // 
@@ -1223,15 +1374,19 @@
             this.Lista.ReadOnly = true;
             this.Lista.RowHeadersVisible = false;
             this.Lista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Lista.Size = new System.Drawing.Size(1018, 380);
+            this.Lista.Size = new System.Drawing.Size(1018, 354);
             this.Lista.TabIndex = 5;
-            this.Lista.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Lista_CellContentDoubleClick);
+            this.Lista.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Lista_CellContentClick);
+            this.Lista.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.Lista_CellFormatting);
             // 
             // panel3
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.Controls.Add(this.button3);
+            this.panel3.Controls.Add(this.Status);
+            this.panel3.Controls.Add(this.NomePacienteLabel);
+            this.panel3.Controls.Add(this.IdPacienteLabel);
+            this.panel3.Controls.Add(this.label59);
             this.panel3.Controls.Add(this.txtHora6);
             this.panel3.Controls.Add(this.txtHora5);
             this.panel3.Controls.Add(this.txtHora4);
@@ -1247,30 +1402,59 @@
             this.panel3.Controls.Add(this.lbDestino);
             this.panel3.Controls.Add(this.label32);
             this.panel3.Controls.Add(this.lbOrigem);
-            this.panel3.Location = new System.Drawing.Point(8, 479);
+            this.panel3.Location = new System.Drawing.Point(8, 453);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1021, 180);
+            this.panel3.Size = new System.Drawing.Size(1021, 206);
             this.panel3.TabIndex = 2;
             // 
-            // button3
+            // Status
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(173)))), ((int)(((byte)(168)))));
-            this.button3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(907, 141);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(111, 36);
-            this.button3.TabIndex = 37;
-            this.button3.Text = "Atualizar";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.Status.AutoSize = true;
+            this.Status.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Status.Location = new System.Drawing.Point(874, 17);
+            this.Status.Name = "Status";
+            this.Status.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.Status.Size = new System.Drawing.Size(41, 16);
+            this.Status.TabIndex = 38;
+            this.Status.Text = "Vaga";
+            // 
+            // NomePacienteLabel
+            // 
+            this.NomePacienteLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.NomePacienteLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NomePacienteLabel.Location = new System.Drawing.Point(276, 15);
+            this.NomePacienteLabel.Name = "NomePacienteLabel";
+            this.NomePacienteLabel.Size = new System.Drawing.Size(478, 18);
+            this.NomePacienteLabel.TabIndex = 37;
+            this.NomePacienteLabel.Text = "Paciente";
+            this.NomePacienteLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // IdPacienteLabel
+            // 
+            this.IdPacienteLabel.AutoSize = true;
+            this.IdPacienteLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IdPacienteLabel.Location = new System.Drawing.Point(44, 17);
+            this.IdPacienteLabel.Name = "IdPacienteLabel";
+            this.IdPacienteLabel.Size = new System.Drawing.Size(21, 16);
+            this.IdPacienteLabel.TabIndex = 36;
+            this.IdPacienteLabel.Text = "ID";
+            // 
+            // label59
+            // 
+            this.label59.AutoSize = true;
+            this.label59.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label59.Location = new System.Drawing.Point(15, 17);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(23, 16);
+            this.label59.TabIndex = 35;
+            this.label59.Text = "ID";
+            this.label59.Click += new System.EventHandler(this.label59_Click);
             // 
             // txtHora6
             // 
             this.txtHora6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtHora6.Enabled = false;
-            this.txtHora6.Location = new System.Drawing.Point(810, 119);
+            this.txtHora6.Location = new System.Drawing.Point(810, 170);
             this.txtHora6.Name = "txtHora6";
             this.txtHora6.Size = new System.Drawing.Size(142, 20);
             this.txtHora6.TabIndex = 34;
@@ -1279,7 +1463,7 @@
             // 
             this.txtHora5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtHora5.Enabled = false;
-            this.txtHora5.Location = new System.Drawing.Point(661, 119);
+            this.txtHora5.Location = new System.Drawing.Point(661, 170);
             this.txtHora5.Name = "txtHora5";
             this.txtHora5.Size = new System.Drawing.Size(142, 20);
             this.txtHora5.TabIndex = 33;
@@ -1288,7 +1472,7 @@
             // 
             this.txtHora4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtHora4.Enabled = false;
-            this.txtHora4.Location = new System.Drawing.Point(512, 119);
+            this.txtHora4.Location = new System.Drawing.Point(512, 170);
             this.txtHora4.Name = "txtHora4";
             this.txtHora4.Size = new System.Drawing.Size(142, 20);
             this.txtHora4.TabIndex = 32;
@@ -1297,7 +1481,7 @@
             // 
             this.txtHora3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtHora3.Enabled = false;
-            this.txtHora3.Location = new System.Drawing.Point(363, 119);
+            this.txtHora3.Location = new System.Drawing.Point(363, 170);
             this.txtHora3.Name = "txtHora3";
             this.txtHora3.Size = new System.Drawing.Size(142, 20);
             this.txtHora3.TabIndex = 31;
@@ -1306,7 +1490,7 @@
             // 
             this.txtHora2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtHora2.Enabled = false;
-            this.txtHora2.Location = new System.Drawing.Point(214, 119);
+            this.txtHora2.Location = new System.Drawing.Point(214, 170);
             this.txtHora2.Name = "txtHora2";
             this.txtHora2.Size = new System.Drawing.Size(142, 20);
             this.txtHora2.TabIndex = 30;
@@ -1315,7 +1499,7 @@
             // 
             this.txtHora.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtHora.Enabled = false;
-            this.txtHora.Location = new System.Drawing.Point(65, 117);
+            this.txtHora.Location = new System.Drawing.Point(65, 168);
             this.txtHora.Name = "txtHora";
             this.txtHora.Size = new System.Drawing.Size(142, 20);
             this.txtHora.TabIndex = 29;
@@ -1326,7 +1510,7 @@
             this.BtnOrigem.BackColor = System.Drawing.Color.LightSkyBlue;
             this.BtnOrigem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnOrigem.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.BtnOrigem.Location = new System.Drawing.Point(213, 45);
+            this.BtnOrigem.Location = new System.Drawing.Point(213, 96);
             this.BtnOrigem.Name = "BtnOrigem";
             this.BtnOrigem.Size = new System.Drawing.Size(143, 68);
             this.BtnOrigem.TabIndex = 24;
@@ -1339,7 +1523,7 @@
             this.BtnPatio.BackColor = System.Drawing.Color.LightSkyBlue;
             this.BtnPatio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnPatio.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.BtnPatio.Location = new System.Drawing.Point(809, 45);
+            this.BtnPatio.Location = new System.Drawing.Point(809, 96);
             this.BtnPatio.Name = "BtnPatio";
             this.BtnPatio.Size = new System.Drawing.Size(143, 68);
             this.BtnPatio.TabIndex = 28;
@@ -1352,7 +1536,7 @@
             this.EquipeLiberada.BackColor = System.Drawing.Color.LightSkyBlue;
             this.EquipeLiberada.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EquipeLiberada.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.EquipeLiberada.Location = new System.Drawing.Point(660, 45);
+            this.EquipeLiberada.Location = new System.Drawing.Point(660, 96);
             this.EquipeLiberada.Name = "EquipeLiberada";
             this.EquipeLiberada.Size = new System.Drawing.Size(143, 68);
             this.EquipeLiberada.TabIndex = 27;
@@ -1365,7 +1549,7 @@
             this.BtnEquipeDestino.BackColor = System.Drawing.Color.LightSkyBlue;
             this.BtnEquipeDestino.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnEquipeDestino.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.BtnEquipeDestino.Location = new System.Drawing.Point(511, 45);
+            this.BtnEquipeDestino.Location = new System.Drawing.Point(511, 96);
             this.BtnEquipeDestino.Name = "BtnEquipeDestino";
             this.BtnEquipeDestino.Size = new System.Drawing.Size(143, 68);
             this.BtnEquipeDestino.TabIndex = 26;
@@ -1378,7 +1562,7 @@
             this.BtnSaiuOrigem.BackColor = System.Drawing.Color.LightSkyBlue;
             this.BtnSaiuOrigem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnSaiuOrigem.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.BtnSaiuOrigem.Location = new System.Drawing.Point(362, 45);
+            this.BtnSaiuOrigem.Location = new System.Drawing.Point(362, 96);
             this.BtnSaiuOrigem.Name = "BtnSaiuOrigem";
             this.BtnSaiuOrigem.Size = new System.Drawing.Size(143, 68);
             this.BtnSaiuOrigem.TabIndex = 25;
@@ -1391,7 +1575,7 @@
             this.BtnEquipeCiente.BackColor = System.Drawing.Color.LightSkyBlue;
             this.BtnEquipeCiente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnEquipeCiente.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.BtnEquipeCiente.Location = new System.Drawing.Point(65, 43);
+            this.BtnEquipeCiente.Location = new System.Drawing.Point(65, 94);
             this.BtnEquipeCiente.Name = "BtnEquipeCiente";
             this.BtnEquipeCiente.Size = new System.Drawing.Size(143, 68);
             this.BtnEquipeCiente.TabIndex = 23;
@@ -1402,7 +1586,7 @@
             // 
             this.lbDestino.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbDestino.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDestino.Location = new System.Drawing.Point(543, 9);
+            this.lbDestino.Location = new System.Drawing.Point(543, 60);
             this.lbDestino.Name = "lbDestino";
             this.lbDestino.Size = new System.Drawing.Size(474, 18);
             this.lbDestino.TabIndex = 2;
@@ -1414,7 +1598,7 @@
             this.label32.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label32.AutoSize = true;
             this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.Location = new System.Drawing.Point(486, 9);
+            this.label32.Location = new System.Drawing.Point(486, 60);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(51, 18);
             this.label32.TabIndex = 1;
@@ -1424,7 +1608,7 @@
             // 
             this.lbOrigem.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbOrigem.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbOrigem.Location = new System.Drawing.Point(2, 9);
+            this.lbOrigem.Location = new System.Drawing.Point(2, 60);
             this.lbOrigem.Name = "lbOrigem";
             this.lbOrigem.Size = new System.Drawing.Size(478, 18);
             this.lbOrigem.TabIndex = 0;
@@ -1448,7 +1632,7 @@
             this.panel4.Controls.Add(this.label29);
             this.panel4.Controls.Add(this.button2);
             this.panel4.Controls.Add(this.comboBox1);
-            this.panel4.Location = new System.Drawing.Point(432, 97);
+            this.panel4.Location = new System.Drawing.Point(428, 192);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(200, 206);
             this.panel4.TabIndex = 6;
@@ -1503,6 +1687,1353 @@
             this.comboBox1.Size = new System.Drawing.Size(167, 21);
             this.comboBox1.TabIndex = 5;
             // 
+            // ReagendamentosTab
+            // 
+            this.ReagendamentosTab.Controls.Add(this.painelReagendamento);
+            this.ReagendamentosTab.Controls.Add(this.panel11);
+            this.ReagendamentosTab.Location = new System.Drawing.Point(4, 22);
+            this.ReagendamentosTab.Name = "ReagendamentosTab";
+            this.ReagendamentosTab.Padding = new System.Windows.Forms.Padding(3);
+            this.ReagendamentosTab.Size = new System.Drawing.Size(1041, 668);
+            this.ReagendamentosTab.TabIndex = 4;
+            this.ReagendamentosTab.Text = "Reagendamentos";
+            this.ReagendamentosTab.UseVisualStyleBackColor = true;
+            // 
+            // painelReagendamento
+            // 
+            this.painelReagendamento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(252)))), ((int)(((byte)(194)))));
+            this.painelReagendamento.Controls.Add(this.CancelarReagendamento);
+            this.painelReagendamento.Controls.Add(this.CodigoPacienteReagendamento);
+            this.painelReagendamento.Controls.Add(this.destinoReagendamentos);
+            this.painelReagendamento.Controls.Add(this.origemReagendamentos);
+            this.painelReagendamento.Controls.Add(this.dtHrReagendamento);
+            this.painelReagendamento.Controls.Add(this.label60);
+            this.painelReagendamento.Controls.Add(this.groupBox4);
+            this.painelReagendamento.Controls.Add(this.TodosReagendamentos);
+            this.painelReagendamento.Controls.Add(this.BtnReagendar);
+            this.painelReagendamento.Controls.Add(this.dataAberturaReagendamentos);
+            this.painelReagendamento.Controls.Add(this.label61);
+            this.painelReagendamento.Controls.Add(this.label62);
+            this.painelReagendamento.Controls.Add(this.prioridadeReagendamentos);
+            this.painelReagendamento.Controls.Add(this.motivoReagendamentos);
+            this.painelReagendamento.Controls.Add(this.tipoMotivoReagendamentos);
+            this.painelReagendamento.Controls.Add(this.localReagendamentos);
+            this.painelReagendamento.Controls.Add(this.label63);
+            this.painelReagendamento.Controls.Add(this.label64);
+            this.painelReagendamento.Controls.Add(this.TipoAmbulanciaReagendamentos);
+            this.painelReagendamento.Controls.Add(this.dataAgendamentoReagendamentos);
+            this.painelReagendamento.Controls.Add(this.label65);
+            this.painelReagendamento.Controls.Add(this.ObsReagendamentos);
+            this.painelReagendamento.Controls.Add(this.label66);
+            this.painelReagendamento.Controls.Add(this.EnderecoDestinoReagendamentos);
+            this.painelReagendamento.Controls.Add(this.label67);
+            this.painelReagendamento.Controls.Add(this.EnderecoOrigemReagendamentos);
+            this.painelReagendamento.Controls.Add(this.label68);
+            this.painelReagendamento.Controls.Add(this.label69);
+            this.painelReagendamento.Controls.Add(this.label70);
+            this.painelReagendamento.Controls.Add(this.label71);
+            this.painelReagendamento.Controls.Add(this.label72);
+            this.painelReagendamento.Controls.Add(this.label73);
+            this.painelReagendamento.Controls.Add(this.diagnosticosReagendamentos);
+            this.painelReagendamento.Controls.Add(this.label74);
+            this.painelReagendamento.Controls.Add(this.idadeReagendamentos);
+            this.painelReagendamento.Controls.Add(this.label75);
+            this.painelReagendamento.Controls.Add(this.label76);
+            this.painelReagendamento.Controls.Add(this.femininoReagendamentos);
+            this.painelReagendamento.Controls.Add(this.masculinoReagendamentos);
+            this.painelReagendamento.Controls.Add(this.pacienteReagendamentos);
+            this.painelReagendamento.Controls.Add(this.label77);
+            this.painelReagendamento.Controls.Add(this.label78);
+            this.painelReagendamento.Controls.Add(this.telefoneReagendamentos);
+            this.painelReagendamento.Controls.Add(this.solicitanteReagendamentos);
+            this.painelReagendamento.Controls.Add(this.label79);
+            this.painelReagendamento.Controls.Add(this.label80);
+            this.painelReagendamento.Controls.Add(this.label81);
+            this.painelReagendamento.Controls.Add(this.label82);
+            this.painelReagendamento.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.painelReagendamento.Location = new System.Drawing.Point(3, 3);
+            this.painelReagendamento.Name = "painelReagendamento";
+            this.painelReagendamento.Size = new System.Drawing.Size(1035, 662);
+            this.painelReagendamento.TabIndex = 1;
+            this.painelReagendamento.Visible = false;
+            // 
+            // CancelarReagendamento
+            // 
+            this.CancelarReagendamento.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CancelarReagendamento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(95)))), ((int)(((byte)(95)))));
+            this.CancelarReagendamento.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CancelarReagendamento.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.CancelarReagendamento.Location = new System.Drawing.Point(597, 604);
+            this.CancelarReagendamento.Name = "CancelarReagendamento";
+            this.CancelarReagendamento.Size = new System.Drawing.Size(127, 46);
+            this.CancelarReagendamento.TabIndex = 139;
+            this.CancelarReagendamento.Text = "Cancelar";
+            this.CancelarReagendamento.UseVisualStyleBackColor = false;
+            this.CancelarReagendamento.Click += new System.EventHandler(this.CancelarReagendamento_Click);
+            // 
+            // CodigoPacienteReagendamento
+            // 
+            this.CodigoPacienteReagendamento.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.CodigoPacienteReagendamento.AutoSize = true;
+            this.CodigoPacienteReagendamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CodigoPacienteReagendamento.Location = new System.Drawing.Point(76, 227);
+            this.CodigoPacienteReagendamento.Name = "CodigoPacienteReagendamento";
+            this.CodigoPacienteReagendamento.Size = new System.Drawing.Size(22, 18);
+            this.CodigoPacienteReagendamento.TabIndex = 138;
+            this.CodigoPacienteReagendamento.Text = "ID";
+            // 
+            // destinoReagendamentos
+            // 
+            this.destinoReagendamentos.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.destinoReagendamentos.Enabled = false;
+            this.destinoReagendamentos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.destinoReagendamentos.Location = new System.Drawing.Point(597, 342);
+            this.destinoReagendamentos.Name = "destinoReagendamentos";
+            this.destinoReagendamentos.Size = new System.Drawing.Size(224, 21);
+            this.destinoReagendamentos.TabIndex = 104;
+            // 
+            // origemReagendamentos
+            // 
+            this.origemReagendamentos.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.origemReagendamentos.Enabled = false;
+            this.origemReagendamentos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.origemReagendamentos.Location = new System.Drawing.Point(597, 295);
+            this.origemReagendamentos.Name = "origemReagendamentos";
+            this.origemReagendamentos.Size = new System.Drawing.Size(223, 21);
+            this.origemReagendamentos.TabIndex = 103;
+            // 
+            // dtHrReagendamento
+            // 
+            this.dtHrReagendamento.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.dtHrReagendamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtHrReagendamento.ForeColor = System.Drawing.Color.Red;
+            this.dtHrReagendamento.Location = new System.Drawing.Point(790, 527);
+            this.dtHrReagendamento.Name = "dtHrReagendamento";
+            this.dtHrReagendamento.Size = new System.Drawing.Size(225, 16);
+            this.dtHrReagendamento.TabIndex = 102;
+            this.dtHrReagendamento.Text = "DataAgendamento";
+            this.dtHrReagendamento.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label60
+            // 
+            this.label60.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label60.AutoSize = true;
+            this.label60.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label60.Location = new System.Drawing.Point(594, 527);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(190, 16);
+            this.label60.TabIndex = 101;
+            this.label60.Text = "Proposta de Reagendamento:";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.RespostaDoControle);
+            this.groupBox4.Controls.Add(this.ListaAgendados);
+            this.groupBox4.Controls.Add(this.RespostasNegadas);
+            this.groupBox4.Controls.Add(this.Calendario);
+            this.groupBox4.Location = new System.Drawing.Point(3, 3);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(1029, 213);
+            this.groupBox4.TabIndex = 100;
+            this.groupBox4.TabStop = false;
+            // 
+            // RespostaDoControle
+            // 
+            this.RespostaDoControle.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.RespostaDoControle.AutoSize = true;
+            this.RespostaDoControle.Checked = true;
+            this.RespostaDoControle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RespostaDoControle.Location = new System.Drawing.Point(7, 10);
+            this.RespostaDoControle.Name = "RespostaDoControle";
+            this.RespostaDoControle.Size = new System.Drawing.Size(219, 24);
+            this.RespostaDoControle.TabIndex = 96;
+            this.RespostaDoControle.TabStop = true;
+            this.RespostaDoControle.Text = "Solicitações agendadas (0)";
+            this.RespostaDoControle.UseVisualStyleBackColor = true;
+            this.RespostaDoControle.Click += new System.EventHandler(this.Encaminhados_Click);
+            // 
+            // ListaAgendados
+            // 
+            this.ListaAgendados.AllowUserToAddRows = false;
+            this.ListaAgendados.AllowUserToDeleteRows = false;
+            this.ListaAgendados.AllowUserToResizeRows = false;
+            this.ListaAgendados.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.ListaAgendados.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(252)))), ((int)(((byte)(194)))));
+            this.ListaAgendados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ListaAgendados.Location = new System.Drawing.Point(6, 34);
+            this.ListaAgendados.MultiSelect = false;
+            this.ListaAgendados.Name = "ListaAgendados";
+            this.ListaAgendados.ReadOnly = true;
+            this.ListaAgendados.RowHeadersVisible = false;
+            this.ListaAgendados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.ListaAgendados.Size = new System.Drawing.Size(781, 162);
+            this.ListaAgendados.TabIndex = 1;
+            this.ListaAgendados.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListaAgendados_CellContentClick);
+            // 
+            // RespostasNegadas
+            // 
+            this.RespostasNegadas.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.RespostasNegadas.AutoSize = true;
+            this.RespostasNegadas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RespostasNegadas.Location = new System.Drawing.Point(594, 10);
+            this.RespostasNegadas.Name = "RespostasNegadas";
+            this.RespostasNegadas.Size = new System.Drawing.Size(193, 24);
+            this.RespostasNegadas.TabIndex = 95;
+            this.RespostasNegadas.Text = "Respostas negadas (0)";
+            this.RespostasNegadas.UseVisualStyleBackColor = true;
+            this.RespostasNegadas.Click += new System.EventHandler(this.Respondidos_Click);
+            // 
+            // Calendario
+            // 
+            this.Calendario.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.Calendario.Location = new System.Drawing.Point(799, 34);
+            this.Calendario.MaxSelectionCount = 32;
+            this.Calendario.Name = "Calendario";
+            this.Calendario.TabIndex = 0;
+            this.Calendario.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.Calendario_DateChanged);
+            // 
+            // TodosReagendamentos
+            // 
+            this.TodosReagendamentos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TodosReagendamentos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(124)))), ((int)(((byte)(102)))));
+            this.TodosReagendamentos.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.TodosReagendamentos.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.TodosReagendamentos.Location = new System.Drawing.Point(730, 604);
+            this.TodosReagendamentos.Name = "TodosReagendamentos";
+            this.TodosReagendamentos.Size = new System.Drawing.Size(141, 46);
+            this.TodosReagendamentos.TabIndex = 99;
+            this.TodosReagendamentos.Text = "Reagendamentos/Negativas";
+            this.TodosReagendamentos.UseVisualStyleBackColor = false;
+            this.TodosReagendamentos.Click += new System.EventHandler(this.TodosReagendamentos_Click);
+            // 
+            // BtnReagendar
+            // 
+            this.BtnReagendar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnReagendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(120)))), ((int)(((byte)(143)))));
+            this.BtnReagendar.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnReagendar.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.BtnReagendar.Location = new System.Drawing.Point(877, 604);
+            this.BtnReagendar.Name = "BtnReagendar";
+            this.BtnReagendar.Size = new System.Drawing.Size(152, 46);
+            this.BtnReagendar.TabIndex = 98;
+            this.BtnReagendar.Text = "Reagendar";
+            this.BtnReagendar.UseVisualStyleBackColor = false;
+            this.BtnReagendar.Visible = false;
+            this.BtnReagendar.Click += new System.EventHandler(this.BtnReagendar_Click);
+            // 
+            // dataAberturaReagendamentos
+            // 
+            this.dataAberturaReagendamentos.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.dataAberturaReagendamentos.Enabled = false;
+            this.dataAberturaReagendamentos.Location = new System.Drawing.Point(219, 277);
+            this.dataAberturaReagendamentos.Name = "dataAberturaReagendamentos";
+            this.dataAberturaReagendamentos.Size = new System.Drawing.Size(180, 20);
+            this.dataAberturaReagendamentos.TabIndex = 94;
+            // 
+            // label61
+            // 
+            this.label61.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label61.AutoSize = true;
+            this.label61.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label61.Location = new System.Drawing.Point(216, 257);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(110, 16);
+            this.label61.TabIndex = 93;
+            this.label61.Text = "Data de Abertura";
+            // 
+            // label62
+            // 
+            this.label62.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label62.AutoSize = true;
+            this.label62.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label62.Location = new System.Drawing.Point(46, 227);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(24, 18);
+            this.label62.TabIndex = 92;
+            this.label62.Text = "ID";
+            this.label62.Click += new System.EventHandler(this.label62_Click);
+            // 
+            // prioridadeReagendamentos
+            // 
+            this.prioridadeReagendamentos.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.prioridadeReagendamentos.Enabled = false;
+            this.prioridadeReagendamentos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.prioridadeReagendamentos.Location = new System.Drawing.Point(49, 610);
+            this.prioridadeReagendamentos.Name = "prioridadeReagendamentos";
+            this.prioridadeReagendamentos.Size = new System.Drawing.Size(252, 21);
+            this.prioridadeReagendamentos.TabIndex = 90;
+            // 
+            // motivoReagendamentos
+            // 
+            this.motivoReagendamentos.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.motivoReagendamentos.Enabled = false;
+            this.motivoReagendamentos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.motivoReagendamentos.Location = new System.Drawing.Point(49, 556);
+            this.motivoReagendamentos.Name = "motivoReagendamentos";
+            this.motivoReagendamentos.Size = new System.Drawing.Size(252, 21);
+            this.motivoReagendamentos.TabIndex = 89;
+            // 
+            // tipoMotivoReagendamentos
+            // 
+            this.tipoMotivoReagendamentos.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.tipoMotivoReagendamentos.Enabled = false;
+            this.tipoMotivoReagendamentos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tipoMotivoReagendamentos.Location = new System.Drawing.Point(307, 556);
+            this.tipoMotivoReagendamentos.Name = "tipoMotivoReagendamentos";
+            this.tipoMotivoReagendamentos.Size = new System.Drawing.Size(264, 21);
+            this.tipoMotivoReagendamentos.TabIndex = 88;
+            // 
+            // localReagendamentos
+            // 
+            this.localReagendamentos.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.localReagendamentos.Enabled = false;
+            this.localReagendamentos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.localReagendamentos.Location = new System.Drawing.Point(205, 361);
+            this.localReagendamentos.Name = "localReagendamentos";
+            this.localReagendamentos.Size = new System.Drawing.Size(233, 21);
+            this.localReagendamentos.TabIndex = 87;
+            // 
+            // label63
+            // 
+            this.label63.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label63.AutoSize = true;
+            this.label63.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label63.Location = new System.Drawing.Point(441, 342);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(65, 16);
+            this.label63.TabIndex = 84;
+            this.label63.Text = "Telefone:";
+            // 
+            // label64
+            // 
+            this.label64.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label64.AutoSize = true;
+            this.label64.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label64.Location = new System.Drawing.Point(202, 342);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(133, 16);
+            this.label64.TabIndex = 83;
+            this.label64.Text = "Local da Solicitação:";
+            // 
+            // TipoAmbulanciaReagendamentos
+            // 
+            this.TipoAmbulanciaReagendamentos.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.TipoAmbulanciaReagendamentos.Enabled = false;
+            this.TipoAmbulanciaReagendamentos.Location = new System.Drawing.Point(49, 277);
+            this.TipoAmbulanciaReagendamentos.Name = "TipoAmbulanciaReagendamentos";
+            this.TipoAmbulanciaReagendamentos.Size = new System.Drawing.Size(154, 20);
+            this.TipoAmbulanciaReagendamentos.TabIndex = 82;
+            // 
+            // dataAgendamentoReagendamentos
+            // 
+            this.dataAgendamentoReagendamentos.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.dataAgendamentoReagendamentos.Enabled = false;
+            this.dataAgendamentoReagendamentos.Location = new System.Drawing.Point(405, 277);
+            this.dataAgendamentoReagendamentos.Name = "dataAgendamentoReagendamentos";
+            this.dataAgendamentoReagendamentos.Size = new System.Drawing.Size(166, 20);
+            this.dataAgendamentoReagendamentos.TabIndex = 81;
+            // 
+            // label65
+            // 
+            this.label65.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label65.AutoSize = true;
+            this.label65.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label65.Location = new System.Drawing.Point(51, 591);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(74, 16);
+            this.label65.TabIndex = 80;
+            this.label65.Text = "Prioridade:";
+            // 
+            // ObsReagendamentos
+            // 
+            this.ObsReagendamentos.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.ObsReagendamentos.Enabled = false;
+            this.ObsReagendamentos.Location = new System.Drawing.Point(597, 406);
+            this.ObsReagendamentos.Name = "ObsReagendamentos";
+            this.ObsReagendamentos.Size = new System.Drawing.Size(415, 109);
+            this.ObsReagendamentos.TabIndex = 78;
+            this.ObsReagendamentos.Text = "";
+            // 
+            // label66
+            // 
+            this.label66.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label66.AutoSize = true;
+            this.label66.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label66.Location = new System.Drawing.Point(594, 377);
+            this.label66.Name = "label66";
+            this.label66.Size = new System.Drawing.Size(93, 16);
+            this.label66.TabIndex = 77;
+            this.label66.Text = "Observações:";
+            // 
+            // EnderecoDestinoReagendamentos
+            // 
+            this.EnderecoDestinoReagendamentos.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.EnderecoDestinoReagendamentos.Enabled = false;
+            this.EnderecoDestinoReagendamentos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EnderecoDestinoReagendamentos.Location = new System.Drawing.Point(827, 342);
+            this.EnderecoDestinoReagendamentos.Name = "EnderecoDestinoReagendamentos";
+            this.EnderecoDestinoReagendamentos.Size = new System.Drawing.Size(185, 21);
+            this.EnderecoDestinoReagendamentos.TabIndex = 76;
+            // 
+            // label67
+            // 
+            this.label67.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label67.AutoSize = true;
+            this.label67.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label67.Location = new System.Drawing.Point(824, 323);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(138, 16);
+            this.label67.TabIndex = 75;
+            this.label67.Text = "Endereço do Destino:";
+            // 
+            // EnderecoOrigemReagendamentos
+            // 
+            this.EnderecoOrigemReagendamentos.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.EnderecoOrigemReagendamentos.Enabled = false;
+            this.EnderecoOrigemReagendamentos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EnderecoOrigemReagendamentos.Location = new System.Drawing.Point(826, 295);
+            this.EnderecoOrigemReagendamentos.Name = "EnderecoOrigemReagendamentos";
+            this.EnderecoOrigemReagendamentos.Size = new System.Drawing.Size(186, 21);
+            this.EnderecoOrigemReagendamentos.TabIndex = 74;
+            // 
+            // label68
+            // 
+            this.label68.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label68.AutoSize = true;
+            this.label68.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label68.Location = new System.Drawing.Point(824, 277);
+            this.label68.Name = "label68";
+            this.label68.Size = new System.Drawing.Size(136, 16);
+            this.label68.TabIndex = 73;
+            this.label68.Text = "Endereço da Origem:";
+            // 
+            // label69
+            // 
+            this.label69.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label69.AutoSize = true;
+            this.label69.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label69.Location = new System.Drawing.Point(594, 323);
+            this.label69.Name = "label69";
+            this.label69.Size = new System.Drawing.Size(132, 16);
+            this.label69.TabIndex = 72;
+            this.label69.Text = "Destino do Paciente:";
+            // 
+            // label70
+            // 
+            this.label70.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label70.AutoSize = true;
+            this.label70.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label70.Location = new System.Drawing.Point(594, 271);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(130, 16);
+            this.label70.TabIndex = 70;
+            this.label70.Text = "Origem do Paciente:";
+            // 
+            // label71
+            // 
+            this.label71.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label71.AutoSize = true;
+            this.label71.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label71.Location = new System.Drawing.Point(594, 238);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(168, 18);
+            this.label71.TabIndex = 68;
+            this.label71.Text = "Dados do Transporte";
+            // 
+            // label72
+            // 
+            this.label72.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label72.AutoSize = true;
+            this.label72.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label72.Location = new System.Drawing.Point(304, 537);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(181, 16);
+            this.label72.TabIndex = 67;
+            this.label72.Text = "Tipo do Motivo Selecionado:";
+            // 
+            // label73
+            // 
+            this.label73.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label73.AutoSize = true;
+            this.label73.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label73.Location = new System.Drawing.Point(48, 537);
+            this.label73.Name = "label73";
+            this.label73.Size = new System.Drawing.Size(132, 16);
+            this.label73.TabIndex = 65;
+            this.label73.Text = "Motivo do Chamado:";
+            // 
+            // diagnosticosReagendamentos
+            // 
+            this.diagnosticosReagendamentos.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.diagnosticosReagendamentos.Enabled = false;
+            this.diagnosticosReagendamentos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.diagnosticosReagendamentos.Location = new System.Drawing.Point(49, 503);
+            this.diagnosticosReagendamentos.Name = "diagnosticosReagendamentos";
+            this.diagnosticosReagendamentos.Size = new System.Drawing.Size(522, 21);
+            this.diagnosticosReagendamentos.TabIndex = 63;
+            // 
+            // label74
+            // 
+            this.label74.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label74.AutoSize = true;
+            this.label74.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label74.Location = new System.Drawing.Point(46, 484);
+            this.label74.Name = "label74";
+            this.label74.Size = new System.Drawing.Size(183, 16);
+            this.label74.TabIndex = 62;
+            this.label74.Text = "Diagnóstico/Queixa principal:";
+            // 
+            // idadeReagendamentos
+            // 
+            this.idadeReagendamentos.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.idadeReagendamentos.Enabled = false;
+            this.idadeReagendamentos.Location = new System.Drawing.Point(510, 451);
+            this.idadeReagendamentos.MaxLength = 3;
+            this.idadeReagendamentos.Name = "idadeReagendamentos";
+            this.idadeReagendamentos.Size = new System.Drawing.Size(61, 20);
+            this.idadeReagendamentos.TabIndex = 61;
+            // 
+            // label75
+            // 
+            this.label75.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label75.AutoSize = true;
+            this.label75.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label75.Location = new System.Drawing.Point(507, 431);
+            this.label75.Name = "label75";
+            this.label75.Size = new System.Drawing.Size(46, 16);
+            this.label75.TabIndex = 60;
+            this.label75.Text = "Idade:";
+            // 
+            // label76
+            // 
+            this.label76.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label76.AutoSize = true;
+            this.label76.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label76.Location = new System.Drawing.Point(333, 432);
+            this.label76.Name = "label76";
+            this.label76.Size = new System.Drawing.Size(42, 16);
+            this.label76.TabIndex = 59;
+            this.label76.Text = "Sexo:";
+            // 
+            // femininoReagendamentos
+            // 
+            this.femininoReagendamentos.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.femininoReagendamentos.AutoSize = true;
+            this.femininoReagendamentos.Enabled = false;
+            this.femininoReagendamentos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.femininoReagendamentos.Location = new System.Drawing.Point(415, 452);
+            this.femininoReagendamentos.Name = "femininoReagendamentos";
+            this.femininoReagendamentos.Size = new System.Drawing.Size(77, 19);
+            this.femininoReagendamentos.TabIndex = 58;
+            this.femininoReagendamentos.Text = "Feminino";
+            this.femininoReagendamentos.UseVisualStyleBackColor = true;
+            // 
+            // masculinoReagendamentos
+            // 
+            this.masculinoReagendamentos.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.masculinoReagendamentos.AutoSize = true;
+            this.masculinoReagendamentos.Enabled = false;
+            this.masculinoReagendamentos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.masculinoReagendamentos.Location = new System.Drawing.Point(327, 452);
+            this.masculinoReagendamentos.Name = "masculinoReagendamentos";
+            this.masculinoReagendamentos.Size = new System.Drawing.Size(82, 19);
+            this.masculinoReagendamentos.TabIndex = 57;
+            this.masculinoReagendamentos.Text = "Masculino";
+            this.masculinoReagendamentos.UseVisualStyleBackColor = true;
+            // 
+            // pacienteReagendamentos
+            // 
+            this.pacienteReagendamentos.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.pacienteReagendamentos.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.pacienteReagendamentos.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.pacienteReagendamentos.Enabled = false;
+            this.pacienteReagendamentos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pacienteReagendamentos.Location = new System.Drawing.Point(49, 450);
+            this.pacienteReagendamentos.Name = "pacienteReagendamentos";
+            this.pacienteReagendamentos.Size = new System.Drawing.Size(265, 21);
+            this.pacienteReagendamentos.TabIndex = 56;
+            // 
+            // label77
+            // 
+            this.label77.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label77.AutoSize = true;
+            this.label77.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label77.Location = new System.Drawing.Point(46, 431);
+            this.label77.Name = "label77";
+            this.label77.Size = new System.Drawing.Size(123, 16);
+            this.label77.TabIndex = 55;
+            this.label77.Text = "Nome do Paciente:";
+            // 
+            // label78
+            // 
+            this.label78.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label78.AutoSize = true;
+            this.label78.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label78.Location = new System.Drawing.Point(46, 398);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(149, 18);
+            this.label78.TabIndex = 54;
+            this.label78.Text = "Dados do paciente";
+            // 
+            // telefoneReagendamentos
+            // 
+            this.telefoneReagendamentos.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.telefoneReagendamentos.Enabled = false;
+            this.telefoneReagendamentos.Location = new System.Drawing.Point(444, 363);
+            this.telefoneReagendamentos.Name = "telefoneReagendamentos";
+            this.telefoneReagendamentos.Size = new System.Drawing.Size(127, 20);
+            this.telefoneReagendamentos.TabIndex = 53;
+            // 
+            // solicitanteReagendamentos
+            // 
+            this.solicitanteReagendamentos.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.solicitanteReagendamentos.Enabled = false;
+            this.solicitanteReagendamentos.Location = new System.Drawing.Point(49, 361);
+            this.solicitanteReagendamentos.Name = "solicitanteReagendamentos";
+            this.solicitanteReagendamentos.Size = new System.Drawing.Size(141, 20);
+            this.solicitanteReagendamentos.TabIndex = 51;
+            // 
+            // label79
+            // 
+            this.label79.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label79.AutoSize = true;
+            this.label79.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label79.Location = new System.Drawing.Point(46, 342);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(48, 16);
+            this.label79.TabIndex = 50;
+            this.label79.Text = "Nome:";
+            // 
+            // label80
+            // 
+            this.label80.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label80.AutoSize = true;
+            this.label80.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label80.Location = new System.Drawing.Point(46, 312);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(163, 18);
+            this.label80.TabIndex = 49;
+            this.label80.Text = "Dados do solicitante";
+            // 
+            // label81
+            // 
+            this.label81.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label81.AutoSize = true;
+            this.label81.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label81.Location = new System.Drawing.Point(402, 258);
+            this.label81.Name = "label81";
+            this.label81.Size = new System.Drawing.Size(144, 16);
+            this.label81.TabIndex = 47;
+            this.label81.Text = "Data do Agendamento";
+            // 
+            // label82
+            // 
+            this.label82.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label82.AutoSize = true;
+            this.label82.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label82.Location = new System.Drawing.Point(46, 258);
+            this.label82.Name = "label82";
+            this.label82.Size = new System.Drawing.Size(129, 16);
+            this.label82.TabIndex = 46;
+            this.label82.Text = "Tipo da Ambulância";
+            // 
+            // panel11
+            // 
+            this.panel11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel11.Controls.Add(this.label83);
+            this.panel11.Controls.Add(this.EntrarReagendamentos);
+            this.panel11.Controls.Add(this.unidadesReagenda);
+            this.panel11.Location = new System.Drawing.Point(428, 192);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(200, 206);
+            this.panel11.TabIndex = 140;
+            // 
+            // label83
+            // 
+            this.label83.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label83.AutoSize = true;
+            this.label83.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label83.Location = new System.Drawing.Point(31, 22);
+            this.label83.Name = "label83";
+            this.label83.Size = new System.Drawing.Size(147, 18);
+            this.label83.TabIndex = 0;
+            this.label83.Text = "Selecione a Unidade:";
+            // 
+            // EntrarReagendamentos
+            // 
+            this.EntrarReagendamentos.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.EntrarReagendamentos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(205)))), ((int)(((byte)(169)))));
+            this.EntrarReagendamentos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EntrarReagendamentos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(253)))), ((int)(((byte)(243)))));
+            this.EntrarReagendamentos.Location = new System.Drawing.Point(20, 145);
+            this.EntrarReagendamentos.Name = "EntrarReagendamentos";
+            this.EntrarReagendamentos.Size = new System.Drawing.Size(167, 38);
+            this.EntrarReagendamentos.TabIndex = 2;
+            this.EntrarReagendamentos.Text = "Entrar";
+            this.EntrarReagendamentos.UseVisualStyleBackColor = false;
+            this.EntrarReagendamentos.Click += new System.EventHandler(this.EntrarReagendamentos_Click);
+            // 
+            // unidadesReagenda
+            // 
+            this.unidadesReagenda.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.unidadesReagenda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.unidadesReagenda.FormattingEnabled = true;
+            this.unidadesReagenda.Items.AddRange(new object[] {
+            "",
+            "HMU",
+            "HOSPITAL ANCHIETA(ENSINO)",
+            "HOSPITAL DE CLÍNICAS MUNICIPAL SBC",
+            "PSC - PRONTO SOCORRO CENTRAL",
+            "UPA ALVES DIAS/ASSUNÇÃO",
+            "UPA BAETA NEVES",
+            "UPA DEMARCHI/BATISTINI",
+            "UPA PAULICÉIA/TABOÃO",
+            "UPA RIACHO GRANDE",
+            "UPA RUDGE RAMOS",
+            "UPA SÃO PEDRO",
+            "UPA SILVINA/FERRAZÓPOLIS",
+            "UPA UNIÃO/ALVARENGA"});
+            this.unidadesReagenda.Location = new System.Drawing.Point(20, 89);
+            this.unidadesReagenda.Name = "unidadesReagenda";
+            this.unidadesReagenda.Size = new System.Drawing.Size(167, 21);
+            this.unidadesReagenda.TabIndex = 5;
+            // 
+            // Cancelar
+            // 
+            this.Cancelar.Controls.Add(this.PainelCancelar);
+            this.Cancelar.Controls.Add(this.panel9);
+            this.Cancelar.Location = new System.Drawing.Point(4, 22);
+            this.Cancelar.Name = "Cancelar";
+            this.Cancelar.Padding = new System.Windows.Forms.Padding(3);
+            this.Cancelar.Size = new System.Drawing.Size(1041, 668);
+            this.Cancelar.TabIndex = 3;
+            this.Cancelar.Text = "Cancelar Solicitações";
+            this.Cancelar.UseVisualStyleBackColor = true;
+            // 
+            // PainelCancelar
+            // 
+            this.PainelCancelar.Controls.Add(this.ListaCancelar);
+            this.PainelCancelar.Controls.Add(this.CodigoId);
+            this.PainelCancelar.Controls.Add(this.label35);
+            this.PainelCancelar.Controls.Add(this.BtnCancelar);
+            this.PainelCancelar.Controls.Add(this.BtnCancelarAtualizar);
+            this.PainelCancelar.Controls.Add(this.CObs);
+            this.PainelCancelar.Controls.Add(this.label51);
+            this.PainelCancelar.Controls.Add(this.label57);
+            this.PainelCancelar.Controls.Add(this.label50);
+            this.PainelCancelar.Controls.Add(this.COrigem);
+            this.PainelCancelar.Controls.Add(this.label49);
+            this.PainelCancelar.Controls.Add(this.CDestino);
+            this.PainelCancelar.Controls.Add(this.label48);
+            this.PainelCancelar.Controls.Add(this.CEnderecoDestino);
+            this.PainelCancelar.Controls.Add(this.NomeSolicitante);
+            this.PainelCancelar.Controls.Add(this.label52);
+            this.PainelCancelar.Controls.Add(this.Telefone);
+            this.PainelCancelar.Controls.Add(this.CEnderecoOrigem);
+            this.PainelCancelar.Controls.Add(this.label47);
+            this.PainelCancelar.Controls.Add(this.label53);
+            this.PainelCancelar.Controls.Add(this.label46);
+            this.PainelCancelar.Controls.Add(this.label54);
+            this.PainelCancelar.Controls.Add(this.NomePaciente);
+            this.PainelCancelar.Controls.Add(this.label55);
+            this.PainelCancelar.Controls.Add(this.radioButton2);
+            this.PainelCancelar.Controls.Add(this.label56);
+            this.PainelCancelar.Controls.Add(this.radioButton1);
+            this.PainelCancelar.Controls.Add(this.DataInicio);
+            this.PainelCancelar.Controls.Add(this.label45);
+            this.PainelCancelar.Controls.Add(this.label36);
+            this.PainelCancelar.Controls.Add(this.label44);
+            this.PainelCancelar.Controls.Add(this.label37);
+            this.PainelCancelar.Controls.Add(this.Idade);
+            this.PainelCancelar.Controls.Add(this.PrioridadeCancelar);
+            this.PainelCancelar.Controls.Add(this.label43);
+            this.PainelCancelar.Controls.Add(this.MotivoChamado);
+            this.PainelCancelar.Controls.Add(this.Diagnostico);
+            this.PainelCancelar.Controls.Add(this.TipoMotivoSelecionado);
+            this.PainelCancelar.Controls.Add(this.label42);
+            this.PainelCancelar.Controls.Add(this.LocalSolicitacao);
+            this.PainelCancelar.Controls.Add(this.label41);
+            this.PainelCancelar.Controls.Add(this.label38);
+            this.PainelCancelar.Controls.Add(this.label40);
+            this.PainelCancelar.Controls.Add(this.label39);
+            this.PainelCancelar.Controls.Add(this.DataHrAgendamento);
+            this.PainelCancelar.Controls.Add(this.Tipo);
+            this.PainelCancelar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PainelCancelar.Location = new System.Drawing.Point(3, 3);
+            this.PainelCancelar.Name = "PainelCancelar";
+            this.PainelCancelar.Size = new System.Drawing.Size(1035, 662);
+            this.PainelCancelar.TabIndex = 138;
+            this.PainelCancelar.Visible = false;
+            // 
+            // ListaCancelar
+            // 
+            this.ListaCancelar.AllowUserToAddRows = false;
+            this.ListaCancelar.AllowUserToDeleteRows = false;
+            this.ListaCancelar.AllowUserToResizeRows = false;
+            this.ListaCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.ListaCancelar.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.ListaCancelar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ListaCancelar.Location = new System.Drawing.Point(6, 41);
+            this.ListaCancelar.MultiSelect = false;
+            this.ListaCancelar.Name = "ListaCancelar";
+            this.ListaCancelar.ReadOnly = true;
+            this.ListaCancelar.RowHeadersVisible = false;
+            this.ListaCancelar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.ListaCancelar.Size = new System.Drawing.Size(1026, 232);
+            this.ListaCancelar.TabIndex = 6;
+            this.ListaCancelar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListaCancelar_CellContentClick);
+            // 
+            // CodigoId
+            // 
+            this.CodigoId.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.CodigoId.AutoSize = true;
+            this.CodigoId.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CodigoId.Location = new System.Drawing.Point(50, 276);
+            this.CodigoId.Name = "CodigoId";
+            this.CodigoId.Size = new System.Drawing.Size(22, 18);
+            this.CodigoId.TabIndex = 137;
+            this.CodigoId.Text = "ID";
+            // 
+            // label35
+            // 
+            this.label35.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label35.AutoSize = true;
+            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label35.Location = new System.Drawing.Point(413, 8);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(241, 25);
+            this.label35.TabIndex = 2;
+            this.label35.Text = "Cancelar Solicitações";
+            // 
+            // BtnCancelar
+            // 
+            this.BtnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(95)))), ((int)(((byte)(95)))));
+            this.BtnCancelar.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCancelar.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.BtnCancelar.Location = new System.Drawing.Point(713, 608);
+            this.BtnCancelar.Name = "BtnCancelar";
+            this.BtnCancelar.Size = new System.Drawing.Size(185, 46);
+            this.BtnCancelar.TabIndex = 136;
+            this.BtnCancelar.Text = "Cancelar";
+            this.BtnCancelar.UseVisualStyleBackColor = false;
+            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
+            // 
+            // BtnCancelarAtualizar
+            // 
+            this.BtnCancelarAtualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnCancelarAtualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(124)))), ((int)(((byte)(185)))));
+            this.BtnCancelarAtualizar.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCancelarAtualizar.ForeColor = System.Drawing.Color.White;
+            this.BtnCancelarAtualizar.Location = new System.Drawing.Point(921, 3);
+            this.BtnCancelarAtualizar.Name = "BtnCancelarAtualizar";
+            this.BtnCancelarAtualizar.Size = new System.Drawing.Size(111, 36);
+            this.BtnCancelarAtualizar.TabIndex = 38;
+            this.BtnCancelarAtualizar.Text = "Atualizar";
+            this.BtnCancelarAtualizar.UseVisualStyleBackColor = false;
+            this.BtnCancelarAtualizar.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // CObs
+            // 
+            this.CObs.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.CObs.Enabled = false;
+            this.CObs.Location = new System.Drawing.Point(599, 449);
+            this.CObs.Name = "CObs";
+            this.CObs.Size = new System.Drawing.Size(415, 109);
+            this.CObs.TabIndex = 135;
+            this.CObs.Text = "";
+            // 
+            // label51
+            // 
+            this.label51.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label51.AutoSize = true;
+            this.label51.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label51.Location = new System.Drawing.Point(20, 307);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(132, 16);
+            this.label51.TabIndex = 95;
+            this.label51.Text = "Tipo da Ambulância:";
+            // 
+            // label57
+            // 
+            this.label57.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label57.AutoSize = true;
+            this.label57.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label57.Location = new System.Drawing.Point(596, 420);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(93, 16);
+            this.label57.TabIndex = 134;
+            this.label57.Text = "Observações:";
+            // 
+            // label50
+            // 
+            this.label50.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label50.AutoSize = true;
+            this.label50.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label50.Location = new System.Drawing.Point(376, 307);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(147, 16);
+            this.label50.TabIndex = 96;
+            this.label50.Text = "Data do Agendamento:";
+            // 
+            // COrigem
+            // 
+            this.COrigem.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.COrigem.Enabled = false;
+            this.COrigem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.COrigem.Location = new System.Drawing.Point(599, 343);
+            this.COrigem.Name = "COrigem";
+            this.COrigem.Size = new System.Drawing.Size(223, 21);
+            this.COrigem.TabIndex = 133;
+            // 
+            // label49
+            // 
+            this.label49.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label49.AutoSize = true;
+            this.label49.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label49.Location = new System.Drawing.Point(20, 355);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(163, 18);
+            this.label49.TabIndex = 97;
+            this.label49.Text = "Dados do solicitante";
+            // 
+            // CDestino
+            // 
+            this.CDestino.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.CDestino.Enabled = false;
+            this.CDestino.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CDestino.Location = new System.Drawing.Point(599, 390);
+            this.CDestino.Name = "CDestino";
+            this.CDestino.Size = new System.Drawing.Size(223, 21);
+            this.CDestino.TabIndex = 132;
+            // 
+            // label48
+            // 
+            this.label48.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label48.AutoSize = true;
+            this.label48.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label48.Location = new System.Drawing.Point(20, 383);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(48, 16);
+            this.label48.TabIndex = 98;
+            this.label48.Text = "Nome:";
+            // 
+            // CEnderecoDestino
+            // 
+            this.CEnderecoDestino.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.CEnderecoDestino.Enabled = false;
+            this.CEnderecoDestino.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CEnderecoDestino.Location = new System.Drawing.Point(829, 390);
+            this.CEnderecoDestino.Name = "CEnderecoDestino";
+            this.CEnderecoDestino.Size = new System.Drawing.Size(185, 21);
+            this.CEnderecoDestino.TabIndex = 131;
+            // 
+            // NomeSolicitante
+            // 
+            this.NomeSolicitante.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.NomeSolicitante.Enabled = false;
+            this.NomeSolicitante.Location = new System.Drawing.Point(23, 402);
+            this.NomeSolicitante.Name = "NomeSolicitante";
+            this.NomeSolicitante.Size = new System.Drawing.Size(141, 20);
+            this.NomeSolicitante.TabIndex = 99;
+            // 
+            // label52
+            // 
+            this.label52.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label52.AutoSize = true;
+            this.label52.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label52.Location = new System.Drawing.Point(826, 371);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(138, 16);
+            this.label52.TabIndex = 130;
+            this.label52.Text = "Endereço do Destino:";
+            // 
+            // Telefone
+            // 
+            this.Telefone.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.Telefone.Enabled = false;
+            this.Telefone.Location = new System.Drawing.Point(418, 404);
+            this.Telefone.Name = "Telefone";
+            this.Telefone.Size = new System.Drawing.Size(127, 20);
+            this.Telefone.TabIndex = 100;
+            // 
+            // CEnderecoOrigem
+            // 
+            this.CEnderecoOrigem.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.CEnderecoOrigem.Enabled = false;
+            this.CEnderecoOrigem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CEnderecoOrigem.Location = new System.Drawing.Point(828, 343);
+            this.CEnderecoOrigem.Name = "CEnderecoOrigem";
+            this.CEnderecoOrigem.Size = new System.Drawing.Size(186, 21);
+            this.CEnderecoOrigem.TabIndex = 129;
+            // 
+            // label47
+            // 
+            this.label47.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label47.AutoSize = true;
+            this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label47.Location = new System.Drawing.Point(20, 432);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(149, 18);
+            this.label47.TabIndex = 101;
+            this.label47.Text = "Dados do paciente";
+            // 
+            // label53
+            // 
+            this.label53.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label53.AutoSize = true;
+            this.label53.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label53.Location = new System.Drawing.Point(826, 325);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(136, 16);
+            this.label53.TabIndex = 128;
+            this.label53.Text = "Endereço da Origem:";
+            // 
+            // label46
+            // 
+            this.label46.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label46.AutoSize = true;
+            this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label46.Location = new System.Drawing.Point(20, 457);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(123, 16);
+            this.label46.TabIndex = 102;
+            this.label46.Text = "Nome do Paciente:";
+            // 
+            // label54
+            // 
+            this.label54.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label54.AutoSize = true;
+            this.label54.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label54.Location = new System.Drawing.Point(596, 371);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(132, 16);
+            this.label54.TabIndex = 127;
+            this.label54.Text = "Destino do Paciente:";
+            // 
+            // NomePaciente
+            // 
+            this.NomePaciente.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.NomePaciente.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.NomePaciente.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.NomePaciente.Enabled = false;
+            this.NomePaciente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NomePaciente.Location = new System.Drawing.Point(23, 476);
+            this.NomePaciente.Name = "NomePaciente";
+            this.NomePaciente.Size = new System.Drawing.Size(265, 21);
+            this.NomePaciente.TabIndex = 103;
+            // 
+            // label55
+            // 
+            this.label55.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label55.AutoSize = true;
+            this.label55.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label55.Location = new System.Drawing.Point(596, 319);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(130, 16);
+            this.label55.TabIndex = 126;
+            this.label55.Text = "Origem do Paciente:";
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Enabled = false;
+            this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton2.Location = new System.Drawing.Point(301, 478);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(82, 19);
+            this.radioButton2.TabIndex = 104;
+            this.radioButton2.Text = "Masculino";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // label56
+            // 
+            this.label56.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label56.AutoSize = true;
+            this.label56.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label56.Location = new System.Drawing.Point(596, 286);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(168, 18);
+            this.label56.TabIndex = 125;
+            this.label56.Text = "Dados do Transporte";
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Enabled = false;
+            this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton1.Location = new System.Drawing.Point(389, 478);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(77, 19);
+            this.radioButton1.TabIndex = 105;
+            this.radioButton1.Text = "Feminino";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // DataInicio
+            // 
+            this.DataInicio.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.DataInicio.Enabled = false;
+            this.DataInicio.Location = new System.Drawing.Point(193, 326);
+            this.DataInicio.Name = "DataInicio";
+            this.DataInicio.Size = new System.Drawing.Size(166, 20);
+            this.DataInicio.TabIndex = 124;
+            // 
+            // label45
+            // 
+            this.label45.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label45.AutoSize = true;
+            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label45.Location = new System.Drawing.Point(307, 458);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(42, 16);
+            this.label45.TabIndex = 106;
+            this.label45.Text = "Sexo:";
+            // 
+            // label36
+            // 
+            this.label36.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label36.AutoSize = true;
+            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label36.Location = new System.Drawing.Point(190, 306);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(113, 16);
+            this.label36.TabIndex = 123;
+            this.label36.Text = "Data de Abertura:";
+            // 
+            // label44
+            // 
+            this.label44.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label44.AutoSize = true;
+            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label44.Location = new System.Drawing.Point(481, 457);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(46, 16);
+            this.label44.TabIndex = 107;
+            this.label44.Text = "Idade:";
+            // 
+            // label37
+            // 
+            this.label37.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.Location = new System.Drawing.Point(20, 276);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(24, 18);
+            this.label37.TabIndex = 122;
+            this.label37.Text = "ID";
+            this.label37.Click += new System.EventHandler(this.label37_Click);
+            // 
+            // Idade
+            // 
+            this.Idade.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.Idade.Enabled = false;
+            this.Idade.Location = new System.Drawing.Point(484, 477);
+            this.Idade.MaxLength = 3;
+            this.Idade.Name = "Idade";
+            this.Idade.Size = new System.Drawing.Size(61, 20);
+            this.Idade.TabIndex = 108;
+            // 
+            // PrioridadeCancelar
+            // 
+            this.PrioridadeCancelar.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.PrioridadeCancelar.Enabled = false;
+            this.PrioridadeCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PrioridadeCancelar.Location = new System.Drawing.Point(23, 629);
+            this.PrioridadeCancelar.Name = "PrioridadeCancelar";
+            this.PrioridadeCancelar.Size = new System.Drawing.Size(252, 21);
+            this.PrioridadeCancelar.TabIndex = 121;
+            // 
+            // label43
+            // 
+            this.label43.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label43.AutoSize = true;
+            this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label43.Location = new System.Drawing.Point(20, 507);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(183, 16);
+            this.label43.TabIndex = 109;
+            this.label43.Text = "Diagnóstico/Queixa principal:";
+            // 
+            // MotivoChamado
+            // 
+            this.MotivoChamado.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.MotivoChamado.Enabled = false;
+            this.MotivoChamado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MotivoChamado.Location = new System.Drawing.Point(23, 578);
+            this.MotivoChamado.Name = "MotivoChamado";
+            this.MotivoChamado.Size = new System.Drawing.Size(252, 21);
+            this.MotivoChamado.TabIndex = 120;
+            // 
+            // Diagnostico
+            // 
+            this.Diagnostico.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.Diagnostico.Enabled = false;
+            this.Diagnostico.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Diagnostico.Location = new System.Drawing.Point(23, 526);
+            this.Diagnostico.Name = "Diagnostico";
+            this.Diagnostico.Size = new System.Drawing.Size(522, 21);
+            this.Diagnostico.TabIndex = 110;
+            // 
+            // TipoMotivoSelecionado
+            // 
+            this.TipoMotivoSelecionado.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.TipoMotivoSelecionado.Enabled = false;
+            this.TipoMotivoSelecionado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TipoMotivoSelecionado.Location = new System.Drawing.Point(281, 578);
+            this.TipoMotivoSelecionado.Name = "TipoMotivoSelecionado";
+            this.TipoMotivoSelecionado.Size = new System.Drawing.Size(264, 21);
+            this.TipoMotivoSelecionado.TabIndex = 119;
+            // 
+            // label42
+            // 
+            this.label42.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label42.AutoSize = true;
+            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label42.Location = new System.Drawing.Point(22, 559);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(132, 16);
+            this.label42.TabIndex = 111;
+            this.label42.Text = "Motivo do Chamado:";
+            // 
+            // LocalSolicitacao
+            // 
+            this.LocalSolicitacao.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.LocalSolicitacao.Enabled = false;
+            this.LocalSolicitacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LocalSolicitacao.Location = new System.Drawing.Point(179, 402);
+            this.LocalSolicitacao.Name = "LocalSolicitacao";
+            this.LocalSolicitacao.Size = new System.Drawing.Size(211, 21);
+            this.LocalSolicitacao.TabIndex = 118;
+            // 
+            // label41
+            // 
+            this.label41.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label41.AutoSize = true;
+            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label41.Location = new System.Drawing.Point(278, 559);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(181, 16);
+            this.label41.TabIndex = 112;
+            this.label41.Text = "Tipo do Motivo Selecionado:";
+            // 
+            // label38
+            // 
+            this.label38.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.Location = new System.Drawing.Point(415, 383);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(65, 16);
+            this.label38.TabIndex = 117;
+            this.label38.Text = "Telefone:";
+            // 
+            // label40
+            // 
+            this.label40.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label40.AutoSize = true;
+            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label40.Location = new System.Drawing.Point(20, 610);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(74, 16);
+            this.label40.TabIndex = 113;
+            this.label40.Text = "Prioridade:";
+            // 
+            // label39
+            // 
+            this.label39.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label39.AutoSize = true;
+            this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label39.Location = new System.Drawing.Point(176, 383);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(133, 16);
+            this.label39.TabIndex = 116;
+            this.label39.Text = "Local da Solicitação:";
+            // 
+            // DataHrAgendamento
+            // 
+            this.DataHrAgendamento.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.DataHrAgendamento.Enabled = false;
+            this.DataHrAgendamento.Location = new System.Drawing.Point(379, 326);
+            this.DataHrAgendamento.Name = "DataHrAgendamento";
+            this.DataHrAgendamento.Size = new System.Drawing.Size(166, 20);
+            this.DataHrAgendamento.TabIndex = 114;
+            // 
+            // Tipo
+            // 
+            this.Tipo.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.Tipo.Enabled = false;
+            this.Tipo.Location = new System.Drawing.Point(23, 326);
+            this.Tipo.Name = "Tipo";
+            this.Tipo.Size = new System.Drawing.Size(154, 20);
+            this.Tipo.TabIndex = 115;
+            // 
+            // panel9
+            // 
+            this.panel9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel9.Controls.Add(this.label58);
+            this.panel9.Controls.Add(this.EntrarCancelar);
+            this.panel9.Controls.Add(this.SelecionarUnidade);
+            this.panel9.Location = new System.Drawing.Point(428, 192);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(200, 206);
+            this.panel9.TabIndex = 139;
+            // 
+            // label58
+            // 
+            this.label58.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label58.AutoSize = true;
+            this.label58.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label58.Location = new System.Drawing.Point(31, 22);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(147, 18);
+            this.label58.TabIndex = 0;
+            this.label58.Text = "Selecione a Unidade:";
+            // 
+            // EntrarCancelar
+            // 
+            this.EntrarCancelar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.EntrarCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(205)))), ((int)(((byte)(169)))));
+            this.EntrarCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EntrarCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(253)))), ((int)(((byte)(243)))));
+            this.EntrarCancelar.Location = new System.Drawing.Point(20, 145);
+            this.EntrarCancelar.Name = "EntrarCancelar";
+            this.EntrarCancelar.Size = new System.Drawing.Size(167, 38);
+            this.EntrarCancelar.TabIndex = 2;
+            this.EntrarCancelar.Text = "Entrar";
+            this.EntrarCancelar.UseVisualStyleBackColor = false;
+            this.EntrarCancelar.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // SelecionarUnidade
+            // 
+            this.SelecionarUnidade.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.SelecionarUnidade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SelecionarUnidade.FormattingEnabled = true;
+            this.SelecionarUnidade.Items.AddRange(new object[] {
+            "",
+            "HMU",
+            "HOSPITAL ANCHIETA(ENSINO)",
+            "HOSPITAL DE CLÍNICAS MUNICIPAL SBC",
+            "PSC - PRONTO SOCORRO CENTRAL",
+            "UPA ALVES DIAS/ASSUNÇÃO",
+            "UPA BAETA NEVES",
+            "UPA DEMARCHI/BATISTINI",
+            "UPA PAULICÉIA/TABOÃO",
+            "UPA RIACHO GRANDE",
+            "UPA RUDGE RAMOS",
+            "UPA SÃO PEDRO",
+            "UPA SILVINA/FERRAZÓPOLIS",
+            "UPA UNIÃO/ALVARENGA"});
+            this.SelecionarUnidade.Location = new System.Drawing.Point(20, 89);
+            this.SelecionarUnidade.Name = "SelecionarUnidade";
+            this.SelecionarUnidade.Size = new System.Drawing.Size(167, 21);
+            this.SelecionarUnidade.TabIndex = 5;
+            // 
             // ConfirmaSolicitacao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1512,12 +3043,13 @@
             this.ClientSize = new System.Drawing.Size(1056, 710);
             this.Controls.Add(this.AbasControle);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "ConfirmaSolicitacao";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sistema de Solicitação de Ambulancias";
             this.AbasControle.ResumeLayout(false);
-            this.Aba1.ResumeLayout(false);
-            this.Aba1.PerformLayout();
+            this.StatusAmbulancias.ResumeLayout(false);
+            this.StatusAmbulancias.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.panel6.ResumeLayout(false);
@@ -1530,12 +3062,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.listaUsb)).EndInit();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.listaUsa)).EndInit();
-            this.Aba2.ResumeLayout(false);
-            this.Aba2.PerformLayout();
+            this.NovaSolicitacao.ResumeLayout(false);
+            this.NovaSolicitacao.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel8.ResumeLayout(false);
-            this.Aba3.ResumeLayout(false);
+            this.TodasSolicitacoes.ResumeLayout(false);
             this.PainelSolicitacoes.ResumeLayout(false);
             this.PainelSolicitacoes.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -1545,6 +3077,20 @@
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            this.ReagendamentosTab.ResumeLayout(false);
+            this.painelReagendamento.ResumeLayout(false);
+            this.painelReagendamento.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ListaAgendados)).EndInit();
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
+            this.Cancelar.ResumeLayout(false);
+            this.PainelCancelar.ResumeLayout(false);
+            this.PainelCancelar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ListaCancelar)).EndInit();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1552,7 +3098,7 @@
         #endregion
 
         private System.Windows.Forms.TabControl AbasControle;
-        private System.Windows.Forms.TabPage Aba1;
+        private System.Windows.Forms.TabPage StatusAmbulancias;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
@@ -1561,9 +3107,9 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TabPage Aba2;
+        private System.Windows.Forms.TabPage NovaSolicitacao;
         private System.Windows.Forms.Button AtualizarBtn;
-        private System.Windows.Forms.TabPage Aba3;
+        private System.Windows.Forms.TabPage TodasSolicitacoes;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label26;
@@ -1653,9 +3199,123 @@
         private System.Windows.Forms.Label solAgendadasHoje;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Button Reagendamentos;
         private System.Windows.Forms.DateTimePicker dataAgendamento;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label Detalhes;
+        private System.Windows.Forms.TabPage Cancelar;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Button BtnCancelarAtualizar;
+        private System.Windows.Forms.DataGridView ListaCancelar;
+        private System.Windows.Forms.TextBox DataInicio;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.TextBox PrioridadeCancelar;
+        private System.Windows.Forms.TextBox MotivoChamado;
+        private System.Windows.Forms.TextBox TipoMotivoSelecionado;
+        private System.Windows.Forms.TextBox LocalSolicitacao;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.TextBox Tipo;
+        private System.Windows.Forms.TextBox DataHrAgendamento;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.TextBox Diagnostico;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.TextBox Idade;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.TextBox NomePaciente;
+        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.TextBox Telefone;
+        private System.Windows.Forms.TextBox NomeSolicitante;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.Label label51;
+        private System.Windows.Forms.TextBox COrigem;
+        private System.Windows.Forms.TextBox CDestino;
+        private System.Windows.Forms.TextBox CEnderecoDestino;
+        private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.TextBox CEnderecoOrigem;
+        private System.Windows.Forms.Label label53;
+        private System.Windows.Forms.Label label54;
+        private System.Windows.Forms.Label label55;
+        private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.RichTextBox CObs;
+        private System.Windows.Forms.Label label57;
+        private System.Windows.Forms.Button BtnCancelar;
+        private System.Windows.Forms.Label CodigoId;
+        private System.Windows.Forms.Panel PainelCancelar;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Label label58;
+        private System.Windows.Forms.Button EntrarCancelar;
+        private System.Windows.Forms.ComboBox SelecionarUnidade;
+        private System.Windows.Forms.Label NomePacienteLabel;
+        private System.Windows.Forms.Label IdPacienteLabel;
+        private System.Windows.Forms.Label label59;
+        private System.Windows.Forms.TabPage ReagendamentosTab;
+        private System.Windows.Forms.Panel painelReagendamento;
+        private System.Windows.Forms.Label dtHrReagendamento;
+        private System.Windows.Forms.Label label60;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.RadioButton RespostaDoControle;
+        private System.Windows.Forms.DataGridView ListaAgendados;
+        private System.Windows.Forms.RadioButton RespostasNegadas;
+        private System.Windows.Forms.MonthCalendar Calendario;
+        private System.Windows.Forms.Button TodosReagendamentos;
+        private System.Windows.Forms.Button BtnReagendar;
+        private System.Windows.Forms.TextBox dataAberturaReagendamentos;
+        private System.Windows.Forms.Label label61;
+        private System.Windows.Forms.Label label62;
+        private System.Windows.Forms.TextBox prioridadeReagendamentos;
+        private System.Windows.Forms.TextBox motivoReagendamentos;
+        private System.Windows.Forms.TextBox tipoMotivoReagendamentos;
+        private System.Windows.Forms.TextBox localReagendamentos;
+        private System.Windows.Forms.Label label63;
+        private System.Windows.Forms.Label label64;
+        private System.Windows.Forms.TextBox TipoAmbulanciaReagendamentos;
+        private System.Windows.Forms.TextBox dataAgendamentoReagendamentos;
+        private System.Windows.Forms.Label label65;
+        private System.Windows.Forms.RichTextBox ObsReagendamentos;
+        private System.Windows.Forms.Label label66;
+        private System.Windows.Forms.TextBox EnderecoDestinoReagendamentos;
+        private System.Windows.Forms.Label label67;
+        private System.Windows.Forms.TextBox EnderecoOrigemReagendamentos;
+        private System.Windows.Forms.Label label68;
+        private System.Windows.Forms.Label label69;
+        private System.Windows.Forms.Label label70;
+        private System.Windows.Forms.Label label71;
+        private System.Windows.Forms.Label label72;
+        private System.Windows.Forms.Label label73;
+        private System.Windows.Forms.TextBox diagnosticosReagendamentos;
+        private System.Windows.Forms.Label label74;
+        private System.Windows.Forms.TextBox idadeReagendamentos;
+        private System.Windows.Forms.Label label75;
+        private System.Windows.Forms.Label label76;
+        private System.Windows.Forms.RadioButton femininoReagendamentos;
+        private System.Windows.Forms.RadioButton masculinoReagendamentos;
+        private System.Windows.Forms.TextBox pacienteReagendamentos;
+        private System.Windows.Forms.Label label77;
+        private System.Windows.Forms.Label label78;
+        private System.Windows.Forms.TextBox telefoneReagendamentos;
+        private System.Windows.Forms.TextBox solicitanteReagendamentos;
+        private System.Windows.Forms.Label label79;
+        private System.Windows.Forms.Label label80;
+        private System.Windows.Forms.Label label81;
+        private System.Windows.Forms.Label label82;
+        private System.Windows.Forms.TextBox destinoReagendamentos;
+        private System.Windows.Forms.TextBox origemReagendamentos;
+        private System.Windows.Forms.Label CodigoPacienteReagendamento;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.Label label83;
+        private System.Windows.Forms.Button EntrarReagendamentos;
+        private System.Windows.Forms.ComboBox unidadesReagenda;
+        private System.Windows.Forms.Label Status;
+        private System.Windows.Forms.Button CancelarReagendamento;
     }
 }
