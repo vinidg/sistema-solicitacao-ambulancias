@@ -46,6 +46,49 @@ namespace Solicitacao_de_Ambulancias
        
         Version appversion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
 
+        public void Limpar()
+        {
+
+            RbFemenino.Checked = false;
+            RbMasculino.Checked = false;
+            TipoAM = "";
+            Agendamento = "";
+            Obs.Text = "";
+            label3.Visible = false;
+            dataAgendamento.Visible = false;
+
+            Btnagendasim.BackColor = Color.FromArgb(69, 173, 168);
+            Btnagendasim.ForeColor = Color.FromArgb(229, 252, 194);
+            Btnagendanao.BackColor = Color.FromArgb(69, 173, 168);
+            Btnagendanao.ForeColor = Color.FromArgb(229, 252, 194);
+
+            BtnAvancada.BackColor = Color.FromArgb(69, 173, 168);
+            BtnAvancada.ForeColor = Color.FromArgb(229, 252, 194);
+            BtnBasica.BackColor = Color.FromArgb(69, 173, 168);
+            BtnBasica.ForeColor = Color.FromArgb(229, 252, 194);
+
+            Btnagendanao.Enabled = true;
+            Btnagendasim.Enabled = true;
+            BtnAvancada.Enabled = true;
+            BtnBasica.Enabled = true;
+
+        }
+        private void AbasControle_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(AbasControle.SelectedTab == AbasControle.TabPages["ReagendamentosTab"])
+            {
+                if (RespostasNegadas.Checked == true)
+                {
+                    puxarAgendadasNegadas();
+                    RespostasNegadas.Checked = true;
+                }
+                else
+                {
+                    puxarAgendadasPendentes();
+                    RespostaDoControle.Checked = true;
+                }
+            }
+        }
 
         #region Incluir_Solicitacao_confirma_solicitacao
 
@@ -492,51 +535,6 @@ namespace Solicitacao_de_Ambulancias
                     UnidadeSelecionada = comboBox1.Text;
                     SelectPacientes();
         }
-        private void SelectPacientes()
-        {
-            using (DAHUEEntities db = new DAHUEEntities())
-            {
-                var query = (from sp in db.solicitacoes_paciente
-                             join sa in db.solicitacoes_ambulancias 
-                             on sp.idPaciente_Solicitacoes
-                             equals sa.idSolicitacoesPacientes into b_join
-                             from sa in b_join.DefaultIfEmpty()
-                             where
-                               sp.LocalSolicitacao == UnidadeSelecionada
-                             orderby
-                               sp.idPaciente_Solicitacoes
-                             select new
-                             {
-                                 Id = sp.idPaciente_Solicitacoes,
-                                 idSolicitacoes_Ambulancias = sa.idSolicitacoes_Ambulancias,
-                                 Tipo = sp.TipoSolicitacao,
-                                 sp.DtHrdoInicio,
-                                 sp.Agendamento,
-                                 sp.DtHrdoAgendamento,
-                                 sp.NomeSolicitante,
-                                 sp.LocalSolicitacao,
-                                 sp.Telefone,
-                                 sp.Paciente,
-                                 sp.Genero,
-                                 sp.Idade,
-                                 sp.Diagnostico,
-                                 sp.Prioridade,
-                                 sp.Motivo,
-                                 sp.SubMotivo,
-                                 sp.Origem,
-                                 sp.Destino,
-                                 sp.ObsGerais,
-                                 sp.AmSolicitada
-                             }).DefaultIfEmpty().ToList();
-                
-   
-                Lista.DataSource = query;
-                Lista.Refresh();
-
-                Lista.Columns["idSolicitacoes_Ambulancias"].Visible = false;
-                Lista.Columns["AmSolicitada"].Visible = false;
-            }
-        }
         private void Horarios()
         {
             using (DAHUEEntities db = new DAHUEEntities())
@@ -622,6 +620,51 @@ namespace Solicitacao_de_Ambulancias
         {
             PainelSolicitacoes.Visible = false;
         }
+        private void SelectPacientes()
+        {
+            using (DAHUEEntities db = new DAHUEEntities())
+            {
+                var query = (from sp in db.solicitacoes_paciente
+                             join sa in db.solicitacoes_ambulancias 
+                             on sp.idPaciente_Solicitacoes
+                             equals sa.idSolicitacoesPacientes into b_join
+                             from sa in b_join.DefaultIfEmpty()
+                             where
+                               sp.LocalSolicitacao == UnidadeSelecionada
+                             orderby
+                               sp.idPaciente_Solicitacoes
+                             select new
+                             {
+                                 Id = sp.idPaciente_Solicitacoes,
+                                 idSolicitacoes_Ambulancias = sa.idSolicitacoes_Ambulancias,
+                                 Tipo = sp.TipoSolicitacao,
+                                 sp.DtHrdoInicio,
+                                 sp.Agendamento,
+                                 sp.DtHrdoAgendamento,
+                                 sp.NomeSolicitante,
+                                 sp.LocalSolicitacao,
+                                 sp.Telefone,
+                                 sp.Paciente,
+                                 sp.Genero,
+                                 sp.Idade,
+                                 sp.Diagnostico,
+                                 sp.Prioridade,
+                                 sp.Motivo,
+                                 sp.SubMotivo,
+                                 sp.Origem,
+                                 sp.Destino,
+                                 sp.ObsGerais,
+                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : "TRANSPORTE REALIZADO")
+                             }).DefaultIfEmpty().ToList();
+                
+   
+                Lista.DataSource = query;
+                Lista.Refresh();
+                Lista.ClearSelection();
+                Lista.Columns["idSolicitacoes_Ambulancias"].Visible = false;
+                
+            }
+        }
 
         #region filtro Todas_solicitacoes
         private void hoje_Click_1(object sender, EventArgs e)
@@ -661,14 +704,14 @@ namespace Solicitacao_de_Ambulancias
                                  sp.Origem,
                                  sp.Destino,
                                  sp.ObsGerais,
-                                 sp.AmSolicitada
+                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : "TRANSPORTE REALIZADO")
                              }).DefaultIfEmpty().ToList();
             
                 Lista.DataSource = query;
                 Lista.Refresh();
-                                
+                Lista.ClearSelection();
                 Lista.Columns["idSolicitacoes_Ambulancias"].Visible = false;
-                Lista.Columns["AmSolicitada"].Visible = false;
+                
             }
         }
         private void Ontem_Click_1(object sender, EventArgs e)
@@ -710,14 +753,14 @@ namespace Solicitacao_de_Ambulancias
                                  sp.Origem,
                                  sp.Destino,
                                  sp.ObsGerais,
-                                 sp.AmSolicitada
+                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : "TRANSPORTE REALIZADO")
                              }).DefaultIfEmpty().ToList();
 
                 Lista.DataSource = query;
                 Lista.Refresh();
-
+                Lista.ClearSelection();
                 Lista.Columns["idSolicitacoes_Ambulancias"].Visible = false;
-                Lista.Columns["AmSolicitada"].Visible = false;
+                
             }
         }
         private void dias2_Click_1(object sender, EventArgs e)
@@ -759,15 +802,15 @@ namespace Solicitacao_de_Ambulancias
                                  sp.Origem,
                                  sp.Destino,
                                  sp.ObsGerais,
-                                 sp.AmSolicitada
+                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : "TRANSPORTE REALIZADO")
                              }).DefaultIfEmpty().ToList();
 
                 Lista.DataSource = query;
                 Lista.Refresh();
-
+                Lista.ClearSelection();
                 
                 Lista.Columns["idSolicitacoes_Ambulancias"].Visible = false;
-                Lista.Columns["AmSolicitada"].Visible = false;
+                
             }
 
         }
@@ -810,15 +853,15 @@ namespace Solicitacao_de_Ambulancias
                                  sp.Origem,
                                  sp.Destino,
                                  sp.ObsGerais,
-                                 sp.AmSolicitada
+                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : "TRANSPORTE REALIZADO")
                              }).DefaultIfEmpty().ToList();
 
                 Lista.DataSource = query;
                 Lista.Refresh();
-
+                Lista.ClearSelection();
                 
                 Lista.Columns["idSolicitacoes_Ambulancias"].Visible = false;
-                Lista.Columns["AmSolicitada"].Visible = false;
+                
             }
         }
         private void semana1_Click_1(object sender, EventArgs e)
@@ -860,15 +903,15 @@ namespace Solicitacao_de_Ambulancias
                                  sp.Origem,
                                  sp.Destino,
                                  sp.ObsGerais,
-                                 sp.AmSolicitada
+                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : "TRANSPORTE REALIZADO")
                              }).DefaultIfEmpty().ToList();
 
                 Lista.DataSource = query;
                 Lista.Refresh();
-
+                Lista.ClearSelection();
                 
                 Lista.Columns["idSolicitacoes_Ambulancias"].Visible = false;
-                Lista.Columns["AmSolicitada"].Visible = false;
+                
             }
         }
         private void semana2_Click_1(object sender, EventArgs e)
@@ -910,15 +953,15 @@ namespace Solicitacao_de_Ambulancias
                                  sp.Origem,
                                  sp.Destino,
                                  sp.ObsGerais,
-                                 sp.AmSolicitada
+                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : "TRANSPORTE REALIZADO")
                              }).DefaultIfEmpty().ToList();
 
                 Lista.DataSource = query;
                 Lista.Refresh();
-
+                Lista.ClearSelection();
                 
                 Lista.Columns["idSolicitacoes_Ambulancias"].Visible = false;
-                Lista.Columns["AmSolicitada"].Visible = false;
+                
             }
         }
         private void mes1_Click_1(object sender, EventArgs e)
@@ -961,15 +1004,15 @@ namespace Solicitacao_de_Ambulancias
                                  sp.Origem,
                                  sp.Destino,
                                  sp.ObsGerais,
-                                 sp.AmSolicitada
+                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : "TRANSPORTE REALIZADO")
                              }).DefaultIfEmpty().ToList();
 
                 Lista.DataSource = query;
                 Lista.Refresh();
-
+                Lista.ClearSelection();
                 
                 Lista.Columns["idSolicitacoes_Ambulancias"].Visible = false;
-                Lista.Columns["AmSolicitada"].Visible = false;
+                
             }
 
         }
@@ -1010,58 +1053,71 @@ namespace Solicitacao_de_Ambulancias
                                  sp.Origem,
                                  sp.Destino,
                                  sp.ObsGerais,
-                                 sp.AmSolicitada
+                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : "TRANSPORTE REALIZADO")
                              }).DefaultIfEmpty().ToList();
 
                 Lista.DataSource = query;
                 Lista.Refresh();
-
+                Lista.ClearSelection();
                 
                 Lista.Columns["idSolicitacoes_Ambulancias"].Visible = false;
-                Lista.Columns["AmSolicitada"].Visible = false;
+                
             }
         }
         #endregion
 
         private void Lista_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(Lista.Rows[e.RowIndex].Cells["idSolicitacoes_Ambulancias"].Equals(0) || Lista.Rows[e.RowIndex].Cells["idSolicitacoes_Ambulancias"].Equals(null) ||
-                String.IsNullOrEmpty(Lista.Rows[e.RowIndex].Cells["idSolicitacoes_Ambulancias"].Value as String) && Lista.Rows[e.RowIndex].Cells["AmSolicitada"].Equals(0))
-            {
-                Status.Text = "Aguardando vaga";
-            }
-            else if (Convert.ToInt32(Lista.Rows[e.RowIndex].Cells["AmSolicitada"].Value) == 1)
-            {
-                Status.Text = "Solicitação encerrada";
-            }
-            else
-            {
-                Status.Text = "Solicitação à caminho";
-                IdSolicitacaoAmbulancia = Convert.ToInt32(Lista.Rows[e.RowIndex].Cells["idSolicitacoes_Ambulancias"].Value);
-            }
             if (e.RowIndex > -1)
             {
-                Id = Lista.Rows[e.RowIndex].Cells["Id"].Value.ToString();
+                if (Lista.Rows[e.RowIndex].Cells["idSolicitacoes_Ambulancias"].Equals(0) || Lista.Rows[e.RowIndex].Cells["idSolicitacoes_Ambulancias"].Equals(null) ||
+                    String.IsNullOrEmpty(Lista.Rows[e.RowIndex].Cells["idSolicitacoes_Ambulancias"].Value as String) && Lista.Rows[e.RowIndex].Cells["Status"].Value.ToString() == "AGUARDANDO TRANSPORTE")
+                {
+                    Status.Text = "Aguardando vaga";
+                }
+                else if (Lista.Rows[e.RowIndex].Cells["Status"].Value.ToString() == "TRANSPORTE REALIZADO")
+                {
+                    Status.Text = "Solicitação encerrada";
+                }
+                else
+                {
+                    Status.Text = "Solicitação à caminho";
+                    IdSolicitacaoAmbulancia = Convert.ToInt32(Lista.Rows[e.RowIndex].Cells["idSolicitacoes_Ambulancias"].Value);
+                }
+                if (e.RowIndex > -1)
+                {
+                    Id = Lista.Rows[e.RowIndex].Cells["Id"].Value.ToString();
 
 
-                Horarios();
+                    Horarios();
 
-                origem = Lista.Rows[e.RowIndex].Cells["Origem"].Value.ToString();
-                destino = Lista.Rows[e.RowIndex].Cells["Destino"].Value.ToString();
+                    origem = Lista.Rows[e.RowIndex].Cells["Origem"].Value.ToString();
+                    destino = Lista.Rows[e.RowIndex].Cells["Destino"].Value.ToString();
 
-                lbDestino.Text = destino;
-                lbOrigem.Text = origem;
-                IdPacienteLabel.Text = Id;
-                NomePacienteLabel.Text = Lista.Rows[e.RowIndex].Cells["Paciente"].Value.ToString();
+                    lbDestino.Text = destino;
+                    lbOrigem.Text = origem;
+                    IdPacienteLabel.Text = Id;
+                    NomePacienteLabel.Text = Lista.Rows[e.RowIndex].Cells["Paciente"].Value.ToString();
+                }
+            }
+        }
+        private void Lista_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.Value != null && e.Value.Equals("AGUARDANDO TRANSPORTE"))
+            {
+                Lista.Rows[e.RowIndex].DefaultCellStyle.Font = new Font(e.CellStyle.Font, FontStyle.Bold);
             }
         }
         private void AtualizarBtn_Click(object sender, EventArgs e)
         {
             pegarDadosDasAmbulancias();
         }
+
         #endregion
 
         #region Status_ambulancia
+        
+        string AvisoReagendamento = "Número de solicitações que o Transporte Sanitario irá Aceitar ou Reagendar !";
         public void pegarDadosDasAmbulancias()
         {
             using (DAHUEEntities db = new DAHUEEntities())
@@ -1214,7 +1270,6 @@ namespace Solicitacao_de_Ambulancias
                 listaUsa.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.White;
             }
         }
-        string AvisoReagendamento = "Número de solicitações que o Transporte Sanitario irá Aceitar ou Reagendar !";
         private void panel7_MouseEnter(object sender, EventArgs e)
         {
             Detalhes.Text = AvisoReagendamento;
@@ -1572,50 +1627,6 @@ namespace Solicitacao_de_Ambulancias
 
         #endregion
         
-
-        public void Limpar()
-        {
-
-            RbFemenino.Checked = false;
-            RbMasculino.Checked = false;
-            TipoAM = "";
-            Agendamento = "";
-            Obs.Text = "";
-            label3.Visible = false;
-            dataAgendamento.Visible = false;
-
-            Btnagendasim.BackColor = Color.FromArgb(69, 173, 168);
-            Btnagendasim.ForeColor = Color.FromArgb(229, 252, 194);
-            Btnagendanao.BackColor = Color.FromArgb(69, 173, 168);
-            Btnagendanao.ForeColor = Color.FromArgb(229, 252, 194);
-
-            BtnAvancada.BackColor = Color.FromArgb(69, 173, 168);
-            BtnAvancada.ForeColor = Color.FromArgb(229, 252, 194);
-            BtnBasica.BackColor = Color.FromArgb(69, 173, 168);
-            BtnBasica.ForeColor = Color.FromArgb(229, 252, 194);
-
-            Btnagendanao.Enabled = true;
-            Btnagendasim.Enabled = true;
-            BtnAvancada.Enabled = true;
-            BtnBasica.Enabled = true;
-
-        }
-        private void AbasControle_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if(AbasControle.SelectedTab == AbasControle.TabPages["ReagendamentosTab"])
-            {
-                if (RespostasNegadas.Checked == true)
-                {
-                    puxarAgendadasNegadas();
-                    RespostasNegadas.Checked = true;
-                }
-                else
-                {
-                    puxarAgendadasPendentes();
-                    RespostaDoControle.Checked = true;
-                }
-            }
-        }
     }
  }
 

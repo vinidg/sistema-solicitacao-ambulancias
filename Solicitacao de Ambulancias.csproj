@@ -161,7 +161,9 @@
     <EmbeddedResource Include="RespostaDeAmbulancias.resx">
       <DependentUpon>RespostaDeAmbulancias.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="App.Config" />
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
