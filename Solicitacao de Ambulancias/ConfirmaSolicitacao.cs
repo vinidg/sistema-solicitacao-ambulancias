@@ -313,19 +313,29 @@ namespace Solicitacao_de_Ambulancias
                 MessageBox.Show("Verifique se algum campo esta vazio ou desmarcado !", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            else if (dataAgendamento.Value <= DateTime.Now)
+            else if (dataAgendamento.Value <= DateTime.Now && Agendamento == "Sim")
             {
                 MessageBox.Show("A data de agendamento não deve ser menor que a data atual", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
-            }
-            else
+            }else
             {
                 RegistrarSolicitacao();
-                Limpar();
-                ClearTextBoxes();
-                ClearComboBox();
-
-
+                if (Agendamento == "Sim")
+                {
+                    DialogResult result1 = MessageBox.Show("Deseja usar as mesmas informações para solicitar outro agendamento ?",
+                    "Atenção !",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result1 == DialogResult.Yes)
+                    {
+                        return;
+                    }
+                }
+                else
+                {
+                    Limpar();
+                    ClearTextBoxes();
+                    ClearComboBox();
+                }
             }
         }
         private void BtnBasica_Click_1(object sender, EventArgs e)
