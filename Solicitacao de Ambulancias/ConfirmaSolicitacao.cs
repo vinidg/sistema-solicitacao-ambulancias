@@ -724,7 +724,7 @@ namespace Solicitacao_de_Ambulancias
                                  sp.Origem,
                                  sp.Destino,
                                  sp.ObsGerais,
-                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == null ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO"))
+                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == 0 ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO"))
                              }).DefaultIfEmpty().ToList();
 
                 Lista.DataSource = query;
@@ -777,7 +777,7 @@ namespace Solicitacao_de_Ambulancias
                                  sp.Origem,
                                  sp.Destino,
                                  sp.ObsGerais,
-                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == null ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO"))
+                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == 0 ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO"))
                              }).DefaultIfEmpty().ToList();
 
                 Lista.DataSource = query;
@@ -830,7 +830,7 @@ namespace Solicitacao_de_Ambulancias
                                  sp.Origem,
                                  sp.Destino,
                                  sp.ObsGerais,
-                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == null ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO"))
+                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == 0 ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO"))
                              }).DefaultIfEmpty().ToList();
 
                 Lista.DataSource = query;
@@ -885,7 +885,7 @@ namespace Solicitacao_de_Ambulancias
                                  sp.Origem,
                                  sp.Destino,
                                  sp.ObsGerais,
-                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == null ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO"))
+                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == 0 ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO"))
                              }).DefaultIfEmpty().ToList();
 
                 Lista.DataSource = query;
@@ -939,7 +939,7 @@ namespace Solicitacao_de_Ambulancias
                                  sp.Origem,
                                  sp.Destino,
                                  sp.ObsGerais,
-                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == null ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO"))
+                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == 0 ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO"))
                              }).DefaultIfEmpty().ToList();
 
                 Lista.DataSource = query;
@@ -993,7 +993,7 @@ namespace Solicitacao_de_Ambulancias
                                  sp.Origem,
                                  sp.Destino,
                                  sp.ObsGerais,
-                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == null ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO"))
+                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == 0 ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO"))
                              }).DefaultIfEmpty().ToList();
 
                 Lista.DataSource = query;
@@ -1048,7 +1048,7 @@ namespace Solicitacao_de_Ambulancias
                                  sp.Origem,
                                  sp.Destino,
                                  sp.ObsGerais,
-                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == null ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO"))
+                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == 0 ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO"))
                              }).DefaultIfEmpty().ToList();
 
                 Lista.DataSource = query;
@@ -1101,7 +1101,7 @@ namespace Solicitacao_de_Ambulancias
                                  sp.Origem,
                                  sp.Destino,
                                  sp.ObsGerais,
-                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == null ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO"))
+                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == 0 ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO"))
                              }).DefaultIfEmpty().ToList();
 
                 Lista.DataSource = query;
@@ -1129,8 +1129,9 @@ namespace Solicitacao_de_Ambulancias
                     String.IsNullOrEmpty(Lista.Rows[e.RowIndex].Cells["idSolicitacoes_Ambulancias"].Value as String) && Lista.Rows[e.RowIndex].Cells["Status"].Value.ToString() == "AGUARDANDO TRANSPORTE")
                 {
                     Status.Text = "Aguardando vaga";
+                    IdSolicitacaoAmbulancia = 0;
                 }
-                else if (Lista.Rows[e.RowIndex].Cells["Status"].Value.ToString() == "TRANSPORTE REALIZADO")
+                else if (Lista.Rows[e.RowIndex].Cells["Status"].Value.ToString() == "TRANSPORTE REALIZADO" || Lista.Rows[e.RowIndex].Cells["Status"].Value.ToString() == "TRANSPORTE CANCELADO")
                 {
                     Status.Text = "Solicitação encerrada";
                     IdSolicitacaoAmbulancia = Convert.ToInt32(Lista.Rows[e.RowIndex].Cells["idSolicitacoes_Ambulancias"].Value);
@@ -1145,8 +1146,10 @@ namespace Solicitacao_de_Ambulancias
 
                     Id = Lista.Rows[e.RowIndex].Cells["Id"].Value.ToString();
 
-
-                    Horarios();
+                    if (IdSolicitacaoAmbulancia != 0)
+                    {
+                        Horarios();
+                    }
 
                     origem = Lista.Rows[e.RowIndex].Cells["Origem"].Value.ToString();
                     destino = Lista.Rows[e.RowIndex].Cells["Destino"].Value.ToString();

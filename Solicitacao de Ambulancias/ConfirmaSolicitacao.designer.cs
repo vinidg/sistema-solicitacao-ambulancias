@@ -31,6 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConfirmaSolicitacao));
             this.AbasControle = new System.Windows.Forms.TabControl();
             this.StatusAmbulancias = new System.Windows.Forms.TabPage();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.listaUsa = new System.Windows.Forms.DataGridView();
             this.Detalhes = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label33 = new System.Windows.Forms.Label();
@@ -41,8 +45,6 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.label22 = new System.Windows.Forms.Label();
             this.solPendentes = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.AtualizarBtn = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -51,11 +53,10 @@
             this.label25 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.listaUsb = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.listaUsa = new System.Windows.Forms.DataGridView();
             this.NovaSolicitacao = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.label34 = new System.Windows.Forms.Label();
             this.dataAgendamento = new System.Windows.Forms.DateTimePicker();
             this.label31 = new System.Windows.Forms.Label();
             this.Prioridade = new System.Windows.Forms.ComboBox();
@@ -248,17 +249,16 @@
             this.label58 = new System.Windows.Forms.Label();
             this.EntrarCancelar = new System.Windows.Forms.Button();
             this.SelecionarUnidade = new System.Windows.Forms.ComboBox();
-            this.label34 = new System.Windows.Forms.Label();
             this.AbasControle.SuspendLayout();
             this.StatusAmbulancias.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.listaUsa)).BeginInit();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaUsb)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.listaUsa)).BeginInit();
             this.NovaSolicitacao.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -317,6 +317,64 @@
             this.StatusAmbulancias.Size = new System.Drawing.Size(1041, 668);
             this.StatusAmbulancias.TabIndex = 0;
             this.StatusAmbulancias.Text = "Status da Ambulancias";
+            // 
+            // label28
+            // 
+            this.label28.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.ForeColor = System.Drawing.Color.Red;
+            this.label28.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label28.Location = new System.Drawing.Point(889, 145);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(48, 13);
+            this.label28.TabIndex = 39;
+            this.label28.Text = "label28";
+            this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label27
+            // 
+            this.label27.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.ForeColor = System.Drawing.Color.Red;
+            this.label27.Location = new System.Drawing.Point(765, 145);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(115, 13);
+            this.label27.TabIndex = 38;
+            this.label27.Text = "Última atualização:";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.listaUsa);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(10, 161);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1025, 104);
+            this.groupBox1.TabIndex = 31;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "USA";
+            // 
+            // listaUsa
+            // 
+            this.listaUsa.AllowUserToAddRows = false;
+            this.listaUsa.AllowUserToDeleteRows = false;
+            this.listaUsa.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listaUsa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.listaUsa.Location = new System.Drawing.Point(6, 20);
+            this.listaUsa.Name = "listaUsa";
+            this.listaUsa.ReadOnly = true;
+            this.listaUsa.RowHeadersVisible = false;
+            this.listaUsa.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.listaUsa.Size = new System.Drawing.Size(1013, 78);
+            this.listaUsa.TabIndex = 0;
+            this.listaUsa.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.listaUsa_CellFormatting);
             // 
             // Detalhes
             // 
@@ -435,34 +493,6 @@
             this.solPendentes.TabIndex = 41;
             this.solPendentes.Text = "123";
             // 
-            // label28
-            // 
-            this.label28.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.ForeColor = System.Drawing.Color.Red;
-            this.label28.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label28.Location = new System.Drawing.Point(889, 145);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(48, 13);
-            this.label28.TabIndex = 39;
-            this.label28.Text = "label28";
-            this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label27
-            // 
-            this.label27.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.ForeColor = System.Drawing.Color.Red;
-            this.label27.Location = new System.Drawing.Point(765, 145);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(115, 13);
-            this.label27.TabIndex = 38;
-            this.label27.Text = "Última atualização:";
-            // 
             // label26
             // 
             this.label26.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -566,36 +596,6 @@
             this.listaUsb.TabIndex = 1;
             this.listaUsb.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.listaUsb_CellFormatting);
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.listaUsa);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(10, 161);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1025, 104);
-            this.groupBox1.TabIndex = 31;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "USA";
-            // 
-            // listaUsa
-            // 
-            this.listaUsa.AllowUserToAddRows = false;
-            this.listaUsa.AllowUserToDeleteRows = false;
-            this.listaUsa.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listaUsa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.listaUsa.Location = new System.Drawing.Point(6, 20);
-            this.listaUsa.Name = "listaUsa";
-            this.listaUsa.ReadOnly = true;
-            this.listaUsa.RowHeadersVisible = false;
-            this.listaUsa.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.listaUsa.Size = new System.Drawing.Size(1013, 78);
-            this.listaUsa.TabIndex = 0;
-            this.listaUsa.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.listaUsa_CellFormatting);
-            // 
             // NovaSolicitacao
             // 
             this.NovaSolicitacao.Controls.Add(this.panel1);
@@ -671,6 +671,19 @@
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(330, 74);
             this.panel8.TabIndex = 49;
+            // 
+            // label34
+            // 
+            this.label34.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.Location = new System.Drawing.Point(1, 8);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(327, 57);
+            this.label34.TabIndex = 0;
+            this.label34.Text = "Falhas e bugs ligar para o numero: 2630-6167 e falar com o Vinicius";
+            this.label34.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dataAgendamento
             // 
@@ -3036,19 +3049,6 @@
             this.SelecionarUnidade.Size = new System.Drawing.Size(167, 21);
             this.SelecionarUnidade.TabIndex = 5;
             // 
-            // label34
-            // 
-            this.label34.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.Location = new System.Drawing.Point(1, 8);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(327, 57);
-            this.label34.TabIndex = 0;
-            this.label34.Text = "Falhas e bugs ligar para o numero: 2630-6167 e falar com o Vinicius";
-            this.label34.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // ConfirmaSolicitacao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -3064,6 +3064,8 @@
             this.AbasControle.ResumeLayout(false);
             this.StatusAmbulancias.ResumeLayout(false);
             this.StatusAmbulancias.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.listaUsa)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.panel6.ResumeLayout(false);
@@ -3074,8 +3076,6 @@
             this.panel2.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.listaUsb)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.listaUsa)).EndInit();
             this.NovaSolicitacao.ResumeLayout(false);
             this.NovaSolicitacao.PerformLayout();
             this.panel1.ResumeLayout(false);
