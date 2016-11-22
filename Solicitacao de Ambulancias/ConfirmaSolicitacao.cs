@@ -43,6 +43,7 @@ namespace Solicitacao_de_Ambulancias
             Detalhes.Text = "";
 
         }
+
         Version appversion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
         public void Limpar()
         {
@@ -654,6 +655,7 @@ namespace Solicitacao_de_Ambulancias
                              {
                                  Id = sp.idPaciente_Solicitacoes,
                                  idSolicitacoes_Ambulancias = sa.idSolicitacoes_Ambulancias,
+                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == null ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO")),
                                  Tipo = sp.TipoSolicitacao,
                                  sp.DtHrdoInicio,
                                  sp.Agendamento,
@@ -670,8 +672,7 @@ namespace Solicitacao_de_Ambulancias
                                  sp.SubMotivo,
                                  sp.Origem,
                                  sp.Destino,
-                                 sp.ObsGerais,
-                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == null ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO"))
+                                 sp.ObsGerais
                              }).DefaultIfEmpty().ToList();
 
                 Lista.DataSource = query;
@@ -701,12 +702,11 @@ namespace Solicitacao_de_Ambulancias
                              where
                               sp.LocalSolicitacao == UnidadeSelecionada &&
                               SqlFunctions.DateDiff("day", DateTime.Now, sp.DtHrdoInicio) == 0
-                             orderby
-                               sp.idPaciente_Solicitacoes
                              select new
                              {
                                  Id = sp.idPaciente_Solicitacoes,
                                  idSolicitacoes_Ambulancias = sa.idSolicitacoes_Ambulancias,
+                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == 0 ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO")),
                                  Tipo = sp.TipoSolicitacao,
                                  sp.DtHrdoInicio,
                                  sp.Agendamento,
@@ -723,11 +723,11 @@ namespace Solicitacao_de_Ambulancias
                                  sp.SubMotivo,
                                  sp.Origem,
                                  sp.Destino,
-                                 sp.ObsGerais,
-                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == 0 ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO"))
-                             }).DefaultIfEmpty().ToList();
+                                 sp.ObsGerais
 
-                Lista.DataSource = query;
+                             }).DefaultIfEmpty();
+
+                Lista.DataSource = query.OrderBy(s => s.DtHrdoInicio).ToList();
                 Lista.Refresh();
                 Lista.ClearSelection();
                 Lista.Columns["idSolicitacoes_Ambulancias"].Visible = false;
@@ -754,12 +754,12 @@ namespace Solicitacao_de_Ambulancias
                              where
                                sp.LocalSolicitacao == UnidadeSelecionada && sa.idSolicitacoes_Ambulancias != null
                                && sp.DtHrdoInicio >= ontem && sp.DtHrdoInicio <= data
-                             orderby
-                               sp.idPaciente_Solicitacoes
+
                              select new
                              {
                                  Id = sp.idPaciente_Solicitacoes,
                                  idSolicitacoes_Ambulancias = sa.idSolicitacoes_Ambulancias,
+                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == 0 ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO")),
                                  Tipo = sp.TipoSolicitacao,
                                  sp.DtHrdoInicio,
                                  sp.Agendamento,
@@ -776,11 +776,11 @@ namespace Solicitacao_de_Ambulancias
                                  sp.SubMotivo,
                                  sp.Origem,
                                  sp.Destino,
-                                 sp.ObsGerais,
-                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == 0 ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO"))
-                             }).DefaultIfEmpty().ToList();
+                                 sp.ObsGerais
 
-                Lista.DataSource = query;
+                             }).DefaultIfEmpty();
+
+                Lista.DataSource = query.OrderBy(s => s.DtHrdoInicio).ToList();
                 Lista.Refresh();
                 Lista.ClearSelection();
                 Lista.Columns["idSolicitacoes_Ambulancias"].Visible = false;
@@ -813,6 +813,7 @@ namespace Solicitacao_de_Ambulancias
                              {
                                  Id = sp.idPaciente_Solicitacoes,
                                  idSolicitacoes_Ambulancias = sa.idSolicitacoes_Ambulancias,
+                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == 0 ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO")),
                                  Tipo = sp.TipoSolicitacao,
                                  sp.DtHrdoInicio,
                                  sp.Agendamento,
@@ -829,11 +830,10 @@ namespace Solicitacao_de_Ambulancias
                                  sp.SubMotivo,
                                  sp.Origem,
                                  sp.Destino,
-                                 sp.ObsGerais,
-                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == 0 ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO"))
-                             }).DefaultIfEmpty().ToList();
+                                 sp.ObsGerais
+                             }).DefaultIfEmpty();
 
-                Lista.DataSource = query;
+                Lista.DataSource = query.OrderBy(s => s.DtHrdoInicio).ToList();
                 Lista.Refresh();
                 Lista.ClearSelection();
 
@@ -868,6 +868,7 @@ namespace Solicitacao_de_Ambulancias
                              {
                                  Id = sp.idPaciente_Solicitacoes,
                                  idSolicitacoes_Ambulancias = sa.idSolicitacoes_Ambulancias,
+                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == 0 ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO")),
                                  Tipo = sp.TipoSolicitacao,
                                  sp.DtHrdoInicio,
                                  sp.Agendamento,
@@ -884,11 +885,10 @@ namespace Solicitacao_de_Ambulancias
                                  sp.SubMotivo,
                                  sp.Origem,
                                  sp.Destino,
-                                 sp.ObsGerais,
-                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == 0 ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO"))
-                             }).DefaultIfEmpty().ToList();
+                                 sp.ObsGerais
+                             }).DefaultIfEmpty();
 
-                Lista.DataSource = query;
+                Lista.DataSource = query.OrderBy(s => s.DtHrdoInicio).ToList();
                 Lista.Refresh();
                 Lista.ClearSelection();
 
@@ -922,6 +922,7 @@ namespace Solicitacao_de_Ambulancias
                              {
                                  Id = sp.idPaciente_Solicitacoes,
                                  idSolicitacoes_Ambulancias = sa.idSolicitacoes_Ambulancias,
+                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == 0 ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO")),
                                  Tipo = sp.TipoSolicitacao,
                                  sp.DtHrdoInicio,
                                  sp.Agendamento,
@@ -938,11 +939,10 @@ namespace Solicitacao_de_Ambulancias
                                  sp.SubMotivo,
                                  sp.Origem,
                                  sp.Destino,
-                                 sp.ObsGerais,
-                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == 0 ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO"))
-                             }).DefaultIfEmpty().ToList();
+                                 sp.ObsGerais
+                             }).DefaultIfEmpty();
 
-                Lista.DataSource = query;
+                Lista.DataSource = query.OrderBy(s => s.DtHrdoInicio).ToList();
                 Lista.Refresh();
                 Lista.ClearSelection();
 
@@ -976,6 +976,7 @@ namespace Solicitacao_de_Ambulancias
                              {
                                  Id = sp.idPaciente_Solicitacoes,
                                  idSolicitacoes_Ambulancias = sa.idSolicitacoes_Ambulancias,
+                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == 0 ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO")),
                                  Tipo = sp.TipoSolicitacao,
                                  sp.DtHrdoInicio,
                                  sp.Agendamento,
@@ -992,11 +993,10 @@ namespace Solicitacao_de_Ambulancias
                                  sp.SubMotivo,
                                  sp.Origem,
                                  sp.Destino,
-                                 sp.ObsGerais,
-                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == 0 ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO"))
-                             }).DefaultIfEmpty().ToList();
+                                 sp.ObsGerais
+                             }).DefaultIfEmpty();
 
-                Lista.DataSource = query;
+                Lista.DataSource = query.OrderBy(s => s.DtHrdoInicio).ToList();
                 Lista.Refresh();
                 Lista.ClearSelection();
 
@@ -1031,6 +1031,7 @@ namespace Solicitacao_de_Ambulancias
                              {
                                  Id = sp.idPaciente_Solicitacoes,
                                  idSolicitacoes_Ambulancias = sa.idSolicitacoes_Ambulancias,
+                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == 0 ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO")),
                                  Tipo = sp.TipoSolicitacao,
                                  sp.DtHrdoInicio,
                                  sp.Agendamento,
@@ -1047,11 +1048,10 @@ namespace Solicitacao_de_Ambulancias
                                  sp.SubMotivo,
                                  sp.Origem,
                                  sp.Destino,
-                                 sp.ObsGerais,
-                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == 0 ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO"))
-                             }).DefaultIfEmpty().ToList();
+                                 sp.ObsGerais
+                             }).DefaultIfEmpty();
 
-                Lista.DataSource = query;
+                Lista.DataSource = query.OrderBy(s => s.DtHrdoInicio).ToList();
                 Lista.Refresh();
                 Lista.ClearSelection();
 
@@ -1084,6 +1084,7 @@ namespace Solicitacao_de_Ambulancias
                              {
                                  Id = sp.idPaciente_Solicitacoes,
                                  idSolicitacoes_Ambulancias = sa.idSolicitacoes_Ambulancias,
+                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == 0 ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO")),
                                  Tipo = sp.TipoSolicitacao,
                                  sp.DtHrdoInicio,
                                  sp.Agendamento,
@@ -1100,11 +1101,10 @@ namespace Solicitacao_de_Ambulancias
                                  sp.SubMotivo,
                                  sp.Origem,
                                  sp.Destino,
-                                 sp.ObsGerais,
-                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == 0 ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO"))
-                             }).DefaultIfEmpty().ToList();
+                                 sp.ObsGerais
+                             }).DefaultIfEmpty();
 
-                Lista.DataSource = query;
+                Lista.DataSource = query.OrderBy(s => s.DtHrdoInicio).ToList();
                 Lista.Refresh();
                 Lista.ClearSelection();
 
@@ -1112,6 +1112,113 @@ namespace Solicitacao_de_Ambulancias
 
             }
         }
+        private void agendadas_ValueChanged(object sender, EventArgs e)
+        {
+            Lista.DataSource = "";
+            using (DAHUEEntities db = new DAHUEEntities())
+            {
+                var query = (from sp in db.solicitacoes_paciente
+                             join sa in db.solicitacoes_ambulancias
+                             on new { idPaciente_Solicitacoes = sp.idPaciente_Solicitacoes }
+                             equals new { idPaciente_Solicitacoes = (int)sa.idSolicitacoesPacientes } into b_join
+                             from sa in b_join.DefaultIfEmpty()
+                             join ca in db.cancelados_pacientes
+                             on sp.idPaciente_Solicitacoes
+                             equals ca.idPaciente into c_join
+                             from ca in c_join.DefaultIfEmpty()
+                             where
+                               sp.LocalSolicitacao == UnidadeSelecionada
+                               && sp.Agendamento == "Sim"
+                               && SqlFunctions.DateDiff("day", agendadas.Value, sp.DtHrdoAgendamento) == 0
+                             orderby
+                               sp.idPaciente_Solicitacoes
+                             select new
+                             {
+                                 Id = sp.idPaciente_Solicitacoes,
+                                 idSolicitacoes_Ambulancias = sa.idSolicitacoes_Ambulancias,
+                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == 0 ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO")),
+                                 Tipo = sp.TipoSolicitacao,
+                                 sp.DtHrdoInicio,
+                                 sp.Agendamento,
+                                 sp.DtHrdoAgendamento,
+                                 sp.NomeSolicitante,
+                                 sp.LocalSolicitacao,
+                                 sp.Telefone,
+                                 sp.Paciente,
+                                 sp.Genero,
+                                 sp.Idade,
+                                 sp.Diagnostico,
+                                 sp.Prioridade,
+                                 sp.Motivo,
+                                 sp.SubMotivo,
+                                 sp.Origem,
+                                 sp.Destino,
+                                 sp.ObsGerais
+                             }).DefaultIfEmpty();
+
+                Lista.DataSource = query.OrderBy(s => s.DtHrdoInicio).ToList();
+                Lista.Refresh();
+                Lista.ClearSelection();
+
+                Lista.Columns["idSolicitacoes_Ambulancias"].Visible = false;
+
+            }
+        }
+        private void reagendadas_ValueChanged(object sender, EventArgs e)
+        {
+            Lista.DataSource = "";
+            using (DAHUEEntities db = new DAHUEEntities())
+            {
+                var query = (from sp in db.solicitacoes_paciente
+                             join sa in db.solicitacoes_ambulancias
+                             on new { idPaciente_Solicitacoes = sp.idPaciente_Solicitacoes }
+                             equals new { idPaciente_Solicitacoes = (int)sa.idSolicitacoesPacientes } into b_join
+                             from sa in b_join.DefaultIfEmpty()
+                             join ca in db.cancelados_pacientes
+                             on sp.idPaciente_Solicitacoes
+                             equals ca.idPaciente into c_join
+                             from ca in c_join.DefaultIfEmpty()
+                             join saa in db.solicitacoes_agendamentos
+                             on sp.idReagendamento equals saa.idSolicitacaoAgendamento into spsaaajoin
+                             from saa in spsaaajoin.DefaultIfEmpty()
+                             where
+                               sp.LocalSolicitacao == UnidadeSelecionada && sa.idSolicitacoes_Ambulancias != null
+                               && SqlFunctions.DateDiff("day", reagendadas.Value, saa.DtHrAgendamento) == 0 && sp.Agendamento == "Sim"
+                             orderby
+                               sp.idPaciente_Solicitacoes
+                             select new
+                             {
+                                 Id = sp.idPaciente_Solicitacoes,
+                                 idSolicitacoes_Ambulancias = sa.idSolicitacoes_Ambulancias,
+                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == 0 ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO")),
+                                 Tipo = sp.TipoSolicitacao,
+                                 sp.DtHrdoInicio,
+                                 sp.Agendamento,
+                                 Data_Reagendada = saa.DtHrAgendamento,
+                                 sp.NomeSolicitante,
+                                 sp.LocalSolicitacao,
+                                 sp.Telefone,
+                                 sp.Paciente,
+                                 sp.Genero,
+                                 sp.Idade,
+                                 sp.Diagnostico,
+                                 sp.Prioridade,
+                                 sp.Motivo,
+                                 sp.SubMotivo,
+                                 sp.Origem,
+                                 sp.Destino,
+                                 sp.ObsGerais
+                             }).DefaultIfEmpty();
+
+                Lista.DataSource = query.OrderBy(s => s.DtHrdoInicio).ToList();
+                Lista.Refresh();
+                Lista.ClearSelection();
+
+                Lista.Columns["idSolicitacoes_Ambulancias"].Visible = false;
+
+            }
+        }
+
         #endregion
 
         private void Lista_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -1176,6 +1283,8 @@ namespace Solicitacao_de_Ambulancias
         {
             pegarDadosDasAmbulancias();
         }
+
+
 
         #endregion
 
@@ -1692,6 +1801,8 @@ namespace Solicitacao_de_Ambulancias
         }
 
         #endregion
+
+
 
     }
 }

@@ -103,7 +103,6 @@
             this.BtnBasica = new System.Windows.Forms.Button();
             this.TodasSolicitacoes = new System.Windows.Forms.TabPage();
             this.PainelSolicitacoes = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.hoje = new System.Windows.Forms.RadioButton();
             this.ano1 = new System.Windows.Forms.RadioButton();
@@ -113,6 +112,12 @@
             this.dias5 = new System.Windows.Forms.RadioButton();
             this.dias2 = new System.Windows.Forms.RadioButton();
             this.Ontem = new System.Windows.Forms.RadioButton();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label85 = new System.Windows.Forms.Label();
+            this.label84 = new System.Windows.Forms.Label();
+            this.reagendadas = new System.Windows.Forms.DateTimePicker();
+            this.agendadas = new System.Windows.Forms.DateTimePicker();
+            this.button3 = new System.Windows.Forms.Button();
             this.Lista = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.Status = new System.Windows.Forms.Label();
@@ -265,6 +270,7 @@
             this.TodasSolicitacoes.SuspendLayout();
             this.PainelSolicitacoes.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Lista)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -1224,8 +1230,9 @@
             // PainelSolicitacoes
             // 
             this.PainelSolicitacoes.AutoScroll = true;
-            this.PainelSolicitacoes.Controls.Add(this.button3);
+            this.PainelSolicitacoes.Controls.Add(this.groupBox5);
             this.PainelSolicitacoes.Controls.Add(this.groupBox3);
+            this.PainelSolicitacoes.Controls.Add(this.button3);
             this.PainelSolicitacoes.Controls.Add(this.Lista);
             this.PainelSolicitacoes.Controls.Add(this.panel3);
             this.PainelSolicitacoes.Controls.Add(this.label30);
@@ -1236,24 +1243,8 @@
             this.PainelSolicitacoes.TabIndex = 4;
             this.PainelSolicitacoes.Visible = false;
             // 
-            // button3
-            // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(124)))), ((int)(((byte)(185)))));
-            this.button3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(921, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(111, 36);
-            this.button3.TabIndex = 37;
-            this.button3.Text = "Atualizar";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
             // groupBox3
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.hoje);
             this.groupBox3.Controls.Add(this.ano1);
             this.groupBox3.Controls.Add(this.mes1);
@@ -1262,9 +1253,9 @@
             this.groupBox3.Controls.Add(this.dias5);
             this.groupBox3.Controls.Add(this.dias2);
             this.groupBox3.Controls.Add(this.Ontem);
-            this.groupBox3.Location = new System.Drawing.Point(8, 33);
+            this.groupBox3.Location = new System.Drawing.Point(8, 34);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1021, 54);
+            this.groupBox3.Size = new System.Drawing.Size(539, 75);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Solicitações criadas:";
@@ -1273,7 +1264,7 @@
             // 
             this.hoje.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.hoje.AutoSize = true;
-            this.hoje.Location = new System.Drawing.Point(710, 19);
+            this.hoje.Location = new System.Drawing.Point(475, 32);
             this.hoje.Name = "hoje";
             this.hoje.Size = new System.Drawing.Size(47, 17);
             this.hoje.TabIndex = 7;
@@ -1286,7 +1277,7 @@
             // 
             this.ano1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ano1.AutoSize = true;
-            this.ano1.Location = new System.Drawing.Point(279, 19);
+            this.ano1.Location = new System.Drawing.Point(14, 32);
             this.ano1.Name = "ano1";
             this.ano1.Size = new System.Drawing.Size(53, 17);
             this.ano1.TabIndex = 6;
@@ -1299,7 +1290,7 @@
             // 
             this.mes1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.mes1.AutoSize = true;
-            this.mes1.Location = new System.Drawing.Point(332, 19);
+            this.mes1.Location = new System.Drawing.Point(73, 32);
             this.mes1.Name = "mes1";
             this.mes1.Size = new System.Drawing.Size(54, 17);
             this.mes1.TabIndex = 5;
@@ -1312,7 +1303,7 @@
             // 
             this.semana2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.semana2.AutoSize = true;
-            this.semana2.Location = new System.Drawing.Point(386, 19);
+            this.semana2.Location = new System.Drawing.Point(133, 32);
             this.semana2.Name = "semana2";
             this.semana2.Size = new System.Drawing.Size(73, 17);
             this.semana2.TabIndex = 4;
@@ -1325,7 +1316,7 @@
             // 
             this.semana1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.semana1.AutoSize = true;
-            this.semana1.Location = new System.Drawing.Point(459, 19);
+            this.semana1.Location = new System.Drawing.Point(212, 32);
             this.semana1.Name = "semana1";
             this.semana1.Size = new System.Drawing.Size(73, 17);
             this.semana1.TabIndex = 3;
@@ -1338,7 +1329,7 @@
             // 
             this.dias5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dias5.AutoSize = true;
-            this.dias5.Location = new System.Drawing.Point(532, 19);
+            this.dias5.Location = new System.Drawing.Point(291, 32);
             this.dias5.Name = "dias5";
             this.dias5.Size = new System.Drawing.Size(55, 17);
             this.dias5.TabIndex = 2;
@@ -1351,7 +1342,7 @@
             // 
             this.dias2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dias2.AutoSize = true;
-            this.dias2.Location = new System.Drawing.Point(587, 19);
+            this.dias2.Location = new System.Drawing.Point(352, 32);
             this.dias2.Name = "dias2";
             this.dias2.Size = new System.Drawing.Size(55, 17);
             this.dias2.TabIndex = 1;
@@ -1364,7 +1355,7 @@
             // 
             this.Ontem.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Ontem.AutoSize = true;
-            this.Ontem.Location = new System.Drawing.Point(648, 19);
+            this.Ontem.Location = new System.Drawing.Point(413, 32);
             this.Ontem.Name = "Ontem";
             this.Ontem.Size = new System.Drawing.Size(56, 17);
             this.Ontem.TabIndex = 0;
@@ -1372,6 +1363,74 @@
             this.Ontem.Text = "Ontem";
             this.Ontem.UseVisualStyleBackColor = true;
             this.Ontem.Click += new System.EventHandler(this.Ontem_Click_1);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox5.Controls.Add(this.label85);
+            this.groupBox5.Controls.Add(this.label84);
+            this.groupBox5.Controls.Add(this.reagendadas);
+            this.groupBox5.Controls.Add(this.agendadas);
+            this.groupBox5.Location = new System.Drawing.Point(553, 34);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(472, 75);
+            this.groupBox5.TabIndex = 8;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Solicitações (re)agendadas no dia:";
+            // 
+            // label85
+            // 
+            this.label85.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label85.AutoSize = true;
+            this.label85.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label85.Location = new System.Drawing.Point(301, 30);
+            this.label85.Name = "label85";
+            this.label85.Size = new System.Drawing.Size(96, 16);
+            this.label85.TabIndex = 38;
+            this.label85.Text = "Reagendadas";
+            // 
+            // label84
+            // 
+            this.label84.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label84.AutoSize = true;
+            this.label84.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label84.Location = new System.Drawing.Point(74, 30);
+            this.label84.Name = "label84";
+            this.label84.Size = new System.Drawing.Size(79, 16);
+            this.label84.TabIndex = 37;
+            this.label84.Text = "Agendadas";
+            // 
+            // reagendadas
+            // 
+            this.reagendadas.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.reagendadas.Location = new System.Drawing.Point(245, 49);
+            this.reagendadas.Name = "reagendadas";
+            this.reagendadas.Size = new System.Drawing.Size(221, 20);
+            this.reagendadas.TabIndex = 1;
+            this.reagendadas.ValueChanged += new System.EventHandler(this.reagendadas_ValueChanged);
+            // 
+            // agendadas
+            // 
+            this.agendadas.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.agendadas.Location = new System.Drawing.Point(6, 49);
+            this.agendadas.Name = "agendadas";
+            this.agendadas.Size = new System.Drawing.Size(233, 20);
+            this.agendadas.TabIndex = 0;
+            this.agendadas.ValueChanged += new System.EventHandler(this.agendadas_ValueChanged);
+            // 
+            // button3
+            // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(124)))), ((int)(((byte)(185)))));
+            this.button3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Location = new System.Drawing.Point(918, 6);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(111, 28);
+            this.button3.TabIndex = 37;
+            this.button3.Text = "Atualizar";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Lista
             // 
@@ -1381,14 +1440,15 @@
             this.Lista.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.Lista.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.Lista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Lista.Location = new System.Drawing.Point(8, 93);
+            this.Lista.Location = new System.Drawing.Point(8, 115);
             this.Lista.MultiSelect = false;
             this.Lista.Name = "Lista";
             this.Lista.ReadOnly = true;
             this.Lista.RowHeadersVisible = false;
-            this.Lista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Lista.Size = new System.Drawing.Size(1018, 354);
+            this.Lista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.Lista.Size = new System.Drawing.Size(1018, 400);
             this.Lista.TabIndex = 5;
             this.Lista.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Lista_CellContentClick);
             this.Lista.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.Lista_CellFormatting);
@@ -1416,9 +1476,9 @@
             this.panel3.Controls.Add(this.lbDestino);
             this.panel3.Controls.Add(this.label32);
             this.panel3.Controls.Add(this.lbOrigem);
-            this.panel3.Location = new System.Drawing.Point(8, 453);
+            this.panel3.Location = new System.Drawing.Point(8, 520);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1021, 206);
+            this.panel3.Size = new System.Drawing.Size(1021, 139);
             this.panel3.TabIndex = 2;
             // 
             // Status
@@ -1426,7 +1486,7 @@
             this.Status.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.Status.AutoSize = true;
             this.Status.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Status.Location = new System.Drawing.Point(834, 17);
+            this.Status.Location = new System.Drawing.Point(826, 11);
             this.Status.Name = "Status";
             this.Status.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.Status.Size = new System.Drawing.Size(47, 20);
@@ -1437,7 +1497,7 @@
             // 
             this.NomePacienteLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.NomePacienteLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NomePacienteLabel.Location = new System.Drawing.Point(276, 15);
+            this.NomePacienteLabel.Location = new System.Drawing.Point(276, 12);
             this.NomePacienteLabel.Name = "NomePacienteLabel";
             this.NomePacienteLabel.Size = new System.Drawing.Size(478, 18);
             this.NomePacienteLabel.TabIndex = 37;
@@ -1448,7 +1508,7 @@
             // 
             this.IdPacienteLabel.AutoSize = true;
             this.IdPacienteLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IdPacienteLabel.Location = new System.Drawing.Point(44, 17);
+            this.IdPacienteLabel.Location = new System.Drawing.Point(40, 12);
             this.IdPacienteLabel.Name = "IdPacienteLabel";
             this.IdPacienteLabel.Size = new System.Drawing.Size(26, 20);
             this.IdPacienteLabel.TabIndex = 36;
@@ -1459,7 +1519,7 @@
             this.label59.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label59.AutoSize = true;
             this.label59.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label59.Location = new System.Drawing.Point(15, 17);
+            this.label59.Location = new System.Drawing.Point(6, 12);
             this.label59.Name = "label59";
             this.label59.Size = new System.Drawing.Size(28, 20);
             this.label59.TabIndex = 35;
@@ -1470,65 +1530,71 @@
             // 
             this.txtHora6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtHora6.Enabled = false;
-            this.txtHora6.Location = new System.Drawing.Point(810, 170);
+            this.txtHora6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHora6.Location = new System.Drawing.Point(810, 113);
             this.txtHora6.Name = "txtHora6";
-            this.txtHora6.Size = new System.Drawing.Size(142, 20);
+            this.txtHora6.Size = new System.Drawing.Size(142, 22);
             this.txtHora6.TabIndex = 34;
             // 
             // txtHora5
             // 
             this.txtHora5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtHora5.Enabled = false;
-            this.txtHora5.Location = new System.Drawing.Point(661, 170);
+            this.txtHora5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHora5.Location = new System.Drawing.Point(661, 113);
             this.txtHora5.Name = "txtHora5";
-            this.txtHora5.Size = new System.Drawing.Size(142, 20);
+            this.txtHora5.Size = new System.Drawing.Size(142, 22);
             this.txtHora5.TabIndex = 33;
             // 
             // txtHora4
             // 
             this.txtHora4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtHora4.Enabled = false;
-            this.txtHora4.Location = new System.Drawing.Point(512, 170);
+            this.txtHora4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHora4.Location = new System.Drawing.Point(512, 113);
             this.txtHora4.Name = "txtHora4";
-            this.txtHora4.Size = new System.Drawing.Size(142, 20);
+            this.txtHora4.Size = new System.Drawing.Size(142, 22);
             this.txtHora4.TabIndex = 32;
             // 
             // txtHora3
             // 
             this.txtHora3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtHora3.Enabled = false;
-            this.txtHora3.Location = new System.Drawing.Point(363, 170);
+            this.txtHora3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHora3.Location = new System.Drawing.Point(363, 113);
             this.txtHora3.Name = "txtHora3";
-            this.txtHora3.Size = new System.Drawing.Size(142, 20);
+            this.txtHora3.Size = new System.Drawing.Size(142, 22);
             this.txtHora3.TabIndex = 31;
             // 
             // txtHora2
             // 
             this.txtHora2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtHora2.Enabled = false;
-            this.txtHora2.Location = new System.Drawing.Point(214, 170);
+            this.txtHora2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHora2.Location = new System.Drawing.Point(214, 113);
             this.txtHora2.Name = "txtHora2";
-            this.txtHora2.Size = new System.Drawing.Size(142, 20);
+            this.txtHora2.Size = new System.Drawing.Size(142, 22);
             this.txtHora2.TabIndex = 30;
             // 
             // txtHora
             // 
             this.txtHora.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtHora.Enabled = false;
-            this.txtHora.Location = new System.Drawing.Point(65, 168);
+            this.txtHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHora.Location = new System.Drawing.Point(65, 111);
             this.txtHora.Name = "txtHora";
-            this.txtHora.Size = new System.Drawing.Size(142, 20);
+            this.txtHora.Size = new System.Drawing.Size(142, 22);
             this.txtHora.TabIndex = 29;
             // 
             // BtnOrigem
             // 
             this.BtnOrigem.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.BtnOrigem.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.BtnOrigem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnOrigem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnOrigem.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.BtnOrigem.Location = new System.Drawing.Point(213, 96);
+            this.BtnOrigem.Location = new System.Drawing.Point(213, 69);
             this.BtnOrigem.Name = "BtnOrigem";
-            this.BtnOrigem.Size = new System.Drawing.Size(143, 68);
+            this.BtnOrigem.Size = new System.Drawing.Size(143, 41);
             this.BtnOrigem.TabIndex = 24;
             this.BtnOrigem.Text = "Equipe na Origem";
             this.BtnOrigem.UseVisualStyleBackColor = false;
@@ -1537,11 +1603,11 @@
             // 
             this.BtnPatio.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.BtnPatio.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.BtnPatio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnPatio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnPatio.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.BtnPatio.Location = new System.Drawing.Point(809, 96);
+            this.BtnPatio.Location = new System.Drawing.Point(809, 69);
             this.BtnPatio.Name = "BtnPatio";
-            this.BtnPatio.Size = new System.Drawing.Size(143, 68);
+            this.BtnPatio.Size = new System.Drawing.Size(143, 41);
             this.BtnPatio.TabIndex = 28;
             this.BtnPatio.Text = "Equipe no Pátio";
             this.BtnPatio.UseVisualStyleBackColor = false;
@@ -1550,11 +1616,11 @@
             // 
             this.EquipeLiberada.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.EquipeLiberada.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.EquipeLiberada.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EquipeLiberada.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EquipeLiberada.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.EquipeLiberada.Location = new System.Drawing.Point(660, 96);
+            this.EquipeLiberada.Location = new System.Drawing.Point(660, 69);
             this.EquipeLiberada.Name = "EquipeLiberada";
-            this.EquipeLiberada.Size = new System.Drawing.Size(143, 68);
+            this.EquipeLiberada.Size = new System.Drawing.Size(143, 41);
             this.EquipeLiberada.TabIndex = 27;
             this.EquipeLiberada.Text = "Equipe Liberada do Destino";
             this.EquipeLiberada.UseVisualStyleBackColor = false;
@@ -1563,11 +1629,11 @@
             // 
             this.BtnEquipeDestino.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.BtnEquipeDestino.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.BtnEquipeDestino.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnEquipeDestino.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnEquipeDestino.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.BtnEquipeDestino.Location = new System.Drawing.Point(511, 96);
+            this.BtnEquipeDestino.Location = new System.Drawing.Point(511, 69);
             this.BtnEquipeDestino.Name = "BtnEquipeDestino";
-            this.BtnEquipeDestino.Size = new System.Drawing.Size(143, 68);
+            this.BtnEquipeDestino.Size = new System.Drawing.Size(143, 41);
             this.BtnEquipeDestino.TabIndex = 26;
             this.BtnEquipeDestino.Text = "Equipe no Destino";
             this.BtnEquipeDestino.UseVisualStyleBackColor = false;
@@ -1576,11 +1642,11 @@
             // 
             this.BtnSaiuOrigem.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.BtnSaiuOrigem.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.BtnSaiuOrigem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnSaiuOrigem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnSaiuOrigem.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.BtnSaiuOrigem.Location = new System.Drawing.Point(362, 96);
+            this.BtnSaiuOrigem.Location = new System.Drawing.Point(362, 69);
             this.BtnSaiuOrigem.Name = "BtnSaiuOrigem";
-            this.BtnSaiuOrigem.Size = new System.Drawing.Size(143, 68);
+            this.BtnSaiuOrigem.Size = new System.Drawing.Size(143, 41);
             this.BtnSaiuOrigem.TabIndex = 25;
             this.BtnSaiuOrigem.Text = "Equipe Saiu da Origem";
             this.BtnSaiuOrigem.UseVisualStyleBackColor = false;
@@ -1589,11 +1655,11 @@
             // 
             this.BtnEquipeCiente.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.BtnEquipeCiente.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.BtnEquipeCiente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnEquipeCiente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnEquipeCiente.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.BtnEquipeCiente.Location = new System.Drawing.Point(65, 94);
+            this.BtnEquipeCiente.Location = new System.Drawing.Point(65, 67);
             this.BtnEquipeCiente.Name = "BtnEquipeCiente";
-            this.BtnEquipeCiente.Size = new System.Drawing.Size(143, 68);
+            this.BtnEquipeCiente.Size = new System.Drawing.Size(143, 41);
             this.BtnEquipeCiente.TabIndex = 23;
             this.BtnEquipeCiente.Text = "Equipe Ciente";
             this.BtnEquipeCiente.UseVisualStyleBackColor = false;
@@ -1602,7 +1668,7 @@
             // 
             this.lbDestino.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbDestino.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDestino.Location = new System.Drawing.Point(543, 60);
+            this.lbDestino.Location = new System.Drawing.Point(543, 44);
             this.lbDestino.Name = "lbDestino";
             this.lbDestino.Size = new System.Drawing.Size(474, 18);
             this.lbDestino.TabIndex = 2;
@@ -1614,7 +1680,7 @@
             this.label32.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label32.AutoSize = true;
             this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.Location = new System.Drawing.Point(486, 60);
+            this.label32.Location = new System.Drawing.Point(486, 44);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(53, 20);
             this.label32.TabIndex = 1;
@@ -1624,7 +1690,7 @@
             // 
             this.lbOrigem.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbOrigem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbOrigem.Location = new System.Drawing.Point(2, 60);
+            this.lbOrigem.Location = new System.Drawing.Point(2, 44);
             this.lbOrigem.Name = "lbOrigem";
             this.lbOrigem.Size = new System.Drawing.Size(478, 18);
             this.lbOrigem.TabIndex = 0;
@@ -3086,6 +3152,8 @@
             this.PainelSolicitacoes.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Lista)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -3269,7 +3337,6 @@
         private System.Windows.Forms.Button EntrarCancelar;
         private System.Windows.Forms.ComboBox SelecionarUnidade;
         private System.Windows.Forms.Label NomePacienteLabel;
-        private System.Windows.Forms.Label IdPacienteLabel;
         private System.Windows.Forms.Label label59;
         private System.Windows.Forms.TabPage ReagendamentosTab;
         private System.Windows.Forms.Panel painelReagendamento;
@@ -3331,5 +3398,11 @@
         private System.Windows.Forms.Label Status;
         private System.Windows.Forms.Button CancelarReagendamento;
         private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.DateTimePicker reagendadas;
+        private System.Windows.Forms.DateTimePicker agendadas;
+        private System.Windows.Forms.Label IdPacienteLabel;
+        private System.Windows.Forms.Label label85;
+        private System.Windows.Forms.Label label84;
     }
 }

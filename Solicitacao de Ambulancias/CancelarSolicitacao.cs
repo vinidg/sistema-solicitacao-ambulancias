@@ -67,7 +67,7 @@ namespace Solicitacao_de_Ambulancias
                     solicitacoes_paciente sp = db.solicitacoes_paciente.First(s => s.idPaciente_Solicitacoes == idpaciente);
                     sp.AmSolicitada = 1;
 
-                    if(idpaciente != null){
+                    if(idpaciente != 0){
                         solicitacoes_ambulancias sa = db.solicitacoes_ambulancias.First(s => s.idSolicitacoesPacientes == idpaciente);
                         sa.SolicitacaoConcluida = 1;
                     }
