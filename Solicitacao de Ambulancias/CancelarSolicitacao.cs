@@ -17,7 +17,6 @@ namespace Solicitacao_de_Ambulancias
         public CancelarSolicitacao(int idPaciente)
         {
             InitializeComponent();
-            DtHrCancelamento.Text = DateTime.Now.ToString();
             txtResponsavel.Text = System.Environment.UserName;
             idpaciente = idPaciente;
         }

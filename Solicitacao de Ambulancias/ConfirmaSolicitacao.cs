@@ -41,7 +41,7 @@ namespace Solicitacao_de_Ambulancias
             this.Text = "Sistema de Solicitação de Ambulancias. Versão: " + appversion;
             AbasControle.SelectedTab = NovaSolicitacao;
             Detalhes.Text = "";
-
+            AutoCompletar();
         }
 
         Version appversion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
@@ -253,25 +253,9 @@ namespace Solicitacao_de_Ambulancias
         }
         private void BtnLimpar_Click(object sender, EventArgs e)
         {
-            Limpar();
             ClearComboBox();
             ClearTextBoxes();
-        }
-        private void AutoCompletar()
-        {
-            RbFemenino.Checked = false;
-            RbMasculino.Checked = false;
-            txtIdade.Text = "";
-
-            using (DAHUEEntities db = new DAHUEEntities())
-            {
-                var autoCompletar = db.solicitacoes_paciente
-                    .Select(a => a.Paciente).Distinct().ToArray();
-                AutoCompleteStringCollection source = new AutoCompleteStringCollection();
-                source.AddRange(autoCompletar);
-                txtNomePaciente.AutoCompleteCustomSource = source;
-
-            }
+            Limpar();
         }
         private void CbLocalSolicita_SelectedIndexChanged_1(object sender, EventArgs e)
         {
@@ -330,12 +314,18 @@ namespace Solicitacao_de_Ambulancias
                     {
                         return;
                     }
+                    else
+                    {
+                        ClearTextBoxes();
+                        ClearComboBox();
+                        Limpar();
+                    }
                 }
                 else
                 {
-                    Limpar();
                     ClearTextBoxes();
                     ClearComboBox();
+                    Limpar();
                 }
             }
         }
@@ -529,6 +519,22 @@ namespace Solicitacao_de_Ambulancias
 
                     txtIdade.Text = autoCompletarDadosPaciente.Idade;
                 }
+            }
+        }
+        private void AutoCompletar()
+        {
+            RbFemenino.Checked = false;
+            RbMasculino.Checked = false;
+            txtIdade.Text = "";
+
+            using (DAHUEEntities db = new DAHUEEntities())
+            {
+                var autoCompletar = db.solicitacoes_paciente
+                    .Select(a => a.Paciente).Distinct().ToArray();
+                AutoCompleteStringCollection source = new AutoCompleteStringCollection();
+                source.AddRange(autoCompletar);
+                txtNomePaciente.AutoCompleteCustomSource = source;
+
             }
         }
 
@@ -1305,11 +1311,13 @@ namespace Solicitacao_de_Ambulancias
                                 equals new { idSolicitacoesPacientes = sp.idPaciente_Solicitacoes } into sp_join
                                 from sp in sp_join.DefaultIfEmpty()
                                 where am.TipoAM == "BASICO" && am.Desativado == 0
+                                orderby am.NomeAmbulancia ascending
                                 select new
                                 {
                                     am.idAmbulancia,
                                     Ambulancia = am.NomeAmbulancia,
-                                    Status = am.StatusAmbulancia,
+                                    Status = sa.Status,
+                                    StatusE = am.StatusAmbulancia,
                                     idPaciente = sa.idSolicitacoesPacientes,
                                     Paciente = sp.Paciente,
                                     Idade = sp.Idade,
@@ -1327,13 +1335,14 @@ namespace Solicitacao_de_Ambulancias
                                 from sa in sa_join.DefaultIfEmpty()
                                 join sp in db.solicitacoes_paciente on new { idSolicitacoesPacientes = (int)sa.idSolicitacoesPacientes } equals new { idSolicitacoesPacientes = sp.idPaciente_Solicitacoes } into sp_join
                                 from sp in sp_join.DefaultIfEmpty()
-                                where
-                                am.TipoAM == "AVANCADO" && am.Desativado == 0
+                                where am.TipoAM == "AVANCADO" && am.Desativado == 0
+                                orderby am.NomeAmbulancia ascending
                                 select new
                                 {
                                     am.idAmbulancia,
                                     Ambulancia = am.NomeAmbulancia,
-                                    Status = am.StatusAmbulancia,
+                                    Status = sa.Status,
+                                    StatusE = am.StatusAmbulancia,
                                     idPaciente = sa.idSolicitacoesPacientes,
                                     Paciente = sp.Paciente,
                                     Idade = sp.Idade,
@@ -1349,20 +1358,23 @@ namespace Solicitacao_de_Ambulancias
             listaUsb.Columns[0].Visible = false;
             listaUsa.Columns["idPaciente"].Visible = false;
             listaUsb.Columns["idPaciente"].Visible = false;
+            listaUsa.Columns["StatusE"].Width = 0;
+            listaUsb.Columns["StatusE"].Width = 0;
 
             this.listaUsa.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.listaUsa.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.listaUsa.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.listaUsa.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.listaUsa.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            this.listaUsa.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.listaUsa.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.listaUsa.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            this.listaUsa.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             this.listaUsb.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.listaUsb.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.listaUsb.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.listaUsb.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.listaUsb.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            this.listaUsb.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.listaUsb.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.listaUsb.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            this.listaUsb.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            
             label28.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
         }
 
@@ -1536,9 +1548,13 @@ namespace Solicitacao_de_Ambulancias
             using (DAHUEEntities db = new DAHUEEntities())
             {
                 var query = (from sp in db.solicitacoes_paciente
+                             join sa in db.solicitacoes_ambulancias
+                             on sp.idPaciente_Solicitacoes
+                             equals sa.idSolicitacoesPacientes into b_join
+                             from sa in b_join.DefaultIfEmpty()
                              where sp.LocalSolicitacao == UnidadeSelecionada &&
-                             sp.AmSolicitada == 0 &&
-                             sp.Registrado == "Sim"
+                             sp.AmSolicitada == 0 
+                             //&& sa.SolicitacaoConcluida == 0
                              orderby sp.DtHrdoInicio descending
                              select new
                              {
@@ -1785,7 +1801,7 @@ namespace Solicitacao_de_Ambulancias
         }
         private void CancelarReagendamento_Click(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(CodigoPacienteReagendamento.Text) != 0 || CodigoPacienteReagendamento.Text != "" || CodigoPacienteReagendamento.Text != "ID")
+            if (CodigoPacienteReagendamento.Text != "" || CodigoPacienteReagendamento.Text != "ID")
             {
                 CancelarSolicitacao cas = new CancelarSolicitacao(Convert.ToInt32(CodigoPacienteReagendamento.Text));
                 cas.ShowDialog();

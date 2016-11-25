@@ -162,7 +162,8 @@
       <DependentUpon>RespostaDeAmbulancias.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.Config">
-      <SubType>Designer</SubType>
+      <SubType>
+      </SubType>
     </None>
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">

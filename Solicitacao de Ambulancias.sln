@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solicitacao de Ambulancias"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "db_transporte_sanitario", "db_transporte_sanitario\db_transporte_sanitario.csproj", "{D43B3B37-AE11-473E-8177-4D448F306514}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Sistema de Solicitação de Ambulâncias SETUP", "Sistema de Solicitação de Ambulâncias SETUP\Sistema de Solicitação de Ambulâncias SETUP.vdproj", "{E63B11C1-85E6-43DF-88A3-F2191DEFC777}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CD_ROM|Any CPU = CD_ROM|Any CPU
@@ -36,6 +38,11 @@ Global
 		{D43B3B37-AE11-473E-8177-4D448F306514}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D43B3B37-AE11-473E-8177-4D448F306514}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
 		{D43B3B37-AE11-473E-8177-4D448F306514}.SingleImage|Any CPU.Build.0 = Release|Any CPU
+		{E63B11C1-85E6-43DF-88A3-F2191DEFC777}.CD_ROM|Any CPU.ActiveCfg = Release
+		{E63B11C1-85E6-43DF-88A3-F2191DEFC777}.Debug|Any CPU.ActiveCfg = Debug
+		{E63B11C1-85E6-43DF-88A3-F2191DEFC777}.DVD-5|Any CPU.ActiveCfg = Debug
+		{E63B11C1-85E6-43DF-88A3-F2191DEFC777}.Release|Any CPU.ActiveCfg = Release
+		{E63B11C1-85E6-43DF-88A3-F2191DEFC777}.SingleImage|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

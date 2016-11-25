@@ -23,7 +23,7 @@ namespace db_transporte_sanitario
     
         public int idPaciente_Solicitacoes { get; set; }
         public string TipoSolicitacao { get; set; }
-        public DateTime DtHrdoInicio { get; set; }
+        public DateTime? DtHrdoInicio { get; set; }
         public string Agendamento { get; set; }
         public string DtHrAgendamento { get; set; }
         public string NomeSolicitante { get; set; }

@@ -37,14 +37,15 @@
             this.label24 = new System.Windows.Forms.Label();
             this.txtObsCancelamento = new System.Windows.Forms.TextBox();
             this.txtResponsavel = new System.Windows.Forms.TextBox();
-            this.DtHrCancelamento = new System.Windows.Forms.TextBox();
             this.MotivoCancelar = new System.Windows.Forms.ComboBox();
+            this.DtHrCancelamento = new System.Windows.Forms.DateTimePicker();
             this.painelCancelar.SuspendLayout();
             this.SuspendLayout();
             // 
             // painelCancelar
             // 
             this.painelCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(204)))), ((int)(((byte)(255)))));
+            this.painelCancelar.Controls.Add(this.DtHrCancelamento);
             this.painelCancelar.Controls.Add(this.BtnConfirmando);
             this.painelCancelar.Controls.Add(this.label27);
             this.painelCancelar.Controls.Add(this.label26);
@@ -52,7 +53,6 @@
             this.painelCancelar.Controls.Add(this.label24);
             this.painelCancelar.Controls.Add(this.txtObsCancelamento);
             this.painelCancelar.Controls.Add(this.txtResponsavel);
-            this.painelCancelar.Controls.Add(this.DtHrCancelamento);
             this.painelCancelar.Controls.Add(this.MotivoCancelar);
             this.painelCancelar.Location = new System.Drawing.Point(12, 12);
             this.painelCancelar.Name = "painelCancelar";
@@ -152,18 +152,6 @@
             this.txtResponsavel.Size = new System.Drawing.Size(165, 21);
             this.txtResponsavel.TabIndex = 50;
             // 
-            // DtHrCancelamento
-            // 
-            this.DtHrCancelamento.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.DtHrCancelamento.Enabled = false;
-            this.DtHrCancelamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DtHrCancelamento.Location = new System.Drawing.Point(311, 35);
-            this.DtHrCancelamento.Name = "DtHrCancelamento";
-            this.DtHrCancelamento.Size = new System.Drawing.Size(229, 21);
-            this.DtHrCancelamento.TabIndex = 50;
-            // 
             // MotivoCancelar
             // 
             this.MotivoCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -189,6 +177,16 @@
             this.MotivoCancelar.Name = "MotivoCancelar";
             this.MotivoCancelar.Size = new System.Drawing.Size(273, 21);
             this.MotivoCancelar.TabIndex = 50;
+            // 
+            // DtHrCancelamento
+            // 
+            this.DtHrCancelamento.CustomFormat = "dd/MM/yyyy HH:mm";
+            this.DtHrCancelamento.Enabled = false;
+            this.DtHrCancelamento.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.DtHrCancelamento.Location = new System.Drawing.Point(311, 36);
+            this.DtHrCancelamento.Name = "DtHrCancelamento";
+            this.DtHrCancelamento.Size = new System.Drawing.Size(229, 20);
+            this.DtHrCancelamento.TabIndex = 57;
             // 
             // CancelarSolicitacao
             // 
@@ -217,7 +215,7 @@
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.TextBox txtObsCancelamento;
         private System.Windows.Forms.TextBox txtResponsavel;
-        private System.Windows.Forms.TextBox DtHrCancelamento;
         private System.Windows.Forms.ComboBox MotivoCancelar;
+        private System.Windows.Forms.DateTimePicker DtHrCancelamento;
     }
 }

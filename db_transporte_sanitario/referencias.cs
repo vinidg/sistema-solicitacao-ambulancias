@@ -32,5 +32,6 @@ namespace db_transporte_sanitario
         public string SALA_VERMELHA_EMERGENCIA { get; set; }
         public string TRANSPORTE_DE_INSUMOS_PRODUTOS_MATERIAIS { get; set; }
         public string TRANSPORTE_DE_PROFISSIONAIS { get; set; }
+        public string TRANSFERENCIA { get; set; }
     }
 }
