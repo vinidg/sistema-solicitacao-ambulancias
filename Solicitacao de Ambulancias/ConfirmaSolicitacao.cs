@@ -273,26 +273,26 @@ namespace Solicitacao_de_Ambulancias
                 Sexo = "M";
             }
 
-            if (Agendamento == "" || TipoAM == "" || Agendamento == null || TipoAM == null)
+            if (String.IsNullOrEmpty(Agendamento) || String.IsNullOrEmpty(TipoAM))
             {
 
                 MessageBox.Show("Marque a opção do tipo de ambulancia ou se é agendado !", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            else if (txtNomeSolicitante.Text == "" ||
-            CbLocalSolicita.Text == "" ||
-            txtTelefone.Text == "" ||
-            txtNomePaciente.Text == "" ||
-            txtIdade.Text == "" ||
-            txtDiagnostico.Text == "" ||
-            CbMotivoChamado.Text == "" ||
-            Sexo == "" ||
-            CbTipoMotivoSelecionado.Text == "" ||
-            CbOrigem.Text == "" ||
-            CbDestino.Text == "" ||
-            txtEnderecoOrigem.Text == "" ||
-            txtEnderecoDestino.Text == "")
+            else if (String.IsNullOrEmpty(txtNomeSolicitante.Text) ||
+            String.IsNullOrEmpty(CbLocalSolicita.Text) ||
+            String.IsNullOrEmpty(txtTelefone.Text) ||
+            String.IsNullOrEmpty(txtNomePaciente.Text) ||
+            String.IsNullOrEmpty(txtIdade.Text) ||
+            String.IsNullOrEmpty(txtDiagnostico.Text) ||
+            String.IsNullOrEmpty(CbMotivoChamado.Text) ||
+            String.IsNullOrEmpty(Sexo) ||
+            String.IsNullOrEmpty(CbTipoMotivoSelecionado.Text) ||
+            String.IsNullOrEmpty(CbOrigem.Text) ||
+            String.IsNullOrEmpty(CbDestino.Text) ||
+            String.IsNullOrEmpty(txtEnderecoOrigem.Text) ||
+            String.IsNullOrEmpty(txtEnderecoDestino.Text))
             {
 
                 MessageBox.Show("Verifique se algum campo esta vazio ou desmarcado !", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -304,22 +304,36 @@ namespace Solicitacao_de_Ambulancias
                 return;
             }else
             {
-                RegistrarSolicitacao();
                 if (Agendamento == "Sim")
                 {
-                    DialogResult result1 = MessageBox.Show("Deseja usar as mesmas informações para solicitar outro agendamento ?",
-                    "Atenção !",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (result1 == DialogResult.Yes)
+                    if (CbLocalSolicita.Text.Contains("UPA"))
                     {
+                        MessageBox.Show("Upas não devem agendar uma solicitação, entre em contato com o Transporte Sanitario", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    else
-                    {
-                        ClearTextBoxes();
-                        ClearComboBox();
-                        Limpar();
-                    }
+                }
+                else
+                {
+                    dataAgendamento.Value = DateTime.Now;
+                }
+
+                RegistrarSolicitacao();
+
+                if (Agendamento == "Sim")
+                {
+                        DialogResult result1 = MessageBox.Show("Deseja usar as mesmas informações para solicitar outro agendamento ?",
+                        "Atenção !",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (result1 == DialogResult.Yes)
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            ClearTextBoxes();
+                            ClearComboBox();
+                            Limpar();
+                        }
                 }
                 else
                 {
@@ -673,7 +687,7 @@ namespace Solicitacao_de_Ambulancias
                                  sp.Genero,
                                  sp.Idade,
                                  sp.Diagnostico,
-                                 sp.Prioridade,
+                                 Prioridade = (sp.Prioridade.Contains("P0") ? "P0" : (sp.Prioridade.Contains("P1") ? "P1" : (sp.Prioridade.Contains("P2") ? "P2" : (sp.Prioridade.Contains("P3") ? "P3" : "SP")))),
                                  sp.Motivo,
                                  sp.SubMotivo,
                                  sp.Origem,
@@ -1319,7 +1333,7 @@ namespace Solicitacao_de_Ambulancias
                                     Status = sa.Status,
                                     StatusE = am.StatusAmbulancia,
                                     idPaciente = sa.idSolicitacoesPacientes,
-                                    Paciente = sp.Paciente,
+                                    Prioridade = (sp.Prioridade.Contains("P0") ? "P0" : (sp.Prioridade.Contains("P1") ? "P1" : (sp.Prioridade.Contains("P2") ? "P2" : (sp.Prioridade.Contains("P3") ? "P3" : "SP")))),
                                     Idade = sp.Idade,
                                     Origem = sp.Origem,
                                     Destino = sp.Destino
@@ -1344,7 +1358,7 @@ namespace Solicitacao_de_Ambulancias
                                     Status = sa.Status,
                                     StatusE = am.StatusAmbulancia,
                                     idPaciente = sa.idSolicitacoesPacientes,
-                                    Paciente = sp.Paciente,
+                                    Prioridade = (sp.Prioridade.Contains("P0") ? "P0" : (sp.Prioridade.Contains("P1") ? "P1" : (sp.Prioridade.Contains("P2") ? "P2" : (sp.Prioridade.Contains("P3") ? "P3" : "SP")))),
                                     Idade = sp.Idade,
                                     Origem = sp.Origem,
                                     Destino = sp.Destino

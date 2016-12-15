@@ -24,7 +24,7 @@ namespace Solicitacao_de_Ambulancias
             string donwloadurl = "";
             Version newVersion = null;
 
-            string xmlURL = @"\\\10.1.0.7\\Mapa_de_Leitos\\Sistemas - Vinicius\\Sistema de Solicitacao de Ambulancias\\update.xml";
+            string xmlURL = @"\\\10.1.0.109\\SAUDE\Mapa_de_Leitos\\Sistemas - Vinicius\\Sistema de Solicitacao de Ambulancias\\update.xml";
             XmlTextReader reader = null;
 
             try
@@ -63,8 +63,7 @@ namespace Solicitacao_de_Ambulancias
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
-                Environment.Exit(1);
+                MessageBox.Show("Erro ao atualizar o sistema ! Podendo conter erros ao utilizar essa versão antiga");
             }
             finally
             {
