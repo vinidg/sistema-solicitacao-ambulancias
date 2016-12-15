@@ -445,7 +445,7 @@ namespace Solicitacao_de_Ambulancias
             CbTipoMotivoSelecionado.ValueMember = "";
             CbTipoMotivoSelecionado.DisplayMember = "";
 
-            if (CbMotivoChamado.Text == "INTERNAÇÃO EM UTI" || CbMotivoChamado.Text == "SALA VERMELHA/EMERGÊNCIA" || CbMotivoChamado.Text == "")
+            if (CbMotivoChamado.Text == "INTERNAÇÃO EM UTI" || CbMotivoChamado.Text == "SALA VERMELHA/EMERGÊNCIA" || String.IsNullOrEmpty(CbMotivoChamado.Text))
             {
                 BtnAvancada.PerformClick();
                 BtnAvancada.Enabled = false;
@@ -474,6 +474,7 @@ namespace Solicitacao_de_Ambulancias
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1800:DoNotCastUnnecessarily")]
         private void ClearTextBoxes()
         {
             Action<Control.ControlCollection> func = null;
@@ -489,6 +490,7 @@ namespace Solicitacao_de_Ambulancias
 
             func(Controls);
         }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1800:DoNotCastUnnecessarily")]
         private void ClearComboBox()
         {
             Action<Control.ControlCollection> func = null;
@@ -558,7 +560,7 @@ namespace Solicitacao_de_Ambulancias
         private void button2_Click(object sender, EventArgs e)
         {
 
-            if (comboBox1.Text == "")
+            if (String.IsNullOrEmpty(comboBox1.Text))
             {
                 MessageBox.Show("Selecione a unidade !", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -1599,7 +1601,7 @@ namespace Solicitacao_de_Ambulancias
         }
         private void button4_Click(object sender, EventArgs e)
         {
-            if (SelecionarUnidade.Text == "")
+            if (String.IsNullOrEmpty(SelecionarUnidade.Text))
             {
                 MessageBox.Show("Selecione a unidade !", "Atenção !", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -1784,7 +1786,7 @@ namespace Solicitacao_de_Ambulancias
         }
         private void BtnReagendar_Click(object sender, EventArgs e)
         {
-            if (CodigoPacienteReagendamento.Text != "")
+            if (String.IsNullOrEmpty(CodigoPacienteReagendamento.Text).Equals(false))
             {
                 this.ClearTextBoxes();
                 this.ClearComboBox();
@@ -1803,7 +1805,7 @@ namespace Solicitacao_de_Ambulancias
         }
         private void TodosReagendamentos_Click(object sender, EventArgs e)
         {
-            if (CodigoPacienteReagendamento.Text != "")
+            if (String.IsNullOrEmpty(CodigoPacienteReagendamento.Text).Equals(false))
             {
                 Reagedamentos re = new Reagedamentos(idPaciente);
                 re.ShowDialog();
@@ -1815,7 +1817,7 @@ namespace Solicitacao_de_Ambulancias
         }
         private void CancelarReagendamento_Click(object sender, EventArgs e)
         {
-            if (CodigoPacienteReagendamento.Text != "" || CodigoPacienteReagendamento.Text != "ID")
+            if (String.IsNullOrEmpty(CodigoPacienteReagendamento.Text).Equals(false) || CodigoPacienteReagendamento.Text != "ID")
             {
                 CancelarSolicitacao cas = new CancelarSolicitacao(Convert.ToInt32(CodigoPacienteReagendamento.Text));
                 cas.ShowDialog();

@@ -173,7 +173,7 @@ namespace Solicitacao_de_Ambulancias
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (id.Text != "")
+            if (String.IsNullOrEmpty(id.Text).Equals(false))
             {
                 this.ClearTextBoxes();
                 this.ClearComboBox();
@@ -207,7 +207,7 @@ namespace Solicitacao_de_Ambulancias
 
         private void Reagendamentos_Click(object sender, EventArgs e)
         {
-            if (id.Text != "")
+            if (String.IsNullOrEmpty(id.Text).Equals(false))
             {
                 Reagedamentos re = new Reagedamentos(idPaciente);
                 re.ShowDialog();
@@ -220,7 +220,7 @@ namespace Solicitacao_de_Ambulancias
 
         private void Aceitar_Click(object sender, EventArgs e)
         {
-            if (id.Text != "")
+            if (String.IsNullOrEmpty(id.Text).Equals(false))
             {
                 DialogResult result1 = MessageBox.Show("Deseja aceitar o agendamento ?",
                 "Atenção !",
@@ -251,6 +251,7 @@ namespace Solicitacao_de_Ambulancias
                 MessageBox.Show("Selecione a solicitação que deseja aceitar !", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1800:DoNotCastUnnecessarily")]
         private void ClearTextBoxes()
         {
             Action<Control.ControlCollection> func = null;
@@ -266,6 +267,7 @@ namespace Solicitacao_de_Ambulancias
 
             func(Controls);
         }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1800:DoNotCastUnnecessarily")]
         private void ClearComboBox()
         {
             Action<Control.ControlCollection> func = null;

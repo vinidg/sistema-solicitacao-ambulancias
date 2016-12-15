@@ -13,6 +13,7 @@ namespace Solicitacao_de_Ambulancias
     {
         bool yn;
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         public bool Yn
         {
             get { return yn; }
