@@ -1497,128 +1497,6 @@ namespace Solicitacao_de_Ambulancias
 
         #endregion
 
-        #region Cancelar_solicitacoes
-        private void BtnCancelar_Click(object sender, EventArgs e)
-        {
-            if (idPaciente != 0)
-            {
-                CancelarSolicitacao cas = new CancelarSolicitacao(idPaciente);
-                cas.ShowDialog();
-                SelectPacientesParaCancelar();
-                ClearTextBoxes();
-                ClearComboBox();
-            }
-            else
-            {
-                MessageBox.Show("Não há nenhuma solicitação selecionada !", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-        }
-        private void ListaCancelar_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex > -1)
-            {
-                idPaciente = Convert.ToInt32(ListaCancelar.Rows[e.RowIndex].Cells[0].Value.ToString());
-                using (DAHUEEntities db = new DAHUEEntities())
-                {
-                    var query = (from sp in db.solicitacoes_paciente
-                                 where sp.idPaciente_Solicitacoes == idPaciente
-                                 select sp).FirstOrDefault();
-
-                    CodigoId.Text = query.idPaciente_Solicitacoes.ToString();
-                    Tipo.Text = query.TipoSolicitacao;
-                    DataInicio.Text = query.DtHrdoInicio.ToString();
-                    DataHrAgendamento.Text = query.DtHrdoAgendamento.ToString();
-                    NomeSolicitante.Text = query.NomeSolicitante;
-                    LocalSolicitacao.Text = query.LocalSolicitacao;
-                    Telefone.Text = query.Telefone;
-                    NomePaciente.Text = query.Paciente;
-                    if (query.Genero == "F")
-                    {
-                        RbFemenino.Checked = true;
-                    }
-                    else
-                    {
-                        RbMasculino.Checked = true;
-                    }
-                    Idade.Text = query.Idade;
-                    Diagnostico.Text = query.Diagnostico;
-                    MotivoChamado.Text = query.Motivo;
-                    TipoMotivoSelecionado.Text = query.SubMotivo;
-                    PrioridadeCancelar.Text = query.Prioridade;
-                    COrigem.Text = query.Origem;
-                    CEnderecoOrigem.Text = query.EnderecoOrigem;
-                    CDestino.Text = query.Destino;
-                    CEnderecoDestino.Text = query.EnderecoDestino;
-                    CObs.Text = query.ObsGerais;
-
-                }
-
-            }
-        }
-        private void SelectPacientesParaCancelar()
-        {
-            using (DAHUEEntities db = new DAHUEEntities())
-            {
-                var query = (from sp in db.solicitacoes_paciente
-                             join sa in db.solicitacoes_ambulancias
-                             on sp.idPaciente_Solicitacoes
-                             equals sa.idSolicitacoesPacientes into b_join
-                             from sa in b_join.DefaultIfEmpty()
-                             where sp.LocalSolicitacao == UnidadeSelecionada &&
-                             sp.AmSolicitada == 0
-                             //&& sa.SolicitacaoConcluida == 0
-                             orderby sp.DtHrdoInicio descending
-                             select new
-                             {
-                                 Id = sp.idPaciente_Solicitacoes,
-                                 Tipo = sp.TipoSolicitacao,
-                                 sp.DtHrdoInicio,
-                                 sp.Agendamento,
-                                 sp.DtHrdoAgendamento,
-                                 sp.NomeSolicitante,
-                                 sp.LocalSolicitacao,
-                                 sp.Telefone,
-                                 sp.Paciente,
-                                 sp.Genero,
-                                 sp.Idade,
-                                 sp.Diagnostico,
-                                 sp.Prioridade,
-                                 sp.Motivo,
-                                 sp.SubMotivo,
-                                 sp.Origem,
-                                 sp.Destino,
-                                 sp.ObsGerais
-                             }).DefaultIfEmpty().ToList();
-
-                ListaCancelar.DataSource = query;
-                ListaCancelar.Refresh();
-
-            }
-        }
-        private void button4_Click(object sender, EventArgs e)
-        {
-            if (String.IsNullOrEmpty(SelecionarUnidade.Text))
-            {
-                MessageBox.Show("Selecione a unidade !", "Atenção !", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            PainelCancelar.Visible = true;
-            UnidadeSelecionada = SelecionarUnidade.Text;
-            SelectPacientesParaCancelar();
-        }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            ListaCancelar.DataSource = "";
-            SelectPacientesParaCancelar();
-        }
-        private void label37_Click(object sender, EventArgs e)
-        {
-            PainelCancelar.Visible = false;
-        }
-
-        #endregion
-
         #region Reagendamentos
 
         public void puxarAgendadasNegadas()
@@ -1629,6 +1507,10 @@ namespace Solicitacao_de_Ambulancias
             using (DAHUEEntities db = new DAHUEEntities())
             {
                 var query = from sp in db.solicitacoes_paciente
+                            join sa in db.solicitacoes_ambulancias
+                            on sp.idPaciente_Solicitacoes
+                            equals sa.idSolicitacoesPacientes into b_join
+                            from sa in b_join.DefaultIfEmpty()
                             where sp.AmSolicitada == zero &&
                             sp.Agendamento == "Sim" &&
                             SqlFunctions.DateDiff("day", final, sp.DtHrdoAgendamento) == 0 &&
@@ -1637,6 +1519,7 @@ namespace Solicitacao_de_Ambulancias
                             select new
                             {
                                 ID = sp.idPaciente_Solicitacoes,
+                                idAm = sa.idSolicitacoes_Ambulancias,
                                 sp.Paciente,
                                 Tipo = sp.TipoSolicitacao,
                                 sp.DtHrdoInicio,
@@ -1650,6 +1533,7 @@ namespace Solicitacao_de_Ambulancias
                             };
                 var quertCont = query.Count();
                 var queryAmbu = query.ToList();
+                Lista.Columns["idAm"].Visible = false;
                 RespostasNegadas.Text = "Respostas negadas (" + quertCont + ")";
                 ListaAgendados.DataSource = queryAmbu;
                 ListaAgendados.ClearSelection();
@@ -1664,6 +1548,10 @@ namespace Solicitacao_de_Ambulancias
             using (DAHUEEntities db = new DAHUEEntities())
             {
                 var query = from sp in db.solicitacoes_paciente
+                            join sa in db.solicitacoes_ambulancias
+                            on sp.idPaciente_Solicitacoes
+                            equals sa.idSolicitacoesPacientes into b_join
+                            from sa in b_join.DefaultIfEmpty()
                             where sp.AmSolicitada == zero &&
                             sp.Agendamento == "Sim" &&
                             SqlFunctions.DateDiff("day", data, sp.DtHrdoAgendamento) == 0 &&
@@ -1672,6 +1560,7 @@ namespace Solicitacao_de_Ambulancias
                             select new
                             {
                                 ID = sp.idPaciente_Solicitacoes,
+                                idAm = sa.idSolicitacoes_Ambulancias,
                                 sp.Paciente,
                                 Tipo = sp.TipoSolicitacao,
                                 sp.DtHrdoInicio,
@@ -1686,6 +1575,7 @@ namespace Solicitacao_de_Ambulancias
 
                 var queryAmbu = query.ToList();
                 var querycont = query.Count();
+                Lista.Columns["idAm"].Visible = false;
                 RespostaDoControle.Text = "Solicitações agendadas (" + querycont + ")";
                 ListaAgendados.DataSource = queryAmbu;
                 ListaAgendados.ClearSelection();
@@ -1696,7 +1586,8 @@ namespace Solicitacao_de_Ambulancias
         {
             if (e.RowIndex > -1)
             {
-                idPaciente = Convert.ToInt32(ListaAgendados.Rows[e.RowIndex].Cells[0].Value.ToString());
+                idPaciente = Convert.ToInt32(ListaAgendados.Rows[e.RowIndex].Cells["ID"].Value.ToString());
+                IdSolicitacaoAmbulancia = Convert.ToInt32(ListaAgendados.Rows[e.RowIndex].Cells["idAm"].Value.ToString());
                 using (DAHUEEntities db = new DAHUEEntities())
                 {
                     var query = (from sp in db.solicitacoes_paciente
@@ -1816,7 +1707,7 @@ namespace Solicitacao_de_Ambulancias
         {
             if (String.IsNullOrEmpty(CodigoPacienteReagendamento.Text).Equals(false) || CodigoPacienteReagendamento.Text != "ID")
             {
-                CancelarSolicitacao cas = new CancelarSolicitacao(Convert.ToInt32(CodigoPacienteReagendamento.Text));
+                CancelarSolicitacao cas = new CancelarSolicitacao(Convert.ToInt32(CodigoPacienteReagendamento.Text),IdSolicitacaoAmbulancia);
                 cas.ShowDialog();
                 SelectPacientesParaCancelar();
                 ClearTextBoxes();
@@ -1827,6 +1718,129 @@ namespace Solicitacao_de_Ambulancias
                 MessageBox.Show("Não há nenhuma solicitação selecionada !", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+        }
+
+        #endregion
+
+        #region Cancelar_solicitacoes
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            if (idPaciente != 0)
+            {
+                CancelarSolicitacao cas = new CancelarSolicitacao(idPaciente, IdSolicitacaoAmbulancia);
+                cas.ShowDialog();
+                SelectPacientesParaCancelar();
+                ClearTextBoxes();
+                ClearComboBox();
+            }
+            else
+            {
+                MessageBox.Show("Não há nenhuma solicitação selecionada !", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+        private void ListaCancelar_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                idPaciente = Convert.ToInt32(ListaCancelar.Rows[e.RowIndex].Cells["Id"].Value.ToString());
+                IdSolicitacaoAmbulancia = Convert.ToInt32(ListaCancelar.Rows[e.RowIndex].Cells["IdAm"].Value.ToString());
+                using (DAHUEEntities db = new DAHUEEntities())
+                {
+                    var query = (from sp in db.solicitacoes_paciente
+                                 where sp.idPaciente_Solicitacoes == idPaciente
+                                 select sp).FirstOrDefault();
+
+                    CodigoId.Text = query.idPaciente_Solicitacoes.ToString();
+                    Tipo.Text = query.TipoSolicitacao;
+                    DataInicio.Text = query.DtHrdoInicio.ToString();
+                    DataHrAgendamento.Text = query.DtHrdoAgendamento.ToString();
+                    NomeSolicitante.Text = query.NomeSolicitante;
+                    LocalSolicitacao.Text = query.LocalSolicitacao;
+                    Telefone.Text = query.Telefone;
+                    NomePaciente.Text = query.Paciente;
+                    if (query.Genero == "F")
+                    {
+                        RbFemenino.Checked = true;
+                    }
+                    else
+                    {
+                        RbMasculino.Checked = true;
+                    }
+                    Idade.Text = query.Idade;
+                    Diagnostico.Text = query.Diagnostico;
+                    MotivoChamado.Text = query.Motivo;
+                    TipoMotivoSelecionado.Text = query.SubMotivo;
+                    PrioridadeCancelar.Text = query.Prioridade;
+                    COrigem.Text = query.Origem;
+                    CEnderecoOrigem.Text = query.EnderecoOrigem;
+                    CDestino.Text = query.Destino;
+                    CEnderecoDestino.Text = query.EnderecoDestino;
+                    CObs.Text = query.ObsGerais;
+
+                }
+
+            }
+        }
+        private void SelectPacientesParaCancelar()
+        {
+            using (DAHUEEntities db = new DAHUEEntities())
+            {
+                var query = (from sp in db.solicitacoes_paciente
+                             join sa in db.solicitacoes_ambulancias
+                             on sp.idPaciente_Solicitacoes
+                             equals sa.idSolicitacoesPacientes into b_join
+                             from sa in b_join.DefaultIfEmpty()
+                             where sp.LocalSolicitacao == UnidadeSelecionada &&
+                             sp.AmSolicitada == 0
+                             orderby sp.DtHrdoInicio descending
+                             select new
+                             {
+                                 Id = sp.idPaciente_Solicitacoes,
+                                 IdAm = sa.idSolicitacoes_Ambulancias,
+                                 Tipo = sp.TipoSolicitacao,
+                                 sp.DtHrdoInicio,
+                                 sp.Agendamento,
+                                 sp.DtHrdoAgendamento,
+                                 sp.NomeSolicitante,
+                                 sp.LocalSolicitacao,
+                                 sp.Telefone,
+                                 sp.Paciente,
+                                 sp.Genero,
+                                 sp.Idade,
+                                 sp.Diagnostico,
+                                 sp.Prioridade,
+                                 sp.Motivo,
+                                 sp.SubMotivo,
+                                 sp.Origem,
+                                 sp.Destino,
+                                 sp.ObsGerais
+                             }).DefaultIfEmpty().ToList();
+
+                ListaCancelar.DataSource = query;
+                ListaCancelar.Refresh();
+
+            }
+        }
+        private void EntrarCancelar_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(SelecionarUnidade.Text))
+            {
+                MessageBox.Show("Selecione a unidade !", "Atenção !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            PainelCancelar.Visible = true;
+            UnidadeSelecionada = SelecionarUnidade.Text;
+            SelectPacientesParaCancelar();
+        }
+        private void AtualizarCancelar_Click(object sender, EventArgs e)
+        {
+            ListaCancelar.DataSource = "";
+            SelectPacientesParaCancelar();
+        }
+        private void label37_Click(object sender, EventArgs e)
+        {
+            PainelCancelar.Visible = false;
         }
 
         #endregion

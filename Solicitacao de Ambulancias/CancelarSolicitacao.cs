@@ -13,23 +13,24 @@ namespace Solicitacao_de_Ambulancias
 {
     public partial class CancelarSolicitacao : Form
     {
-        int idpaciente;
-        public CancelarSolicitacao(int idPaciente)
+        int idpaciente, idSolicitacaoAmbulancias;
+        public CancelarSolicitacao(int idPaciente, int idSolicitacaoAmbulancia)
         {
             InitializeComponent();
             txtResponsavel.Text = System.Environment.UserName;
             idpaciente = idPaciente;
+            idSolicitacaoAmbulancias = idSolicitacaoAmbulancia;
         }
 
         private void BtnConfirmando_Click(object sender, EventArgs e)
         {
-            using(DAHUEEntities db = new DAHUEEntities())
+            using (DAHUEEntities db = new DAHUEEntities())
             {
                 var query = (from sa in db.solicitacoes_ambulancias
                              where sa.idSolicitacoesPacientes == idpaciente &&
                              sa.SolicitacaoConcluida == 0
                              select sa).Count();
-                if(query >= 1)
+                if (query >= 1)
                 {
                     MessageBox.Show("Paciente está em transporte, necessário entrar em contato com o Controle para cancelar !", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     this.Dispose();
@@ -57,7 +58,7 @@ namespace Solicitacao_de_Ambulancias
                     cancelados.idPaciente = idpaciente;
                     cancelados.idSolicitacaoAM = 0;
                     cancelados.MotivoCancelamento = MotivoCancelar.Text;
-                    cancelados.DtHrCancelamento = DtHrCancelamento.Text;
+                    cancelados.DtHrCancelamento = DateTime.Now;
                     cancelados.ResposavelCancelamento = txtResponsavel.Text;
                     cancelados.ObsCancelamento = txtObsCancelamento.Text;
 
@@ -66,8 +67,10 @@ namespace Solicitacao_de_Ambulancias
                     solicitacoes_paciente sp = db.solicitacoes_paciente.First(s => s.idPaciente_Solicitacoes == idpaciente);
                     sp.AmSolicitada = 1;
 
-                    if(idpaciente != 0){
-                        solicitacoes_ambulancias sa = db.solicitacoes_ambulancias.First(s => s.idSolicitacoesPacientes == idpaciente);
+                    if (idSolicitacaoAmbulancias != 0)
+                    {
+
+                        solicitacoes_ambulancias sa = db.solicitacoes_ambulancias.First(s => s.idSolicitacoes_Ambulancias == idSolicitacaoAmbulancias);
                         sa.SolicitacaoConcluida = 1;
                     }
 

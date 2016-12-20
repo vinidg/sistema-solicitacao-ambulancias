@@ -10,14 +10,13 @@
 namespace db_transporte_sanitario
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class solicitacoes_agendamentos
+    public partial class sp_helpdiagrams_Result
     {
-        public int idSolicitacaoAgendamento { get; set; }
-        public DateTime? DtHrAgendamento { get; set; }
-        public int idSolicitacao_paciente { get; set; }
-    
-        public virtual solicitacoes_paciente solicitacoes_paciente { get; set; }
+        public string Database { get; set; }
+        public string Name { get; set; }
+        public int ID { get; set; }
+        public string Owner { get; set; }
+        public int OwnerID { get; set; }
     }
 }

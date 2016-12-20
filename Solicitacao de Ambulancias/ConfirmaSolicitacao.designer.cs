@@ -2616,7 +2616,7 @@
             this.BtnCancelarAtualizar.TabIndex = 38;
             this.BtnCancelarAtualizar.Text = "Atualizar";
             this.BtnCancelarAtualizar.UseVisualStyleBackColor = false;
-            this.BtnCancelarAtualizar.Click += new System.EventHandler(this.button1_Click);
+            this.BtnCancelarAtualizar.Click += new System.EventHandler(this.AtualizarCancelar_Click);
             // 
             // CObs
             // 
@@ -3088,7 +3088,7 @@
             this.EntrarCancelar.TabIndex = 2;
             this.EntrarCancelar.Text = "Entrar";
             this.EntrarCancelar.UseVisualStyleBackColor = false;
-            this.EntrarCancelar.Click += new System.EventHandler(this.button4_Click);
+            this.EntrarCancelar.Click += new System.EventHandler(this.EntrarCancelar_Click);
             // 
             // SelecionarUnidade
             // 

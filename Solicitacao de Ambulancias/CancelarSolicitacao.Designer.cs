@@ -33,23 +33,19 @@
             this.BtnConfirmando = new System.Windows.Forms.Button();
             this.label27 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.txtObsCancelamento = new System.Windows.Forms.TextBox();
             this.txtResponsavel = new System.Windows.Forms.TextBox();
             this.MotivoCancelar = new System.Windows.Forms.ComboBox();
-            this.DtHrCancelamento = new System.Windows.Forms.DateTimePicker();
             this.painelCancelar.SuspendLayout();
             this.SuspendLayout();
             // 
             // painelCancelar
             // 
             this.painelCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(204)))), ((int)(((byte)(255)))));
-            this.painelCancelar.Controls.Add(this.DtHrCancelamento);
             this.painelCancelar.Controls.Add(this.BtnConfirmando);
             this.painelCancelar.Controls.Add(this.label27);
             this.painelCancelar.Controls.Add(this.label26);
-            this.painelCancelar.Controls.Add(this.label25);
             this.painelCancelar.Controls.Add(this.label24);
             this.painelCancelar.Controls.Add(this.txtObsCancelamento);
             this.painelCancelar.Controls.Add(this.txtResponsavel);
@@ -81,7 +77,7 @@
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label27.ForeColor = System.Drawing.Color.White;
-            this.label27.Location = new System.Drawing.Point(308, 71);
+            this.label27.Location = new System.Drawing.Point(19, 71);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(93, 16);
             this.label27.TabIndex = 55;
@@ -95,25 +91,11 @@
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.ForeColor = System.Drawing.Color.White;
-            this.label26.Location = new System.Drawing.Point(19, 71);
+            this.label26.Location = new System.Drawing.Point(375, 16);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(85, 16);
             this.label26.TabIndex = 54;
             this.label26.Text = "Reponsavel:";
-            // 
-            // label25
-            // 
-            this.label25.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.ForeColor = System.Drawing.Color.White;
-            this.label25.Location = new System.Drawing.Point(308, 16);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(183, 16);
-            this.label25.TabIndex = 53;
-            this.label25.Text = "Data/Hora do Cancelamento:";
             // 
             // label24
             // 
@@ -135,9 +117,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtObsCancelamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtObsCancelamento.Location = new System.Drawing.Point(311, 90);
+            this.txtObsCancelamento.Location = new System.Drawing.Point(19, 90);
             this.txtObsCancelamento.Name = "txtObsCancelamento";
-            this.txtObsCancelamento.Size = new System.Drawing.Size(229, 21);
+            this.txtObsCancelamento.Size = new System.Drawing.Size(521, 21);
             this.txtObsCancelamento.TabIndex = 51;
             // 
             // txtResponsavel
@@ -147,7 +129,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtResponsavel.Enabled = false;
             this.txtResponsavel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtResponsavel.Location = new System.Drawing.Point(19, 90);
+            this.txtResponsavel.Location = new System.Drawing.Point(375, 35);
             this.txtResponsavel.Name = "txtResponsavel";
             this.txtResponsavel.Size = new System.Drawing.Size(165, 21);
             this.txtResponsavel.TabIndex = 50;
@@ -178,16 +160,6 @@
             this.MotivoCancelar.Size = new System.Drawing.Size(273, 21);
             this.MotivoCancelar.TabIndex = 50;
             // 
-            // DtHrCancelamento
-            // 
-            this.DtHrCancelamento.CustomFormat = "dd/MM/yyyy HH:mm";
-            this.DtHrCancelamento.Enabled = false;
-            this.DtHrCancelamento.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DtHrCancelamento.Location = new System.Drawing.Point(311, 36);
-            this.DtHrCancelamento.Name = "DtHrCancelamento";
-            this.DtHrCancelamento.Size = new System.Drawing.Size(229, 20);
-            this.DtHrCancelamento.TabIndex = 57;
-            // 
             // CancelarSolicitacao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -211,11 +183,9 @@
         private System.Windows.Forms.Button BtnConfirmando;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.TextBox txtObsCancelamento;
         private System.Windows.Forms.TextBox txtResponsavel;
         private System.Windows.Forms.ComboBox MotivoCancelar;
-        private System.Windows.Forms.DateTimePicker DtHrCancelamento;
     }
 }
