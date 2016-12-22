@@ -710,7 +710,7 @@ namespace Solicitacao_de_Ambulancias
         private void hoje_Click_1(object sender, EventArgs e)
         {
             Lista.DataSource = "";
-
+            this.Cursor = Cursors.WaitCursor;
             using (DAHUEEntities db = new DAHUEEntities())
             {
                 var query = (from sp in db.solicitacoes_paciente
@@ -722,15 +722,21 @@ namespace Solicitacao_de_Ambulancias
                              on sp.idPaciente_Solicitacoes
                              equals ca.idPaciente into c_join
                              from ca in c_join.DefaultIfEmpty()
+                             join sag in db.solicitacoes_agendamentos
+                             on sp.idPaciente_Solicitacoes
+                             equals sag.idSolicitacao_paciente into spsag_join
+                             from sag in spsag_join.DefaultIfEmpty()
                              where
-                              sp.LocalSolicitacao == UnidadeSelecionada &&
-                              SqlFunctions.DateDiff("day", DateTime.Now, sp.DtHrdoInicio) == 0
+                             sp.LocalSolicitacao == UnidadeSelecionada
+                             && (sp.DtHrdoInicio.Value.Day == DateTime.Now.Day && sp.DtHrdoInicio.Value.Month == DateTime.Now.Month && sp.DtHrdoInicio.Value.Year == DateTime.Now.Year)
+                             || (sp.DtHrdoAgendamento.Value.Day == DateTime.Now.Day && sp.DtHrdoAgendamento.Value.Month == DateTime.Now.Month && sp.DtHrdoAgendamento.Value.Year == DateTime.Now.Year)
+                             || (sag.DtHrAgendamento.Value.Day == DateTime.Now.Day && sag.DtHrAgendamento.Value.Month == DateTime.Now.Month && sag.DtHrAgendamento.Value.Year == DateTime.Now.Year)
                              select new
                              {
                                  Id = sp.idPaciente_Solicitacoes,
                                  idSolicitacoes_Ambulancias = sa.idSolicitacoes_Ambulancias,
                                  Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == null ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO")),
-                                 sp.DtHrdoAgendamento,
+                                 DtHrdoAgendamento = (sag.DtHrAgendamento == null ? (sp.Agendamento == "Sim" ? sp.DtHrdoAgendamento : default(DateTime?)) : sag.DtHrAgendamento),
                                  sp.Paciente,
                                  sp.LocalSolicitacao,
                                  sp.Motivo,
@@ -753,12 +759,15 @@ namespace Solicitacao_de_Ambulancias
                 Lista.Refresh();
                 Lista.ClearSelection();
                 Lista.Columns["idSolicitacoes_Ambulancias"].Visible = false;
-
+                this.Cursor = Cursors.Default;
             }
+
         }
+        
         private void Ontem_Click_1(object sender, EventArgs e)
         {
             Lista.DataSource = "";
+            this.Cursor = Cursors.WaitCursor;
             DateTime data = DateTime.Now;
             DateTime ontem = DateTime.Now.AddDays(-1);
 
@@ -773,16 +782,20 @@ namespace Solicitacao_de_Ambulancias
                              on sp.idPaciente_Solicitacoes
                              equals ca.idPaciente into c_join
                              from ca in c_join.DefaultIfEmpty()
+                             join sag in db.solicitacoes_agendamentos
+                             on sp.idPaciente_Solicitacoes
+                             equals sag.idSolicitacao_paciente into spsag_join
+                             from sag in spsag_join.DefaultIfEmpty()
                              where
                                sp.LocalSolicitacao == UnidadeSelecionada && sa.idSolicitacoes_Ambulancias != null
-                               && sp.DtHrdoInicio >= ontem && sp.DtHrdoInicio <= data
+                               && (sp.DtHrdoInicio >= ontem && sp.DtHrdoInicio <= data) || (sp.DtHrdoAgendamento >= ontem && sp.DtHrdoAgendamento <= data) || (sag.DtHrAgendamento >= ontem && sag.DtHrAgendamento <= data)
 
                              select new
                              {
                                  Id = sp.idPaciente_Solicitacoes,
                                  idSolicitacoes_Ambulancias = sa.idSolicitacoes_Ambulancias,
                                  Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == null ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO")),
-                                 sp.DtHrdoAgendamento,
+                                 DtHrdoAgendamento = (sag.DtHrAgendamento == null ? (sp.Agendamento == "Sim" ? sp.DtHrdoAgendamento : default(DateTime?)) : sag.DtHrAgendamento),
                                  sp.Paciente,
                                  sp.LocalSolicitacao,
                                  sp.Motivo,
@@ -805,12 +818,13 @@ namespace Solicitacao_de_Ambulancias
                 Lista.Refresh();
                 Lista.ClearSelection();
                 Lista.Columns["idSolicitacoes_Ambulancias"].Visible = false;
-
+                this.Cursor = Cursors.Default;
             }
         }
         private void dias2_Click_1(object sender, EventArgs e)
         {
             Lista.DataSource = "";
+            this.Cursor = Cursors.WaitCursor;
             DateTime data = DateTime.Now;
             DateTime dias2 = DateTime.Now.AddDays(-2);
 
@@ -825,9 +839,13 @@ namespace Solicitacao_de_Ambulancias
                              on sp.idPaciente_Solicitacoes
                              equals ca.idPaciente into c_join
                              from ca in c_join.DefaultIfEmpty()
+                             join sag in db.solicitacoes_agendamentos
+                             on sp.idPaciente_Solicitacoes
+                             equals sag.idSolicitacao_paciente into spsag_join
+                             from sag in spsag_join.DefaultIfEmpty()
                              where
                                sp.LocalSolicitacao == UnidadeSelecionada && sa.idSolicitacoes_Ambulancias != null
-                               && sp.DtHrdoInicio >= dias2 && sp.DtHrdoInicio <= data
+                              && (sp.DtHrdoInicio >= dias2 && sp.DtHrdoInicio <= data) || (sp.DtHrdoAgendamento >= dias2 && sp.DtHrdoAgendamento <= data) || (sag.DtHrAgendamento >= dias2 && sag.DtHrAgendamento <= data)
                              orderby
                                sp.idPaciente_Solicitacoes
                              select new
@@ -835,7 +853,7 @@ namespace Solicitacao_de_Ambulancias
                                  Id = sp.idPaciente_Solicitacoes,
                                  idSolicitacoes_Ambulancias = sa.idSolicitacoes_Ambulancias,
                                  Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == null ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO")),
-                                 sp.DtHrdoAgendamento,
+                                 DtHrdoAgendamento = (sag.DtHrAgendamento == null ? (sp.Agendamento == "Sim" ? sp.DtHrdoAgendamento : default(DateTime?)) : sag.DtHrAgendamento),
                                  sp.Paciente,
                                  sp.LocalSolicitacao,
                                  sp.Motivo,
@@ -859,13 +877,14 @@ namespace Solicitacao_de_Ambulancias
                 Lista.ClearSelection();
 
                 Lista.Columns["idSolicitacoes_Ambulancias"].Visible = false;
-
+                this.Cursor = Cursors.Default;
             }
 
         }
         private void dias5_Click_1(object sender, EventArgs e)
         {
             Lista.DataSource = "";
+            this.Cursor = Cursors.WaitCursor;
             DateTime data = DateTime.Now;
             DateTime dias5 = DateTime.Now.AddDays(-5);
 
@@ -880,9 +899,13 @@ namespace Solicitacao_de_Ambulancias
                              on sp.idPaciente_Solicitacoes
                              equals ca.idPaciente into c_join
                              from ca in c_join.DefaultIfEmpty()
+                             join sag in db.solicitacoes_agendamentos
+                             on sp.idPaciente_Solicitacoes
+                             equals sag.idSolicitacao_paciente into spsag_join
+                             from sag in spsag_join.DefaultIfEmpty()
                              where
                                sp.LocalSolicitacao == UnidadeSelecionada && sa.idSolicitacoes_Ambulancias != null
-                               && sp.DtHrdoInicio >= dias5 && sp.DtHrdoInicio <= data
+                               && (sp.DtHrdoInicio >= dias5 && sp.DtHrdoInicio <= data) || (sp.DtHrdoAgendamento >= dias5 && sp.DtHrdoAgendamento <= data) || (sag.DtHrAgendamento >= dias5 && sag.DtHrAgendamento <= data)
                              orderby
                                sp.idPaciente_Solicitacoes
                              select new
@@ -890,7 +913,7 @@ namespace Solicitacao_de_Ambulancias
                                  Id = sp.idPaciente_Solicitacoes,
                                  idSolicitacoes_Ambulancias = sa.idSolicitacoes_Ambulancias,
                                  Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == null ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO")),
-                                 sp.DtHrdoAgendamento,
+                                 DtHrdoAgendamento = (sag.DtHrAgendamento == null ? (sp.Agendamento == "Sim" ? sp.DtHrdoAgendamento : default(DateTime?)) : sag.DtHrAgendamento),
                                  sp.Paciente,
                                  sp.LocalSolicitacao,
                                  sp.Motivo,
@@ -914,12 +937,13 @@ namespace Solicitacao_de_Ambulancias
                 Lista.ClearSelection();
 
                 Lista.Columns["idSolicitacoes_Ambulancias"].Visible = false;
-
+                this.Cursor = Cursors.Default;
             }
         }
         private void semana1_Click_1(object sender, EventArgs e)
         {
             Lista.DataSource = "";
+            this.Cursor = Cursors.WaitCursor;
             DateTime data = DateTime.Now;
             DateTime dias7 = DateTime.Now.AddDays(-7);
 
@@ -934,9 +958,13 @@ namespace Solicitacao_de_Ambulancias
                              on sp.idPaciente_Solicitacoes
                              equals ca.idPaciente into c_join
                              from ca in c_join.DefaultIfEmpty()
+                             join sag in db.solicitacoes_agendamentos
+                             on sp.idPaciente_Solicitacoes
+                             equals sag.idSolicitacao_paciente into spsag_join
+                             from sag in spsag_join.DefaultIfEmpty()
                              where
                                sp.LocalSolicitacao == UnidadeSelecionada && sa.idSolicitacoes_Ambulancias != null
-                               && sp.DtHrdoInicio >= dias7 && sp.DtHrdoInicio <= data
+                               && (sp.DtHrdoInicio >= dias7 && sp.DtHrdoInicio <= data) || (sp.DtHrdoAgendamento >= dias7 && sp.DtHrdoAgendamento <= data) || (sag.DtHrAgendamento >= dias7 && sag.DtHrAgendamento <= data)
                              orderby
                                sp.idPaciente_Solicitacoes
                              select new
@@ -944,7 +972,7 @@ namespace Solicitacao_de_Ambulancias
                                  Id = sp.idPaciente_Solicitacoes,
                                  idSolicitacoes_Ambulancias = sa.idSolicitacoes_Ambulancias,
                                  Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == null ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO")),
-                                 sp.DtHrdoAgendamento,
+                                 DtHrdoAgendamento = (sag.DtHrAgendamento == null ? (sp.Agendamento == "Sim" ? sp.DtHrdoAgendamento : default(DateTime?)) : sag.DtHrAgendamento),
                                  sp.Paciente,
                                  sp.LocalSolicitacao,
                                  sp.Motivo,
@@ -968,12 +996,13 @@ namespace Solicitacao_de_Ambulancias
                 Lista.ClearSelection();
 
                 Lista.Columns["idSolicitacoes_Ambulancias"].Visible = false;
-
+                this.Cursor = Cursors.Default;
             }
         }
         private void semana2_Click_1(object sender, EventArgs e)
         {
             Lista.DataSource = "";
+            this.Cursor = Cursors.WaitCursor;
             DateTime data = DateTime.Now;
             DateTime dias14 = DateTime.Now.AddDays(-14);
 
@@ -988,9 +1017,13 @@ namespace Solicitacao_de_Ambulancias
                              on sp.idPaciente_Solicitacoes
                              equals ca.idPaciente into c_join
                              from ca in c_join.DefaultIfEmpty()
+                             join sag in db.solicitacoes_agendamentos
+                             on sp.idPaciente_Solicitacoes
+                             equals sag.idSolicitacao_paciente into spsag_join
+                             from sag in spsag_join.DefaultIfEmpty()
                              where
                                sp.LocalSolicitacao == UnidadeSelecionada && sa.idSolicitacoes_Ambulancias != null
-                               && sp.DtHrdoInicio >= dias14 && sp.DtHrdoInicio <= data
+                               && (sp.DtHrdoInicio >= dias14 && sp.DtHrdoInicio <= data) || (sp.DtHrdoAgendamento >= dias14 && sp.DtHrdoAgendamento <= data) || (sag.DtHrAgendamento >= dias14 && sag.DtHrAgendamento <= data)
                              orderby
                                sp.idPaciente_Solicitacoes
                              select new
@@ -998,7 +1031,7 @@ namespace Solicitacao_de_Ambulancias
                                  Id = sp.idPaciente_Solicitacoes,
                                  idSolicitacoes_Ambulancias = sa.idSolicitacoes_Ambulancias,
                                  Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == null ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO")),
-                                 sp.DtHrdoAgendamento,
+                                 DtHrdoAgendamento = (sag.DtHrAgendamento == null ? (sp.Agendamento == "Sim" ? sp.DtHrdoAgendamento : default(DateTime?)) : sag.DtHrAgendamento),
                                  sp.Paciente,
                                  sp.LocalSolicitacao,
                                  sp.Motivo,
@@ -1022,12 +1055,13 @@ namespace Solicitacao_de_Ambulancias
                 Lista.ClearSelection();
 
                 Lista.Columns["idSolicitacoes_Ambulancias"].Visible = false;
-
+                this.Cursor = Cursors.Default;
             }
         }
         private void mes1_Click_1(object sender, EventArgs e)
         {
             Lista.DataSource = "";
+            this.Cursor = Cursors.WaitCursor;
             int mes = DateTime.Now.Month;
             int ano = DateTime.Now.Year;
             using (DAHUEEntities db = new DAHUEEntities())
@@ -1041,19 +1075,24 @@ namespace Solicitacao_de_Ambulancias
                              on sp.idPaciente_Solicitacoes
                              equals ca.idPaciente into c_join
                              from ca in c_join.DefaultIfEmpty()
+                             join sag in db.solicitacoes_agendamentos
+                             on sp.idPaciente_Solicitacoes
+                             equals sag.idSolicitacao_paciente into spsag_join
+                             from sag in spsag_join.DefaultIfEmpty()
                              where
-                               sp.LocalSolicitacao == UnidadeSelecionada && sa.idSolicitacoes_Ambulancias != null
-                               &&
-                             SqlFunctions.DatePart("month", sp.DtHrdoInicio) == mes &&
-                             SqlFunctions.DatePart("year", sp.DtHrdoInicio) == ano
+                             sp.LocalSolicitacao == UnidadeSelecionada && sa.idSolicitacoes_Ambulancias != null
+                             &&
+                             (SqlFunctions.DatePart("month", sp.DtHrdoInicio) == mes && SqlFunctions.DatePart("year", sp.DtHrdoInicio) == ano) ||
+                             (SqlFunctions.DatePart("month", sp.DtHrdoAgendamento) == mes && SqlFunctions.DatePart("year", sp.DtHrdoAgendamento) == ano) ||
+                             (SqlFunctions.DatePart("month", sag.DtHrAgendamento) == mes && SqlFunctions.DatePart("year", sag.DtHrAgendamento) == ano)
                              orderby
-                               sp.idPaciente_Solicitacoes
+                                sp.idPaciente_Solicitacoes
                              select new
                              {
                                  Id = sp.idPaciente_Solicitacoes,
                                  idSolicitacoes_Ambulancias = sa.idSolicitacoes_Ambulancias,
                                  Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == null ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO")),
-                                 sp.DtHrdoAgendamento,
+                                 DtHrdoAgendamento = (sag.DtHrAgendamento == null ? (sp.Agendamento == "Sim" ? sp.DtHrdoAgendamento : default(DateTime?)) : sag.DtHrAgendamento),
                                  sp.Paciente,
                                  sp.LocalSolicitacao,
                                  sp.Motivo,
@@ -1077,13 +1116,14 @@ namespace Solicitacao_de_Ambulancias
                 Lista.ClearSelection();
 
                 Lista.Columns["idSolicitacoes_Ambulancias"].Visible = false;
-
+                this.Cursor = Cursors.Default;
             }
 
         }
         private void ano1_Click_1(object sender, EventArgs e)
         {
             Lista.DataSource = "";
+            this.Cursor = Cursors.WaitCursor;
             int ano = DateTime.Now.Year;
             using (DAHUEEntities db = new DAHUEEntities())
             {
@@ -1096,9 +1136,15 @@ namespace Solicitacao_de_Ambulancias
                              on sp.idPaciente_Solicitacoes
                              equals ca.idPaciente into c_join
                              from ca in c_join.DefaultIfEmpty()
+                             join sag in db.solicitacoes_agendamentos
+                             on sp.idPaciente_Solicitacoes
+                             equals sag.idSolicitacao_paciente into spsag_join
+                             from sag in spsag_join.DefaultIfEmpty()
                              where
                                sp.LocalSolicitacao == UnidadeSelecionada && sa.idSolicitacoes_Ambulancias != null
-                               && SqlFunctions.DatePart("year", sp.DtHrdoInicio) == ano
+                               && (SqlFunctions.DatePart("year", sp.DtHrdoInicio) == ano) ||
+                               (SqlFunctions.DatePart("year", sp.DtHrdoAgendamento) == ano) ||
+                               (SqlFunctions.DatePart("year", sag.DtHrAgendamento) == ano)
                              orderby
                                sp.idPaciente_Solicitacoes
                              select new
@@ -1106,7 +1152,7 @@ namespace Solicitacao_de_Ambulancias
                                  Id = sp.idPaciente_Solicitacoes,
                                  idSolicitacoes_Ambulancias = sa.idSolicitacoes_Ambulancias,
                                  Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == null ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO")),
-                                 sp.DtHrdoAgendamento,
+                                 DtHrdoAgendamento = (sag.DtHrAgendamento == null ? (sp.Agendamento == "Sim" ? sp.DtHrdoAgendamento : default(DateTime?)) : sag.DtHrAgendamento),
                                  sp.Paciente,
                                  sp.LocalSolicitacao,
                                  sp.Motivo,
@@ -1130,7 +1176,7 @@ namespace Solicitacao_de_Ambulancias
                 Lista.ClearSelection();
 
                 Lista.Columns["idSolicitacoes_Ambulancias"].Visible = false;
-
+                this.Cursor = Cursors.Default;
             }
         }
         private void agendadas_ValueChanged(object sender, EventArgs e)
@@ -1193,15 +1239,15 @@ namespace Solicitacao_de_Ambulancias
                 var query = (from sp in db.solicitacoes_paciente
                              join sa in db.solicitacoes_ambulancias
                              on new { idPaciente_Solicitacoes = sp.idPaciente_Solicitacoes }
-                             equals new { idPaciente_Solicitacoes = (int)sa.idSolicitacoesPacientes } into b_join
-                             from sa in b_join.DefaultIfEmpty()
+                             equals new { idPaciente_Solicitacoes = (int)sa.idSolicitacoesPacientes } into spsa_join
+                             from sa in spsa_join.DefaultIfEmpty()
                              join ca in db.cancelados_pacientes
                              on sp.idPaciente_Solicitacoes
-                             equals ca.idPaciente into c_join
-                             from ca in c_join.DefaultIfEmpty()
+                             equals ca.idPaciente into spca_join
+                             from ca in spca_join.DefaultIfEmpty()
                              join saa in db.solicitacoes_agendamentos
-                             on sp.idReagendamento equals saa.idSolicitacaoAgendamento into spsaaajoin
-                             from saa in spsaaajoin.DefaultIfEmpty()
+                             on sp.idReagendamento equals saa.idSolicitacaoAgendamento into spsaaa_join
+                             from saa in spsaaa_join.DefaultIfEmpty()
                              where
                                sp.LocalSolicitacao == UnidadeSelecionada && sa.idSolicitacoes_Ambulancias != null
                                && SqlFunctions.DateDiff("day", reagendadas.Value, saa.DtHrAgendamento) == 0 && sp.Agendamento == "Sim"
@@ -1212,7 +1258,7 @@ namespace Solicitacao_de_Ambulancias
                                  Id = sp.idPaciente_Solicitacoes,
                                  idSolicitacoes_Ambulancias = sa.idSolicitacoes_Ambulancias,
                                  Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == null ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO")),
-                                 sp.DtHrdoAgendamento,
+                                 saa.DtHrAgendamento,
                                  sp.Paciente,
                                  sp.LocalSolicitacao,
                                  sp.Motivo,
@@ -1533,7 +1579,7 @@ namespace Solicitacao_de_Ambulancias
                             };
                 var quertCont = query.Count();
                 var queryAmbu = query.ToList();
-                Lista.Columns["idAm"].Visible = false;
+                ListaAgendados.Columns["idAm"].Visible = false;
                 RespostasNegadas.Text = "Respostas negadas (" + quertCont + ")";
                 ListaAgendados.DataSource = queryAmbu;
                 ListaAgendados.ClearSelection();
@@ -1575,9 +1621,9 @@ namespace Solicitacao_de_Ambulancias
 
                 var queryAmbu = query.ToList();
                 var querycont = query.Count();
-                Lista.Columns["idAm"].Visible = false;
                 RespostaDoControle.Text = "Solicitações agendadas (" + querycont + ")";
                 ListaAgendados.DataSource = queryAmbu;
+                ListaAgendados.Columns["idAm"].Visible = false;
                 ListaAgendados.ClearSelection();
 
             }
@@ -1744,7 +1790,14 @@ namespace Solicitacao_de_Ambulancias
             if (e.RowIndex > -1)
             {
                 idPaciente = Convert.ToInt32(ListaCancelar.Rows[e.RowIndex].Cells["Id"].Value.ToString());
-                IdSolicitacaoAmbulancia = Convert.ToInt32(ListaCancelar.Rows[e.RowIndex].Cells["IdAm"].Value.ToString());
+                if (ListaCancelar.Rows[e.RowIndex].Cells["idAm"].Equals(0) || ListaCancelar.Rows[e.RowIndex].Cells["idAm"].Equals(null))
+                {
+                    IdSolicitacaoAmbulancia = Convert.ToInt32(ListaCancelar.Rows[e.RowIndex].Cells["idAm"].Value.ToString());
+                }
+                else
+                {
+                    IdSolicitacaoAmbulancia = 0;
+                }
                 using (DAHUEEntities db = new DAHUEEntities())
                 {
                     var query = (from sp in db.solicitacoes_paciente
@@ -1797,7 +1850,7 @@ namespace Solicitacao_de_Ambulancias
                              select new
                              {
                                  Id = sp.idPaciente_Solicitacoes,
-                                 IdAm = sa.idSolicitacoes_Ambulancias,
+                                 idAm = sa.idSolicitacoes_Ambulancias,
                                  Tipo = sp.TipoSolicitacao,
                                  sp.DtHrdoInicio,
                                  sp.Agendamento,
@@ -1818,6 +1871,7 @@ namespace Solicitacao_de_Ambulancias
                              }).DefaultIfEmpty().ToList();
 
                 ListaCancelar.DataSource = query;
+                ListaCancelar.Columns["idAm"].Visible = false;
                 ListaCancelar.Refresh();
 
             }

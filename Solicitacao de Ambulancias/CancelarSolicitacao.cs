@@ -24,29 +24,30 @@ namespace Solicitacao_de_Ambulancias
 
         private void BtnConfirmando_Click(object sender, EventArgs e)
         {
-            using (DAHUEEntities db = new DAHUEEntities())
+            if (idSolicitacaoAmbulancias != 0)
             {
-                var query = (from sa in db.solicitacoes_ambulancias
-                             where sa.idSolicitacoesPacientes == idpaciente &&
-                             sa.SolicitacaoConcluida == 0
-                             select sa).Count();
-                if (query >= 1)
+                using (DAHUEEntities db = new DAHUEEntities())
                 {
-                    MessageBox.Show("Paciente está em transporte, necessário entrar em contato com o Controle para cancelar !", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    var query = (from sa in db.solicitacoes_ambulancias
+                                 where sa.idSolicitacoes_Ambulancias == idSolicitacaoAmbulancias &&
+                                 sa.SolicitacaoConcluida == 0
+                                 select sa).Count();
+                    if (query >= 1)
+                    {
+                        MessageBox.Show("Paciente está em transporte, necessário entrar em contato com o Controle para cancelar !", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.Dispose();
+                    }
+                }
+
+            }
+                DialogResult result1 = MessageBox.Show("Deseja cancelar a solicitação do paciente na ambulancia ?",
+                "Atenção !",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result1 == DialogResult.Yes)
+                {
+                    cancelar();
                     this.Dispose();
                 }
-            }
-
-
-            DialogResult result1 = MessageBox.Show("Deseja cancelar a solicitação do paciente na ambulancia ?",
-            "Atenção !",
-            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result1 == DialogResult.Yes)
-            {
-                cancelar();
-                this.Dispose();
-
-            }
         }
         private void cancelar()
         {
@@ -69,7 +70,6 @@ namespace Solicitacao_de_Ambulancias
 
                     if (idSolicitacaoAmbulancias != 0)
                     {
-
                         solicitacoes_ambulancias sa = db.solicitacoes_ambulancias.First(s => s.idSolicitacoes_Ambulancias == idSolicitacaoAmbulancias);
                         sa.SolicitacaoConcluida = 1;
                     }
