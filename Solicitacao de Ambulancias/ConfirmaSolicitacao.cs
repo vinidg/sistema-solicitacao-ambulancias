@@ -1899,6 +1899,11 @@ namespace Solicitacao_de_Ambulancias
 
         #endregion
 
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://goo.gl/forms/IIOpkaXMHg8vUTd03");
+        }
+
     }
 }
 

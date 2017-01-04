@@ -103,6 +103,11 @@
             this.BtnBasica = new System.Windows.Forms.Button();
             this.TodasSolicitacoes = new System.Windows.Forms.TabPage();
             this.PainelSolicitacoes = new System.Windows.Forms.Panel();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label85 = new System.Windows.Forms.Label();
+            this.label84 = new System.Windows.Forms.Label();
+            this.reagendadas = new System.Windows.Forms.DateTimePicker();
+            this.agendadas = new System.Windows.Forms.DateTimePicker();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.hoje = new System.Windows.Forms.RadioButton();
             this.ano1 = new System.Windows.Forms.RadioButton();
@@ -112,11 +117,6 @@
             this.dias5 = new System.Windows.Forms.RadioButton();
             this.dias2 = new System.Windows.Forms.RadioButton();
             this.Ontem = new System.Windows.Forms.RadioButton();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.label85 = new System.Windows.Forms.Label();
-            this.label84 = new System.Windows.Forms.Label();
-            this.reagendadas = new System.Windows.Forms.DateTimePicker();
-            this.agendadas = new System.Windows.Forms.DateTimePicker();
             this.button3 = new System.Windows.Forms.Button();
             this.Lista = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -254,6 +254,7 @@
             this.label58 = new System.Windows.Forms.Label();
             this.EntrarCancelar = new System.Windows.Forms.Button();
             this.SelecionarUnidade = new System.Windows.Forms.ComboBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.AbasControle.SuspendLayout();
             this.StatusAmbulancias.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -269,8 +270,8 @@
             this.panel8.SuspendLayout();
             this.TodasSolicitacoes.SuspendLayout();
             this.PainelSolicitacoes.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Lista)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -618,6 +619,7 @@
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel1.AutoSize = true;
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(252)))), ((int)(((byte)(194)))));
+            this.panel1.Controls.Add(this.linkLabel1);
             this.panel1.Controls.Add(this.panel8);
             this.panel1.Controls.Add(this.dataAgendamento);
             this.panel1.Controls.Add(this.label31);
@@ -1243,6 +1245,60 @@
             this.PainelSolicitacoes.TabIndex = 4;
             this.PainelSolicitacoes.Visible = false;
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox5.Controls.Add(this.label85);
+            this.groupBox5.Controls.Add(this.label84);
+            this.groupBox5.Controls.Add(this.reagendadas);
+            this.groupBox5.Controls.Add(this.agendadas);
+            this.groupBox5.Location = new System.Drawing.Point(553, 34);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(472, 75);
+            this.groupBox5.TabIndex = 8;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Solicitações (re)agendadas no dia:";
+            // 
+            // label85
+            // 
+            this.label85.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label85.AutoSize = true;
+            this.label85.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label85.Location = new System.Drawing.Point(301, 30);
+            this.label85.Name = "label85";
+            this.label85.Size = new System.Drawing.Size(96, 16);
+            this.label85.TabIndex = 38;
+            this.label85.Text = "Reagendadas";
+            // 
+            // label84
+            // 
+            this.label84.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label84.AutoSize = true;
+            this.label84.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label84.Location = new System.Drawing.Point(74, 30);
+            this.label84.Name = "label84";
+            this.label84.Size = new System.Drawing.Size(79, 16);
+            this.label84.TabIndex = 37;
+            this.label84.Text = "Agendadas";
+            // 
+            // reagendadas
+            // 
+            this.reagendadas.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.reagendadas.Location = new System.Drawing.Point(245, 49);
+            this.reagendadas.Name = "reagendadas";
+            this.reagendadas.Size = new System.Drawing.Size(221, 20);
+            this.reagendadas.TabIndex = 1;
+            this.reagendadas.ValueChanged += new System.EventHandler(this.reagendadas_ValueChanged);
+            // 
+            // agendadas
+            // 
+            this.agendadas.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.agendadas.Location = new System.Drawing.Point(6, 49);
+            this.agendadas.Name = "agendadas";
+            this.agendadas.Size = new System.Drawing.Size(233, 20);
+            this.agendadas.TabIndex = 0;
+            this.agendadas.ValueChanged += new System.EventHandler(this.agendadas_ValueChanged);
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.hoje);
@@ -1363,60 +1419,6 @@
             this.Ontem.Text = "Ontem";
             this.Ontem.UseVisualStyleBackColor = true;
             this.Ontem.Click += new System.EventHandler(this.Ontem_Click_1);
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox5.Controls.Add(this.label85);
-            this.groupBox5.Controls.Add(this.label84);
-            this.groupBox5.Controls.Add(this.reagendadas);
-            this.groupBox5.Controls.Add(this.agendadas);
-            this.groupBox5.Location = new System.Drawing.Point(553, 34);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(472, 75);
-            this.groupBox5.TabIndex = 8;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Solicitações (re)agendadas no dia:";
-            // 
-            // label85
-            // 
-            this.label85.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label85.AutoSize = true;
-            this.label85.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label85.Location = new System.Drawing.Point(301, 30);
-            this.label85.Name = "label85";
-            this.label85.Size = new System.Drawing.Size(96, 16);
-            this.label85.TabIndex = 38;
-            this.label85.Text = "Reagendadas";
-            // 
-            // label84
-            // 
-            this.label84.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label84.AutoSize = true;
-            this.label84.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label84.Location = new System.Drawing.Point(74, 30);
-            this.label84.Name = "label84";
-            this.label84.Size = new System.Drawing.Size(79, 16);
-            this.label84.TabIndex = 37;
-            this.label84.Text = "Agendadas";
-            // 
-            // reagendadas
-            // 
-            this.reagendadas.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.reagendadas.Location = new System.Drawing.Point(245, 49);
-            this.reagendadas.Name = "reagendadas";
-            this.reagendadas.Size = new System.Drawing.Size(221, 20);
-            this.reagendadas.TabIndex = 1;
-            this.reagendadas.ValueChanged += new System.EventHandler(this.reagendadas_ValueChanged);
-            // 
-            // agendadas
-            // 
-            this.agendadas.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.agendadas.Location = new System.Drawing.Point(6, 49);
-            this.agendadas.Name = "agendadas";
-            this.agendadas.Size = new System.Drawing.Size(233, 20);
-            this.agendadas.TabIndex = 0;
-            this.agendadas.ValueChanged += new System.EventHandler(this.agendadas_ValueChanged);
             // 
             // button3
             // 
@@ -3115,6 +3117,18 @@
             this.SelecionarUnidade.Size = new System.Drawing.Size(167, 21);
             this.SelecionarUnidade.TabIndex = 5;
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(892, 100);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(125, 13);
+            this.linkLabel1.TabIndex = 50;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Bugs/Melhorias/Duvidas";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // ConfirmaSolicitacao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -3150,10 +3164,10 @@
             this.TodasSolicitacoes.ResumeLayout(false);
             this.PainelSolicitacoes.ResumeLayout(false);
             this.PainelSolicitacoes.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Lista)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -3404,5 +3418,6 @@
         private System.Windows.Forms.Label IdPacienteLabel;
         private System.Windows.Forms.Label label85;
         private System.Windows.Forms.Label label84;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
