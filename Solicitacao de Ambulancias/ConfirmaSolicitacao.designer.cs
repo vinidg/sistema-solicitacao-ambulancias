@@ -55,6 +55,7 @@
             this.listaUsb = new System.Windows.Forms.DataGridView();
             this.NovaSolicitacao = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label34 = new System.Windows.Forms.Label();
             this.dataAgendamento = new System.Windows.Forms.DateTimePicker();
@@ -254,7 +255,6 @@
             this.label58 = new System.Windows.Forms.Label();
             this.EntrarCancelar = new System.Windows.Forms.Button();
             this.SelecionarUnidade = new System.Windows.Forms.ComboBox();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.AbasControle.SuspendLayout();
             this.StatusAmbulancias.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -296,7 +296,7 @@
             this.AbasControle.Controls.Add(this.TodasSolicitacoes);
             this.AbasControle.Controls.Add(this.ReagendamentosTab);
             this.AbasControle.Controls.Add(this.Cancelar);
-            this.AbasControle.Location = new System.Drawing.Point(3, 4);
+            this.AbasControle.Location = new System.Drawing.Point(2, 4);
             this.AbasControle.Multiline = true;
             this.AbasControle.Name = "AbasControle";
             this.AbasControle.SelectedIndex = 0;
@@ -306,7 +306,7 @@
             // 
             // StatusAmbulancias
             // 
-            this.StatusAmbulancias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(252)))), ((int)(((byte)(194)))));
+            this.StatusAmbulancias.BackColor = System.Drawing.Color.White;
             this.StatusAmbulancias.Controls.Add(this.label28);
             this.StatusAmbulancias.Controls.Add(this.label27);
             this.StatusAmbulancias.Controls.Add(this.groupBox1);
@@ -373,6 +373,7 @@
             this.listaUsa.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.listaUsa.BackgroundColor = System.Drawing.Color.White;
             this.listaUsa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.listaUsa.Location = new System.Drawing.Point(6, 20);
             this.listaUsa.Name = "listaUsa";
@@ -395,7 +396,7 @@
             // panel7
             // 
             this.panel7.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(244)))), ((int)(((byte)(231)))));
+            this.panel7.BackColor = System.Drawing.Color.White;
             this.panel7.Controls.Add(this.label33);
             this.panel7.Controls.Add(this.solAgendadasPendentes);
             this.panel7.Location = new System.Drawing.Point(511, 41);
@@ -435,7 +436,7 @@
             // panel6
             // 
             this.panel6.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(244)))), ((int)(((byte)(231)))));
+            this.panel6.BackColor = System.Drawing.Color.White;
             this.panel6.Controls.Add(this.solAgendadasHoje);
             this.panel6.Controls.Add(this.label21);
             this.panel6.Location = new System.Drawing.Point(312, 41);
@@ -469,7 +470,7 @@
             // panel5
             // 
             this.panel5.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(244)))), ((int)(((byte)(231)))));
+            this.panel5.BackColor = System.Drawing.Color.White;
             this.panel5.Controls.Add(this.label22);
             this.panel5.Controls.Add(this.solPendentes);
             this.panel5.Location = new System.Drawing.Point(123, 41);
@@ -593,6 +594,7 @@
             this.listaUsb.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.listaUsb.BackgroundColor = System.Drawing.Color.White;
             this.listaUsb.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.listaUsb.Location = new System.Drawing.Point(6, 25);
             this.listaUsb.Name = "listaUsb";
@@ -618,7 +620,7 @@
             // 
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel1.AutoSize = true;
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(252)))), ((int)(((byte)(194)))));
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.linkLabel1);
             this.panel1.Controls.Add(this.panel8);
             this.panel1.Controls.Add(this.dataAgendamento);
@@ -670,10 +672,22 @@
             this.panel1.Size = new System.Drawing.Size(1035, 662);
             this.panel1.TabIndex = 4;
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(892, 100);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(125, 13);
+            this.linkLabel1.TabIndex = 50;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Bugs/Melhorias/Duvidas";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // panel8
             // 
             this.panel8.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(255)))), ((int)(((byte)(217)))));
+            this.panel8.BackColor = System.Drawing.Color.White;
             this.panel8.Controls.Add(this.label34);
             this.panel8.Location = new System.Drawing.Point(687, 16);
             this.panel8.Name = "panel8";
@@ -1264,7 +1278,7 @@
             this.label85.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label85.AutoSize = true;
             this.label85.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label85.Location = new System.Drawing.Point(301, 30);
+            this.label85.Location = new System.Drawing.Point(302, 30);
             this.label85.Name = "label85";
             this.label85.Size = new System.Drawing.Size(96, 16);
             this.label85.TabIndex = 38;
@@ -1275,7 +1289,7 @@
             this.label84.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label84.AutoSize = true;
             this.label84.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label84.Location = new System.Drawing.Point(74, 30);
+            this.label84.Location = new System.Drawing.Point(75, 30);
             this.label84.Name = "label84";
             this.label84.Size = new System.Drawing.Size(79, 16);
             this.label84.TabIndex = 37;
@@ -1785,7 +1799,7 @@
             // 
             // painelReagendamento
             // 
-            this.painelReagendamento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(252)))), ((int)(((byte)(194)))));
+            this.painelReagendamento.BackColor = System.Drawing.Color.White;
             this.painelReagendamento.Controls.Add(this.CancelarReagendamento);
             this.painelReagendamento.Controls.Add(this.CodigoPacienteReagendamento);
             this.painelReagendamento.Controls.Add(this.destinoReagendamentos);
@@ -1944,7 +1958,7 @@
             this.ListaAgendados.AllowUserToDeleteRows = false;
             this.ListaAgendados.AllowUserToResizeRows = false;
             this.ListaAgendados.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.ListaAgendados.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(252)))), ((int)(((byte)(194)))));
+            this.ListaAgendados.BackgroundColor = System.Drawing.Color.White;
             this.ListaAgendados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ListaAgendados.Location = new System.Drawing.Point(6, 34);
             this.ListaAgendados.MultiSelect = false;
@@ -3116,18 +3130,6 @@
             this.SelecionarUnidade.Name = "SelecionarUnidade";
             this.SelecionarUnidade.Size = new System.Drawing.Size(167, 21);
             this.SelecionarUnidade.TabIndex = 5;
-            // 
-            // linkLabel1
-            // 
-            this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(892, 100);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(125, 13);
-            this.linkLabel1.TabIndex = 50;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Bugs/Melhorias/Duvidas";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // ConfirmaSolicitacao
             // 

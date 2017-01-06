@@ -42,7 +42,7 @@
             // 
             // painelCancelar
             // 
-            this.painelCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(204)))), ((int)(((byte)(255)))));
+            this.painelCancelar.BackColor = System.Drawing.Color.White;
             this.painelCancelar.Controls.Add(this.BtnConfirmando);
             this.painelCancelar.Controls.Add(this.label27);
             this.painelCancelar.Controls.Add(this.label26);
@@ -76,7 +76,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.ForeColor = System.Drawing.Color.White;
+            this.label27.ForeColor = System.Drawing.Color.Black;
             this.label27.Location = new System.Drawing.Point(19, 71);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(93, 16);
@@ -90,7 +90,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.ForeColor = System.Drawing.Color.White;
+            this.label26.ForeColor = System.Drawing.Color.Black;
             this.label26.Location = new System.Drawing.Point(375, 16);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(85, 16);
@@ -104,7 +104,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.ForeColor = System.Drawing.Color.White;
+            this.label24.ForeColor = System.Drawing.Color.Black;
             this.label24.Location = new System.Drawing.Point(19, 16);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(160, 16);

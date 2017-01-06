@@ -678,7 +678,7 @@ namespace Solicitacao_de_Ambulancias
                              {
                                  Id = sp.idPaciente_Solicitacoes,
                                  idSolicitacoes_Ambulancias = sa.idSolicitacoes_Ambulancias,
-                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == null ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO")),
+                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == 0 ? "TRANSPORTE EM ANDAMENTO" : "")) : "TRANSPORTE CANCELADO")),
                                  sp.DtHrdoAgendamento,
                                  sp.Paciente,
                                  sp.LocalSolicitacao,
@@ -735,7 +735,7 @@ namespace Solicitacao_de_Ambulancias
                              {
                                  Id = sp.idPaciente_Solicitacoes,
                                  idSolicitacoes_Ambulancias = sa.idSolicitacoes_Ambulancias,
-                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == null ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO")),
+                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == 0 ? "TRANSPORTE EM ANDAMENTO" : "")) : "TRANSPORTE CANCELADO")),
                                  DtHrdoAgendamento = (sag.DtHrAgendamento == null ? (sp.Agendamento == "Sim" ? sp.DtHrdoAgendamento : default(DateTime?)) : sag.DtHrAgendamento),
                                  sp.Paciente,
                                  sp.LocalSolicitacao,
@@ -794,7 +794,7 @@ namespace Solicitacao_de_Ambulancias
                              {
                                  Id = sp.idPaciente_Solicitacoes,
                                  idSolicitacoes_Ambulancias = sa.idSolicitacoes_Ambulancias,
-                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == null ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO")),
+                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == 0 ? "TRANSPORTE EM ANDAMENTO" : "")) : "TRANSPORTE CANCELADO")),
                                  DtHrdoAgendamento = (sag.DtHrAgendamento == null ? (sp.Agendamento == "Sim" ? sp.DtHrdoAgendamento : default(DateTime?)) : sag.DtHrAgendamento),
                                  sp.Paciente,
                                  sp.LocalSolicitacao,
@@ -852,7 +852,7 @@ namespace Solicitacao_de_Ambulancias
                              {
                                  Id = sp.idPaciente_Solicitacoes,
                                  idSolicitacoes_Ambulancias = sa.idSolicitacoes_Ambulancias,
-                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == null ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO")),
+                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == 0 ? "TRANSPORTE EM ANDAMENTO" : "")) : "TRANSPORTE CANCELADO")),
                                  DtHrdoAgendamento = (sag.DtHrAgendamento == null ? (sp.Agendamento == "Sim" ? sp.DtHrdoAgendamento : default(DateTime?)) : sag.DtHrAgendamento),
                                  sp.Paciente,
                                  sp.LocalSolicitacao,
@@ -912,7 +912,7 @@ namespace Solicitacao_de_Ambulancias
                              {
                                  Id = sp.idPaciente_Solicitacoes,
                                  idSolicitacoes_Ambulancias = sa.idSolicitacoes_Ambulancias,
-                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == null ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO")),
+                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == 0 ? "TRANSPORTE EM ANDAMENTO" : "")) : "TRANSPORTE CANCELADO")),
                                  DtHrdoAgendamento = (sag.DtHrAgendamento == null ? (sp.Agendamento == "Sim" ? sp.DtHrdoAgendamento : default(DateTime?)) : sag.DtHrAgendamento),
                                  sp.Paciente,
                                  sp.LocalSolicitacao,
@@ -971,7 +971,7 @@ namespace Solicitacao_de_Ambulancias
                              {
                                  Id = sp.idPaciente_Solicitacoes,
                                  idSolicitacoes_Ambulancias = sa.idSolicitacoes_Ambulancias,
-                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == null ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO")),
+                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == 0 ? "TRANSPORTE EM ANDAMENTO" : "")) : "TRANSPORTE CANCELADO")),
                                  DtHrdoAgendamento = (sag.DtHrAgendamento == null ? (sp.Agendamento == "Sim" ? sp.DtHrdoAgendamento : default(DateTime?)) : sag.DtHrAgendamento),
                                  sp.Paciente,
                                  sp.LocalSolicitacao,
@@ -1030,7 +1030,7 @@ namespace Solicitacao_de_Ambulancias
                              {
                                  Id = sp.idPaciente_Solicitacoes,
                                  idSolicitacoes_Ambulancias = sa.idSolicitacoes_Ambulancias,
-                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == null ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO")),
+                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == 0 ? "TRANSPORTE EM ANDAMENTO" : "")) : "TRANSPORTE CANCELADO")),
                                  DtHrdoAgendamento = (sag.DtHrAgendamento == null ? (sp.Agendamento == "Sim" ? sp.DtHrdoAgendamento : default(DateTime?)) : sag.DtHrAgendamento),
                                  sp.Paciente,
                                  sp.LocalSolicitacao,
@@ -1091,7 +1091,7 @@ namespace Solicitacao_de_Ambulancias
                              {
                                  Id = sp.idPaciente_Solicitacoes,
                                  idSolicitacoes_Ambulancias = sa.idSolicitacoes_Ambulancias,
-                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == null ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO")),
+                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == 0 ? "TRANSPORTE EM ANDAMENTO" : "")) : "TRANSPORTE CANCELADO")),
                                  DtHrdoAgendamento = (sag.DtHrAgendamento == null ? (sp.Agendamento == "Sim" ? sp.DtHrdoAgendamento : default(DateTime?)) : sag.DtHrAgendamento),
                                  sp.Paciente,
                                  sp.LocalSolicitacao,
@@ -1151,7 +1151,7 @@ namespace Solicitacao_de_Ambulancias
                              {
                                  Id = sp.idPaciente_Solicitacoes,
                                  idSolicitacoes_Ambulancias = sa.idSolicitacoes_Ambulancias,
-                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == null ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO")),
+                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == 0 ? "TRANSPORTE EM ANDAMENTO" : "")) : "TRANSPORTE CANCELADO")),
                                  DtHrdoAgendamento = (sag.DtHrAgendamento == null ? (sp.Agendamento == "Sim" ? sp.DtHrdoAgendamento : default(DateTime?)) : sag.DtHrAgendamento),
                                  sp.Paciente,
                                  sp.LocalSolicitacao,
@@ -1203,7 +1203,7 @@ namespace Solicitacao_de_Ambulancias
                              {
                                  Id = sp.idPaciente_Solicitacoes,
                                  idSolicitacoes_Ambulancias = sa.idSolicitacoes_Ambulancias,
-                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == null ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO")),
+                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == 0 ? "TRANSPORTE EM ANDAMENTO" : "")) : "TRANSPORTE CANCELADO")),
                                  sp.DtHrdoAgendamento,
                                  sp.Paciente,
                                  sp.LocalSolicitacao,
@@ -1257,7 +1257,7 @@ namespace Solicitacao_de_Ambulancias
                              {
                                  Id = sp.idPaciente_Solicitacoes,
                                  idSolicitacoes_Ambulancias = sa.idSolicitacoes_Ambulancias,
-                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == null ? "TRANSPORTE EM ANDAMENTO" : "ERRO")) : "TRANSPORTE CANCELADO")),
+                                 Status = (sp.AmSolicitada == 0 ? "AGUARDANDO TRANSPORTE" : (ca.idPaciente == null ? (sa.SolicitacaoConcluida == 1 ? "TRANSPORTE REALIZADO" : (sa.SolicitacaoConcluida == 0 ? "TRANSPORTE EM ANDAMENTO" : "")) : "TRANSPORTE CANCELADO")),
                                  saa.DtHrAgendamento,
                                  sp.Paciente,
                                  sp.LocalSolicitacao,

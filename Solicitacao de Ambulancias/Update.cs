@@ -62,7 +62,7 @@ namespace Solicitacao_de_Ambulancias
 
                 }
             }
-            catch(Exception ex)
+            catch
             {
                 MessageBox.Show("Erro ao atualizar o sistema ! Podendo conter erros ao utilizar essa versão antiga");
             }
