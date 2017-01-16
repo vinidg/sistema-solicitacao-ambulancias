@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using db_transporte_sanitario;
 using System.Data.Entity.SqlServer;
+using AutoUpdaterDotNET;
+using System.Globalization;
 
 namespace Solicitacao_de_Ambulancias
 {
@@ -26,67 +28,13 @@ namespace Solicitacao_de_Ambulancias
         int IdSolicitacaoAmbulancia;
         int idPaciente;
         string UnidadeReagendamento;
+        Version appversion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
         public ConfirmaSolicitacao()
         {
             InitializeComponent();
-
-            pegarDadosDasAmbulancias();
-            countparaSol();
-            countparaSolAgendadas();
-            countparaSolAgendadasPendentes();
-            StartPosition = FormStartPosition.CenterScreen;
-            Endereco();
-            label3.Visible = false;
-            dataAgendamento.Visible = false;
-            this.Text = "Sistema de Solicitação de Ambulancias. Versão: " + appversion;
-            AbasControle.SelectedTab = NovaSolicitacao;
-            Detalhes.Text = "";
-            AutoCompletar();
+            
         }
-
-        Version appversion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-        public void Limpar()
-        {
-            RbFemenino.Checked = false;
-            RbMasculino.Checked = false;
-            TipoAM = "";
-            Agendamento = "";
-            Obs.Text = "";
-            label3.Visible = false;
-            dataAgendamento.Visible = false;
-
-            Btnagendasim.BackColor = Color.FromArgb(69, 173, 168);
-            Btnagendasim.ForeColor = Color.FromArgb(229, 252, 194);
-            Btnagendanao.BackColor = Color.FromArgb(69, 173, 168);
-            Btnagendanao.ForeColor = Color.FromArgb(229, 252, 194);
-
-            BtnAvancada.BackColor = Color.FromArgb(69, 173, 168);
-            BtnAvancada.ForeColor = Color.FromArgb(229, 252, 194);
-            BtnBasica.BackColor = Color.FromArgb(69, 173, 168);
-            BtnBasica.ForeColor = Color.FromArgb(229, 252, 194);
-
-            Btnagendanao.Enabled = true;
-            Btnagendasim.Enabled = true;
-            BtnAvancada.Enabled = true;
-            BtnBasica.Enabled = true;
-        }
-        private void AbasControle_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (AbasControle.SelectedTab == AbasControle.TabPages["ReagendamentosTab"])
-            {
-                if (RespostasNegadas.Checked == true)
-                {
-                    puxarAgendadasNegadas();
-                    RespostasNegadas.Checked = true;
-                }
-                else
-                {
-                    puxarAgendadasPendentes();
-                    RespostaDoControle.Checked = true;
-                }
-            }
-        }
-
+        
         #region Incluir_solicitacao_confirma_solicitacao
 
         private void RegistrarSolicitacao()
@@ -261,6 +209,10 @@ namespace Solicitacao_de_Ambulancias
         {
             pegaUnidade = CbLocalSolicita.Text;
             unidade_telefone();
+        }
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://goo.gl/forms/IIOpkaXMHg8vUTd03");
         }
         private void BtnSalvar_Click(object sender, EventArgs e)
         {
@@ -1899,11 +1851,98 @@ namespace Solicitacao_de_Ambulancias
 
         #endregion
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        public void Limpar()
         {
-            System.Diagnostics.Process.Start("https://goo.gl/forms/IIOpkaXMHg8vUTd03");
+            RbFemenino.Checked = false;
+            RbMasculino.Checked = false;
+            TipoAM = "";
+            Agendamento = "";
+            Obs.Text = "";
+            label3.Visible = false;
+            dataAgendamento.Visible = false;
+
+            Btnagendasim.BackColor = Color.FromArgb(69, 173, 168);
+            Btnagendasim.ForeColor = Color.FromArgb(229, 252, 194);
+            Btnagendanao.BackColor = Color.FromArgb(69, 173, 168);
+            Btnagendanao.ForeColor = Color.FromArgb(229, 252, 194);
+
+            BtnAvancada.BackColor = Color.FromArgb(69, 173, 168);
+            BtnAvancada.ForeColor = Color.FromArgb(229, 252, 194);
+            BtnBasica.BackColor = Color.FromArgb(69, 173, 168);
+            BtnBasica.ForeColor = Color.FromArgb(229, 252, 194);
+
+            Btnagendanao.Enabled = true;
+            Btnagendasim.Enabled = true;
+            BtnAvancada.Enabled = true;
+            BtnBasica.Enabled = true;
+        }
+        private void AbasControle_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (AbasControle.SelectedTab == AbasControle.TabPages["ReagendamentosTab"])
+            {
+                if (RespostasNegadas.Checked == true)
+                {
+                    puxarAgendadasNegadas();
+                    RespostasNegadas.Checked = true;
+                }
+                else
+                {
+                    puxarAgendadasPendentes();
+                    RespostaDoControle.Checked = true;
+                }
+            }
         }
 
+        private void ConfirmaSolicitacao_Load(object sender, EventArgs e)
+        {
+            AutoUpdater.CurrentCulture = CultureInfo.CreateSpecificCulture("pt");
+                AutoUpdater.Start("http://vinidg.github.io/update_ambulanciasC.xml");
+
+            if (System.IO.File.Exists(@"C:\Sistema de Solicitação de Ambulancias\pastaDTI.bat"))
+            {
+                System.Diagnostics.Process.Start(@"C:\Sistema de Solicitação de Ambulancias\pastaDTI.bat");
+            }
+             else{
+                AutoUpdater.Start("http://vinidg.github.io/update_ambulanciasD.xml");
+            }
+            
+            pegarDadosDasAmbulancias();
+            countparaSol();
+            countparaSolAgendadas();
+            countparaSolAgendadasPendentes();
+            StartPosition = FormStartPosition.CenterScreen;
+            Endereco();
+            label3.Visible = false;
+            dataAgendamento.Visible = false;
+            this.Text = "Sistema de Solicitação de Ambulancias. Versão: " + appversion;
+            AbasControle.SelectedTab = NovaSolicitacao;
+            Detalhes.Text = "";
+            AutoCompletar();
+            Timer();
+        }
+
+        #region Timer
+        public void Timer()
+        {
+            timer1.Stop();
+            timer1.Interval = 5000;
+            timer1.Tick += new EventHandler(timer1_Tick);
+            timer1.Start();
+        }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            AutoUpdater.CurrentCulture = CultureInfo.CreateSpecificCulture("pt");
+
+            if (System.IO.File.Exists(@"C:\Sistema de Solicitação de Ambulancias\Solicitacao de Ambulancias.exe"))
+            {
+                AutoUpdater.Start("http://vinidg.github.io/update_ambulanciasC.xml");
+            }
+            else
+            {
+                AutoUpdater.Start("http://vinidg.github.io/update_ambulanciasD.xml");
+            }
+        }
+        #endregion
     }
 }
 

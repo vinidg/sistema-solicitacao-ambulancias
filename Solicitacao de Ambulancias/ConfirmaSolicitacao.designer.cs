@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConfirmaSolicitacao));
             this.AbasControle = new System.Windows.Forms.TabControl();
             this.StatusAmbulancias = new System.Windows.Forms.TabPage();
@@ -55,7 +56,6 @@
             this.listaUsb = new System.Windows.Forms.DataGridView();
             this.NovaSolicitacao = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label34 = new System.Windows.Forms.Label();
             this.dataAgendamento = new System.Windows.Forms.DateTimePicker();
@@ -255,6 +255,8 @@
             this.label58 = new System.Windows.Forms.Label();
             this.EntrarCancelar = new System.Windows.Forms.Button();
             this.SelecionarUnidade = new System.Windows.Forms.ComboBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.AbasControle.SuspendLayout();
             this.StatusAmbulancias.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -621,7 +623,6 @@
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel1.AutoSize = true;
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.linkLabel1);
             this.panel1.Controls.Add(this.panel8);
             this.panel1.Controls.Add(this.dataAgendamento);
             this.panel1.Controls.Add(this.label31);
@@ -672,22 +673,11 @@
             this.panel1.Size = new System.Drawing.Size(1035, 662);
             this.panel1.TabIndex = 4;
             // 
-            // linkLabel1
-            // 
-            this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(892, 100);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(125, 13);
-            this.linkLabel1.TabIndex = 50;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Bugs/Melhorias/Duvidas";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
             // panel8
             // 
             this.panel8.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.panel8.BackColor = System.Drawing.Color.White;
+            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel8.Controls.Add(this.label34);
             this.panel8.Location = new System.Drawing.Point(687, 16);
             this.panel8.Name = "panel8";
@@ -702,7 +692,7 @@
             this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label34.Location = new System.Drawing.Point(1, 8);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(327, 57);
+            this.label34.Size = new System.Drawing.Size(325, 55);
             this.label34.TabIndex = 0;
             this.label34.Text = "Falhas e bugs ligar para o numero: 2630-6167 e falar com o Vinicius";
             this.label34.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1457,6 +1447,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Lista.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.Lista.BackgroundColor = System.Drawing.Color.White;
             this.Lista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Lista.Location = new System.Drawing.Point(8, 115);
             this.Lista.MultiSelect = false;
@@ -2572,7 +2563,7 @@
             this.ListaCancelar.AllowUserToResizeRows = false;
             this.ListaCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ListaCancelar.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.ListaCancelar.BackgroundColor = System.Drawing.Color.White;
             this.ListaCancelar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ListaCancelar.Location = new System.Drawing.Point(25, 45);
             this.ListaCancelar.MultiSelect = false;
@@ -3131,6 +3122,22 @@
             this.SelecionarUnidade.Size = new System.Drawing.Size(167, 21);
             this.SelecionarUnidade.TabIndex = 5;
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(919, 4);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(125, 13);
+            this.linkLabel1.TabIndex = 50;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Bugs/Melhorias/Duvidas";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // ConfirmaSolicitacao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -3138,11 +3145,13 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(224)))), ((int)(((byte)(173)))));
             this.ClientSize = new System.Drawing.Size(1056, 710);
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.AbasControle);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ConfirmaSolicitacao";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sistema de Solicitação de Ambulancias";
+            this.Load += new System.EventHandler(this.ConfirmaSolicitacao_Load);
             this.AbasControle.ResumeLayout(false);
             this.StatusAmbulancias.ResumeLayout(false);
             this.StatusAmbulancias.PerformLayout();
@@ -3190,6 +3199,7 @@
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -3421,5 +3431,6 @@
         private System.Windows.Forms.Label label85;
         private System.Windows.Forms.Label label84;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.Timer timer1;
     }
 }

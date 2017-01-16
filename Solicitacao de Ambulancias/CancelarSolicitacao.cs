@@ -53,32 +53,9 @@ namespace Solicitacao_de_Ambulancias
         {
             try
             {
-                using (DAHUEEntities db = new DAHUEEntities())
-                {
-                    cancelados_pacientes cancelados = new cancelados_pacientes();
-                    cancelados.idPaciente = idpaciente;
-                    cancelados.idSolicitacaoAM = 0;
-                    cancelados.MotivoCancelamento = MotivoCancelar.Text;
-                    cancelados.DtHrCancelamento = DateTime.Now;
-                    cancelados.ResposavelCancelamento = txtResponsavel.Text;
-                    cancelados.ObsCancelamento = txtObsCancelamento.Text;
-
-                    db.cancelados_pacientes.Add(cancelados);
-
-                    solicitacoes_paciente sp = db.solicitacoes_paciente.First(s => s.idPaciente_Solicitacoes == idpaciente);
-                    sp.AmSolicitada = 1;
-
-                    if (idSolicitacaoAmbulancias != 0)
-                    {
-                        solicitacoes_ambulancias sa = db.solicitacoes_ambulancias.First(s => s.idSolicitacoes_Ambulancias == idSolicitacaoAmbulancias);
-                        sa.SolicitacaoConcluida = 1;
-                    }
-
-                    db.SaveChanges();
-
-                    MessageBox.Show("Solicitação cancelada com sucesso !!!");
-                    this.Dispose();
-                }
+                InsercoesDoBanco i = new InsercoesDoBanco();
+                i.cancelarSolicitacao(idSolicitacaoAmbulancias,idpaciente,MotivoCancelar.Text, txtResponsavel.Text, txtObsCancelamento.Text);
+                this.Dispose();
             }
             catch (Exception ex)
             {

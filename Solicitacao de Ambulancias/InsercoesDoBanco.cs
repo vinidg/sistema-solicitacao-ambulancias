@@ -61,5 +61,37 @@ namespace Solicitacao_de_Ambulancias
             MessageBox.Show("Solicitação salva com sucesso !!!");
         }
 
+        public void cancelarSolicitacao(int idSolicitacaoAmbulancias, int idPaciente, string motivoCancelar, string responsavel, string obs)
+        {
+            
+                using (DAHUEEntities db = new DAHUEEntities())
+                {
+                    cancelados_pacientes cancelados = new cancelados_pacientes();
+                    cancelados.idPaciente = idPaciente;
+                    cancelados.idSolicitacaoAM = 0;
+                    cancelados.MotivoCancelamento = motivoCancelar;
+                    cancelados.DtHrCancelamento = DateTime.Now;
+                    cancelados.ResposavelCancelamento = responsavel;
+                    cancelados.ObsCancelamento = obs;
+
+                    db.cancelados_pacientes.Add(cancelados);
+
+                    solicitacoes_paciente sp = db.solicitacoes_paciente.First(s => s.idPaciente_Solicitacoes == idPaciente);
+                    sp.AmSolicitada = 1;
+
+                    if (idSolicitacaoAmbulancias != 0)
+                    {
+                        solicitacoes_ambulancias sa = db.solicitacoes_ambulancias.First(s => s.idSolicitacoes_Ambulancias == idSolicitacaoAmbulancias);
+                        sa.SolicitacaoConcluida = 1;
+                    }
+
+                    db.SaveChanges();
+
+                    MessageBox.Show("Solicitação cancelada com sucesso !!!");
+                    
+                }
+            
+        }
+
     }
 }

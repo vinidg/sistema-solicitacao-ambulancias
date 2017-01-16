@@ -7,11 +7,11 @@ using System.Resources;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Solicitacao de Ambulancias")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Sistema de Solicitação de Ambulâncias")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("São Bernardo do Campo")]
 [assembly: AssemblyProduct("Solicitacao de Ambulancias")]
-[assembly: AssemblyCopyright("Copyright ©  2015")]
+[assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -33,6 +33,6 @@ using System.Resources;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("10.0.1.0")]
-[assembly: AssemblyFileVersion("10.0.1.0")]
+[assembly: AssemblyVersion("10.0.2.2")]
+[assembly: AssemblyFileVersion("10.0.2.2")]
 [assembly: NeutralResourcesLanguageAttribute("pt-BR")]

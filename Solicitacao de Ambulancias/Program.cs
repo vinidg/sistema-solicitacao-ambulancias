@@ -14,17 +14,6 @@ namespace Solicitacao_de_Ambulancias
         [STAThread]
         static void Main()
         {
-            if (System.IO.File.Exists("C:\\Sistema de Solicitação de Ambulancias\\pastaDTI.bat"))
-            {
-                System.Diagnostics.Process.Start("C:\\Sistema de Solicitação de Ambulancias\\pastaDTI.bat");
-            }
-            Update updatando = new Update();
-            updatando.up();
-
-            if (updatando.Yn == true)
-            {
-                Environment.Exit(1);
-            }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new ConfirmaSolicitacao());
