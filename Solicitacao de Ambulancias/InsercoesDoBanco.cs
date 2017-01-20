@@ -14,10 +14,10 @@ namespace Solicitacao_de_Ambulancias
         public void inserirSolicitacaoDoPaciente(string TipoSolicitacao, DateTime DtHrdoInicio, string Agendamento, DateTime DtHrdoAgendamento,
             string NomeSolicitante, string LocalSolicitacao, string Telefone, string Paciente, string Genero, string Idade,string Diagnostico, 
             string Motivo, string SubMotivo, string Prioridade, string Origem, string EnderecoOrigem, string Destino, string EnderecoDestino, 
-            string ObsGerais, int AmSolicitada, string usuario, DateTime DtHrRegistro)
+            string ObsGerais, int AmSolicitada, string usuario, DateTime DtHrRegistro, bool Gestante)
         {
 
-            using (DAHUEEntities dahue = new DAHUEEntities())
+            using (DAHUEEntities1 dahue = new DAHUEEntities1())
             {
 
                 solicitacoes_paciente solicitacoesPaciente = new solicitacoes_paciente();
@@ -42,6 +42,7 @@ namespace Solicitacao_de_Ambulancias
                 solicitacoesPaciente.EnderecoDestino = EnderecoDestino;
                 solicitacoesPaciente.ObsGerais = ObsGerais;
                 solicitacoesPaciente.AmSolicitada = AmSolicitada;
+                solicitacoesPaciente.Gestante = Gestante;
                 if (Agendamento == "Sim")
                 {
                     solicitacoesPaciente.Registrado = "Aguardando resposta do controle";
@@ -64,7 +65,7 @@ namespace Solicitacao_de_Ambulancias
         public void cancelarSolicitacao(int idSolicitacaoAmbulancias, int idPaciente, string motivoCancelar, string responsavel, string obs)
         {
             
-                using (DAHUEEntities db = new DAHUEEntities())
+                using (DAHUEEntities1 db = new DAHUEEntities1())
                 {
                     cancelados_pacientes cancelados = new cancelados_pacientes();
                     cancelados.idPaciente = idPaciente;

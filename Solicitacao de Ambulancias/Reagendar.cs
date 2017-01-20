@@ -23,7 +23,7 @@ namespace Solicitacao_de_Ambulancias
 
         private void Enviar_Click(object sender, EventArgs e)
         {
-            using(DAHUEEntities db = new DAHUEEntities())
+            using(DAHUEEntities1 db = new DAHUEEntities1())
             {
                 solicitacoes_agendamentos sag = new solicitacoes_agendamentos();
                 sag.idSolicitacao_paciente = idPacient;

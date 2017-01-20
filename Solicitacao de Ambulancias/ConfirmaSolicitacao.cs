@@ -48,7 +48,7 @@ namespace Solicitacao_de_Ambulancias
                 IB.inserirSolicitacaoDoPaciente(TipoAM, DateTime.Now, Agendamento, this.dataAgendamento.Value, this.txtNomeSolicitante.Text, this.CbLocalSolicita.Text, this.txtTelefone.Text,
                 this.txtNomePaciente.Text, Sexo, this.txtIdade.Text, this.txtDiagnostico.Text, this.CbMotivoChamado.Text, this.CbTipoMotivoSelecionado.Text,
                 this.Prioridade.Text, this.CbOrigem.Text, this.txtEnderecoOrigem.Text, this.CbDestino.Text, this.txtEnderecoDestino.Text, this.Obs.Text,
-                0, System.Environment.UserName, DateTime.Now);
+                0, System.Environment.UserName, DateTime.Now, ChGestante.Checked);
 
             }
             catch (Exception ex)
@@ -77,7 +77,7 @@ namespace Solicitacao_de_Ambulancias
         }
         public void Endereco()
         {
-            using (DAHUEEntities db = new DAHUEEntities())
+            using (DAHUEEntities1 db = new DAHUEEntities1())
             {
                 CbLocalSolicita.DataSource = db.enderecos.OrderBy(x => x.NomeUnidade).ToList();
                 CbLocalSolicita.ValueMember = "NomeUnidade";
@@ -92,7 +92,7 @@ namespace Solicitacao_de_Ambulancias
         }
         public void unidade_telefone()
         {
-            using (DAHUEEntities db = new DAHUEEntities())
+            using (DAHUEEntities1 db = new DAHUEEntities1())
             {
                 var telefoneDoEndereco = db.enderecos
                     .Where(e => e.NomeUnidade == pegaUnidade)
@@ -104,7 +104,7 @@ namespace Solicitacao_de_Ambulancias
         }
         private void unidade_Endereco()
         {
-            using (DAHUEEntities db = new DAHUEEntities())
+            using (DAHUEEntities1 db = new DAHUEEntities1())
             {
                 var enderecoDoEnderecos = db.enderecos
                     .Where(e => e.NomeUnidade == pegaUnidadeEnd)
@@ -188,7 +188,7 @@ namespace Solicitacao_de_Ambulancias
             {
                 pegamotivo = "TRANSFERENCIA";
             }
-            using (DAHUEEntities db = new DAHUEEntities())
+            using (DAHUEEntities1 db = new DAHUEEntities1())
             {
                 var query = (from r in db.referencias
                              orderby pegamotivo ascending
@@ -465,7 +465,7 @@ namespace Solicitacao_de_Ambulancias
         }
         private void txtNomePaciente_KeyUp(object sender, KeyEventArgs e)
         {
-            using (DAHUEEntities db = new DAHUEEntities())
+            using (DAHUEEntities1 db = new DAHUEEntities1())
             {
                 var autoCompletarDadosPaciente = db.solicitacoes_paciente
                 .Where(a => a.Paciente == txtNomePaciente.Text)
@@ -496,7 +496,7 @@ namespace Solicitacao_de_Ambulancias
             RbMasculino.Checked = false;
             txtIdade.Text = "";
 
-            using (DAHUEEntities db = new DAHUEEntities())
+            using (DAHUEEntities1 db = new DAHUEEntities1())
             {
                 var autoCompletar = db.solicitacoes_paciente
                     .Select(a => a.Paciente).Distinct().ToArray();
@@ -525,7 +525,7 @@ namespace Solicitacao_de_Ambulancias
         private void Horarios()
         {
 
-            using (DAHUEEntities db = new DAHUEEntities())
+            using (DAHUEEntities1 db = new DAHUEEntities1())
             {
                 var query = (from sa in db.solicitacoes_ambulancias
                              where sa.idSolicitacoes_Ambulancias == IdSolicitacaoAmbulancia
@@ -611,7 +611,7 @@ namespace Solicitacao_de_Ambulancias
         }
         private void SelectPacientes()
         {
-            using (DAHUEEntities db = new DAHUEEntities())
+            using (DAHUEEntities1 db = new DAHUEEntities1())
             {
                 var query = (from sp in db.solicitacoes_paciente
                              join sa in db.solicitacoes_ambulancias
@@ -646,6 +646,7 @@ namespace Solicitacao_de_Ambulancias
                                  sp.NomeSolicitante,
                                  sp.Telefone,
                                  sp.Genero,
+                                 sp.Gestante,
                                  sp.Idade,
                                  sp.Diagnostico
                              }).DefaultIfEmpty().ToList();
@@ -663,7 +664,7 @@ namespace Solicitacao_de_Ambulancias
         {
             Lista.DataSource = "";
             this.Cursor = Cursors.WaitCursor;
-            using (DAHUEEntities db = new DAHUEEntities())
+            using (DAHUEEntities1 db = new DAHUEEntities1())
             {
                 var query = (from sp in db.solicitacoes_paciente
                              join sa in db.solicitacoes_ambulancias
@@ -679,10 +680,11 @@ namespace Solicitacao_de_Ambulancias
                              equals sag.idSolicitacao_paciente into spsag_join
                              from sag in spsag_join.DefaultIfEmpty()
                              where
-                             sp.LocalSolicitacao == UnidadeSelecionada
-                             && (sp.DtHrdoInicio.Value.Day == DateTime.Now.Day && sp.DtHrdoInicio.Value.Month == DateTime.Now.Month && sp.DtHrdoInicio.Value.Year == DateTime.Now.Year)
+                             sp.LocalSolicitacao == UnidadeSelecionada &&
+                             ((sp.DtHrdoInicio.Value.Day == DateTime.Now.Day && sp.DtHrdoInicio.Value.Month == DateTime.Now.Month && sp.DtHrdoInicio.Value.Year == DateTime.Now.Year)
                              || (sp.DtHrdoAgendamento.Value.Day == DateTime.Now.Day && sp.DtHrdoAgendamento.Value.Month == DateTime.Now.Month && sp.DtHrdoAgendamento.Value.Year == DateTime.Now.Year)
-                             || (sag.DtHrAgendamento.Value.Day == DateTime.Now.Day && sag.DtHrAgendamento.Value.Month == DateTime.Now.Month && sag.DtHrAgendamento.Value.Year == DateTime.Now.Year)
+                             || (sag.DtHrAgendamento.Value.Day == DateTime.Now.Day && sag.DtHrAgendamento.Value.Month == DateTime.Now.Month && sag.DtHrAgendamento.Value.Year == DateTime.Now.Year))
+                             
                              select new
                              {
                                  Id = sp.idPaciente_Solicitacoes,
@@ -703,6 +705,7 @@ namespace Solicitacao_de_Ambulancias
                                  sp.NomeSolicitante,
                                  sp.Telefone,
                                  sp.Genero,
+                                 sp.Gestante,
                                  sp.Idade,
                                  sp.Diagnostico
                              }).DefaultIfEmpty();
@@ -714,8 +717,7 @@ namespace Solicitacao_de_Ambulancias
                 this.Cursor = Cursors.Default;
             }
 
-        }
-        
+        }      
         private void Ontem_Click_1(object sender, EventArgs e)
         {
             Lista.DataSource = "";
@@ -723,7 +725,7 @@ namespace Solicitacao_de_Ambulancias
             DateTime data = DateTime.Now;
             DateTime ontem = DateTime.Now.AddDays(-1);
 
-            using (DAHUEEntities db = new DAHUEEntities())
+            using (DAHUEEntities1 db = new DAHUEEntities1())
             {
                 var query = (from sp in db.solicitacoes_paciente
                              join sa in db.solicitacoes_ambulancias
@@ -740,8 +742,8 @@ namespace Solicitacao_de_Ambulancias
                              from sag in spsag_join.DefaultIfEmpty()
                              where
                                sp.LocalSolicitacao == UnidadeSelecionada && sa.idSolicitacoes_Ambulancias != null
-                               && (sp.DtHrdoInicio >= ontem && sp.DtHrdoInicio <= data) || (sp.DtHrdoAgendamento >= ontem && sp.DtHrdoAgendamento <= data) || (sag.DtHrAgendamento >= ontem && sag.DtHrAgendamento <= data)
-
+                               && ((sp.DtHrdoInicio >= ontem && sp.DtHrdoInicio <= data) || (sp.DtHrdoAgendamento >= ontem && sp.DtHrdoAgendamento <= data) || 
+                               (sag.DtHrAgendamento >= ontem && sag.DtHrAgendamento <= data))
                              select new
                              {
                                  Id = sp.idPaciente_Solicitacoes,
@@ -762,6 +764,7 @@ namespace Solicitacao_de_Ambulancias
                                  sp.NomeSolicitante,
                                  sp.Telefone,
                                  sp.Genero,
+                                 sp.Gestante,
                                  sp.Idade,
                                  sp.Diagnostico
                              }).DefaultIfEmpty();
@@ -780,7 +783,7 @@ namespace Solicitacao_de_Ambulancias
             DateTime data = DateTime.Now;
             DateTime dias2 = DateTime.Now.AddDays(-2);
 
-            using (DAHUEEntities db = new DAHUEEntities())
+            using (DAHUEEntities1 db = new DAHUEEntities1())
             {
                 var query = (from sp in db.solicitacoes_paciente
                              join sa in db.solicitacoes_ambulancias
@@ -797,7 +800,8 @@ namespace Solicitacao_de_Ambulancias
                              from sag in spsag_join.DefaultIfEmpty()
                              where
                                sp.LocalSolicitacao == UnidadeSelecionada && sa.idSolicitacoes_Ambulancias != null
-                              && (sp.DtHrdoInicio >= dias2 && sp.DtHrdoInicio <= data) || (sp.DtHrdoAgendamento >= dias2 && sp.DtHrdoAgendamento <= data) || (sag.DtHrAgendamento >= dias2 && sag.DtHrAgendamento <= data)
+                              && ((sp.DtHrdoInicio >= dias2 && sp.DtHrdoInicio <= data) || (sp.DtHrdoAgendamento >= dias2 && sp.DtHrdoAgendamento <= data) || 
+                              (sag.DtHrAgendamento >= dias2 && sag.DtHrAgendamento <= data))
                              orderby
                                sp.idPaciente_Solicitacoes
                              select new
@@ -820,6 +824,7 @@ namespace Solicitacao_de_Ambulancias
                                  sp.NomeSolicitante,
                                  sp.Telefone,
                                  sp.Genero,
+                                 sp.Gestante,
                                  sp.Idade,
                                  sp.Diagnostico
                              }).DefaultIfEmpty();
@@ -840,7 +845,7 @@ namespace Solicitacao_de_Ambulancias
             DateTime data = DateTime.Now;
             DateTime dias5 = DateTime.Now.AddDays(-5);
 
-            using (DAHUEEntities db = new DAHUEEntities())
+            using (DAHUEEntities1 db = new DAHUEEntities1())
             {
                 var query = (from sp in db.solicitacoes_paciente
                              join sa in db.solicitacoes_ambulancias
@@ -857,7 +862,8 @@ namespace Solicitacao_de_Ambulancias
                              from sag in spsag_join.DefaultIfEmpty()
                              where
                                sp.LocalSolicitacao == UnidadeSelecionada && sa.idSolicitacoes_Ambulancias != null
-                               && (sp.DtHrdoInicio >= dias5 && sp.DtHrdoInicio <= data) || (sp.DtHrdoAgendamento >= dias5 && sp.DtHrdoAgendamento <= data) || (sag.DtHrAgendamento >= dias5 && sag.DtHrAgendamento <= data)
+                               && ((sp.DtHrdoInicio >= dias5 && sp.DtHrdoInicio <= data) || (sp.DtHrdoAgendamento >= dias5 && sp.DtHrdoAgendamento <= data) || 
+                               (sag.DtHrAgendamento >= dias5 && sag.DtHrAgendamento <= data))
                              orderby
                                sp.idPaciente_Solicitacoes
                              select new
@@ -880,6 +886,7 @@ namespace Solicitacao_de_Ambulancias
                                  sp.NomeSolicitante,
                                  sp.Telefone,
                                  sp.Genero,
+                                 sp.Gestante,
                                  sp.Idade,
                                  sp.Diagnostico
                              }).DefaultIfEmpty();
@@ -899,7 +906,7 @@ namespace Solicitacao_de_Ambulancias
             DateTime data = DateTime.Now;
             DateTime dias7 = DateTime.Now.AddDays(-7);
 
-            using (DAHUEEntities db = new DAHUEEntities())
+            using (DAHUEEntities1 db = new DAHUEEntities1())
             {
                 var query = (from sp in db.solicitacoes_paciente
                              join sa in db.solicitacoes_ambulancias
@@ -916,7 +923,8 @@ namespace Solicitacao_de_Ambulancias
                              from sag in spsag_join.DefaultIfEmpty()
                              where
                                sp.LocalSolicitacao == UnidadeSelecionada && sa.idSolicitacoes_Ambulancias != null
-                               && (sp.DtHrdoInicio >= dias7 && sp.DtHrdoInicio <= data) || (sp.DtHrdoAgendamento >= dias7 && sp.DtHrdoAgendamento <= data) || (sag.DtHrAgendamento >= dias7 && sag.DtHrAgendamento <= data)
+                               && ((sp.DtHrdoInicio >= dias7 && sp.DtHrdoInicio <= data) || (sp.DtHrdoAgendamento >= dias7 && sp.DtHrdoAgendamento <= data) || 
+                               (sag.DtHrAgendamento >= dias7 && sag.DtHrAgendamento <= data))
                              orderby
                                sp.idPaciente_Solicitacoes
                              select new
@@ -939,6 +947,7 @@ namespace Solicitacao_de_Ambulancias
                                  sp.NomeSolicitante,
                                  sp.Telefone,
                                  sp.Genero,
+                                 sp.Gestante,
                                  sp.Idade,
                                  sp.Diagnostico
                              }).DefaultIfEmpty();
@@ -958,7 +967,7 @@ namespace Solicitacao_de_Ambulancias
             DateTime data = DateTime.Now;
             DateTime dias14 = DateTime.Now.AddDays(-14);
 
-            using (DAHUEEntities db = new DAHUEEntities())
+            using (DAHUEEntities1 db = new DAHUEEntities1())
             {
                 var query = (from sp in db.solicitacoes_paciente
                              join sa in db.solicitacoes_ambulancias
@@ -975,7 +984,8 @@ namespace Solicitacao_de_Ambulancias
                              from sag in spsag_join.DefaultIfEmpty()
                              where
                                sp.LocalSolicitacao == UnidadeSelecionada && sa.idSolicitacoes_Ambulancias != null
-                               && (sp.DtHrdoInicio >= dias14 && sp.DtHrdoInicio <= data) || (sp.DtHrdoAgendamento >= dias14 && sp.DtHrdoAgendamento <= data) || (sag.DtHrAgendamento >= dias14 && sag.DtHrAgendamento <= data)
+                               && ((sp.DtHrdoInicio >= dias14 && sp.DtHrdoInicio <= data) || (sp.DtHrdoAgendamento >= dias14 && sp.DtHrdoAgendamento <= data) || 
+                               (sag.DtHrAgendamento >= dias14 && sag.DtHrAgendamento <= data))
                              orderby
                                sp.idPaciente_Solicitacoes
                              select new
@@ -998,6 +1008,7 @@ namespace Solicitacao_de_Ambulancias
                                  sp.NomeSolicitante,
                                  sp.Telefone,
                                  sp.Genero,
+                                 sp.Gestante,
                                  sp.Idade,
                                  sp.Diagnostico
                              }).DefaultIfEmpty();
@@ -1016,7 +1027,7 @@ namespace Solicitacao_de_Ambulancias
             this.Cursor = Cursors.WaitCursor;
             int mes = DateTime.Now.Month;
             int ano = DateTime.Now.Year;
-            using (DAHUEEntities db = new DAHUEEntities())
+            using (DAHUEEntities1 db = new DAHUEEntities1())
             {
                 var query = (from sp in db.solicitacoes_paciente
                              join sa in db.solicitacoes_ambulancias
@@ -1034,9 +1045,9 @@ namespace Solicitacao_de_Ambulancias
                              where
                              sp.LocalSolicitacao == UnidadeSelecionada && sa.idSolicitacoes_Ambulancias != null
                              &&
-                             (SqlFunctions.DatePart("month", sp.DtHrdoInicio) == mes && SqlFunctions.DatePart("year", sp.DtHrdoInicio) == ano) ||
+                             ((SqlFunctions.DatePart("month", sp.DtHrdoInicio) == mes && SqlFunctions.DatePart("year", sp.DtHrdoInicio) == ano) ||
                              (SqlFunctions.DatePart("month", sp.DtHrdoAgendamento) == mes && SqlFunctions.DatePart("year", sp.DtHrdoAgendamento) == ano) ||
-                             (SqlFunctions.DatePart("month", sag.DtHrAgendamento) == mes && SqlFunctions.DatePart("year", sag.DtHrAgendamento) == ano)
+                             (SqlFunctions.DatePart("month", sag.DtHrAgendamento) == mes && SqlFunctions.DatePart("year", sag.DtHrAgendamento) == ano))
                              orderby
                                 sp.idPaciente_Solicitacoes
                              select new
@@ -1059,6 +1070,7 @@ namespace Solicitacao_de_Ambulancias
                                  sp.NomeSolicitante,
                                  sp.Telefone,
                                  sp.Genero,
+                                 sp.Gestante,
                                  sp.Idade,
                                  sp.Diagnostico
                              }).DefaultIfEmpty();
@@ -1077,7 +1089,7 @@ namespace Solicitacao_de_Ambulancias
             Lista.DataSource = "";
             this.Cursor = Cursors.WaitCursor;
             int ano = DateTime.Now.Year;
-            using (DAHUEEntities db = new DAHUEEntities())
+            using (DAHUEEntities1 db = new DAHUEEntities1())
             {
                 var query = (from sp in db.solicitacoes_paciente
                              join sa in db.solicitacoes_ambulancias
@@ -1094,9 +1106,9 @@ namespace Solicitacao_de_Ambulancias
                              from sag in spsag_join.DefaultIfEmpty()
                              where
                                sp.LocalSolicitacao == UnidadeSelecionada && sa.idSolicitacoes_Ambulancias != null
-                               && (SqlFunctions.DatePart("year", sp.DtHrdoInicio) == ano) ||
+                               && ((SqlFunctions.DatePart("year", sp.DtHrdoInicio) == ano) ||
                                (SqlFunctions.DatePart("year", sp.DtHrdoAgendamento) == ano) ||
-                               (SqlFunctions.DatePart("year", sag.DtHrAgendamento) == ano)
+                               (SqlFunctions.DatePart("year", sag.DtHrAgendamento) == ano))
                              orderby
                                sp.idPaciente_Solicitacoes
                              select new
@@ -1119,6 +1131,7 @@ namespace Solicitacao_de_Ambulancias
                                  sp.NomeSolicitante,
                                  sp.Telefone,
                                  sp.Genero,
+                                 sp.Gestante,
                                  sp.Idade,
                                  sp.Diagnostico
                              }).DefaultIfEmpty();
@@ -1134,7 +1147,7 @@ namespace Solicitacao_de_Ambulancias
         private void agendadas_ValueChanged(object sender, EventArgs e)
         {
             Lista.DataSource = "";
-            using (DAHUEEntities db = new DAHUEEntities())
+            using (DAHUEEntities1 db = new DAHUEEntities1())
             {
                 var query = (from sp in db.solicitacoes_paciente
                              join sa in db.solicitacoes_ambulancias
@@ -1171,6 +1184,7 @@ namespace Solicitacao_de_Ambulancias
                                  sp.NomeSolicitante,
                                  sp.Telefone,
                                  sp.Genero,
+                                 sp.Gestante,
                                  sp.Idade,
                                  sp.Diagnostico
                              }).DefaultIfEmpty();
@@ -1186,7 +1200,7 @@ namespace Solicitacao_de_Ambulancias
         private void reagendadas_ValueChanged(object sender, EventArgs e)
         {
             Lista.DataSource = "";
-            using (DAHUEEntities db = new DAHUEEntities())
+            using (DAHUEEntities1 db = new DAHUEEntities1())
             {
                 var query = (from sp in db.solicitacoes_paciente
                              join sa in db.solicitacoes_ambulancias
@@ -1225,6 +1239,7 @@ namespace Solicitacao_de_Ambulancias
                                  sp.NomeSolicitante,
                                  sp.Telefone,
                                  sp.Genero,
+                                 sp.Gestante,
                                  sp.Idade,
                                  sp.Diagnostico
                              }).DefaultIfEmpty();
@@ -1310,7 +1325,7 @@ namespace Solicitacao_de_Ambulancias
         string AvisoReagendamento = "Número de solicitações que o Transporte Sanitario irá Aceitar ou Negar !";
         public void pegarDadosDasAmbulancias()
         {
-            using (DAHUEEntities db = new DAHUEEntities())
+            using (DAHUEEntities1 db = new DAHUEEntities1())
             {
                 var queryUsb = (from am in db.ambulancia
                                 join sa in db.solicitacoes_ambulancias
@@ -1330,6 +1345,7 @@ namespace Solicitacao_de_Ambulancias
                                     Status = sa.Status,
                                     StatusE = am.StatusAmbulancia,
                                     idPaciente = sa.idSolicitacoesPacientes,
+                                    Paciente = sp.Paciente,
                                     Prioridade = (sp.Prioridade.Contains("P0") ? "P0" : (sp.Prioridade.Contains("P1") ? "P1" : (sp.Prioridade.Contains("P2") ? "P2" : (sp.Prioridade.Contains("P3") ? "P3" : "SP")))),
                                     Idade = sp.Idade,
                                     Origem = sp.Origem,
@@ -1355,6 +1371,7 @@ namespace Solicitacao_de_Ambulancias
                                     Status = sa.Status,
                                     StatusE = am.StatusAmbulancia,
                                     idPaciente = sa.idSolicitacoesPacientes,
+                                    Paciente = sp.Paciente,
                                     Prioridade = (sp.Prioridade.Contains("P0") ? "P0" : (sp.Prioridade.Contains("P1") ? "P1" : (sp.Prioridade.Contains("P2") ? "P2" : (sp.Prioridade.Contains("P3") ? "P3" : "SP")))),
                                     Idade = sp.Idade,
                                     Origem = sp.Origem,
@@ -1391,7 +1408,7 @@ namespace Solicitacao_de_Ambulancias
 
         private void countparaSol()
         {
-            using (DAHUEEntities db = new DAHUEEntities())
+            using (DAHUEEntities1 db = new DAHUEEntities1())
             {
                 var query = (from sp in db.solicitacoes_paciente
                              where sp.AmSolicitada == 0 && sp.Agendamento == "Nao" && sp.Registrado == "Sim"
@@ -1403,7 +1420,7 @@ namespace Solicitacao_de_Ambulancias
         private void countparaSolAgendadas()
         {
             //CONTA AS solicitacoes agendadas
-            using (DAHUEEntities db = new DAHUEEntities())
+            using (DAHUEEntities1 db = new DAHUEEntities1())
             {
 
                 var query = (from sp in db.solicitacoes_paciente
@@ -1420,7 +1437,7 @@ namespace Solicitacao_de_Ambulancias
         }
         private void countparaSolAgendadasPendentes()
         {
-            using (DAHUEEntities db = new DAHUEEntities())
+            using (DAHUEEntities1 db = new DAHUEEntities1())
             {
                 var query = (from sp in db.solicitacoes_paciente
                              where sp.AmSolicitada == 0 && sp.Agendamento == "Sim"
@@ -1502,7 +1519,7 @@ namespace Solicitacao_de_Ambulancias
             int zero = 0;
             var final = Calendario.SelectionRange.End;
             var comeco = Calendario.SelectionRange.Start;
-            using (DAHUEEntities db = new DAHUEEntities())
+            using (DAHUEEntities1 db = new DAHUEEntities1())
             {
                 var query = from sp in db.solicitacoes_paciente
                             join sa in db.solicitacoes_ambulancias
@@ -1543,7 +1560,7 @@ namespace Solicitacao_de_Ambulancias
 
             int zero = 0;
             var data = Calendario.SelectionRange.End;
-            using (DAHUEEntities db = new DAHUEEntities())
+            using (DAHUEEntities1 db = new DAHUEEntities1())
             {
                 var query = from sp in db.solicitacoes_paciente
                             join sa in db.solicitacoes_ambulancias
@@ -1586,7 +1603,7 @@ namespace Solicitacao_de_Ambulancias
             {
                 idPaciente = Convert.ToInt32(ListaAgendados.Rows[e.RowIndex].Cells["ID"].Value.ToString());
                 IdSolicitacaoAmbulancia = Convert.ToInt32(ListaAgendados.Rows[e.RowIndex].Cells["idAm"].Value.ToString());
-                using (DAHUEEntities db = new DAHUEEntities())
+                using (DAHUEEntities1 db = new DAHUEEntities1())
                 {
                     var query = (from sp in db.solicitacoes_paciente
                                  join saa in db.solicitacoes_agendamentos
@@ -1613,6 +1630,7 @@ namespace Solicitacao_de_Ambulancias
                     }
                     idadeReagendamentos.Text = query.sp.Idade;
                     diagnosticosReagendamentos.Text = query.sp.Diagnostico;
+                    chGestanteReagendamentos.Checked = query.sp.Gestante;
                     motivoReagendamentos.Text = query.sp.Motivo;
                     tipoMotivoReagendamentos.Text = query.sp.SubMotivo;
                     prioridadeReagendamentos.Text = query.sp.Prioridade;
@@ -1750,7 +1768,7 @@ namespace Solicitacao_de_Ambulancias
                 {
                     IdSolicitacaoAmbulancia = 0;
                 }
-                using (DAHUEEntities db = new DAHUEEntities())
+                using (DAHUEEntities1 db = new DAHUEEntities1())
                 {
                     var query = (from sp in db.solicitacoes_paciente
                                  where sp.idPaciente_Solicitacoes == idPaciente
@@ -1774,6 +1792,7 @@ namespace Solicitacao_de_Ambulancias
                     }
                     Idade.Text = query.Idade;
                     Diagnostico.Text = query.Diagnostico;
+                    Gestante.Checked = query.Gestante;
                     MotivoChamado.Text = query.Motivo;
                     TipoMotivoSelecionado.Text = query.SubMotivo;
                     PrioridadeCancelar.Text = query.Prioridade;
@@ -1789,7 +1808,7 @@ namespace Solicitacao_de_Ambulancias
         }
         private void SelectPacientesParaCancelar()
         {
-            using (DAHUEEntities db = new DAHUEEntities())
+            using (DAHUEEntities1 db = new DAHUEEntities1())
             {
                 var query = (from sp in db.solicitacoes_paciente
                              join sa in db.solicitacoes_ambulancias
@@ -1814,6 +1833,7 @@ namespace Solicitacao_de_Ambulancias
                                  sp.Genero,
                                  sp.Idade,
                                  sp.Diagnostico,
+                                 sp.Gestante,
                                  sp.Prioridade,
                                  sp.Motivo,
                                  sp.SubMotivo,
@@ -1855,6 +1875,7 @@ namespace Solicitacao_de_Ambulancias
         {
             RbFemenino.Checked = false;
             RbMasculino.Checked = false;
+            ChGestante.Checked = false;
             TipoAM = "";
             Agendamento = "";
             Obs.Text = "";

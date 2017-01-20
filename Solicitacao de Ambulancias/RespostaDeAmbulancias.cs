@@ -29,7 +29,7 @@ namespace Solicitacao_de_Ambulancias
             int zero = 0;
             var final = Calendario.SelectionRange.End;
             var comeco = Calendario.SelectionRange.Start;
-            using (DAHUEEntities db = new DAHUEEntities())
+            using (DAHUEEntities1 db = new DAHUEEntities1())
             {
                 var query = from sp in db.solicitacoes_paciente
                             where sp.AmSolicitada == zero &&
@@ -65,7 +65,7 @@ namespace Solicitacao_de_Ambulancias
 
             int zero = 0;
             var data = Calendario.SelectionRange.End;
-            using (DAHUEEntities db = new DAHUEEntities())
+            using (DAHUEEntities1 db = new DAHUEEntities1())
             {
                 var query = from sp in db.solicitacoes_paciente
                             where sp.AmSolicitada == zero &&
@@ -102,7 +102,7 @@ namespace Solicitacao_de_Ambulancias
             if (e.RowIndex > -1)
             {
                 idPaciente = Convert.ToInt32(ListaAgendados.Rows[e.RowIndex].Cells[0].Value.ToString());
-                using (DAHUEEntities db = new DAHUEEntities())
+                using (DAHUEEntities1 db = new DAHUEEntities1())
                 {
                     var query = (from sp in db.solicitacoes_paciente
                                  join saa in db.solicitacoes_agendamentos
@@ -228,7 +228,7 @@ namespace Solicitacao_de_Ambulancias
                 if (result1 == DialogResult.Yes)
                 {
 
-                    using (DAHUEEntities db = new DAHUEEntities())
+                    using (DAHUEEntities1 db = new DAHUEEntities1())
                     {
                         solicitacoes_paciente sp = db.solicitacoes_paciente.First(p => p.idPaciente_Solicitacoes == idPaciente);
                         sp.Registrado = "Sim";

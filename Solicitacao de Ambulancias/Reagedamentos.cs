@@ -17,7 +17,7 @@ namespace Solicitacao_de_Ambulancias
         {
             InitializeComponent();
 
-            using (DAHUEEntities db = new DAHUEEntities())
+            using (DAHUEEntities1 db = new DAHUEEntities1())
             {
                 var reagendamentos = (from sad in db.solicitacoes_agendamentos
                                       join sp in db.solicitacoes_paciente

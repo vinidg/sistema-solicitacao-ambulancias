@@ -56,6 +56,7 @@
             this.listaUsb = new System.Windows.Forms.DataGridView();
             this.NovaSolicitacao = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ChGestante = new System.Windows.Forms.CheckBox();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label34 = new System.Windows.Forms.Label();
             this.dataAgendamento = new System.Windows.Forms.DateTimePicker();
@@ -257,6 +258,8 @@
             this.SelecionarUnidade = new System.Windows.Forms.ComboBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.chGestanteReagendamentos = new System.Windows.Forms.CheckBox();
+            this.Gestante = new System.Windows.Forms.CheckBox();
             this.AbasControle.SuspendLayout();
             this.StatusAmbulancias.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -623,6 +626,7 @@
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel1.AutoSize = true;
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.ChGestante);
             this.panel1.Controls.Add(this.panel8);
             this.panel1.Controls.Add(this.dataAgendamento);
             this.panel1.Controls.Add(this.label31);
@@ -673,6 +677,16 @@
             this.panel1.Size = new System.Drawing.Size(1035, 662);
             this.panel1.TabIndex = 4;
             // 
+            // ChGestante
+            // 
+            this.ChGestante.AutoSize = true;
+            this.ChGestante.Location = new System.Drawing.Point(487, 409);
+            this.ChGestante.Name = "ChGestante";
+            this.ChGestante.Size = new System.Drawing.Size(69, 17);
+            this.ChGestante.TabIndex = 50;
+            this.ChGestante.Text = "Gestante";
+            this.ChGestante.UseVisualStyleBackColor = true;
+            // 
             // panel8
             // 
             this.panel8.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -712,7 +726,7 @@
             this.label31.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label31.AutoSize = true;
             this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(25, 483);
+            this.label31.Location = new System.Drawing.Point(23, 504);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(74, 16);
             this.label31.TabIndex = 47;
@@ -730,7 +744,7 @@
             "P1 PRIORIDADE ALTA RESOLVER EM 2 HORAS",
             "P2 PRIORIDADE MODERADA RESOLVER EM 12 HORAS",
             "P3 PRIORIDADE BAIXA RESOLVER EM 24 HORAS"});
-            this.Prioridade.Location = new System.Drawing.Point(26, 502);
+            this.Prioridade.Location = new System.Drawing.Point(24, 523);
             this.Prioridade.Name = "Prioridade";
             this.Prioridade.Size = new System.Drawing.Size(245, 23);
             this.Prioridade.TabIndex = 46;
@@ -888,7 +902,7 @@
             this.label14.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(281, 435);
+            this.label14.Location = new System.Drawing.Point(279, 456);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(181, 16);
             this.label14.TabIndex = 28;
@@ -900,7 +914,7 @@
             this.CbTipoMotivoSelecionado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CbTipoMotivoSelecionado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CbTipoMotivoSelecionado.FormattingEnabled = true;
-            this.CbTipoMotivoSelecionado.Location = new System.Drawing.Point(284, 454);
+            this.CbTipoMotivoSelecionado.Location = new System.Drawing.Point(282, 475);
             this.CbTipoMotivoSelecionado.Name = "CbTipoMotivoSelecionado";
             this.CbTipoMotivoSelecionado.Size = new System.Drawing.Size(243, 23);
             this.CbTipoMotivoSelecionado.TabIndex = 27;
@@ -910,7 +924,7 @@
             this.label13.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(25, 435);
+            this.label13.Location = new System.Drawing.Point(23, 456);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(132, 16);
             this.label13.TabIndex = 26;
@@ -941,7 +955,7 @@
             "TRANSPORTE DE INSUMOS/PRODUTOS/MATERIAIS",
             "TRANSPORTE DE PROFISSIONAIS",
             "TRANSFERENCIA"});
-            this.CbMotivoChamado.Location = new System.Drawing.Point(28, 454);
+            this.CbMotivoChamado.Location = new System.Drawing.Point(26, 475);
             this.CbMotivoChamado.Name = "CbMotivoChamado";
             this.CbMotivoChamado.Size = new System.Drawing.Size(243, 23);
             this.CbMotivoChamado.TabIndex = 25;
@@ -952,9 +966,9 @@
             this.txtDiagnostico.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtDiagnostico.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDiagnostico.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDiagnostico.Location = new System.Drawing.Point(26, 401);
+            this.txtDiagnostico.Location = new System.Drawing.Point(26, 405);
             this.txtDiagnostico.Name = "txtDiagnostico";
-            this.txtDiagnostico.Size = new System.Drawing.Size(522, 21);
+            this.txtDiagnostico.Size = new System.Drawing.Size(455, 21);
             this.txtDiagnostico.TabIndex = 24;
             // 
             // label12
@@ -962,7 +976,7 @@
             this.label12.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(23, 382);
+            this.label12.Location = new System.Drawing.Point(25, 386);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(183, 16);
             this.label12.TabIndex = 23;
@@ -971,7 +985,7 @@
             // txtIdade
             // 
             this.txtIdade.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtIdade.Location = new System.Drawing.Point(483, 349);
+            this.txtIdade.Location = new System.Drawing.Point(487, 349);
             this.txtIdade.MaxLength = 3;
             this.txtIdade.Name = "txtIdade";
             this.txtIdade.Size = new System.Drawing.Size(61, 20);
@@ -983,7 +997,7 @@
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(480, 330);
+            this.label11.Location = new System.Drawing.Point(484, 329);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(46, 16);
             this.label11.TabIndex = 21;
@@ -1791,6 +1805,7 @@
             // painelReagendamento
             // 
             this.painelReagendamento.BackColor = System.Drawing.Color.White;
+            this.painelReagendamento.Controls.Add(this.chGestanteReagendamentos);
             this.painelReagendamento.Controls.Add(this.CancelarReagendamento);
             this.painelReagendamento.Controls.Add(this.CodigoPacienteReagendamento);
             this.painelReagendamento.Controls.Add(this.destinoReagendamentos);
@@ -2260,7 +2275,7 @@
             this.diagnosticosReagendamentos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.diagnosticosReagendamentos.Location = new System.Drawing.Point(49, 503);
             this.diagnosticosReagendamentos.Name = "diagnosticosReagendamentos";
-            this.diagnosticosReagendamentos.Size = new System.Drawing.Size(522, 21);
+            this.diagnosticosReagendamentos.Size = new System.Drawing.Size(443, 21);
             this.diagnosticosReagendamentos.TabIndex = 63;
             // 
             // label74
@@ -2503,6 +2518,7 @@
             // 
             // PainelCancelar
             // 
+            this.PainelCancelar.Controls.Add(this.Gestante);
             this.PainelCancelar.Controls.Add(this.ListaCancelar);
             this.PainelCancelar.Controls.Add(this.CodigoId);
             this.PainelCancelar.Controls.Add(this.label35);
@@ -2965,7 +2981,7 @@
             this.Diagnostico.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Diagnostico.Location = new System.Drawing.Point(23, 496);
             this.Diagnostico.Name = "Diagnostico";
-            this.Diagnostico.Size = new System.Drawing.Size(522, 21);
+            this.Diagnostico.Size = new System.Drawing.Size(443, 21);
             this.Diagnostico.TabIndex = 110;
             // 
             // TipoMotivoSelecionado
@@ -3137,6 +3153,26 @@
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // chGestanteReagendamentos
+            // 
+            this.chGestanteReagendamentos.AutoSize = true;
+            this.chGestanteReagendamentos.Location = new System.Drawing.Point(502, 507);
+            this.chGestanteReagendamentos.Name = "chGestanteReagendamentos";
+            this.chGestanteReagendamentos.Size = new System.Drawing.Size(69, 17);
+            this.chGestanteReagendamentos.TabIndex = 140;
+            this.chGestanteReagendamentos.Text = "Gestante";
+            this.chGestanteReagendamentos.UseVisualStyleBackColor = true;
+            // 
+            // Gestante
+            // 
+            this.Gestante.AutoSize = true;
+            this.Gestante.Location = new System.Drawing.Point(476, 500);
+            this.Gestante.Name = "Gestante";
+            this.Gestante.Size = new System.Drawing.Size(69, 17);
+            this.Gestante.TabIndex = 141;
+            this.Gestante.Text = "Gestante";
+            this.Gestante.UseVisualStyleBackColor = true;
             // 
             // ConfirmaSolicitacao
             // 
@@ -3432,5 +3468,8 @@
         private System.Windows.Forms.Label label84;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.CheckBox ChGestante;
+        private System.Windows.Forms.CheckBox chGestanteReagendamentos;
+        private System.Windows.Forms.CheckBox Gestante;
     }
 }

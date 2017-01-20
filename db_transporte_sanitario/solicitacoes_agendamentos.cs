@@ -14,9 +14,9 @@ namespace db_transporte_sanitario
     
     public partial class solicitacoes_agendamentos
     {
-        public int idSolicitacaoAgendamento { get; set; }
+        public int? idSolicitacaoAgendamento { get; set; }
         public DateTime? DtHrAgendamento { get; set; }
-        public int idSolicitacao_paciente { get; set; }
+        public int? idSolicitacao_paciente { get; set; }
     
         public virtual solicitacoes_paciente solicitacoes_paciente { get; set; }
     }

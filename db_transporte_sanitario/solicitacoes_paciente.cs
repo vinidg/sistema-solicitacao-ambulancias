@@ -41,11 +41,12 @@ namespace db_transporte_sanitario
         public string Destino { get; set; }
         public string EnderecoDestino { get; set; }
         public string ObsGerais { get; set; }
-        public Nullable<int> AmSolicitada { get; set; }
+        public int? AmSolicitada { get; set; }
         public string Registrado { get; set; }
         public string HrRegistro { get; set; }
         public DateTime? DtHrdoAgendamento { get; set; }
         public int? idReagendamento { get; set; }
+        public bool Gestante { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<historico> historico { get; set; }

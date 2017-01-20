@@ -26,7 +26,7 @@ namespace Solicitacao_de_Ambulancias
         {
             if (idSolicitacaoAmbulancias != 0)
             {
-                using (DAHUEEntities db = new DAHUEEntities())
+                using (DAHUEEntities1 db = new DAHUEEntities1())
                 {
                     var query = (from sa in db.solicitacoes_ambulancias
                                  where sa.idSolicitacoes_Ambulancias == idSolicitacaoAmbulancias &&

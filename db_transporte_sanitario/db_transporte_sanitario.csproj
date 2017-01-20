@@ -91,6 +91,9 @@
     <Compile Include="historico.cs">
       <DependentUpon>db_dahue_prod.tt</DependentUpon>
     </Compile>
+    <Compile Include="prontuarios.cs">
+      <DependentUpon>db_dahue_prod.tt</DependentUpon>
+    </Compile>
     <Compile Include="prontuariosupas.cs">
       <DependentUpon>db_dahue_prod.tt</DependentUpon>
     </Compile>
@@ -112,12 +115,6 @@
     <Compile Include="solicitacoes_paciente.cs">
       <DependentUpon>db_dahue_prod.tt</DependentUpon>
     </Compile>
-    <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>db_dahue_prod.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>db_dahue_prod.tt</DependentUpon>
-    </Compile>
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>db_dahue_prod.tt</DependentUpon>
     </Compile>
@@ -126,11 +123,11 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config" />
     <EntityDeploy Include="db_dahue_prod.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>db_dahue_prod.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="App.Config" />
     <None Include="db_dahue_prod.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>db_dahue_prod.edmx</DependentUpon>

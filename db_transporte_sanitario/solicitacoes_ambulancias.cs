@@ -30,8 +30,8 @@ namespace db_transporte_sanitario
         public string DtHrEquipePatio { get; set; }
         public string DtHrEquipePatioReg { get; set; }
         public int idAmbulanciaSol { get; set; }
-        public Nullable<int> SolicitacaoConcluida { get; set; }
-        public Nullable<int> IdOutroPaciente { get; set; }
+        public int? SolicitacaoConcluida { get; set; }
+        public int? IdOutroPaciente { get; set; }
         public string Status { get; set; }
     
         public virtual ambulancia ambulancia { get; set; }
