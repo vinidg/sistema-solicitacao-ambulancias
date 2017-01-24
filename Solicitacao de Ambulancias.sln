@@ -7,7 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solicitacao de Ambulancias"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "db_transporte_sanitario", "db_transporte_sanitario\db_transporte_sanitario.csproj", "{D43B3B37-AE11-473E-8177-4D448F306514}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Sistema de Solicitação de Ambulâncias SETUP", "Sistema de Solicitação de Ambulâncias SETUP\Sistema de Solicitação de Ambulâncias SETUP.vdproj", "{E63B11C1-85E6-43DF-88A3-F2191DEFC777}"
+Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "Sistema de Solicitação de Ambulancias", "Sistema de Solicitação de Ambulancias\Sistema de Solicitação de Ambulancias.isproj", "{E71FAF2A-A199-41D4-9877-1E1F810D9219}"
+EndProject
+Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "Sistema de Solicitação de Ambulancias C", "Sistema de Solicitação de Ambulancias C\Sistema de Solicitação de Ambulancias C.isproj", "{5AABF78E-8296-4652-8725-B9CB3BF367E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,11 +40,26 @@ Global
 		{D43B3B37-AE11-473E-8177-4D448F306514}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D43B3B37-AE11-473E-8177-4D448F306514}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
 		{D43B3B37-AE11-473E-8177-4D448F306514}.SingleImage|Any CPU.Build.0 = Release|Any CPU
-		{E63B11C1-85E6-43DF-88A3-F2191DEFC777}.CD_ROM|Any CPU.ActiveCfg = Release
-		{E63B11C1-85E6-43DF-88A3-F2191DEFC777}.Debug|Any CPU.ActiveCfg = Debug
-		{E63B11C1-85E6-43DF-88A3-F2191DEFC777}.DVD-5|Any CPU.ActiveCfg = Debug
-		{E63B11C1-85E6-43DF-88A3-F2191DEFC777}.Release|Any CPU.ActiveCfg = Release
-		{E63B11C1-85E6-43DF-88A3-F2191DEFC777}.SingleImage|Any CPU.ActiveCfg = Release
+		{E71FAF2A-A199-41D4-9877-1E1F810D9219}.CD_ROM|Any CPU.ActiveCfg = CD_ROM
+		{E71FAF2A-A199-41D4-9877-1E1F810D9219}.CD_ROM|Any CPU.Build.0 = CD_ROM
+		{E71FAF2A-A199-41D4-9877-1E1F810D9219}.Debug|Any CPU.ActiveCfg = DVD-5
+		{E71FAF2A-A199-41D4-9877-1E1F810D9219}.Debug|Any CPU.Build.0 = DVD-5
+		{E71FAF2A-A199-41D4-9877-1E1F810D9219}.DVD-5|Any CPU.ActiveCfg = DVD-5
+		{E71FAF2A-A199-41D4-9877-1E1F810D9219}.DVD-5|Any CPU.Build.0 = DVD-5
+		{E71FAF2A-A199-41D4-9877-1E1F810D9219}.Release|Any CPU.ActiveCfg = SingleImage
+		{E71FAF2A-A199-41D4-9877-1E1F810D9219}.Release|Any CPU.Build.0 = SingleImage
+		{E71FAF2A-A199-41D4-9877-1E1F810D9219}.SingleImage|Any CPU.ActiveCfg = SingleImage
+		{E71FAF2A-A199-41D4-9877-1E1F810D9219}.SingleImage|Any CPU.Build.0 = SingleImage
+		{5AABF78E-8296-4652-8725-B9CB3BF367E3}.CD_ROM|Any CPU.ActiveCfg = CD_ROM
+		{5AABF78E-8296-4652-8725-B9CB3BF367E3}.CD_ROM|Any CPU.Build.0 = CD_ROM
+		{5AABF78E-8296-4652-8725-B9CB3BF367E3}.Debug|Any CPU.ActiveCfg = DVD-5
+		{5AABF78E-8296-4652-8725-B9CB3BF367E3}.Debug|Any CPU.Build.0 = DVD-5
+		{5AABF78E-8296-4652-8725-B9CB3BF367E3}.DVD-5|Any CPU.ActiveCfg = DVD-5
+		{5AABF78E-8296-4652-8725-B9CB3BF367E3}.DVD-5|Any CPU.Build.0 = DVD-5
+		{5AABF78E-8296-4652-8725-B9CB3BF367E3}.Release|Any CPU.ActiveCfg = SingleImage
+		{5AABF78E-8296-4652-8725-B9CB3BF367E3}.Release|Any CPU.Build.0 = SingleImage
+		{5AABF78E-8296-4652-8725-B9CB3BF367E3}.SingleImage|Any CPU.ActiveCfg = SingleImage
+		{5AABF78E-8296-4652-8725-B9CB3BF367E3}.SingleImage|Any CPU.Build.0 = SingleImage
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

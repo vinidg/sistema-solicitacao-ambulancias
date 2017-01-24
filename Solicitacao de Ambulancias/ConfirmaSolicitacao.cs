@@ -18,6 +18,7 @@ namespace Solicitacao_de_Ambulancias
 {
     public partial class ConfirmaSolicitacao : Form
     {
+        #region Variaveis
         string TipoAM = null;
         string Agendamento = null;
 
@@ -29,10 +30,38 @@ namespace Solicitacao_de_Ambulancias
         int idPaciente;
         string UnidadeReagendamento;
         Version appversion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+        #endregion
+
         public ConfirmaSolicitacao()
         {
             InitializeComponent();
             
+        }
+        private void ConfirmaSolicitacao_Load(object sender, EventArgs e)
+        {
+            AutoUpdater.CurrentCulture = CultureInfo.CreateSpecificCulture("pt");
+
+            if (System.IO.File.Exists(@"C:\Sistema de Solicitação de Ambulancias\Solicitacao de Ambulancias.exe"))
+            {
+                AutoUpdater.Start("http://vinidg.github.io/update_sistemas/update_ambulanciasC.xml");
+            }
+             else{
+                 AutoUpdater.Start("http://vinidg.github.io/update_sistemas/update_ambulanciasD.xml");
+            }
+            
+            pegarDadosDasAmbulancias();
+            countparaSol();
+            countparaSolAgendadas();
+            countparaSolAgendadasPendentes();
+            StartPosition = FormStartPosition.CenterScreen;
+            Endereco();
+            label3.Visible = false;
+            dataAgendamento.Visible = false;
+            this.Text = "Sistema de Solicitação de Ambulancias. Versão: " + appversion;
+            AbasControle.SelectedTab = NovaSolicitacao;
+            Detalhes.Text = "";
+            AutoCompletar();
+            Timer();
         }
         
         #region Incluir_solicitacao_confirma_solicitacao
@@ -1914,33 +1943,6 @@ namespace Solicitacao_de_Ambulancias
             }
         }
 
-        private void ConfirmaSolicitacao_Load(object sender, EventArgs e)
-        {
-            AutoUpdater.CurrentCulture = CultureInfo.CreateSpecificCulture("pt");
-                AutoUpdater.Start("http://vinidg.github.io/update_ambulanciasC.xml");
-
-            if (System.IO.File.Exists(@"C:\Sistema de Solicitação de Ambulancias\pastaDTI.bat"))
-            {
-                System.Diagnostics.Process.Start(@"C:\Sistema de Solicitação de Ambulancias\pastaDTI.bat");
-            }
-             else{
-                AutoUpdater.Start("http://vinidg.github.io/update_ambulanciasD.xml");
-            }
-            
-            pegarDadosDasAmbulancias();
-            countparaSol();
-            countparaSolAgendadas();
-            countparaSolAgendadasPendentes();
-            StartPosition = FormStartPosition.CenterScreen;
-            Endereco();
-            label3.Visible = false;
-            dataAgendamento.Visible = false;
-            this.Text = "Sistema de Solicitação de Ambulancias. Versão: " + appversion;
-            AbasControle.SelectedTab = NovaSolicitacao;
-            Detalhes.Text = "";
-            AutoCompletar();
-            Timer();
-        }
 
         #region Timer
         public void Timer()
@@ -1956,11 +1958,13 @@ namespace Solicitacao_de_Ambulancias
 
             if (System.IO.File.Exists(@"C:\Sistema de Solicitação de Ambulancias\Solicitacao de Ambulancias.exe"))
             {
-                AutoUpdater.Start("http://vinidg.github.io/update_ambulanciasC.xml");
+                AutoUpdater.Start("http://vinidg.github.io/update_sistemas/update_ambulanciasC.xml");
+                return;
             }
             else
             {
-                AutoUpdater.Start("http://vinidg.github.io/update_ambulanciasD.xml");
+                AutoUpdater.Start("http://vinidg.github.io/update_sistemas/update_ambulanciasD.xml");
+                return;
             }
         }
         #endregion
